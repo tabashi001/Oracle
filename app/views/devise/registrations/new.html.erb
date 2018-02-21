@@ -21,6 +21,19 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :PhoneNo %><br />
+    <%= f.text_field :phone_no, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Role %><br />
+    <% User.roles.keys.each do |role| %>
+      <%= f.radio_button :role, role %>
+      <%= f.label role.to_sym %>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
