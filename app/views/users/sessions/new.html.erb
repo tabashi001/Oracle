@@ -1,6 +1,9 @@
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
@@ -17,6 +20,8 @@
       <%= f.label :remember_me %>
     </div>
   <% end -%>
+  <%= recaptcha_tags %>
+  <!-- <div class="g-recaptcha" data-sitekey="6LdXHkgUAAAAAD7Np1pRKTNKlHEi2t_fn8Ue6bKo"></div> -->
 
   <div class="actions">
     <%= f.submit "Log in" %>
