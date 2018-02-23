@@ -41,6 +41,17 @@ Rails.application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings =
+  {
+    :address=> "mail.utradefair.com",
+    :port => 25,
+    :user_name => 'sales@utradefair.com',
+    :password=> 'Password@123',
+    :enable_starttls_auto => true,
+    :authentication       => 'login',
+    :openssl_verify_mode  => 'none'
+  }
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
+	
   get 'showcase/school_showcase'
 
   get 'showcase/student_showcase'
@@ -10,19 +10,15 @@ Rails.application.routes.draw do
 
   get 'students/index'
 
-  devise_for :users, controllers: { sessions: 'users/sessions' }
-  
-
-  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-resource :showcase do 
-	collection do 
-		get :school_showcase
+	resource :showcase do 
+		collection do 
+			get :school_showcase
+		end
 	end
-end
-
-end
+	
+	devise_for :users, controllers: { sessions: 'users/sessions' }
 	devise_scope :user do 
 		root to: "users/sessions#new"
 		get '/users/login' => 'devise/sessions#new'

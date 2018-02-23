@@ -1,23 +1,20 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  prepend_before_action :require_no_authentication, only: [:cancel]
+  #prepend_before_action :require_no_authentication, only: [:cancel]
 
   # GET /resource/sign_in
-  def new
-    super
-    #redirect_to root_path
-  end
+  # def new
+  #   #super
+  #   #redirect_to root_path
+  # end
 
-  # POST /resource/sign_in
-  def create
-    redirect_to school_showcase_showcase_path
-  end
+  # # POST /resource/sign_in
+  # def create
+  # end
 
-  # DELETE /resource/sign_out
-  def destroy
-    debugger
-    root_path
-  end
+  # # DELETE /resource/sign_out
+  # def destroy
+  # end
 
   # protected
 
