@@ -13,8 +13,10 @@ class ApplicationController < ActionController::Base
   		teacher_index_path
   	elsif resource.role == "vendor"
   		vendor_index_path
-  	else resource.role == "admin"
+  	elsif resource.role == "admin"
   		admin_index_path
+    else resource.role == " "
+      students_index_path
   	end
   end
 

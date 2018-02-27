@@ -17,8 +17,7 @@ Rails.application.routes.draw do
 			get :school_showcase
 		end
 	end
-	
-	devise_for :users, controllers: { sessions: 'users/sessions' }
+	devise_for :users, controllers: { :omniauth_callbacks => "users/omniauth_callbacks", sessions: 'users/sessions' }
 	devise_scope :user do 
 		root to: "users/sessions#new"
 		get '/users/login' => 'devise/sessions#new'
