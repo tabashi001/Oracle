@@ -23,6 +23,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
 gem 'omniauth-google-oauth2'
+gem 'activerecord-session_store'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
