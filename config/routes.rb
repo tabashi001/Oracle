@@ -24,8 +24,12 @@ Rails.application.routes.draw do
 			get :profile
 		end
 	end
+
+	resources :teachers do
+		get :profile
+	end
 	root to: "users#index"
-	devise_for :users, controllers: { :omniauth_callbacks => "users/omniauth_callbacks", sessions: 'users/sessions' }
+	devise_for :users, controllers: { :omniauth_callbacks => "users/omniauth_callbacks", sessions: 'users/sessions' ,registrations: 'users/registrations'}
 	devise_scope :user do 
 		get '/users/login' => 'devise/sessions#new'
 	    get '/users/register' => 'devise/registrations#new'

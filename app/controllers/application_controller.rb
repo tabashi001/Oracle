@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   	elsif resource.role == "school"
   		school_index_path
   	elsif resource.role == "teacher"
-  		teacher_index_path
+  		teachers_path
   	elsif resource.role == "vendor"
   		vendor_index_path
   	elsif resource.role == "admin"
@@ -20,8 +20,10 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :phone_no, :gender, :address, :city, :pincode, :country, :gender, :role])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :phone_no, :gender, :address, :city, :pincode, :country, :gender, :role])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :phone_no, :gender, :address, :city, :pincode, :country, :gender, :role,
+                                      :profile_image, :document, :qualification])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :phone_no, :gender, :address, :city, :pincode, :country, :gender, :role,
+                                      :profile_image, :document, :qualification])
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email,:password])
   end
 end
