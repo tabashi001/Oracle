@@ -28,6 +28,7 @@ Rails.application.config.assets.precompile += %w( bootstrap.css )
 Rails.application.config.assets.precompile += %w( font-awesome.css )
 Rails.application.config.assets.precompile += %w( styles.css )
 
+
 #JS Precompile
 Rails.application.config.assets.precompile += %w( jquery.min.js )
 Rails.application.config.assets.precompile += %w( bootstrap.min.js)
@@ -44,3 +45,4 @@ Rails.application.config.assets.precompile += %w( core.js )
 Rails.application.config.assets.precompile += %w( app.js )
 Rails.application.config.assets.precompile += %w( style-switcher.js )
 Rails.application.config.assets.precompile += %w( counter.js )
+Rails.application.config.assets.precompile += %w( script.js )

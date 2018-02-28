@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'dashboard/schhol'
-
-  get 'dashboard/teacher'
-
-  get 'dashboard/student'
-
-  get 'dashboard/vendor'
-
   get 'showcase/school_showcase'
 
   get 'showcase/student_showcase'
@@ -41,6 +33,13 @@ Rails.application.routes.draw do
          
 
 		#root to: "devise/sessions#new"
+
+	resources :teachers do
+		get :profile
+	end
+	root to: "users#index"
+	devise_for :users, controllers: { :omniauth_callbacks => "users/omniauth_callbacks", sessions: 'users/sessions' ,registrations: 'users/registrations'}
+	devise_scope :user do 
 		get '/users/login' => 'devise/sessions#new'
 	    get '/users/register' => 'devise/registrations#new'
 	    get '/users/sign_out' => 'devise/sessions#destroy'

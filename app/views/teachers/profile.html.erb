@@ -1,34 +1,24 @@
-
 <%= render "layouts/header" %>
-	<title>Student Profile</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	
-	
-	
-	<!-- css -->
-	<!-- <link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/font-awesome.min.css" rel="stylesheet">
-	<link href="css/studentProfile.css" rel="stylesheet" type='text/css' media="all" /> -->
+<title>Student Profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-   <%= stylesheet_link_tag  "bootstrap.min" %>
-   <%= stylesheet_link_tag  "font-awesome.min" %>
-   <%= stylesheet_link_tag  "style" %>
-   <%= stylesheet_link_tag  "studentProfile" %>
-	<!-- /css -->
+<%= stylesheet_link_tag  "bootstrap.min" %>
+<%= stylesheet_link_tag  "font-awesome.min" %>
+<%= stylesheet_link_tag  "style" %>
+<%= stylesheet_link_tag  "studentProfile" %>
 
 <div class="container-fluid studentconter">
 	<div class="content-agileits">
-		
 		<div class="left">
-			<%= form_for @student do |f| %>
+			<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 			<form action="#" method="post" data-toggle="validator">
 			<div class="row">
 			<div class="col-md-12">
 				<div class="form-group frmgrpcust">
 					<label for="firstname" class="control-label">Name:</label>
-					<!-- <input type="text" class="form-control" id="name" placeholder="Name" data-error="Enter Your Name" required> -->
-					<%= f.text_field :name, autofocus: true,class: "form-control",value: @std_data.name %>
+					<input type="text" class="form-control" id="name" placeholder="Name" data-error="Enter Your Name" required>
+					<%= f.text_field :email, autofocus: true,class: "form-control",placeholder: "Email",value: @user.email %>
 					<div class="help-block with-errors"></div>
 				</div>
 			</div>
@@ -37,8 +27,7 @@
 			<div class="col-md-12">			
 				<div class="form-group frmgrpcust">
 					<label for="inputEmail" class="control-label">Email:</label>
-					<!-- <input type="email" class="form-control" id="inputEmail" placeholder="Email" data-error="This email address is invalid" required> -->
-					<%= f.text_field :email, autofocus: true,class: "form-control",value: @std_data.email %>
+					<input type="email" class="form-control" id="inputEmail" placeholder="Email" data-error="This email address is invalid" required>
 					<div class="help-block with-errors"></div>
 				</div>
 				</div>
@@ -47,8 +36,7 @@
 			<div class="col-md-12">				  
 				<div class="form-group frmgrpcust">
 					<label for="Phone" class="control-label">Phone:</label>
-					<!-- <input type="text" class="form-control" id="Phone" placeholder="Phone" data-error="Enter Your Phone Number" required> -->
-					<%= f.text_field :phone_no, autofocus: true,class: "form-control",value: @std_data.phone_no %>
+					<input type="text" class="form-control" id="Phone" placeholder="Phone" data-error="Enter Your Phone Number" required>
 					<div class="help-block with-errors"></div>
 				</div>
 				</div>
@@ -57,8 +45,7 @@
 			<div class="col-md-12">
 				<div class="form-group frmgrpcust">
 					<label for="Address" class="control-label">Address:</label>
-					<!-- <textarea class="form-control" rows="2" id="Address"></textarea> -->
-					<%= f.text_area :address, autofocus: true,class: "form-control",placeholder: "Adddress" %>
+					<textarea class="form-control" rows="2" id="Address"></textarea>
 				</div>
 				</div>
 				</div>
@@ -95,16 +82,14 @@
 			<div class="col-md-6">
 				<div class="form-group frmgrpcust">
 					<label for="Class" class="control-label">Class:</label>
-					<!-- <input type="text" class="form-control" id="Class" placeholder="Class" data-error="Enter Your Class" required> -->
-					<%= f.text_field :class, autofocus: true,class: "form-control",placeholder: "Class" %>
+					<input type="text" class="form-control" id="Class" placeholder="Class" data-error="Enter Your Class" required>
 					<div class="help-block with-errors"></div>
 				</div>
 				</div>
 				<div class="col-md-6">
 				<div class="form-group frmgrpcust">
 					<label for="Class" class="control-label">Pincode:</label>
-					<!-- <input type="text" class="form-control" id="Class" placeholder="Pincode" data-error="Enter Your Class" required> -->
-					<%= f.text_field :pincode, autofocus: true,class: "form-control",placeholder: "Pincode"%>
+					<input type="text" class="form-control" id="Class" placeholder="Pincode" data-error="Enter Your Class" required>
 					<div class="help-block with-errors"></div>
 				</div>
 				</div>
@@ -154,15 +139,6 @@
 		<div class="clear"></div>
 	</div>
 	</div>
-	<!-- js -->
-	<!-- <script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/jquery.stellar.js"></script>
-		<script src="js/jquery.appear.js"></script>
-		<script src="js/jquery.nicescroll.min.js"></script>
-		<script src="js/script.js"></script>
-	<script src="js/validator.min.js"></script> -->
-
 <%= render "layouts/footer" %>
 <%= javascript_include_tag "jquery.min" %>
 <%= javascript_include_tag "bootstrap.min" %>
@@ -170,5 +146,3 @@
 <%= javascript_include_tag "jquery.appear" %>
 <%= javascript_include_tag "jquery.nicescroll.min" %>
 <%= javascript_include_tag "script" %>
-	<!-- /js files -->
-
