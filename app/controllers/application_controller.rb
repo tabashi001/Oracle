@@ -5,17 +5,17 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
   	if resource.role == "student"
-  		students_index_path
+  		students_path
   	elsif resource.role == "school"
-  		school_index_path
+  		schools_path
   	elsif resource.role == "teacher"
   		teachers_path
   	elsif resource.role == "vendor"
-  		vendor_index_path
+  		vendors_path
   	elsif resource.role == "admin"
   		admin_index_path
     else resource.role == " "
-      students_index_path
+      students_path
   	end
   end
 
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :phone_no, :gender, :address, :city, :pincode, :country, :gender, :role,
                                       :profile_image, :document, :qualification])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :phone_no, :gender, :address, :city, :pincode, :country, :gender, :role,
-                                      :profile_image, :document, :qualification])
+                                      :profile_image, :document, :qualification, :cover_image, :description])
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email,:password])
   end
 end
