@@ -67,13 +67,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def after_update_path_for(resource)
       if resource.role == "student"
-      students_index_path
+      students_path
     elsif resource.role == "school"
-      school_index_path
+      schools_path
     elsif resource.role == "teacher"
       teachers_path
     elsif resource.role == "vendor"
-      vendor_index_path
+      vendors_path
     elsif resource.role == "admin"
       admin_index_path
     else resource.role == " "
