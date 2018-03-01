@@ -8,15 +8,30 @@ Rails.application.routes.draw do
 		end
 	end
 
-         
-         
-
-		#root to: "devise/sessions#new"
 	resources :students
 
 	resources :teachers 
 
-	resources :schools
+	resources :schools do
+		get :overview
+		post :overview
+		get :course
+		post :course
+		get :scholarship
+		post :scholarship
+		get :placement
+		post :placement
+		get :cutoff
+		post :cutoff
+		get :campu
+		post :campu
+		get  :schoolinformation
+		post :schoolinformation
+		get  :schoolpicture
+		post :schoolpicture
+		get  :schoolvideo
+		post :schoolvideo
+	end
 
 	resources :vendors
 
