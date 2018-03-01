@@ -144,6 +144,9 @@
                                     <h5 class="media-heading"><%= current_user.name%></h5>
                                     <ul class="list-unstyled user-info">
                                         <li><%= current_user.role%></li>
+                                        <li>Last Access : <br>
+                                            <small><i class="fa fa-calendar"></i>&nbsp;<%= current_user.updated_at.strftime("%d %B")%></small>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -300,67 +303,68 @@
 <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="col-md-2 col-sm-4 col-xs-6">
-
+  <%= link_to do %>
     <a class="quick-btn" href="#">
 	<i class="fa fa-bolt fa-2x"></i>
 	<span>OVERVIEW</span>
-	<span class="label label-default">2</span>
+	<span class="label label-default"></span>
     </a>
+    <%end%>
   </div>
    <div class="col-md-2 col-sm-4 col-xs-6">
     <a class="quick-btn" href="#">
 	<i class="fa fa-check fa-2x"></i>
 	<span>COURSES</span>
-	<span class="label label-danger">2</span>
+	<span class="label label-danger"></span>
     </a>
     </div>
    <div class="col-md-2 col-sm-4 col-xs-6">
     <a class="quick-btn" href="#">
 	<i class="fa fa-building-o fa-2x"></i>
 	<span>SCHOLARSHIP</span>
-  <span class="label btn-metis-4">2.71828</span>
+  <span class="label btn-metis-4"></span>
     </a>
     </div>
    <div class="col-md-2 col-sm-4 col-xs-6">
     <a class="quick-btn" href="#">
 	<i class="fa fa-envelope fa-2x"></i>
 	<span>PLACEMENT</span>
-	<span class="label label-success">-456</span>
+	<span class="label label-success"></span>
     </a>
     </div>
    <div class="col-md-2 col-sm-4 col-xs-6">
     <a class="quick-btn" href="#">
 	<i class="fa fa-signal fa-2x"></i>
 	<span>CUTOFF</span>
-	<span class="label label-warning">+25</span>
+	<span class="label label-warning"></span>
     </a>
     </div>
    <div class="col-md-2 col-sm-4 col-xs-6">
     <a class="quick-btn" href="#">
 	<i class="fa fa-external-link fa-2x"></i>
 	<span>CAMPUS</span>
-	<span class="label btn-metis-2">3.14159265</span>
+	<span class="label btn-metis-2"></span>
     </a>
     </div>
    <div class="col-md-2 col-sm-4 col-xs-6">
     <a class="quick-btn" href="#">
 	<i class="fa fa-lemon-o fa-2x"></i>
 	<span>NEWS</span>
-	<span class="label btn-metis-4">2.71828</span>
+	<span class="label btn-metis-4"></span>
     </a>
     </div>
    <div class="col-md-2 col-sm-4 col-xs-6">
     <a class="quick-btn" href="#">
 	<i class="fa fa-glass fa-2x"></i>
 	<span>PICTURES</span>
-	<span class="label btn-metis-3">1.618</span>
+	<span class="label btn-metis-3">89</span>
     </a>
 </div>
 <div class="col-md-2 col-sm-4 col-xs-6">
     <a class="quick-btn" href="#">
   <i class="fa fa-glass fa-2x"></i>
   <span>VIDEOS</span>
-  <span class="label btn-metis-3">1.618</span>
+  <span class="label btn-metis-3">5</span>
     </a>
 </div>
 </div>
