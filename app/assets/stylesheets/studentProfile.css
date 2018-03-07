@@ -67,8 +67,8 @@ form-group.field {
 }
 
 .content-agileits {
-	width: 67%;
-	margin: 1em auto;
+  margin:8em auto;
+  width: 67%;
 }
 
 .left {
@@ -79,12 +79,11 @@ form-group.field {
 }
 
 .right {
-	float: left;
-	width: 50%;
-	background: url(/assets/bg1.jpg) no-repeat center;
-	min-height: 673px;
-	background-size: cover;
-	position:relative;
+  background: rgba(0, 0, 0, 0) url("/assets/bg1.jpg") no-repeat scroll center center / cover ;
+  float: left;
+  min-height:767px;
+  position: relative;
+  width: 50%;
 }
 .heading-text {
 	position:absolute;
@@ -212,7 +211,10 @@ fieldset[disabled] .btn {
 		font-size: 2.3em;
 	}
 }
-
+.content-agileits {
+  margin: 100px auto 20px;
+  width: 60%;
+}
 @media screen and (max-width: 800px) {
 	h1.title {
 		font-size: 2.1em;
@@ -253,14 +255,22 @@ fieldset[disabled] .btn {
     margin-left: 0;
     padding: 0.5em 0;
 }
+.content-agileits {
+  margin:17% auto 6%;
+  width: 98%;
+}
+	
+}
+@media screen and (max-width: 767px) {
+	
+.content-agileits {
+  margin: 34% auto 21%;
+  width: 98%;
+}
 	
 }
 
-@media screen and (max-width: 736px) {
-	.content-agileits {
-		margin: 3em auto 2em;
-	}
-}
+
 
 @media screen and (max-width: 667px) {
 	h1.title {
@@ -291,29 +301,8 @@ fieldset[disabled] .btn {
 	}
 }
 
-@media screen and (max-width: 480px) {
-	.content-agileits {
-		margin: 2em auto;
-	}
-	.content-agileits {
-		width: 88%;
-	}
-	h1.title {
-		font-size: 1.6em;
-	}
-	.right {
-		min-height: 330px;
-	}
-	.content-agileits {
-		margin: 2em auto 1em;
-	}
-}
 
-@media screen and (max-width: 414px) {
-	.content-agileits {
-		width: 96%;
-	}
-}
+
 
 @media screen and (max-width: 384px) {
 	h1.title {
@@ -343,9 +332,7 @@ fieldset[disabled] .btn {
 	.left {
 		padding: 2em 1.5em 1em;
 	}
-	.content-agileits {
-		width: 98%;
-	}
+	
 }
 
 

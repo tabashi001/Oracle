@@ -71,6 +71,10 @@ body {
 .sidebar-left-opened #left {
   left: 0;
 }
+.img-responsive.DashLogo {
+  padding-left: 10px;
+  width: 133px;
+}
 @media (min-width: 768px) {
   #left {
     position: -webkit-sticky;
@@ -125,13 +129,14 @@ body {
   padding: 0;
 }
 #top .topnav {
-  margin: 10px 0;
+  margin: 27px 0;
   text-align: right;
 }
-@media (min-width: 768px) {
+@media (max-width: 767px) {
   #top .topnav {
-    float: right;
-  }
+  margin: 1px 0 9px;
+  text-align: right;
+}
 }
 /* END TOP bar */
 /* BEGIN header.head bar */
@@ -689,9 +694,10 @@ body:not(.sidebar-left-mini) #menu .nav-header {
   cursor: move;
 }
 .btn-metis-1 {
-  color: #fff;
   background-color: #ee465a;
   border-color: #c11a39;
+  color: #fff;
+  padding: 7px 10px;
 }
 .btn-metis-1:focus,
 .btn-metis-1.focus {
