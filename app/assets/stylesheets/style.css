@@ -414,7 +414,7 @@ h1.edutetitle {
   display: block;
   width: 150px;
   height: 51px;
-  background-image: url(../images/title-top.png);
+  background-image: url(/assets/title-top.png);
   background-repeat: no-repeat;
 }
 .bottom-line {
@@ -520,7 +520,7 @@ h1.edutetitle {
   }
 }
 .home {
-  background-image: url(../images/back1.jpg);
+  background-image: url(/assets/back1.jpg);
   background-position: top center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -1729,8 +1729,9 @@ ul.nav.navbar-nav.navrightmnu {
     top: 50%;
     width: 260px;
 }
+
 .card-header {
-    background: rgba(0, 0, 0, 0) url("../images/hero-img9.jpg") no-repeat scroll 0 0 / 371px 235px;
+    background: rgba(0, 0, 0, 0) url("/assets/hero-img9.jpg") no-repeat scroll 0 0 / 371px 235px;
     border-radius: 1px 1px 0 0;
     height: 160px;
     width: 260px;
@@ -1836,7 +1837,7 @@ ul.nav.navbar-nav.navrightmnu {
     width: 100%;
 }
 .card-header {
-    background: rgba(0, 0, 0, 0) url("../images/hero-img9.jpg") no-repeat scroll 0 0 / 371px 235px;
+    background: rgba(0, 0, 0, 0) url("/assets/hero-img9.jpg") no-repeat scroll 0 0 / 371px 235px;
     border-radius: 1px 1px 0 0;
     height: 160px;
     transition: all 0.3s ease-in-out 0s;
