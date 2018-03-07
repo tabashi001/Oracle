@@ -66,8 +66,8 @@ form-group.field {
 }
 
 .content-agileits {
-	width: 67%;
-	margin: 1em auto;
+  margin: 8em auto 2em;
+  width: 67%;
 }
 
 .left {
@@ -78,12 +78,11 @@ form-group.field {
 }
 
 .right {
-	float: left;
-	width: 50%;
-	background: url(/assets/school.jpg) no-repeat center;
-	min-height:729px;
-	background-size: cover;
-	position:relative;
+  background: rgba(0, 0, 0, 0) url("/assets/school.jpg") no-repeat scroll center center / cover ;
+  float: left;
+  min-height: 819px;
+  position: relative;
+  width: 50%;
 }
 .heading-text {
 	position:absolute;
@@ -304,8 +303,8 @@ fieldset[disabled] .btn {
 		min-height: 330px;
 	}
 	.content-agileits {
-		margin: 2em auto 1em;
-	}
+  margin: 7em auto 1em;
+}
 }
 
 @media screen and (max-width: 414px) {

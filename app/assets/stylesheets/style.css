@@ -21,13 +21,13 @@ p {
   margin-bottom: 26px;
 }
 a {
-  color: #4ecdc4;
+  color:#16A085;
   text-decoration: none !important;
   -webkit-transition: color 0.3s;
           transition: color 0.3s;
 }
 a:hover {
-  color: #4ecdc4;
+  color:#16A085;
 }
 h1,
 h2,
@@ -95,7 +95,7 @@ h1.edutetitle {
 }
 .form-control {
   border-radius: 2px !important;
-  padding: 15px 20px !important;
+  padding:6px 20px !important;
   height: auto;
   border-color: #4ECDC4 !important;
   box-shadow: none !important;
@@ -291,10 +291,22 @@ h1.edutetitle {
           transition: color 0.3s, background-color 0.3s, border-color 0.3s;
 }
 .btn.btn-lg {
-  padding: 10px 35px;
-  letter-spacing: 2px;
-  font-size: 21px;
+ background: #890f0a none repeat scroll 0 0;
+  border-radius: 0;
+  color: #fff;
+  display: block;
+  float: none;
+  font-size: 17px;
+  font-weight: 600;
+  height: 45px;
+  letter-spacing: 1px;
+  margin: 0 auto;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 0.5s ease-in-out 0s;
+  width: 100%;
 }
+
 .btn.btn-sm {
   padding: 7px 20px;
   font-size: 14px;
