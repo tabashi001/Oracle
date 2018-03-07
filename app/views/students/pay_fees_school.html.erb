@@ -1,0 +1,315 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!--IE Compatibility modes-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Mobile first-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Dashboard</title>
+    
+    
+    <!-- Bootstrap -->
+   <!--  <link rel="stylesheet" href="css1/bootstrap.css">
+     <link rel="stylesheet" href="css1/styles.css"> -->
+    
+    
+    <!-- Font Awesome -->
+    <!-- <link rel="stylesheet" href="css1/font-awesome.css"> -->
+    
+    <!-- Metis core stylesheet -->
+    <!-- <link rel="stylesheet" href="css1/main.css"> -->
+
+    
+    <!-- metisMenu stylesheet -->
+    <!-- <link rel="stylesheet" href="css11/metisMenu.css"> -->
+    
+    <!-- onoffcanvas stylesheet -->
+    <!-- <link rel="stylesheet" href="css1/onoffcanvas.css"> -->
+    
+    <!-- animate.css stylesheet -->
+    <!-- <link rel="stylesheet" href="css1/animate.css"> -->
+    <!-- <link rel="stylesheet" href="css1/style-switcher.css"> -->
+
+    <%= stylesheet_link_tag  "bootstrap" %>
+    <%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
+    <%= stylesheet_link_tag  "styles" %>
+    <%= stylesheet_link_tag  "main" %>
+    <%= stylesheet_link_tag  "metisMenu" %>
+    <%= stylesheet_link_tag  "onoffcanvas" %>
+    <%= stylesheet_link_tag  "animate" %>
+    <%= stylesheet_link_tag  "style-switcher" %>
+    
+
+            <div class="bg-dark dk" id="wrap">
+                <div id="top">
+                    <!-- .navbar -->
+                    <nav class="navbar navbar-inverse navbar-static-top">
+                        <div class="container-fluid">
+                    
+                    
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <header class="navbar-header">
+                    
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a href="index.html" class="navbar-brand"><img src="/assets/logo.png" alt=""></a>
+                    
+                            </header>
+                    
+                    <div class="topnav">
+                               
+                                <div class="btn-group">
+                                    
+                                    <a data-toggle="modal" data-original-title="Help" data-placement="bottom"
+                                       class="btn btn-default btn-sm"
+                                       href="#helpModal">
+                                        <i class="fa fa-question"></i>
+                                    </a>
+                                </div>
+                                <div class="btn-group">
+                                    <a href="login.html" data-toggle="tooltip" data-original-title="Logout" data-placement="bottom"
+                                       class="btn btn-metis-1 btn-sm">
+                                        <i class="fa fa-power-off"></i>
+                                    </a>
+                                </div>
+                                <div class="btn-group">
+                                    <a data-placement="bottom" data-original-title="Show / Hide Left" data-toggle="tooltip"
+                                       class="btn btn-primary btn-sm toggle-left" id="menu-toggle">
+                                        <i class="fa fa-bars"></i>
+                                    </a>
+                                    
+                                </div>
+                    
+                            </div>
+                    
+                    
+                    
+                    
+                            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    
+                                <!-- .nav -->
+                                
+                                <!-- /.nav -->
+                            </div>
+                        </div>
+                        <!-- /.container-fluid -->
+                    </nav>
+                    <!-- /.navbar -->
+                        <header class="head">
+                                <div class="search-bar">
+                                   
+                                </div>
+                                <!-- /.search-bar -->
+                            <div class="main-bar">
+                                <h3>
+              <i class="fa fa-dashboard"></i>&nbsp;
+            Dashboard
+          </h3>
+                            </div>
+                            <!-- /.main-bar -->
+                        </header>
+                        <!-- /.head -->
+                </div>
+                <!-- /#top -->
+                    <div id="left">
+                                <div class="media user-media bg-dark dker">
+                            <div class="user-media-toggleHover">
+                                <span class="fa fa-user"></span>
+                            </div>
+                            <div class="user-wrapper bg-dark">
+                                <a class="user-link" href="">
+                                <!-- <img class="media-object img-thumbnail user-img" alt="User Picture" src="assets/img/user.gif"> -->
+                                <% if current_user.profile_image.present? %>
+                                <%= image_tag current_user.profile_image,class: "media-object img-thumbnail user-img",:size => "80x80" %>
+                                <%else%>
+                                
+                                <%= image_tag ("/assets/user.png"),class: "media-object img-thumbnail user-img",:size => "80x80" %>
+                                <%end%>
+                                    <span class="label label-danger user-label"></span>
+                                </a>
+                        
+                                <div class="media-body">
+                                    <h5 class="media-heading"><%= current_user.name%></h5>
+                                    <ul class="list-unstyled user-info">
+                                        <li><a href=""><%= current_user.role%></a></li>
+                                        <li>Last Access : <br>
+                                            <small><i class="fa fa-calendar"></i>&nbsp;<%= current_user.last_sign_in_at.strftime("%d %B %t at %I %M %p")%></small>
+                  <%= link_to "(Edit Profile)" ,edit_user_registration_path%>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- #menu -->
+                        <ul id="menu" class="bg-blue dker">
+                                  
+                                <li class="nav-divider"></li>  
+                                  <li>
+                                    <a href="student_dashboard.html">
+                                      <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
+                                    </a>
+                                  </li>
+                                  <li class="active">
+                                    <a href="javascript:;">
+                                      <i class="fa fa-building "></i>
+                                      <span class="link-title">Pay Fees</span>
+                                      <span class="fa arrow"></span>
+                                    </a>
+                                     <ul class="collapse">
+                                      
+                                      <li>
+                                        <%= link_to student_pay_fees_school_path(@current_user) do%>
+                                          <i class="fa fa-angle-right"></i>&nbsp; For School<%end%>
+                                      </li>
+                                       <li>
+                                        <%= link_to student_pay_fees_tutor_path(@current_user) do%>
+                                          <i class="fa fa-angle-right"></i>&nbsp;For Tutor<%end%>
+                                      </li>
+                                    
+                                    </ul>
+                                  </li>
+                                 <li class="">
+                                    <a href="salebook_student.html">
+                                      <i class="fa fa-tasks"></i>
+                                      <span class="link-title">Sale Book</span>
+                                    
+                                    </a>
+                                   
+                                  </li>
+                                  <li class="">
+                                    <a href="buybook_student.html">
+                                      <i class="fa fa-pencil"></i>
+                                      <span class="link-title">
+                                    Buy Book
+                            </span>
+                                      
+                                    </a>
+                                    
+                                  </li>
+                                  
+                                  
+                                  
+                                  
+                                  
+                                  <li class="nav-divider"></li>
+                                  
+                                 
+                                </ul>
+                        <!-- /#menu -->
+                    </div>
+                    <!-- /#left -->
+  <div id="content">
+    <div class="outer">
+      <div class="inner bg-light lter">
+        <h4>Pay School Fees</h4>
+        <hr>
+        <div class="row vdiocont">   
+          <%= form_for(@school_fees, url: student_pay_fees_school_path) do |f| %> 
+          <form class="form-horizontal" action="">
+            <div class="form-group margunrve">
+              <label for="text">Name</label>
+              <!-- <input type="Text" class="form-control" placeholder="Name"> -->
+              <%=f.text_field :name, class: "form-control",placeholder: "Name",value: current_user.name %>
+            </div>
+            <div class="form-group margunrve">
+              <label for="email">Email</label>
+              <!-- <input type="Text" class="form-control" placeholder="Email"> -->
+              <%=f.text_field :email, class: "form-control",placeholder: "email", value: current_user.email%>
+            </div>
+            <div class="form-group margunrve">
+              <label for="text">Phone No</label>
+              <!-- <input type="text" class="form-control" placeholder="Phone No"> -->
+              <%=f.text_field :phone_no, class: "form-control",placeholder: "phone_no", value: current_user.phone_no %>
+            </div>
+            <div class="form-group margunrve">
+              <label for="text">Name Of School</label>
+              <!-- <input type="text" class="form-control" placeholder="Name Of School"> -->
+              <%=f.text_field :name_of_school, class: "form-control",placeholder: "School Name" %>
+            </div>
+            <div class="form-group margunrve text-center">
+              <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+              <%=f.submit "Submit", class: "btn btn-default"%>
+              <button type="submit" class="btn btn-default">cancel</button>
+            </div>
+          </form>
+          <%end%> 
+        </div>    
+        <hr>
+      </div>
+    <!-- /.inner -->
+    </div>
+    <!-- /.outer -->
+  </div>
+                <!-- /#content -->
+
+                   
+            </div>
+            <!-- /#wrap -->
+            <footer class="Footer bg-dark dker">
+                <p>2017 &copy; Tabashi Technology Private Limited</p>
+            </footer>
+            <!-- /#footer -->
+            <!-- #helpModal -->
+            <div id="helpModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+            <!-- /#helpModal -->
+            <!--jQuery -->
+            <!-- <script src="js1/jquery.js"></script> -->
+
+                    
+            <!--Bootstrap -->
+            <!-- <script src="js1/bootstrap.js"></script> -->
+            <!-- MetisMenu -->
+            <!-- <script src="js1/metisMenu.js"></script> -->
+            <!-- onoffcanvas -->
+            <!-- <script src="js1/onoffcanvas.js"></script> -->
+            <!-- Screenfull -->
+           
+
+            <!-- Metis core scripts -->
+            <!-- <script src="js1/core.js"></script> -->
+            <!-- Metis demo scripts -->
+            <!-- <script src="js1/app.js"></script>
+            <script src="js1/style-switcher.js"></script>
+             <script src="js1/counter.js"></script> -->
+
+                <%= javascript_include_tag "jquery" %>
+    <%= javascript_include_tag "bootstrap" %>
+    <%= javascript_include_tag "metisMenu" %>
+    <%= javascript_include_tag "onoffcanvas" %>
+    <%= javascript_include_tag "core" %>
+    <%= javascript_include_tag "app" %>
+    <%= javascript_include_tag "style-switcher" %>
+    <%= javascript_include_tag "counter" %>
+              
+
