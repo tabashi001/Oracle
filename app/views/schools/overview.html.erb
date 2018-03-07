@@ -1,4 +1,5 @@
-<title>Dashboard</title>
+
+<title>Overview</title>
 
 <%= stylesheet_link_tag  "bootstrap" %>
 <%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
@@ -68,18 +69,13 @@
       </div>
       <div class="user-wrapper bg-dark">
         <a class="user-link" href="">
-            <!-- <img class="media-object img-thumbnail user-img" alt="User Picture" src="/assets/user.gif"> -->
-            <%= image_tag current_user.profile_image,class: "media-object img-thumbnail user-img",:size => "80x80" %>
-            <span class="label label-danger user-label"></span>
+            <img class="media-object img-thumbnail user-img" alt="User Picture" src="/assets/user.gif">
+            <span class="label label-danger user-label">16</span>
         </a>
         <div class="media-body">
             <h5 class="media-heading"><%= current_user.name%></h5>
             <ul class="list-unstyled user-info">
                 <li><%= current_user.role%></li>
-                 <li>Last Access : <br>
-                  <small><i class="fa fa-calendar"></i>&nbsp;<%= current_user.last_sign_in_at.strftime("%d %B %t at %I %M %p")%></small>
-                  <%= link_to "(Edit Profile)" ,edit_user_registration_path%>
-              </li>
             </ul>
         </div>
       </div>
@@ -88,10 +84,9 @@
     <ul id="menu" class="bg-blue dker">
       <li class="nav-divider"></li>  
         <li class="active">
-          </a>
-          <%= link_to schools_path do %>
-            <i class="fa fa-dashboard"></i><span class="link-title" >&nbsp;Dashboard</span>
-            <%end%>
+            <%= link_to schools_path do%>
+            <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
+          <%end%>
         </li>
         <li class="">
           <a href="javascript:;">
@@ -99,7 +94,7 @@
             <span class="link-title">Layouts</span>
             <span class="fa arrow"></span>
           </a>
-          <ul class="collapse">
+              <ul class="collapse">
             <li>
                 <%= link_to  school_overview_path(current_user) do %>
                 <i class="fa fa-angle-right"></i>&nbsp;Overview<%end%>
@@ -170,151 +165,30 @@
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
-        <div>
-          <h3>Application Received</h3>
-            <div class="row">
-              <div class="col-md-12 col-sm-12">
-                <div class="col-md-3 col-sm-6">
-                  <a href="teachers_list.html">
-                    <div class="counting-box" id="encounter">
-                      <img src="https://image.flaticon.com/icons/svg/188/188999.svg" alt="Image 1">
-                      <h4 class="count-this">1582</h4>
-                      <p>TEACHER</p>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <a href="student_list.html">
-                    <div class="counting-box" id="battles">
-                      <img src="https://image.flaticon.com/icons/svg/189/189015.svg" alt="Image 2">
-                      <h4 class="count-this">57</h4>
-                      <p>STUDENTS</p>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <a href="vendor_list.html">
-                    <div class="counting-box" id="locations">
-                      <img src="https://image.flaticon.com/icons/svg/188/188935.svg" alt="Image 13">
-                      <h4 class="count-this">312</h4>
-                      <p>VENDORS</p>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <a href="total_earn.html">
-                    <div class="counting-box" id="locations">
-                      <img src="https://image.flaticon.com/icons/svg/188/188935.svg" alt="Image 13">
-                      <h4 class="count-this">312</h4>
-                      <p>TOTAL EARNING</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-        </div>
+        <h4>Overview</h4>
         <hr>
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <%= link_to  school_overview_path(current_user) do %>
-                <div class="col-md-2 col-sm-4 col-xs-6">
-                  <div class="quick-btn">
-                    <i class="fa fa-bolt fa-2x"></i>
-                    <span>OVERVIEW</span>
-                    <span class="label label-default">NA</span>
-                  </div>
-                </div>
-              <%end%>
-
-              <%= link_to  school_course_path(current_user) do %>
-                <div class="col-md-2 col-sm-4 col-xs-6">
-                  <div class="quick-btn">
-                    <i class="fa fa-check fa-2x"></i>
-                    <span>COURSES</span>
-                    <span class="label label-danger"><%= @course_count %></span>
-                  </div>
-                </div>
-              <%end%>
-
-              <%= link_to  school_scholarship_path(current_user) do %>
-                <div class="col-md-2 col-sm-4 col-xs-6">
-                  <div class="quick-btn">
-                    <i class="fa fa-building-o fa-2x"></i>
-                    <span>SCHOLARSHIP</span>
-                    <span class="label btn-metis-4">NA</span>
-                  </div>
-                </div>
-              <%end%>
-
-              <%= link_to  school_placement_path(current_user) do %>
-                <div class="col-md-2 col-sm-4 col-xs-6">
-                  <div class="quick-btn">
-                    <i class="fa fa-envelope fa-2x"></i>
-                    <span>PLACEMENT</span>
-                    <span class="label label-success">NA</span>
-                  </div>
-                </div>
-              <%end%>
-
-              <%= link_to  school_cutoff_path(current_user) do %>
-                <div class="col-md-2 col-sm-4 col-xs-6">
-                  <div class="quick-btn">
-                    <i class="fa fa-signal fa-2x"></i>
-                    <span>CUTOFF</span>
-                    <span class="label label-warning">NA</span>
-                  </div>
-                </div>
-              <%end%>
-
-              <%= link_to  school_campu_path(current_user) do %>
-                <div class="col-md-2 col-sm-4 col-xs-6">
-                  <div class="quick-btn">
-                    <i class="fa fa-external-link fa-2x"></i>
-                    <span>CAMPUS</span>
-                    <span class="label btn-metis-2">NA</span>
-                  </div>
-                </div>
-              <%end%>
-
-              <%= link_to  school_schoolinformation_path(current_user) do %>
-                <div class="col-md-2 col-sm-4 col-xs-6">
-                  <div class="quick-btn">
-                    <i class="fa fa-lemon-o fa-2x"></i>
-                    <span>NEWS</span>
-                    <span class="label btn-metis-4">NA</span>
-                  </div>
-                </div>
-              <%end%>
-
-              <%= link_to  school_schoolpicture_path(current_user) do %>
-                <div class="col-md-2 col-sm-4 col-xs-6">
-                  <div class="quick-btn">
-                    <i class="fa fa-glass fa-2x"></i>
-                    <span>PICTURES</span>
-                    <span class="label btn-metis-3"><%= @picture_count %></span>
-                  </div>
-                </div>
-              <%end%>
-
-              <%= link_to  school_schoolvideo_path(current_user) do %>
-                <div class="col-md-2 col-sm-4 col-xs-6">
-                  <div class="quick-btn">
-                    <i class="fa fa-glass fa-2x"></i>
-                    <span>VIDEOS</span>
-                    <span class="label btn-metis-3"><%= @video_count %></span>
-                  </div>
-                </div>
-              <%end%>
-
-            </div>
+        <%= form_for(@overview, url: school_overview_path) do |f| %>
+        <div class="row vdiocont">    
+          <div class="form-group margunrve">
+            <label for="email">Title</label>
+            <%=f.text_field :title, class: "form-control",placeholder: "Title" %>
           </div>
+          <div class="form-group margunrve">
+            <label for="pwd">Description</label>
+            <%=f.text_area :description, class: "form-control",placeholder: "Title" %>
+          </div>
+          <div class="form-group margunrve text-center">
+            <%=f.submit "Submit", class: "btn btn-default"%>
+            <button type="submit" class="btn btn-default">cancel</button>
+          </div>
+        </div> 
+        <%end%>   
         <hr>
       </div>
       <!-- /.inner -->
     </div>
     <!-- /.outer -->
   </div>
-  <!-- /#content -->
 </div>
 <!-- /#wrap -->
 <footer class="Footer bg-dark dker">

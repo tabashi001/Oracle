@@ -20,6 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'mysql2'
 gem 'devise'
+gem 'pry-rails'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
 gem 'omniauth-google-oauth2'

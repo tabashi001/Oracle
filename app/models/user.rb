@@ -17,6 +17,17 @@ class User < ApplicationRecord
   has_attached_file :document
   validates_attachment :document, :content_type => { :content_type => %w(application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document) }
 
+  has_many :overviews, as: :user
+  has_many :courses
+  has_many :scholarships
+  has_many :placements
+  has_many :cutoffs
+  has_many :campus
+  has_many :school_pictures
+  has_many :school_videos
+  has_many :school_informations
+  has_many :pay_fees, as: :user
+
 	def self.from_omniauth(auth)
     where(email: auth.info.email).first_or_initialize.tap do |user|
       user.provider = auth.provider

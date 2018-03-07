@@ -11,7 +11,8 @@
           <div class="col-md-12">
             <div class="form-group frmgrpcust">
               <label for="firstname" class="control-label">School Name:</label>
-              <%= f.text_field :name, autofocus: true,class: "form-control",placeholder: "Name"%>
+              <%binding.pry%>
+              <%= f.text_field :name, autofocus: true,class: "form-control",placeholder: "Name",value: resource.name %>
               <div class="help-block with-errors"></div>
             </div>
           </div>
