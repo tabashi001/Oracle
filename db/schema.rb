@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20180305094103) do
 
-  create_table "campus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "campus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "title"
     t.text "description"
     t.string "user_id"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20180305094103) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "course_name"
     t.string "course_duration"
     t.boolean "course_type"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20180305094103) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "cutoffs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "cutoffs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.string "category"
     t.string "rank"
@@ -43,16 +43,12 @@ ActiveRecord::Schema.define(version: 20180305094103) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "news", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "news", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
   end
 
-  create_table "overviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "overviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "title"
     t.string "description"
     t.datetime "created_at", null: false
@@ -61,7 +57,7 @@ ActiveRecord::Schema.define(version: 20180305094103) do
     t.string "user_type"
   end
 
-  create_table "pay_fees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "pay_fees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.string "email"
     t.integer "phone_no"
@@ -72,7 +68,7 @@ ActiveRecord::Schema.define(version: 20180305094103) do
     t.string "user_type"
   end
 
-  create_table "placements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "placements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "title"
     t.text "description"
     t.string "companies_visited"
@@ -84,7 +80,7 @@ ActiveRecord::Schema.define(version: 20180305094103) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "scholarships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "scholarships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "title"
     t.text "description"
     t.integer "user_id"
@@ -92,7 +88,7 @@ ActiveRecord::Schema.define(version: 20180305094103) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "school_informations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "school_informations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "title"
     t.text "description"
     t.string "url"
@@ -105,7 +101,16 @@ ActiveRecord::Schema.define(version: 20180305094103) do
     t.datetime "image_updated_at"
   end
 
-  create_table "school_pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "school_news", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "title"
+    t.text "description"
+    t.string "url"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "school_pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "title"
     t.text "description"
     t.integer "user_id"
@@ -117,7 +122,7 @@ ActiveRecord::Schema.define(version: 20180305094103) do
     t.datetime "picture_updated_at"
   end
 
-  create_table "school_videos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "school_videos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "title"
     t.text "description"
     t.integer "user_id"
@@ -129,7 +134,12 @@ ActiveRecord::Schema.define(version: 20180305094103) do
     t.datetime "video_updated_at"
   end
 
-  create_table "sessions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "schools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sessions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "session_id", null: false
     t.text "data"
     t.datetime "created_at", null: false
@@ -138,7 +148,7 @@ ActiveRecord::Schema.define(version: 20180305094103) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.string "address"
     t.string "phone_no"

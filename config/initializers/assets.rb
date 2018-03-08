@@ -28,6 +28,7 @@ Rails.application.config.assets.precompile += %w( bootstrap.css )
 Rails.application.config.assets.precompile += %w( font-awesome.css )
 Rails.application.config.assets.precompile += %w( styles.css )
 Rails.application.config.assets.precompile += %w( schoolProfile.css )
+Rails.application.config.assets.precompile += %w( header.css )
 
 
 #JS Precompile

@@ -109,9 +109,9 @@
                                   
                                 <li class="nav-divider"></li>  
                                   <li>
-                                    <a href="student_dashboard.html">
+                                   <%= link_to students_path do%>
                                       <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
-                                    </a>
+                                    <%end%>
                                   </li>
                                   <li class="active">
                                     <a href="javascript:;">
@@ -120,26 +120,23 @@
                                       <span class="fa arrow"></span>
                                     </a>
                                     <ul class="collapse">
-                                      
-                                     <li>
-                                        <a href="payfees_school.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; For School</a>
-                                      </li>
-                                       <li>
-                                        <a href="payfees_tutor.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp;For Tutor</a>
-                                      </li>
+                <li>
+                    <%= link_to student_pay_fees_school_path(@current_user) do%>
+                    <i class="fa fa-angle-right"></i>&nbsp; For School<%end%>
+                </li>
+                <li>
+                    <%= link_to student_pay_fees_tutor_path(@current_user) do%>
+                    <i class="fa fa-angle-right"></i>&nbsp;For Tutor<%end%>
+                </li>
+            </ul>
                                     
-                                    </ul>
                                   </li>
-                                 <li class="">
-                                    <a href="salebook_student.html">
-                                      <i class="fa fa-tasks"></i>
-                                      <span class="link-title">Sale Book</span>
-                                    
-                                    </a>
-                                   
-                                  </li>
+                    <li class="">
+                    <%= link_to student_sale_book_path(@current_user) do%>
+                    <i class="fa fa-tasks"></i>
+                    <span class="link-title">Sale Book</span>
+                    <%end%>
+                    </li>
                                   <li class="">
                                     <a href="buybook_student.html">
                                       <i class="fa fa-pencil"></i>
