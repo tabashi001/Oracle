@@ -50,6 +50,7 @@ Rails.application.routes.draw do
 		get '/users/login' => 'devise/sessions#new'
 	    get '/users/register' => 'devise/registrations#new'
 	    get '/users/sign_out' => 'devise/sessions#destroy'
-
 	end
+
+	get 'users/search'
 end
