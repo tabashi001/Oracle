@@ -16,6 +16,8 @@ class User < ApplicationRecord
 
   has_attached_file :document
   validates_attachment :document, :content_type => { :content_type => %w(application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document) }
+   
+  
 
   has_many :overviews, as: :user
   has_many :courses
