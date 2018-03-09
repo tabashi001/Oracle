@@ -1,7 +1,7 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   #prepend_before_action :require_no_authentication, only: [:cancel]
-
+  prepend_before_action :check_captcha, only: [:create]
   # GET /resource/sign_in
   # def new
   #   #super
@@ -22,4 +22,13 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  private
+    def check_captcha
+      unless verify_recaptcha
+        self.resource = resource_class.new sign_in_params
+        resource.validate # Look for any other validation errors besides Recaptcha
+        respond_with_navigational(resource) { render :new }
+      end 
+    end
 end

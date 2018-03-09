@@ -53,8 +53,11 @@
       </div>
       <div class="user-wrapper bg-dark">
         <a class="user-link" href="">
-            <!-- <img class="media-object img-thumbnail user-img" alt="User Picture" src="/assets/user.gif"> -->
-            <%= image_tag current_user.profile_image,class: "media-object img-thumbnail user-img",:size => "80x80" %>
+            <%if current_user.profile_image.present? %>
+              <%= image_tag current_user.profile_image,class: "media-object img-thumbnail user-img",:size => "80x80" %>
+            <%else%>
+               <img class="media-object img-thumbnail user-img" alt="User Picture" src="/assets/user.gif">
+            <%end%>
             <span class="label label-danger user-label"></span>
         </a>
         <div class="media-body">
