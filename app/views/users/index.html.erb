@@ -103,23 +103,26 @@ $(document).ready(function() {
 			<div class="row">
 				<div class="col-md-12">
 					<div class="st-home-unit">
+						
+    <div class="col-sm-offset-8 col-sm-4">
+    <%= form_tag root_path, method: :get do %>
+      <div class="form-group">
+        <%= text_field_tag 'query', nil, placeholder: 'Enter search term...', class:"SEArchbarwdt"%>
+
+        <%= submit_tag 'Search', class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
 						<h1 class="edutetitle">Discover The Best</h1>
 						<form class="form-wrapper cf">
-							<select>
-								<option>Engineering</option>
-								<option>Bpo</option>
-								<option value="hurr">Durr</option>
-							</select>
-							<select>
-								<option>Engineering</option>
-								<option>Bpo</option>
-								<option>Kpo</option>
-							</select>
-							<select>
-								<option>Engineering</option>
-								<option>Bpo</option>
-								<option>Kpo</option>
-							</select>
+							<!-- <select> -->
+								<%#= select( School.all.collect(&:city)) %>
+								<%= select("user", "city", @city.map{|city| city.titleize},{} ,{class: "fa-map-marker-alt"}) %>
+							<!-- </select> -->
+							
+								<%= select("user", "role", @role.map{|role| role.titleize}) %>
+								<%= select("user", "role", @course.map{|course| course.upcase}) %>
+
 							<button type="submit">Search</button>
 						</form>		
 					</div>
@@ -231,7 +234,7 @@ $(document).ready(function() {
 								<p class="card-body-header-sentence">
 									<span><%= school.name %></span>
 								</p>
-								<h5 class="hfivestyle"><%= school.description.first(150) %>..</h5>
+								<h5 class="hfivestyle"><%= school.description.first(150) if school.description.present? %>..</h5>
 								<a href="#" target="_blank" class="custanchor">read more...</a>
 							</div>
 							<div class="card-body-footer">

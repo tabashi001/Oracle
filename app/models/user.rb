@@ -30,6 +30,33 @@ class User < ApplicationRecord
   has_many :school_informations
   has_many :pay_fees, as: :user
 
+
+
+# def self.search
+#   binding.pry
+#   if search
+#     find(:all, :conditions => ['city LIKE ?', "%#{search}%"])
+#    else
+#      find(:all)
+#   end
+# end
+
+
+
+
+  def search(city,role)
+    conditions = {:city => city,:role => role}
+    conditions.delete_if {|k,v| v.blank? || k.blank?}
+    query = conditions.map { |k,val|
+      if k == :city || k == :role
+      "#{k} = '#{val}'"
+      end
+    }.join(' AND ')
+    self.users.where(query)
+  end
+
+
+
 	def self.from_omniauth(auth)
     where(email: auth.info.email).first_or_initialize.tap do |user|
       user.provider = auth.provider
