@@ -1,0 +1,117 @@
+<div class="container-fluid contbodertwo">
+	<h3 style="text-align:center;">RECENTLY ADDED TEACHERS</h3>
+	<%if @teacher.present?%>
+		<div class="row RowMarginzero">
+			<% @teacher.each do |teacher|%>
+				<div class="col-sm-6 col-md-3">
+					<div id="wrapper">
+						<div class="cards">
+							<div class="card-header">
+								<div class="card-header-mask">
+									<div class="card-header-mask">
+									<div class="card-header-date">
+										<div class="card-header-date-day"><%=teacher.created_at.strftime("%d")%></div>
+										<div class="card-header-date-month"><%=teacher.created_at.strftime("%b")%></div>
+									</div>
+								</div>
+								</div>
+							</div>
+							<div class="card-body">
+								<div class="card-body-header">
+									<div class="card-body-header-category">
+										<% if teacher.profile_image.present?%>
+											<%= image_tag teacher.profile_image ,class: "img-respomsive Companylg" %>
+										<%else%>
+											<img class="img-respomsive Companylg" src="/assets/aj.jpg">
+										<%end%>
+									</div>
+									<p class="card-body-header-sentence">
+										<span><%= teacher.name %></span>
+									</p>
+									<h5 class="hfivestyle"><%= teacher.description %>..</h5>
+									<a href="#" target="_blank" class="custanchor">read more...</a>
+								</div>
+								<div class="card-body-footer">
+									<div class="row">
+										<div class="col-md-4 col-xs-4 text-center">
+											<ul class="soclmd" style="display: none;">
+												<a href="#"><li><i class="fa fa-facebook-square"></i></li></a>
+												<a href="#"><li><i class="fa fa-twitter"></i></li></a>
+												<a href="#"><li><i class="fa fa-whatsapp"></i></li></a>
+												<a href="#"><li><i class="fa fa-envelope-o"></i></li></a>
+												<a href="#"><li><i class="fa fa-linkedin"></i></li></a>
+											</ul>
+											<span class="socxialtoggle"><i aria-hidden="true" class="fa fa-share-alt"></i></span>
+										</div>
+										<div class=" col-md-8 col-xs-8 text-center">
+											<a target="_blank" href="viewjobs.html">
+												<span class="Footeranchor">Open in a new tab</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row explorebtnrw">
+						<a class="text-center" href="#"><button class="btn btn-primary prmbtnsty">VIEW ALL</button></a>
+					</div>
+				</div>
+			<%end%>
+		</div>
+		
+	<%else%>
+		<div class="row RowMarginzero">
+		    <div class="col-sm-6 col-md-3">
+		  		<div id="wrapper">
+		            <div class="cards">
+		                <div class="card-header">
+		                    <div class="card-header-mask">
+		                        <div class="card-header-date">
+		                            <div class="card-header-date-day">12</div>
+		                            <div class="card-header-date-month">May</div>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="card-body">
+		                    <div class="card-body-header">
+		                      	<div class="card-body-header-category">
+					          		<img class="img-respomsive Companylg" src="/assets/aj.jpg">
+					          	</div>
+							  	<p class="card-body-header-sentence">
+		                           <span>Tabashi Technology Private Limited</span>
+		                        </p>
+		                        <h5 class="hfivestyle">Lorem ipsum dolor amet consectetur adipisicing elit.
+		                        Molestias autem aliquid,recusandae maiores iste fuga,
+		                        explicabo dolor vitae magnam!</h5>
+		                        <a href="#" target="_blank" class="custanchor">read more...</a>
+		                    </div>
+		                   	<div class="card-body-footer">
+						   		<div class="row">
+						      		<div class="col-md-4 col-xs-4 text-center">
+									  	<ul class="soclmd" style="display: none;">
+										   <a href="#"><li><i class="fa fa-facebook-square"></i></li></a>
+										   <a href="#"><li><i class="fa fa-twitter"></i></li></a>
+										   <a href="#"><li><i class="fa fa-whatsapp"></i></li></a>
+										   <a href="#"><li><i class="fa fa-envelope-o"></i></li></a>
+										   <a href="#"><li><i class="fa fa-linkedin"></i></li></a>
+									   	</ul>
+					           			<span class="socxialtoggle"><i aria-hidden="true" class="fa fa-share-alt"></i></span>
+									</div>
+								   	<div class=" col-md-8 col-xs-8 text-center">
+			                        	<a target="_blank" href="viewjobs.html">
+											<span class="Footeranchor">Open in a new tab</span>
+										</a>
+									</div>
+								</div>
+		                    </div>
+		                </div>
+		            </div>
+				</div>
+				<div class="row explorebtnrw">
+					<a class="text-center" href="#"><button class="btn btn-primary prmbtnsty">VIEW ALL</button></a>
+				</div>
+			</div>
+		</div>
+	<%end%>
+</div>
