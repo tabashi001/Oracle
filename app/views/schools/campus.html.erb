@@ -1,6 +1,3 @@
-
-<title>Overview</title>
-
 <%= stylesheet_link_tag  "bootstrap" %>
 <%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
 <%= stylesheet_link_tag  "styles" %>
@@ -10,6 +7,13 @@
 <%= stylesheet_link_tag  "animate" %>
 <%= stylesheet_link_tag  "style-switcher" %>
 
+<style type="text/css">
+     .ADDcorsen.text-right {
+  padding: 20px 0;
+}
+
+</style> 
+
 <div class="bg-dark dk" id="wrap">
   <div id="top">
     <!-- .navbar -->
@@ -17,7 +21,7 @@
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <header class="navbar-header">
-           
+            
             <a href="index.html" class="navbar-brand">
               <img src="/assets/logo3.png" alt="" class="img-responsive DashLogo">
             </a>
@@ -44,9 +48,8 @@
       <!-- /.container-fluid -->
     </nav>
     <!-- /.navbar -->
-    
   </div>
-  <!-- /#top -->
+    <!-- /#top -->
   <div id="left">
     <div class="media user-media bg-dark dker">
       <div class="user-media-toggleHover">
@@ -158,47 +161,43 @@
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
-        <h4>Placements</h4>
+        <h4>List of Courses</h4>
         <hr>
-        <%= form_for(@placement, url: school_placement_path) do |f| %>
-          <div class="row vdiocont">    
-            <div class="form-group margunrve">
-              <label for="email">Title</label>
-              <%=f.text_field :title, class: "form-control",placeholder: "Title" %>
-            </div>
-            <div class="form-group margunrve">
-              <label for="pwd">Description</label>
-              <%=f.text_area :description, class: "form-control",placeholder: "Description" %>
-            </div>
-            <div class="form-group margunrve">
-              <label for="text">No of Company Visited</label>
-              <%=f.text_field :companies_visited, class: "form-control",placeholder: "No of Companies Visited" %>
-            </div>
-            <div class="form-group margunrve">
-              <label for="text">No of Student Placed</label>
-              <%=f.text_field :students_placed, class: "form-control",placeholder: "Students Placed" %>
-            </div>
-            <div class="form-group margunrve">
-              <label for="text">Total No of Students</label>
-              <%=f.text_field :total_students, class: "form-control",placeholder: "Total Students" %>
-            </div>
-            <div class="form-group margunrve">
-              <label for="text">year</label>
-              <%=f.text_field :year, class: "form-control",placeholder: "Year" %>
-            </div>
-           <div class="form-group margunrve text-center">
-            <%=f.submit "Submit", class: "btn btn-default"%>
-            <button type="submit" class="btn btn-default">cancel</button>
-          </div>
+        <div class="ADDcorsen text-right">
+          <%=link_to "Back",schools_path, class: "btn btn-primary"%>
+          <%=link_to "Add Course",school_campu_path(current_user), class: "btn btn-primary"%>
+        </div> 
+        <div class="table-responsive"> 
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <% @campus.each do |campu|%>
+              <tbody>
+                <tr>
+                  <td><%= campu.title%></td>
+                  <td><%= campu.description%></td>
+                  <td>
+                    <%=link_to "Edit", school_update_campu_path(campu),class: "btn btn-primary btn-xs"%>
+                    <%=link_to "Delete", school_destroy_campu_path(campu),class: "btn btn-danger btn-xs", data: {confirm: "Are you sure?"}%>
+                  </td>
+                </tr>
+              </tbody>
+            <%end%>
+          </table>
         </div>
-      <%end%>   
-      <hr>
       </div>
       <!-- /.inner -->
     </div>
     <!-- /.outer -->
   </div>
+  <!-- /#content -->
 </div>
+
 <!-- /#wrap -->
 <footer class="Footer bg-dark dker">
     <p>2017 &copy; Tabashi Technology Private Limited</p>
@@ -206,30 +205,33 @@
 <!-- /#footer -->
 <!-- #helpModal -->
 <div id="helpModal" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
-          <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-              et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-      </div>
-      <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
+    <!-- /.modal-dialog -->
 </div>
-            
+<!-- /.modal -->
+<!-- /#helpModal -->
+<!--jQuery -->
+
 <%= javascript_include_tag "jquery" %>
 <%= javascript_include_tag "bootstrap" %>
 <%= javascript_include_tag "metisMenu" %>

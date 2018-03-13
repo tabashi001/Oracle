@@ -43,7 +43,6 @@
       <!-- /.container-fluid -->
     </nav>
     <!-- /.navbar -->
-   
   </div>
   <!-- /#top -->
   <div id="left">
@@ -53,12 +52,12 @@
       </div>
       <div class="user-wrapper bg-dark">
         <a class="user-link" href="">
-            <%if current_user.profile_image.present? %>
-              <%= image_tag current_user.profile_image,class: "media-object img-thumbnail user-img",:size => "80x80" %>
-            <%else%>
-               <img class="media-object img-thumbnail user-img" alt="User Picture" src="/assets/user.gif">
-            <%end%>
-            <span class="label label-danger user-label"></span>
+          <%if current_user.profile_image.present? %>
+            <%= image_tag current_user.profile_image,class: "media-object img-thumbnail user-img",:size => "80x80" %>
+          <%else%>
+             <img class="media-object img-thumbnail user-img" alt="User Picture" src="/assets/user.gif">
+          <%end%>
+          <span class="label label-danger user-label"></span>
         </a>
         <div class="media-body">
             <h5 class="media-heading"><%= current_user.name%></h5>
@@ -76,7 +75,6 @@
     <ul id="menu" class="bg-blue dker">
       <li class="nav-divider"></li>  
         <li class="active">
-          </a>
           <%= link_to schools_path do %>
             <i class="fa fa-dashboard"></i><span class="link-title" >&nbsp;Dashboard</span>
             <%end%>
@@ -89,7 +87,7 @@
           </a>
           <ul class="collapse">
             <li>
-                <%= link_to  school_overview_path(current_user) do %>
+                <%= link_to  school_courses_path(current_user) do %>
                 <i class="fa fa-angle-right"></i>&nbsp;Overview<%end%>
             </li>
             <li>
@@ -97,15 +95,15 @@
                 <i class="fa fa-angle-right"></i>&nbsp; Courses<%end%>
             </li>
             <li>
-              <%= link_to  school_scholarship_path(current_user) do %>
+              <%= link_to  school_scholarships_path(current_user) do %>
                 <i class="fa fa-angle-right"></i>&nbsp; Scholarship<%end%>
             </li>
             <li>
-              <%= link_to  school_placement_path(current_user) do %>
+              <%= link_to  school_placements_path(current_user) do %>
                 <i class="fa fa-angle-right"></i>&nbsp; Placement<%end%>
             </li>
             <li>
-                <%= link_to  school_cutoff_path(current_user) do %>
+                <%= link_to  school_cutoffs_path(current_user) do %>
                 <i class="fa fa-angle-right"></i>&nbsp; Cutoff<%end%>
             </li>
             <li>
@@ -204,17 +202,29 @@
         <hr>
           <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-              <%= link_to  school_overview_path(current_user) do %>
-                <div class="col-md-2 col-sm-4 col-xs-6">
-                  <div class="quick-btn">
-                    <i class="fa fa-bolt fa-2x"></i>
-                    <span>OVERVIEW</span>
-                    <span class="label label-default">NA</span>
+              <%if current_user.overviews.present?%>
+                <%= link_to  school_update_overview_path(current_user) do %>
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="quick-btn">
+                      <i class="fa fa-bolt fa-2x"></i>
+                      <span>OVERVIEW</span>
+                      <span class="label label-default">NA</span>
+                    </div>
                   </div>
-                </div>
+                <%end%>
+              <%else%>
+                <%= link_to  school_overview_path(current_user) do %>
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                    <div class="quick-btn">
+                      <i class="fa fa-bolt fa-2x"></i>
+                      <span>OVERVIEW</span>
+                      <span class="label label-default">NA</span>
+                    </div>
+                  </div>
+                <%end%>
               <%end%>
 
-              <%= link_to  school_course_path(current_user) do %>
+              <%= link_to  school_courses_path(current_user) do %>
                 <div class="col-md-2 col-sm-4 col-xs-6">
                   <div class="quick-btn">
                     <i class="fa fa-check fa-2x"></i>
@@ -224,7 +234,7 @@
                 </div>
               <%end%>
 
-              <%= link_to  school_scholarship_path(current_user) do %>
+              <%= link_to  school_scholarships_path(current_user) do %>
                 <div class="col-md-2 col-sm-4 col-xs-6">
                   <div class="quick-btn">
                     <i class="fa fa-building-o fa-2x"></i>
@@ -234,7 +244,7 @@
                 </div>
               <%end%>
 
-              <%= link_to  school_placement_path(current_user) do %>
+              <%= link_to  school_placements_path(current_user) do %>
                 <div class="col-md-2 col-sm-4 col-xs-6">
                   <div class="quick-btn">
                     <i class="fa fa-envelope fa-2x"></i>
@@ -244,7 +254,7 @@
                 </div>
               <%end%>
 
-              <%= link_to  school_cutoff_path(current_user) do %>
+              <%= link_to  school_cutoffs_path(current_user) do %>
                 <div class="col-md-2 col-sm-4 col-xs-6">
                   <div class="quick-btn">
                     <i class="fa fa-signal fa-2x"></i>
@@ -254,7 +264,7 @@
                 </div>
               <%end%>
 
-              <%= link_to  school_campu_path(current_user) do %>
+              <%= link_to  school_campus_path(current_user) do %>
                 <div class="col-md-2 col-sm-4 col-xs-6">
                   <div class="quick-btn">
                     <i class="fa fa-external-link fa-2x"></i>
@@ -264,7 +274,7 @@
                 </div>
               <%end%>
 
-              <%= link_to  school_schoolinformation_path(current_user) do %>
+              <%= link_to  school_schoolinformations_path(current_user) do %>
                 <div class="col-md-2 col-sm-4 col-xs-6">
                   <div class="quick-btn">
                     <i class="fa fa-lemon-o fa-2x"></i>
@@ -274,7 +284,7 @@
                 </div>
               <%end%>
 
-              <%= link_to  school_schoolpicture_path(current_user) do %>
+              <%= link_to  school_schoolpictures_path(current_user) do %>
                 <div class="col-md-2 col-sm-4 col-xs-6">
                   <div class="quick-btn">
                     <i class="fa fa-glass fa-2x"></i>
@@ -284,7 +294,7 @@
                 </div>
               <%end%>
 
-              <%= link_to  school_schoolvideo_path(current_user) do %>
+              <%= link_to  school_schoolvideos_path(current_user) do %>
                 <div class="col-md-2 col-sm-4 col-xs-6">
                   <div class="quick-btn">
                     <i class="fa fa-glass fa-2x"></i>

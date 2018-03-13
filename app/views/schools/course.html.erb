@@ -54,13 +54,21 @@
       </div>
       <div class="user-wrapper bg-dark">
         <a class="user-link" href="">
-            <img class="media-object img-thumbnail user-img" alt="User Picture" src="/assets/user.gif">
-            <span class="label label-danger user-label">16</span>
+            <%if current_user.profile_image.present? %>
+              <%= image_tag current_user.profile_image,class: "media-object img-thumbnail user-img",:size => "80x80" %>
+            <%else%>
+               <img class="media-object img-thumbnail user-img" alt="User Picture" src="/assets/user.gif">
+            <%end%>
+            <span class="label label-danger user-label"></span>
         </a>
         <div class="media-body">
             <h5 class="media-heading"><%= current_user.name%></h5>
             <ul class="list-unstyled user-info">
                 <li><%= current_user.role%></li>
+                 <li>Last Access : <br>
+                  <small><i class="fa fa-calendar"></i>&nbsp;<%= current_user.last_sign_in_at.strftime("%d %B %t at %I %M %p")%></small>
+                  <%= link_to "(Edit Profile)" ,edit_user_registration_path%>
+              </li>
             </ul>
         </div>
       </div>

@@ -17,9 +17,9 @@
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <header class="navbar-header">
-            
+           
             <a href="index.html" class="navbar-brand">
-               <img src="/assets/logo3.png" alt="" class="img-responsive DashLogo">
+             <img src="/assets/logo3.png" alt="" class="img-responsive DashLogo">
             </a>
         </header>
         <div class="topnav">
@@ -150,9 +150,9 @@
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
-        <h4>Upload Picture</h4>
+        <h4>Campus</h4>
         <hr>
-        <%= form_for @picture, url: school_schoolpicture_path ,html: { multipart: true } do |f| %>
+        <%= form_for(@campu, url: school_update_campu_path) do |f| %>
         <div class="row vdiocont">    
           <div class="form-group margunrve">
             <label for="email">Title</label>
@@ -161,10 +161,6 @@
           <div class="form-group margunrve">
             <label for="pwd">Description</label>
             <%=f.text_area :description, class: "form-control",placeholder: "Title" %>
-          </div>
-          <div class="form-group margunrve">
-            <label for="pwd">Upload Pic</label>
-            <%=file_field_tag "images[]", type: :file, multiple: true, class: "form-control"%><p><font size="3" color="red">*Use ctrl to upload multiple images </font></p> 
           </div>
           <div class="form-group margunrve text-center">
             <%=f.submit "Submit", class: "btn btn-default"%>

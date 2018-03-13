@@ -17,9 +17,9 @@
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <header class="navbar-header">
-            
+           
             <a href="index.html" class="navbar-brand">
-               <img src="/assets/logo3.png" alt="" class="img-responsive DashLogo">
+              <img src="/assets/logo3.png" alt="" class="img-responsive DashLogo">
             </a>
         </header>
         <div class="topnav">
@@ -44,7 +44,7 @@
       <!-- /.container-fluid -->
     </nav>
     <!-- /.navbar -->
-   
+  
   </div>
   <!-- /#top -->
   <div id="left">
@@ -150,29 +150,37 @@
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
-        <h4>Upload Picture</h4>
+        <h4>Cutoff</h4>
         <hr>
-        <%= form_for @picture, url: school_schoolpicture_path ,html: { multipart: true } do |f| %>
-        <div class="row vdiocont">    
-          <div class="form-group margunrve">
-            <label for="email">Title</label>
-            <%=f.text_field :title, class: "form-control",placeholder: "Title" %>
-          </div>
-          <div class="form-group margunrve">
-            <label for="pwd">Description</label>
-            <%=f.text_area :description, class: "form-control",placeholder: "Title" %>
-          </div>
-          <div class="form-group margunrve">
-            <label for="pwd">Upload Pic</label>
-            <%=file_field_tag "images[]", type: :file, multiple: true, class: "form-control"%><p><font size="3" color="red">*Use ctrl to upload multiple images </font></p> 
-          </div>
-          <div class="form-group margunrve text-center">
+        <%= form_for(@cutoff, url: school_update_cutoff_path) do |f| %>
+          <div class="row vdiocont">    
+            <div class="form-group margunrve">
+              <label for="email">Name</label>
+              <%=f.text_field :name, class: "form-control",placeholder: "Name" %>
+            </div>
+            <div class="form-group margunrve">
+              <label for="pwd">Category</label>
+              <%=f.text_field :category, class: "form-control",placeholder: "Category" %>
+            </div>
+            <div class="form-group margunrve">
+              <label for="text">Rank</label>
+              <%=f.text_field :rank, class: "form-control",placeholder: "Rank" %>
+            </div>
+            <div class="form-group margunrve">
+              <label for="text">No of Examination</label>
+              <%=f.text_field :examination, class: "form-control",placeholder: "No of Examination" %>
+            </div>
+            <div class="form-group margunrve">
+              <label for="text">Percentage of 12th</label>
+              <%=f.text_field :percentage, class: "form-control",placeholder: "Percentage of 12th" %>
+            </div>
+           <div class="form-group margunrve text-center">
             <%=f.submit "Submit", class: "btn btn-default"%>
             <button type="submit" class="btn btn-default">cancel</button>
           </div>
-        </div> 
-        <%end%>   
-        <hr>
+        </div>
+      <%end%>   
+      <hr>
       </div>
       <!-- /.inner -->
     </div>

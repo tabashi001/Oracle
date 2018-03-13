@@ -19,7 +19,7 @@
         <header class="navbar-header">
             
             <a href="index.html" class="navbar-brand">
-               <img src="/assets/logo3.png" alt="" class="img-responsive DashLogo">
+              <img src="/assets/logo3.png" alt="" class="img-responsive DashLogo">
             </a>
         </header>
         <div class="topnav">
@@ -69,9 +69,9 @@
     <ul id="menu" class="bg-blue dker">
       <li class="nav-divider"></li>  
         <li class="">
-          <a href="dashboard.html">
+            <%= link_to schools_path do%>
             <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
-          </a>
+          <%end%>
         </li>
         <li class="active">
           <a href="javascript:;">
@@ -79,42 +79,42 @@
             <span class="link-title">Layouts</span>
             <span class="fa arrow"></span>
           </a>
-          <ul class="collapse">
+              <ul class="collapse">
             <li>
-              <a href="overview.html">
-                <i class="fa fa-angle-right"></i>&nbsp;Overview</a>
+                <%= link_to  school_overview_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp;Overview<%end%>
             </li>
             <li>
-              <a href="courses.html">
-                <i class="fa fa-angle-right"></i>&nbsp; Courses</a>
+                <%= link_to  school_course_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp; Courses<%end%>
             </li>
             <li>
-              <a href="scholar.html">
-                <i class="fa fa-angle-right"></i>&nbsp; Scholarship</a>
+              <%= link_to  school_scholarship_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp; Scholarship<%end%>
             </li>
             <li>
-              <a href="placement.html">
-                <i class="fa fa-angle-right"></i>&nbsp; Placement</a>
+              <%= link_to  school_placement_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp; Placement<%end%>
             </li>
             <li>
-              <a href="school_cutoff.html">
-                <i class="fa fa-angle-right"></i>&nbsp; Cutoff</a>
+                <%= link_to  school_cutoff_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp; Cutoff<%end%>
             </li>
             <li>
-              <a href="school_campus.html">
-                <i class="fa fa-angle-right"></i>&nbsp; Campus</a>
+              <%= link_to  school_campu_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp; Campus<%end%>
             </li>
             <li>
-              <a href="school_news.html">
-                <i class="fa fa-angle-right"></i>&nbsp; News</a>
+              <%= link_to  school_schoolinformation_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp; News<%end%>
             </li>
             <li>
-              <a href="school_pic.html">
-                <i class="fa fa-angle-right"></i>&nbsp; Pictures</a>
+              <%= link_to  school_schoolpicture_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp; Pictures<%end%>
             </li>
             <li>
-              <a href="school_video.html">
-                <i class="fa fa-angle-right"></i>&nbsp; Videos</a>
+                <%= link_to  school_schoolvideo_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp; Videos<%end%>
             </li>
           </ul>
         </li>
@@ -150,9 +150,9 @@
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
-        <h4>Upload Picture</h4>
+        <h4>Overview</h4>
         <hr>
-        <%= form_for @picture, url: school_schoolpicture_path ,html: { multipart: true } do |f| %>
+        <%= form_for(@overview, url: school_update_overview_path) do |f| %>
         <div class="row vdiocont">    
           <div class="form-group margunrve">
             <label for="email">Title</label>
@@ -161,10 +161,6 @@
           <div class="form-group margunrve">
             <label for="pwd">Description</label>
             <%=f.text_area :description, class: "form-control",placeholder: "Title" %>
-          </div>
-          <div class="form-group margunrve">
-            <label for="pwd">Upload Pic</label>
-            <%=file_field_tag "images[]", type: :file, multiple: true, class: "form-control"%><p><font size="3" color="red">*Use ctrl to upload multiple images </font></p> 
           </div>
           <div class="form-group margunrve text-center">
             <%=f.submit "Submit", class: "btn btn-default"%>

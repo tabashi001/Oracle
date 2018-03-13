@@ -54,13 +54,21 @@
       </div>
       <div class="user-wrapper bg-dark">
         <a class="user-link" href="">
-            <img class="media-object img-thumbnail user-img" alt="User Picture" src="/assets/user.gif">
-            <span class="label label-danger user-label">16</span>
+          <%if current_user.profile_image.present? %>
+            <%= image_tag current_user.profile_image,class: "media-object img-thumbnail user-img",:size => "80x80" %>
+          <%else%>
+             <img class="media-object img-thumbnail user-img" alt="User Picture" src="/assets/user.gif">
+          <%end%>
+          <span class="label label-danger user-label"></span>
         </a>
         <div class="media-body">
             <h5 class="media-heading"><%= current_user.name%></h5>
             <ul class="list-unstyled user-info">
                 <li><%= current_user.role%></li>
+                 <li>Last Access : <br>
+                  <small><i class="fa fa-calendar"></i>&nbsp;<%= current_user.last_sign_in_at.strftime("%d %B %t at %I %M %p")%></small>
+                  <%= link_to "(Edit Profile)" ,edit_user_registration_path%>
+              </li>
             </ul>
         </div>
       </div>
@@ -68,12 +76,12 @@
     <!-- #menu -->
     <ul id="menu" class="bg-blue dker">
       <li class="nav-divider"></li>  
-        <li class="">
-          <a href="dashboard.html">
-            <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
-          </a>
-        </li>
         <li class="active">
+          <%= link_to schools_path do %>
+            <i class="fa fa-dashboard"></i><span class="link-title" >&nbsp;Dashboard</span>
+            <%end%>
+        </li>
+        <li class="">
           <a href="javascript:;">
             <i class="fa fa-building "></i>
             <span class="link-title">Layouts</span>
@@ -81,40 +89,40 @@
           </a>
           <ul class="collapse">
             <li>
-              <a href="overview.html">
-                <i class="fa fa-angle-right"></i>&nbsp;Overview</a>
+                <%= link_to  school_overview_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp;Overview<%end%>
             </li>
             <li>
-              <a href="courses.html">
-                <i class="fa fa-angle-right"></i>&nbsp; Courses</a>
+                <%= link_to  school_courses_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp; Courses<%end%>
             </li>
             <li>
-              <a href="scholar.html">
-                <i class="fa fa-angle-right"></i>&nbsp; Scholarship</a>
+              <%= link_to  school_scholarships_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp; Scholarship<%end%>
             </li>
             <li>
-              <a href="placement.html">
-                <i class="fa fa-angle-right"></i>&nbsp; Placement</a>
+              <%= link_to  school_placement_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp; Placement<%end%>
             </li>
             <li>
-              <a href="school_cutoff.html">
-                <i class="fa fa-angle-right"></i>&nbsp; Cutoff</a>
+                <%= link_to  school_cutoff_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp; Cutoff<%end%>
             </li>
             <li>
-              <a href="school_campus.html">
-                <i class="fa fa-angle-right"></i>&nbsp; Campus</a>
+              <%= link_to  school_campu_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp; Campus<%end%>
             </li>
             <li>
-              <a href="school_news.html">
-                <i class="fa fa-angle-right"></i>&nbsp; News</a>
+              <%= link_to  school_schoolinformation_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp; News<%end%>
             </li>
             <li>
-              <a href="school_pic.html">
-                <i class="fa fa-angle-right"></i>&nbsp; Pictures</a>
+              <%= link_to  school_schoolpicture_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp; Pictures<%end%>
             </li>
             <li>
-              <a href="school_video.html">
-                <i class="fa fa-angle-right"></i>&nbsp; Videos</a>
+                <%= link_to  school_schoolvideo_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp; Videos<%end%>
             </li>
           </ul>
         </li>
