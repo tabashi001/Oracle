@@ -1,6 +1,6 @@
 class SchoolsController < ApplicationController
 before_action :set_school, only:[:overview, :update_overview,:courses,:update_course, 
-  :course,:scholarship,:cholarships,:update_scholarship,:placements,:update_placement,
+  :course,:scholarship,:scholarships,:update_scholarship,:placements,:update_placement,
   :placement,:cutoffs, :cutoff,:update_cuttoff,:campus,:campu,:update_campu,:schoolinformations,
   :schoolinformation,:update_schoolinformation,:schoolpictures,:schoolpicture,:update_schoolpicture,
   :schoolvideos,:schoolvideo,:update_schoolvideo]
@@ -268,7 +268,6 @@ before_action :set_school, only:[:overview, :update_overview,:courses,:update_co
   end
 
   def schoolvideos
-    debugger
     @videos = @school.school_videos
   end
   def schoolvideo
