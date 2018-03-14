@@ -1,160 +1,10 @@
-
 <title>Overview</title>
-
-<%= stylesheet_link_tag  "bootstrap" %>
-<%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
-<%= stylesheet_link_tag  "styles" %>
-<%= stylesheet_link_tag  "main" %>
-<%= stylesheet_link_tag  "metisMenu" %>
-<%= stylesheet_link_tag  "onoffcanvas" %>
-<%= stylesheet_link_tag  "animate" %>
-<%= stylesheet_link_tag  "style-switcher" %>
+<%= render "layouts/stylesheets"%>
+<%= render "layouts/javascripts"%>
 
 <div class="bg-dark dk" id="wrap">
-  <div id="top">
-    <!-- .navbar -->
-    <nav class="navbar navbar-inverse navbar-static-top">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <header class="navbar-header">
-           
-            <a href="index.html" class="navbar-brand">
-              <img src="/assets/logo3.png" alt="" class="img-responsive DashLogo">
-            </a>
-        </header>
-        <div class="topnav">
-          <div class="btn-group">
-            <a data-toggle="modal" data-original-title="Help" data-placement="bottom" class="btn btn-default btn-sm" href="#helpModal">
-                <i class="fa fa-question"></i>
-            </a>
-          </div>
-          <div class="btn-group">
-            <%= link_to "",destroy_user_session_path,class: "btn btn-metis-1 btn-sm fa fa-power-off" %>
-          </div>
-          <div class="btn-group">
-            <a data-placement="bottom" data-original-title="Show / Hide Left" data-toggle="tooltip"
-               class="btn btn-primary btn-sm toggle-left" id="menu-toggle">
-                <i class="fa fa-bars"></i>
-            </a>
-          </div>
-        </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-        </div>
-      </div>
-      <!-- /.container-fluid -->
-    </nav>
-    <!-- /.navbar -->
-    
-  </div>
-  <!-- /#top -->
-  <div id="left">
-    <div class="media user-media bg-dark dker">
-      <div class="user-media-toggleHover">
-          <span class="fa fa-user"></span>
-      </div>
-      <div class="user-wrapper bg-dark">
-        <a class="user-link" href="">
-          <%if current_user.profile_image.present? %>
-            <%= image_tag current_user.profile_image,class: "media-object img-thumbnail user-img",:size => "80x80" %>
-          <%else%>
-             <img class="media-object img-thumbnail user-img" alt="User Picture" src="/assets/user.gif">
-          <%end%>
-          <span class="label label-danger user-label"></span>
-        </a>
-        <div class="media-body">
-            <h5 class="media-heading"><%= current_user.name%></h5>
-            <ul class="list-unstyled user-info">
-                <li><%= current_user.role%></li>
-                 <li>Last Access : <br>
-                  <small><i class="fa fa-calendar"></i>&nbsp;<%= current_user.last_sign_in_at.strftime("%d %B %t at %I %M %p")%></small>
-                  <%= link_to "(Edit Profile)" ,edit_user_registration_path%>
-              </li>
-            </ul>
-        </div>
-      </div>
-    </div>
-    <!-- #menu -->
-    <ul id="menu" class="bg-blue dker">
-      <li class="nav-divider"></li>  
-        <li class="active">
-          <%= link_to schools_path do %>
-            <i class="fa fa-dashboard"></i><span class="link-title" >&nbsp;Dashboard</span>
-            <%end%>
-        </li>
-        <li class="">
-          <a href="javascript:;">
-            <i class="fa fa-building "></i>
-            <span class="link-title">Layouts</span>
-            <span class="fa arrow"></span>
-          </a>
-          <ul class="collapse">
-            <li>
-                <%= link_to  school_overview_path(current_user) do %>
-                <i class="fa fa-angle-right"></i>&nbsp;Overview<%end%>
-            </li>
-            <li>
-                <%= link_to  school_courses_path(current_user) do %>
-                <i class="fa fa-angle-right"></i>&nbsp; Courses<%end%>
-            </li>
-            <li>
-              <%= link_to  school_scholarships_path(current_user) do %>
-                <i class="fa fa-angle-right"></i>&nbsp; Scholarship<%end%>
-            </li>
-            <li>
-              <%= link_to  school_placements_path(current_user) do %>
-                <i class="fa fa-angle-right"></i>&nbsp; Placement<%end%>
-            </li>
-            <li>
-                <%= link_to  school_cutoff_path(current_user) do %>
-                <i class="fa fa-angle-right"></i>&nbsp; Cutoff<%end%>
-            </li>
-            <li>
-              <%= link_to  school_campu_path(current_user) do %>
-                <i class="fa fa-angle-right"></i>&nbsp; Campus<%end%>
-            </li>
-            <li>
-              <%= link_to  school_schoolinformation_path(current_user) do %>
-                <i class="fa fa-angle-right"></i>&nbsp; News<%end%>
-            </li>
-            <li>
-              <%= link_to  school_schoolpicture_path(current_user) do %>
-                <i class="fa fa-angle-right"></i>&nbsp; Pictures<%end%>
-            </li>
-            <li>
-                <%= link_to  school_schoolvideo_path(current_user) do %>
-                <i class="fa fa-angle-right"></i>&nbsp; Videos<%end%>
-            </li>
-          </ul>
-        </li>
-        <li class="">
-          <a href="teachers_list.html">
-            <i class="fa fa-tasks"></i>
-            <span class="link-title">Teachers</span>
-          </a>
-        </li>
-        <li class="">
-          <a href="student_list.html">
-            <i class="fa fa-pencil"></i>
-            <span class="link-title">School</span>
-          </a>
-        </li>
-        <li>
-          <a href="vendor_list.html">
-            <i class="fa fa-table"></i>
-            <span class="link-title">Vendors</span>
-          </a>
-        </li>
-        <li>
-          <a href="total_earn.html">
-            <i class="fa fa-font"></i>
-            <span class="link-title">Total Earning</span>
-          </a>
-        </li>
-        <li class="nav-divider"></li>
-    </ul>
-    <!-- /#menu -->
-  </div>
-  <!-- /#left -->
+  <%= render "schools/top"%>
+  <%= render "schools/left"%>
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
@@ -194,17 +44,14 @@
       <%end%>   
       <hr>
       </div>
-      <!-- /.inner -->
     </div>
-    <!-- /.outer -->
   </div>
 </div>
-<!-- /#wrap -->
+
 <footer class="Footer bg-dark dker">
     <p>2017 &copy; Tabashi Technology Private Limited</p>
 </footer>
-<!-- /#footer -->
-<!-- #helpModal -->
+
 <div id="helpModal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -225,16 +72,5 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
-    <!-- /.modal-content -->
   </div>
-  <!-- /.modal-dialog -->
 </div>
-            
-<%= javascript_include_tag "jquery" %>
-<%= javascript_include_tag "bootstrap" %>
-<%= javascript_include_tag "metisMenu" %>
-<%= javascript_include_tag "onoffcanvas" %>
-<%= javascript_include_tag "core" %>
-<%= javascript_include_tag "app" %>
-<%= javascript_include_tag "style-switcher" %>
-<%= javascript_include_tag "counter" %>

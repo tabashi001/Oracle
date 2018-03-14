@@ -1,12 +1,17 @@
 class SchoolsController < ApplicationController
-before_action :set_school, only:[:overview, :update_overview,:courses,:update_course, 
-  :course,:scholarship,:scholarships,:update_scholarship,:placements,:update_placement,
-  :placement,:cutoffs, :cutoff,:update_cuttoff,:campus,:campu,:update_campu,:schoolinformations,
-  :schoolinformation,:update_schoolinformation,:schoolpictures,:schoolpicture,:update_schoolpicture,
-  :schoolvideos,:schoolvideo,:update_schoolvideo]
+before_action :set_school, only:[:overview,:update_overview,:courses,:update_course, :course,
+  :scholarship,:scholarships,:update_scholarship,:placements,:update_placement,:placement,
+  :cutoffs, :cutoff,:update_cuttoff,:campus,:campu,:update_campu,:schoolinformations,:schoolinformation,
+  :update_schoolinformation,:schoolpictures,:schoolpicture,:update_schoolpicture,:schoolvideos,
+  :schoolvideo,:update_schoolvideo]
 
   def index
     @course_count = Course.where("user_id = ?",set_school).count
+    @scholar_count = Scholarship.where("user_id = ?",set_school).count
+    @placement_count = Placement.where("user_id = ?",set_school).count
+    @cutoff_count = Cutoff.where("user_id = ?",set_school).count
+    @campus_count = Campu.where("user_id = ?",set_school).count
+    @news_count = SchoolInformation.where("user_id = ?",set_school).count
     @picture_count = SchoolPicture.where("user_id = ?",set_school).count
     @video_count = SchoolVideo.where("user_id = ?",set_school).count
   end
