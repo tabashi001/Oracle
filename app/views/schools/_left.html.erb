@@ -10,7 +10,7 @@
         <%else%>
            <img class="media-object img-thumbnail user-img" alt="User Picture" src="/assets/user.gif">
         <%end%>
-        <span class="label label-danger user-label"></span>
+        <span class="label label-danger user-label"><%= current_user.sign_in_count%></span>
       </a>
       <div class="media-body">
         <h5 class="media-heading"><%= current_user.name%></h5>

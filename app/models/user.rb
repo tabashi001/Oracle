@@ -27,6 +27,7 @@ class User < ApplicationRecord
   has_many :school_videos
   has_many :school_informations
   has_many :pay_fees, as: :user
+  has_many :sale_notes
 
   def create_picture(images)
     images.each do |image|

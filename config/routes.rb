@@ -18,7 +18,17 @@ Rails.application.routes.draw do
 	end
 
 
-	resources :teachers 
+	resources :teachers do
+		get :apply_school
+		get :find_student
+		get :sale_notes
+		get :create_sale_notes
+		post :create_sale_notes
+		get :update_sale_notes
+		patch :update_sale_notes
+		get :sale
+		get :destroy_sale_notes
+	end
 
 	resources :schools do
 		get :overview
