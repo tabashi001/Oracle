@@ -28,39 +28,56 @@
       <div class="inner bg-light lter">
         <h3>Students</h3>
         <hr>
-        <form class="form-wrapper cf">
-          <input type="text" placeholder="Location" required>
-          <input type="text" placeholder="Category" required>
-          <input type="text" placeholder="Sub Category" required>
-          <button type="submit">Search</button>
-        </form>
+        <%= form_tag teacher_find_student_path(current_user), :method => 'get' do %>
+          <%= text_field_tag "name",nil,:placeholder => "Student Name"%>
+          <%= text_field_tag "qualification",nil,:placeholder => "Student Qualification"%>
+          <%= text_field_tag "city",nil,:placeholder => "Student City"%>
+          <%= submit_tag "Search" %>
+        <% end %>
         <hr>
         <div class="row">
           <div class="col-md-12">
-            <% if @students.present?%>
-              <% @students.each do |student|%>
+            <% if @search.present?%>
+              <% @search.each do |search|%>
                 <div class="col-md-2">
                   <div class="stdboard">
-                    <% if student.profile_image.present?%>
-                        <%= image_tag student.profile_image ,class: "img-responsive stdboarspic"%>
+                    <% if search.profile_image.present?%>
+                        <%= image_tag search.profile_image ,class: "img-responsive stdboarspic"%>
                       <%else%>
                         <img src="/assets/content.jpg" class="img-responsive stdboarspic">
                     <% end %>
-                    <h5 class="colorchange"><%= student.name%></h5>
-                    <h5 class="colorchange"><%= student.phone_no%></h5>
-                    <h5 class="colorchange"><%= student.qualification%></h5>
+                    <h5 class="colorchange"><%= search.name%></h5>
+                    <h5 class="colorchange"><%= search.phone_no%></h5>
+                    <h5 class="colorchange"><%= search.qualification%></h5>
                   </div> 
                 </div>
               <%end%>
             <%else%>
-              <div class="col-md-2">
-                 <div class="stdboard">
-                    <img src="/assets/content.jpg" class="img-responsive stdboarspic">
-                    <h5 class="colorchange">Balbir Kumar</h5>
-                    <h5 class="colorchange">1234567890</h5>
-                    <h5 class="colorchange">class :12th</h5>
-                 </div> 
-              </div>
+              <% if @students.present?%>
+                <% @students.each do |student|%>
+                  <div class="col-md-2">
+                    <div class="stdboard">
+                      <% if student.profile_image.present?%>
+                          <%= image_tag student.profile_image ,class: "img-responsive stdboarspic"%>
+                        <%else%>
+                          <img src="/assets/content.jpg" class="img-responsive stdboarspic">
+                      <% end %>
+                      <h5 class="colorchange"><%= student.name%></h5>
+                      <h5 class="colorchange"><%= student.phone_no%></h5>
+                      <h5 class="colorchange"><%= student.qualification%></h5>
+                    </div> 
+                  </div>
+                <%end%>
+              <%else%>
+                <div class="col-md-2">
+                   <div class="stdboard">
+                      <img src="/assets/content.jpg" class="img-responsive stdboarspic">
+                      <h5 class="colorchange">Balbir Kumar</h5>
+                      <h5 class="colorchange">1234567890</h5>
+                      <h5 class="colorchange">class :12th</h5>
+                   </div> 
+                </div>
+              <%end%>
             <%end%>
           </div> 
         </div> 
