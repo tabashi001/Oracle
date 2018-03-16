@@ -13,41 +13,17 @@
 							  </tr>
 							</thead>
 							<tbody>
+								<% @course_detail.each do |course|%>
 							  <tr>
-								<td>B.Tech in Aerospace Engineering</td>
-								<td>Doe</td>
+								<td><%= course.degree_name.titleize%> in <%= course.course_name.titleize %></td>
+								<% if course.course_type == true%>
+								<td>Regular</td>
+								<% elsif course.course_type == false%>
+								<td>Correspondence</td>
+								<%end%>
 								<td>john@example.com</td>
 							  </tr>
-							  <tr>
-								<td>B.Tech in Aerospace Engineering</td>
-								<td>Moe</td>
-								<td>mary@example.com</td>
-							  </tr>
-							  <tr>
-								<td>B.Tech in Aerospace Engineering</td>
-								<td>Dooley</td>
-								<td>july@example.com</td>
-							  </tr>
-							  <tr>
-								<td>B.Tech in Aerospace Engineering</td>
-								<td>Dooley</td>
-								<td>july@example.com</td>
-							  </tr>
-							  <tr>
-								<td>B.Tech in Aerospace Engineering</td>
-								<td>Dooley</td>
-								<td>july@example.com</td>
-							  </tr>
-							  <tr>
-								<td>B.Tech in Aerospace Engineering</td>
-								<td>Dooley</td>
-								<td>july@example.com</td>
-							  </tr>
-							  <tr>
-								<td>B.Tech in Aerospace Engineering</td>
-								<td>Dooley</td>
-								<td>july@example.com</td>
-							  </tr>
+							 <%end%>
 							</tbody>
 						</table>
 					</div>

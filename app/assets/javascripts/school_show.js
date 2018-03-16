@@ -15,7 +15,7 @@
                     width = carousel.innerWidth();
 
                 if (width >= 600) {
-                    width = width / 3;
+                    width = width / 4;
                 } else if (width >= 350) {
                     width = width / 2;
                 }
@@ -35,6 +35,9 @@
             .jcarouselControl({
                 target: '+=1'
             });
+					// jQuery('.jcarousel').jcarouselAutoscroll({
+					// target: '+=3'
+					// });
 
         jQuery('.jcarousel-pagination')
             .on('jcarouselpagination:active', 'a', function() {

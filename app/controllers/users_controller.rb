@@ -39,6 +39,8 @@ class UsersController < ApplicationController
     #binding.pry
     @college 	= User.find(id = params[:id])
     @all_college = User.where(:role => "school")
+    @course_detail = @college.courses #All Course Details
+    @scholership = @college.scholarships
   end
  
 end

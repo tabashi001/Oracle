@@ -1,21 +1,19 @@
 			
-			<div id="scholarship">
-				<div class="container eliBox">
-					<div class="CollegeBox">
-						<span class="overview">DBT-TWAS ( Foreign National ) Fellowship</span>
-						<hr>
-						<div class="tabx">
-							<p class="sship">Rs. 16,000/- p.m. ,Plus Contingency amount Rs. 50,000/-p.a. Plus HRA Rs. 4,800 pm Plus Med. Allow. Rs. 600 pm.Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-						</div>
-					</div>
-				</div>
-				<div class="container eliBox">
-					<div class="CollegeBox">
-						<span class="overview">DBT-TWAS ( Foreign National ) Fellowship</span>
-						<hr>
-						<div class="tabx">
-							<p class="sship">Rs. 16,000/- p.m. ,Plus Contingency amount Rs. 50,000/-p.a. Plus HRA Rs. 4,800 pm Plus Med. Allow. Rs. 600 pm.Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-						</div>
-					</div>
-				</div>
+<div id="scholarship">
+	<div class="container eliBox">
+		<div class="CollegeBox">
+		<%if @scholership.present?%>
+			<%@scholership.each do |sch|%>
+			<span class="overview"><%= sch.title.titleize%></span>
+			<hr>
+			<div class="tabx">
+				<p class="sship"><%= sch.description%></p>
 			</div>
+			<%end%>
+			<%else%>
+			No Scholership Available Right Now..
+		  <%end%>
+			</div>
+		
+	</div>
+</div>

@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 20180316101850) do
 
-ActiveRecord::Schema.define(version: 20180315093830) do
-
-  create_table "applied_schools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "applied_schools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "email"
     t.string "phone_no"
@@ -97,8 +96,7 @@ ActiveRecord::Schema.define(version: 20180315093830) do
     t.datetime "updated_at", null: false
   end
 
-
-  create_table "sale_notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "sale_notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.text "description"
     t.boolean "sale", default: true
@@ -111,7 +109,7 @@ ActiveRecord::Schema.define(version: 20180315093830) do
     t.integer "user_id"
   end
 
-  create_table "scholarships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "scholarships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.text "description"
     t.integer "user_id"
@@ -203,6 +201,8 @@ ActiveRecord::Schema.define(version: 20180315093830) do
     t.datetime "cover_image_updated_at"
     t.string "description"
     t.string "website"
+    t.float "latitude", limit: 24
+    t.float "longitude", limit: 24
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -16,7 +16,10 @@ class User < ApplicationRecord
 
   has_attached_file :document
   validates_attachment :document, :content_type => { :content_type => %w(application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document) }
-   
+  
+  geocoded_by :address   # can also be an IP address
+  after_validation :geocode          # auto-fetch coordinates
+
   has_many :overviews, as: :user
   has_many :courses
   has_many :scholarships
@@ -34,6 +37,23 @@ class User < ApplicationRecord
   def create_picture(images)
     images.each do |image|
       SchoolPicture.create(picture: image)
+    end
+  end
+
+  def find_location
+    loc = Geocoder.coordinates(self.address)
+    if loc.present?
+      self.update_attribute(:latitude, loc[0])
+      self.update_attribute(:longitude, loc[1])
+    end
+  end
+
+
+  def create_address
+    self.addresses.destroy_all
+    addresses.each do |address|
+      adrs = self.addresses.create(address: address)
+      adrs.find_location if adrs.address.present?
     end
   end
 
