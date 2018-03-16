@@ -17,8 +17,6 @@ class User < ApplicationRecord
   has_attached_file :document
   validates_attachment :document, :content_type => { :content_type => %w(application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document) }
    
-  
-
   has_many :overviews, as: :user
   has_many :courses
   has_many :scholarships
@@ -29,6 +27,15 @@ class User < ApplicationRecord
   has_many :school_videos
   has_many :school_informations
   has_many :pay_fees, as: :user
+  has_many :sale_notes
+  has_many :applied_schools
+  has_many :users, through: :applied_schools
+
+  def create_picture(images)
+    images.each do |image|
+      SchoolPicture.create(picture: image)
+    end
+  end
 
 
 
