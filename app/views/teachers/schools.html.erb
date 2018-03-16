@@ -32,34 +32,33 @@
       <div class="inner bg-light lter">
         <h3>Apply School</h3>
         <hr>
-        <form class="form-wrapper cf">
-          <input type="text" placeholder="Location" required>
-          <input type="text" placeholder="Category" required>
-          <input type="text" placeholder="Sub Category" required>
-          <button type="submit">Search</button>
-        </form>
+        <%= form_tag teacher_schools_path(current_user), :method => 'get' do %>
+          <%= text_field_tag "name",nil,:placeholder => "School Name"%>
+          <%= text_field_tag "city",nil,:placeholder => "School City"%>
+          <%= submit_tag "Search" %>
+        <% end %>
         <div class="col-md-12">
           <h3>Schools</h3>
-          <% if @schools.present? %>
-            <% @schools.each do |school|%>
+          <% if @search.present?%>
+            <% @search.each do |search|%>
               <div class="bigbox">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="col-md-2">
-                      <% if school.profile_image.present?%>
-                        <%= image_tag school.profile_image ,class: "img-thumbnail img-responsive collglogo"%>
+                      <% if search.profile_image.present?%>
+                        <%= image_tag search.profile_image ,class: "img-thumbnail img-responsive collglogo"%>
                       <%else%>
                         <img src="/assets/img.jpg" class="img-thumbnail img-responsive collglogo">
                       <% end %>
                     </div>
                     <div class="col-md-10">
-                      <h4><%= school.name %></h4>
-                      <span> <i class="fa fa-map-marker"></i> <%= school.address%>,<%= school.city%>,<%= school.country%></span>
-                        <% @id = AppliedSchool.find_by_user_id_and_school_id(current_user, school)%>
+                      <h4><%= search.name %></h4>
+                      <span> <i class="fa fa-map-marker"></i> <%= search.address%>,<%= search.city%>,<%= search.country%></span>
+                        <% @id = AppliedSchool.find_by_user_id_and_school_id(current_user, search)%>
                         <%if @id.present?%>
                           <button class="btn btn-primary TxtceNtr" data-toggle="modal" href="#applyModal">Apply Now </button>
                         <%else%>
-                          <%=link_to "Apply Now",teacher_apply_school_path(school),class: "btn btn-primary TxtceNtr" %>
+                          <%=link_to "Apply Now",teacher_apply_school_path(search),class: "btn btn-primary TxtceNtr" %>
                         <%end%>
                     </div>
                     <div id="applyModal" class="modal fade">
@@ -71,7 +70,7 @@
                               </div>
                               <div class="modal-body">
                                   <p>
-                                      Hi <%=current_user.name%>, You already applied for <%=school.name%>
+                                      Hi <%=current_user.name%>, You already applied for <%=search.name%>
                                   </p>
                               </div>
                               <div class="modal-footer">
@@ -80,7 +79,84 @@
                           </div>
                       </div>
                     </div>
-                    <!-- <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
+                  </div>
+                </div>
+              </div>
+            <%end%>
+          <%else%>
+            <% if @schools.present? %>
+              <% @schools.each do |school|%>
+                <div class="bigbox">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="col-md-2">
+                        <% if school.profile_image.present?%>
+                          <%= image_tag school.profile_image ,class: "img-thumbnail img-responsive collglogo"%>
+                        <%else%>
+                          <img src="/assets/img.jpg" class="img-thumbnail img-responsive collglogo">
+                        <% end %>
+                      </div>
+                      <div class="col-md-10">
+                        <h4><%= school.name %></h4>
+                        <span> <i class="fa fa-map-marker"></i> <%= school.address%>,<%= school.city%>,<%= school.country%></span>
+                          <% @id = AppliedSchool.find_by_user_id_and_school_id(current_user, school)%>
+                          <%if @id.present?%>
+                            <button class="btn btn-primary TxtceNtr" data-toggle="modal" href="#applyModal">Apply Now </button>
+                          <%else%>
+                            <%=link_to "Apply Now",teacher_apply_school_path(school),class: "btn btn-primary TxtceNtr" %>
+                          <%end%>
+                      </div>
+                      <div id="applyModal" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">School</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>
+                                        Hi <%=current_user.name%>, You already applied for <%=school.name%>
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                      <!-- <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
+                        <div class="col-md-3 col-sm-6 col-xs-6">
+                          <i class="fa fa-map-marker "></i> <span>Avg Annual Fees</span>
+                          <h6>1 lakh</h6>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-6">
+                          <i class="fa fa-map-marker"></i> <span>Avg Annual Fees</span>
+                          <h6>1 lakh</h6>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-6">
+                          <i class="fa fa-map-marker"></i> <span>Avg Annual Fees</span>
+                          <h6>1 lakh</h6>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-6">
+                          <%#=link_to "Apply Now",teacher_apply_school_path(school),class: "btn btn-primary TxtceNtr" %>
+                        </div>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+              <%end%>
+            <%else%>
+              <div class="bigbox">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="col-md-2">
+                      <img src="/assets/img.jpg" class="img-thumbnail img-responsive collglogo">
+                    </div>
+                    <div class="col-md-10">
+                      <h4>Indian Institute of Technology (IITB), Mumbai </h4>
+                      <span> <i class="fa fa-map-marker"></i> Mumbai,Maharshtra</span>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
                       <div class="col-md-3 col-sm-6 col-xs-6">
                         <i class="fa fa-map-marker "></i> <span>Avg Annual Fees</span>
                         <h6>1 lakh</h6>
@@ -94,44 +170,13 @@
                         <h6>1 lakh</h6>
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-6">
-                        <%#=link_to "Apply Now",teacher_apply_school_path(school),class: "btn btn-primary TxtceNtr" %>
+                        <button class="btn btn-primary TxtceNtr">Apply Now </button>
                       </div>
-                    </div> -->
+                    </div>
                   </div>
                 </div>
               </div>
             <%end%>
-          <%else%>
-            <div class="bigbox">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="col-md-2">
-                    <img src="/assets/img.jpg" class="img-thumbnail img-responsive collglogo">
-                  </div>
-                  <div class="col-md-10">
-                    <h4>Indian Institute of Technology (IITB), Mumbai </h4>
-                    <span> <i class="fa fa-map-marker"></i> Mumbai,Maharshtra</span>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                      <i class="fa fa-map-marker "></i> <span>Avg Annual Fees</span>
-                      <h6>1 lakh</h6>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                      <i class="fa fa-map-marker"></i> <span>Avg Annual Fees</span>
-                      <h6>1 lakh</h6>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                      <i class="fa fa-map-marker"></i> <span>Avg Annual Fees</span>
-                      <h6>1 lakh</h6>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                      <button class="btn btn-primary TxtceNtr">Apply Now </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           <%end%>
         </div>
         <hr>
