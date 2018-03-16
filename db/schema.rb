@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305094103) do
+ActiveRecord::Schema.define(version: 20180315072503) do
 
   create_table "campus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20180305094103) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "degree_name"
   end
 
   create_table "cutoffs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -175,6 +176,7 @@ ActiveRecord::Schema.define(version: 20180305094103) do
     t.integer "cover_image_file_size"
     t.datetime "cover_image_updated_at"
     t.string "description"
+    t.string "website"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -44,16 +44,37 @@ class User < ApplicationRecord
 
 
 
-  def search(city,role)
-    conditions = {:city => city,:role => role}
-    conditions.delete_if {|k,v| v.blank? || k.blank?}
-    query = conditions.map { |k,val|
-      if k == :city || k == :role
-      "#{k} = '#{val}'"
-      end
-    }.join(' AND ')
-    self.users.where(query)
+  # def search(city,role)
+  #   binding.pry
+  #   conditions = {:city => city,:role => role}
+  #   conditions.delete_if {|k,v| v.blank? || k.blank?}
+  #   query = conditions.map { |k,val|
+  #     if k == :city || k == :role
+  #     "#{k} = '#{val}'"
+  #     end
+  #   }.join(' AND ')
+  #   self.users.where(query)
+  # end
+
+
+
+  def self.search(search)
+    #binding.pry
+    if search
+      User.all
+      #where('city LIKE ?', "%#{search}%" || '')
+    else
+      User.all
+    end
   end
+
+  def self.filter(filter)
+    if filter
+      where(degree_name: filter)
+    end
+  end
+
+
 
 
 

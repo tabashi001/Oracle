@@ -50,11 +50,21 @@ Rails.application.routes.draw do
 			get '/users/login' => 'devise/sessions#new'
 		    get '/users/register' => 'devise/registrations#new'
 		    get '/users/sign_out' => 'devise/sessions#destroy'
+		    #get '/users/:id/showcase' => 'users#showcase'
 		end
 
-		resources :user do 
-     collection do 
-         get :search
-       end
-     end
+		# resources :user do 
+  #    member do 
+  #        get :showcase
+  #      end
+  #    end
+
+	# devise_scope :user do 
+	# 	get '/users/login' => 'devise/sessions#new'
+	#     get '/users/register' => 'devise/registrations#new'
+	#     get '/users/sign_out' => 'devise/sessions#destroy'
+	# end
+
+	  get 'users/search' 
+	  get 'users/show'
 end

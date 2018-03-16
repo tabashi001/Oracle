@@ -340,3 +340,20 @@
 <%= javascript_include_tag "app" %>
 <%= javascript_include_tag "style-switcher" %>
 <%= javascript_include_tag "counter" %>
+
+
+<!-- <script type="text/javascript">
+  $(document).ready(function(){
+    $(".btn").click(function(){
+      $.ajax({
+        type : "get",
+        url : "/search/get_dat",
+        data : {
+          "city_id" : $(".city_select").val(),
+          "role_id" : $(".role_select").val()
+        }
+        
+      })
+    });
+  });
+</script> -->

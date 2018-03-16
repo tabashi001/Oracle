@@ -1,0 +1,157 @@
+		<div id="overview" class="active">
+				<div class="row conserti">
+					<div class="col-sm-12 consw">
+						<div class="col-sm-12 col-xs-12 col-md-9 col-lg-9 ort">
+							<div class="overviewBox">
+								<span class="overview">Overview</span>
+								<hr>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
+											<div class="building">
+												<%if @college.cover_image.present?%>
+												<%= image_tag @college.cover_image , class: "img-responsive schBuilding"%>
+												<%else%>
+												<img src="/assets/logo1.png" class="img-responsive scHbackimg" alt="Cinque Terre">
+												<%end%>
+											</div>
+										</div>
+										<div class="col-sm-12 col-xs-12 col-md-9 col-lg-9">
+											<% if @college.overviews.present? %>
+											<p class="crdtxt"><%=@college.overviews.first.description %> </p>
+											<%else%>
+											<p class="crdtxt">abcd</p>
+											<%end%>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="overviewBox">
+								<span class="overview">Videos</span>
+								<hr>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="col-sm-4 col-xs-12 col-md-4 ">
+										<div class="img-thumbnail">
+										<iframe width="100%" height="200" src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0"></iframe>
+                                         <p class="desc">hgfhgffjhgfhgjkgjkgjk</p>										
+										</div>
+										</div>
+										
+										<div class="col-sm-4 col-xs-12 col-md-4 ">
+										<div class="img-thumbnail">
+										<iframe width="100%" height="200" src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0"></iframe>
+                                         <p class="desc">hgfhgffjhgfhgjkgjkgjk</p>										
+										</div>
+										</div>
+										
+										<div class="col-sm-4 col-xs-12 col-md-4 ">
+											<div class="img-thumbnail">
+										<iframe width="100%" height="200" src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0"></iframe>
+                                         <p class="desc">hgfhgffjhgfhgjkgjkgjk</p>										
+										</div>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+							
+							<div class="CollegeBox">
+								<span class="overview">Similar Colleges</span>
+								<hr>
+								<div id="myCarousel" class="carousel slide" data-ride="carousel">
+						<!-- Indicators -->
+									
+								
+									<div class="carousel-inner">
+										<div class="item active">
+											<div class="row">
+												<div class="col-sm-12">
+													<% @all_college.first(3).each do |img| %>
+													<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
+														<div class="building">
+															<!-- <img src="/assets/logo.png" class="img-responsive schBuilding" alt="Building"> -->
+															<%= image_tag img.profile_image, class: "img-responsive schBuilding" %>
+														</div>
+													</div>
+													<%end%>
+												<!-- 	<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
+														<div class="building">
+															<img src="/assets/logo.png" class="img-responsive schBuilding" alt="Building">
+														</div>
+													</div>
+													<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
+														<div class="building">
+															<img src="/assets/logo.png" class="img-responsive schBuilding" alt="Building">
+														</div>
+													</div>
+													<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
+														<div class="building">
+															<img src="/assets/logo.png" class="img-responsive schBuilding" alt="Building">
+														</div>
+													</div> -->
+												</div>
+											</div>
+										</div>
+								
+									
+										<a class="left carousel-control sliDerbacktrans" href="#myCarousel" data-slide="prev">
+											<span class="glyphicon glyphicon-chevron-left"></span>
+											<span class="sr-only">Previous</span>
+										</a>
+										<a class="right carousel-control sliDerbacktrans" href="#myCarousel" data-slide="next">
+											<span class="glyphicon glyphicon-chevron-right"></span>
+											<span class="sr-only">Next</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="overviewBox">
+								<span class="overview">Contact Details of <%= @college.name%>,<%= @college.city.capitalize %></span>
+								<hr>
+								<div class="row ">
+									<div class="col-sm-12">
+										
+										<div class="col-sm-12 col-xs-12 col-md-4 col-lg-4">
+											<p class="contact">Contact No:&nbsp;<span class="Detastpd"> <%= @college.phone_no %></span></p>
+											<p class="contact"> Email ID: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="Detastpd"><%= @college.email %></span></p>
+											<p class="contact"> Website:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><a target="_blank" class="HanD" href="<%= @college.website%>"><%= @college.website%></a></span></p>
+											<p class="contact"> Address: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><%= @college.address %></span></p>
+										</div>
+										<div class="col-sm-12 col-xs-12 col-md-8 col-lg-8">
+											<iframe width="100%" height="200" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJI1xm2AUVrjsR-fnwFcWCcMg&key=AIzaSyAVFg8wqguXEK6ouBrHpN5ED1JNIL9UAu8" allowfullscreen></iframe>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
+							<div class="vidBox">
+								<iframe width="100%" height="250"src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=1"></iframe> 
+							</div>
+							<div class="Reviewbox">
+								<div class="flipone">REVIEWS</div>
+								<div class="panelone">
+									 <ul class="list-group">
+										  <li class="list-group-item list-group-item-success">First item <span class="badge">12</span></li>
+										  <li class="list-group-item list-group-item-info">Second item <span class="badge">12</span></li>
+										  <li class="list-group-item list-group-item-warning">Third item <span class="badge">12</span></li>
+										  <li class="list-group-item list-group-item-danger">Fourth item <span class="badge">12</span></li>
+										   <li class="list-group-item list-group-item-success">First item <span class="badge">12</span></li>
+										  <li class="list-group-item list-group-item-info">Second item <span class="badge">12</span></li>
+										  <li class="list-group-item list-group-item-warning">Third item <span class="badge">12</span></li>
+										  <li class="list-group-item list-group-item-danger">Fourth item <span class="badge">12</span></li>
+										   <li class="list-group-item list-group-item-success">First item <span class="badge">12</span></li>
+										  <li class="list-group-item list-group-item-info">Second item <span class="badge">12</span></li>
+										  <li class="list-group-item list-group-item-warning">Third item <span class="badge">12</span></li>
+										  <li class="list-group-item list-group-item-danger">Fourth item <span class="badge">12</span></li>
+										</ul> 
+									
+								</div>
+							
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>

@@ -1,21 +1,10 @@
-
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>EDUORACLE</title>
-		
-		<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800italic,800,700italic,700,600italic,400italic,600,300italic,300|Oswald:400,300,700' rel='stylesheet' type='text/css'>-->
-		<!-- Bootstrap -->
-		<!--<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/font-awesome.min.css" rel="stylesheet">
-		<link href="css/style.css" rel="stylesheet"> -->
+<title>EDUORACLE</title>
 
 <%= stylesheet_link_tag  "http://fonts.googleapis.com/css?family=Open+Sans:400,800italic,800,700italic,700,600italic,400italic,600,300italic,300|Oswald:400,300,700" %>
-		 <%= stylesheet_link_tag  "bootstrap.min" %>
-    <%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
-    <%= stylesheet_link_tag  "style" %>
-    
+<%= stylesheet_link_tag  "bootstrap.min" %>
+<%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
+<%= stylesheet_link_tag  "style" %>
+
 <script type="text/javascript">
 $(document).ready(function() {    
 
@@ -67,36 +56,9 @@ $(document).ready(function() {
 	}
 </style>
 
+<%=render "layouts/header"%>
 
-
-
-	<body data-spy="scroll" data-target=".main-nav">
-
-		<header class="st-navbar">
-			<nav class="navbar navbar-default navbar-fixed-top clearfix" role="navigation">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sept-main-nav">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand CstLogo" href="#"><img src="/assets/logo1.png" alt="" class="img-responsive imgsize"></a>
-					</div>
-					<div class="collapse navbar-collapse main-nav" id="sept-main-nav">
-						<ul class="nav navbar-nav navbar-right navrightmnu">
-						<li class="active"><a href="#home">Home</a></li>
-						<li><a href="#about">About</a></li>
-						<li><a href="#service">Service</a></li>
-						<li><a href="#contact">Contact Us</a></li>
-						<li><%= link_to "Login", new_user_session_path%></li>
-						<li><%= link_to "Sign Up",new_user_registration_path%></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</header>
+<body data-spy="scroll" data-target=".main-nav">
 		
 	<section class="home" id="home" data-stellar-background-ratio="0.4">
 		<div class="container">
@@ -104,27 +66,35 @@ $(document).ready(function() {
 				<div class="col-md-12">
 					<div class="st-home-unit">
 						
-    <div class="col-sm-offset-8 col-sm-4">
-    <%= form_tag root_path, method: :get do %>
+    <!-- <div class="col-sm-offset-8 col-sm-4">
+    <%#= form_tag root_path, method: :get do %>
       <div class="form-group">
-        <%= text_field_tag 'query', nil, placeholder: 'Enter search term...', class:"SEArchbarwdt"%>
+        <%#= text_field_tag 'query', nil, placeholder: 'Enter search term...', class:"SEArchbarwdt"%>
 
-        <%= submit_tag 'Search', class: "btn btn-primary" %>
+        <%#= submit_tag 'Search', class: "btn btn-primary" %>
+							<%#= link_to "Search", users_search_path %>
+        
       </div>
-    <% end %>
-  </div>
+    <%# end %>
+  </div> -->
+  <%#= link_to "Search", users_search_path %>
 						<h1 class="edutetitle">Discover The Best</h1>
 						<form class="form-wrapper cf">
+							<%= form_tag users_search_path(:controller => 'users', :action => 'search'), method: :get do %>
 							<!-- <select> -->
 								<%#= select( School.all.collect(&:city)) %>
 								<%= select("user", "city", @city.map{|city| city.titleize},{} ,{class: "fa-map-marker-alt"}) %>
 							<!-- </select> -->
 							
 								<%= select("user", "role", @role.map{|role| role.titleize}) %>
-								<%= select("user", "role", @course.map{|course| course.upcase}) %>
+								<%= select("user", "course", @course.map{|course| course.upcase}) %>
 
-							<button type="submit">Search</button>
+							<!-- <button type="submit">Search</button> -->
+
+							<!-- <button type="submit">Search</button> -->
+							<%= submit_tag 'Search', class: "btn btn-primary" %>
 						</form>		
+						<% end %>
 					</div>
 				</div>
 			</div>
@@ -138,72 +108,9 @@ $(document).ready(function() {
 			</marquee>
 		</div>
 	</div>
-		
 
-	<section class="about" id="about">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="section-title st-center">
-						<h3 class="abouttitle">WelCome to Eduoracle</h3>
-					</div>
-					<div class="row mb90">
-						<div class="col-md-6">
-							<p>Texit l, habere se indocti magnosque culpa gravioribus discedere eas indignae diogenem, praetermissum effugiendorum vult dicent, periculum dolere putat. Iucunditatem quid turbulenta patre eae depravatum talem elaborare plerisque repellere, o potiendi tuo aliter, militaris sint tranquillat liberalitati. Locus delicata divelli intemperantes audeam maximisque sitne pulcherrimum aegritudines studium. Habent inveniri fidelissimae aequi andriam laudabilis. Libido censet assiduitas quae probantur tantalo exquisitaque erunt laudatur optari. Late suapte veterum enim qui magna securi eaque proficiscuntur.</p>
-						</div>
-						<div class="col-md-6">
-							<img src="/assets/about.jpg" alt="" class="img-responsive">
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="service" id="service">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="section-title st-center">
-						<h3>Get Connected with</h3>
-					</div>
-					<div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="col-md-3 col-sm-6 col-xs-12">
-							<div class="st-feature">
-								<div class="st-feature-icon"><i class="fa fa-university"></i></div>
-								<strong class="st-feature-title">School & College</strong>
-								<p>Pro adiuvet, honesto foris liberiusque statuat theseo scribimus mererer percurri geometria.</p>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6 col-xs-12">
-							<div class="st-feature">
-								<div class="st-feature-icon"><i class="fa fa-users"></i></div>
-								<strong class="st-feature-title">Teaching Professionals</strong>
-								<p>Pro adiuvet, honesto foris liberiusque statuat theseo scribimus mererer percurri geometria.</p>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6 col-xs-12">
-							<div class="st-feature">
-								<div class="st-feature-icon"><i class="fa fa-book"></i></div>
-								<strong class="st-feature-title">Learning Meterials</strong>
-								<p>Pro adiuvet, honesto foris liberiusque statuat theseo scribimus mererer percurri geometria.</p>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6 col-xs-12">
-							<div class="st-feature">
-								<div class="st-feature-icon"><i class="fa fa-users"></i></div>
-								<strong class="st-feature-title">Suppliers & Vendors</strong>
-								<p>Pro adiuvet, honesto foris liberiusque statuat theseo scribimus mererer percurri geometria.</p>
-							</div>
-						</div>
-        			</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+ <%= render 'users/connectedu'%>
+ 	
 		
 <div class="container-fluid contboderone">
 	<h3 style="text-align:center;">RECENTLY ADDED SCHOOLS</h3>
@@ -261,53 +168,6 @@ $(document).ready(function() {
 				</div>
 			</div>
 		<%end%>
-
-	    <!-- <div class="col-sm-6 col-md-3">
-	  <div id="wrapper">
-	            <div class="cards">
-	                <div class="card-header">
-	                    <div class="card-header-mask">
-	                        <div class="card-header-date">
-	                            <div class="card-header-date-day">12</div>
-	                            <div class="card-header-date-month">May</div>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="card-body">
-	                    <div class="card-body-header">
-	                      <div class="card-body-header-category">
-				          <img class="img-respomsive Companylg" src="/assets/aj.jpg">
-				          </div>
-						  <p class="card-body-header-sentence">
-	                           <span>Tabashi Technology Private Limited</span>
-	                        </p>
-	                        <h5 class="hfivestyle">Lorem ipsum dolor amet consectetur adipisicing elit.
-	                        Molestias autem aliquid,recusandae maiores iste fuga,
-	                        explicabo dolor vitae magnam!</h5>
-	                        <a href="#" target="_blank" class="custanchor">read more...</a>
-	                        </div>
-	                   <div class="card-body-footer">
-					   <div class="row">
-					      <div class="col-md-4 col-xs-4 text-center">
-						  <ul class="soclmd" style="display: none;">
-						   <a href="#"><li><i class="fa fa-facebook-square"></i></li></a>
-						   <a href="#"><li><i class="fa fa-twitter"></i></li></a>
-						   <a href="#"><li><i class="fa fa-whatsapp"></i></li></a>
-						   <a href="#"><li><i class="fa fa-envelope-o"></i></li></a>
-						   <a href="#"><li><i class="fa fa-linkedin"></i></li></a>
-						   </ul>
-				           <span class="socxialtoggle"><i aria-hidden="true" class="fa fa-share-alt"></i></span>
-						 
-						</div>
-						   <div class=" col-md-8 col-xs-8 text-center">
-	                        <a target="_blank" href="viewjobs.html">
-							<span class="Footeranchor">Open in a new tab</span>
-							</a>
-						</div>
-						</div>
-	                    </div>
-	                </div>
-	            </div>-->
 	</div>
 
 
@@ -317,604 +177,41 @@ $(document).ready(function() {
 </div>
 
 
-	<div class="container-fluid contbodertwo">
-		<h3 style="text-align:center;">RECENTLY ADDED TEACHERS</h3>
-		<div class="row RowMarginzero">
-			<div class="col-sm-6 col-md-3">
-				<div id="wrapper">
-					<div class="cards">
-						<div class="card-header">
-							<div class="card-header-mask">
-							<div class="card-header-date">
-							<div class="card-header-date-day">12</div>
-							<div class="card-header-date-month">May</div>
-							</div>
-							</div>
-						</div>
-						<div class="card-body">
-							<div class="card-body-header">
-							<div class="card-body-header-category">
-							<img class="img-respomsive Companylg" src="/assets/aj.jpg">
-							</div>
-							<p class="card-body-header-sentence">
-							<span>Tabashi Technology Private Limited</span>
-							</p>
-							<h5 class="hfivestyle">Lorem ipsum dolor amet consectetur adipisicing elit.
-							Molestias autem aliquid,recusandae maiores iste fuga,
-							explicabo dolor vitae magnam!</h5>
-							<a href="#" target="_blank" class="custanchor">read more...</a>
-							</div>
-							<div class="card-body-footer">
-								<div class="row">
-									<div class="col-md-4 col-xs-4 text-center">
-										<ul class="soclmd" style="display: none;">
-										<a href="#"><li><i class="fa fa-facebook-square"></i></li></a>
-										<a href="#"><li><i class="fa fa-twitter"></i></li></a>
-										<a href="#"><li><i class="fa fa-whatsapp"></i></li></a>
-										<a href="#"><li><i class="fa fa-envelope-o"></i></li></a>
-										<a href="#"><li><i class="fa fa-linkedin"></i></li></a>
-										</ul>
-										<span class="socxialtoggle"><i aria-hidden="true" class="fa fa-share-alt"></i></span>
-									</div>
-									<div class=" col-md-8 col-xs-8 text-center">
-										<a target="_blank" href="viewjobs.html">
-										<span class="Footeranchor">Open in a new tab</span>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 
-			<div class="col-sm-6 col-md-3">
-				<div id="wrapper">
-					<div class="cards">
-						<div class="card-header">
-							<div class="card-header-mask">
-							<div class="card-header-date">
-							<div class="card-header-date-day">12</div>
-							<div class="card-header-date-month">May</div>
-							</div>
-							</div>
-						</div>
-						<div class="card-body">
-							<div class="card-body-header">
-							<div class="card-body-header-category">
-							<img class="img-respomsive Companylg" src="/assets/aj.jpg">
-							</div>
-							<p class="card-body-header-sentence">
-							<span>Tabashi Technology Private Limited</span>
-							</p>
-							<h5 class="hfivestyle">Lorem ipsum dolor amet consectetur adipisicing elit.
-							Molestias autem aliquid,recusandae maiores iste fuga,
-							explicabo dolor vitae magnam!</h5>
-							<a href="#" target="_blank" class="custanchor">read more...</a>
-							</div>
-							<div class="card-body-footer">
-								<div class="row">
-									<div class="col-md-4 col-xs-4 text-center">
-										<ul class="soclmd" style="display: none;">
-										<a href="#"><li><i class="fa fa-facebook-square"></i></li></a>
-										<a href="#"><li><i class="fa fa-twitter"></i></li></a>
-										<a href="#"><li><i class="fa fa-whatsapp"></i></li></a>
-										<a href="#"><li><i class="fa fa-envelope-o"></i></li></a>
-										<a href="#"><li><i class="fa fa-linkedin"></i></li></a>
-										</ul>
-										<span class="socxialtoggle"><i aria-hidden="true" class="fa fa-share-alt"></i></span>
-									</div>
-									<div class=" col-md-8 col-xs-8 text-center">
-										<a target="_blank" href="viewjobs.html">
-										<span class="Footeranchor">Open in a new tab</span>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<div id="wrapper">
-					<div class="cards">
-						<div class="card-header">
-							<div class="card-header-mask">
-							<div class="card-header-date">
-							<div class="card-header-date-day">12</div>
-							<div class="card-header-date-month">May</div>
-							</div>
-							</div>
-						</div>
-						<div class="card-body">
-							<div class="card-body-header">
-							<div class="card-body-header-category">
-							<img class="img-respomsive Companylg" src="/assets/aj.jpg">
-							</div>
-							<p class="card-body-header-sentence">
-							<span>Tabashi Technology Private Limited</span>
-							</p>
-							<h5 class="hfivestyle">Lorem ipsum dolor amet consectetur adipisicing elit.
-							Molestias autem aliquid,recusandae maiores iste fuga,
-							explicabo dolor vitae magnam!</h5>
-							<a href="#" target="_blank" class="custanchor">read more...</a>
-							</div>
-							<div class="card-body-footer">
-								<div class="row">
-									<div class="col-md-4 col-xs-4 text-center">
-										<ul class="soclmd" style="display: none;">
-										<a href="#"><li><i class="fa fa-facebook-square"></i></li></a>
-										<a href="#"><li><i class="fa fa-twitter"></i></li></a>
-										<a href="#"><li><i class="fa fa-whatsapp"></i></li></a>
-										<a href="#"><li><i class="fa fa-envelope-o"></i></li></a>
-										<a href="#"><li><i class="fa fa-linkedin"></i></li></a>
-										</ul>
-										<span class="socxialtoggle"><i aria-hidden="true" class="fa fa-share-alt"></i></span>
-									</div>
-									<div class=" col-md-8 col-xs-8 text-center">
-										<a target="_blank" href="viewjobs.html">
-										<span class="Footeranchor">Open in a new tab</span>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<div id="wrapper">
-					<div class="cards">
-						<div class="card-header">
-							<div class="card-header-mask">
-							<div class="card-header-date">
-							<div class="card-header-date-day">12</div>
-							<div class="card-header-date-month">May</div>
-							</div>
-							</div>
-						</div>
-						<div class="card-body">
-							<div class="card-body-header">
-							<div class="card-body-header-category">
-							<img class="img-respomsive Companylg" src="/assets/aj.jpg">
-							</div>
-							<p class="card-body-header-sentence">
-							<span>Tabashi Technology Private Limited</span>
-							</p>
-							<h5 class="hfivestyle">Lorem ipsum dolor amet consectetur adipisicing elit.
-							Molestias autem aliquid,recusandae maiores iste fuga,
-							explicabo dolor vitae magnam!</h5>
-							<a href="#" target="_blank" class="custanchor">read more...</a>
-							</div>
-							<div class="card-body-footer">
-								<div class="row">
-									<div class="col-md-4 col-xs-4 text-center">
-										<ul class="soclmd" style="display: none;">
-										<a href="#"><li><i class="fa fa-facebook-square"></i></li></a>
-										<a href="#"><li><i class="fa fa-twitter"></i></li></a>
-										<a href="#"><li><i class="fa fa-whatsapp"></i></li></a>
-										<a href="#"><li><i class="fa fa-envelope-o"></i></li></a>
-										<a href="#"><li><i class="fa fa-linkedin"></i></li></a>
-										</ul>
-										<span class="socxialtoggle"><i aria-hidden="true" class="fa fa-share-alt"></i></span>
-									</div>
-									<div class=" col-md-8 col-xs-8 text-center">
-										<a target="_blank" href="viewjobs.html">
-										<span class="Footeranchor">Open in a new tab</span>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+	<%#= render 'users/welcomeedu'%>
+	
+	<%#= render 'users/schools'%>
+	<%= render 'users/teachers'%>
+	<%= render 'users/students'%>
+	<%= render 'users/vendors'%>
+	<%#= render 'users/contact'%>
+	<%=render "layouts/footer"%>
+
+	<div id="myModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog modal-lg">
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-body">
+	        <p>Some text in the modal.</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
 	  </div>
+	</div>
 
-<div class="row explorebtnrw">
-<a class="text-center" href="#"><button class="btn btn-primary prmbtnsty">VIEW ALL</button></a>
-</div>
-</div>
-
-
-<div class="container-fluid contboderthree">
-  <h3 style="text-align:center;">RECENTLY ADDED STUDENTS</h3>
-<div class="row RowMarginzero">
-
-<% @student.each do |student| %>
-<div class="col-sm-6 col-md-3">
-  <div id="wrapper">
-            <div class="cards">
-                <div class="card-header">
-                    <div class="card-header-mask">
-                        <div class="card-header-date">
-                            <!-- <div class="card-header-date-day">12</div>
-                            <div class="card-header-date-month">May</div> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="card-body-header">
-                      <div class="card-body-header-category">
-                      	<% if student.profile_image.present?%>
-                      	<%= image_tag student.profile_image ,class: "img-respomsive Companylg stdImG"%>
-                      	<%else%>
-			          <img class="img-respomsive Companylg" src="/assets/aj.jpg">
-			          <% end %>
-			          </div>
-					  <p class="card-body-header-sentence">
-                           <span><%= student.name %></span>
-                        </p>
-                        <h5 class="hfivestyle"><%= student.description %></h5>
-                        <a href="#" target="_blank" class="custanchor">read more...</a>
-                        </div>
-                   <div class="card-body-footer">
-				   <div class="row">
-				      <div class="col-md-4 col-xs-4 text-center">
-					  <ul class="soclmd" style="display: none;">
-					   <a href="#"><li><i class="fa fa-facebook-square"></i></li></a>
-					   <a href="#"><li><i class="fa fa-twitter"></i></li></a>
-					   <a href="#"><li><i class="fa fa-whatsapp"></i></li></a>
-					   <a href="#"><li><i class="fa fa-envelope-o"></i></li></a>
-					   <a href="#"><li><i class="fa fa-linkedin"></i></li></a>
-					   </ul>
-			           <span class="socxialtoggle"><i aria-hidden="true" class="fa fa-share-alt"></i></span>
-					 
-					</div>
-					   <div class=" col-md-8 col-xs-8 text-center">
-                        <a target="_blank" href="viewjobs.html">
-						<span class="Footeranchor">Open in a new tab</span>
-						</a>
-					</div>
-					</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-       </div>
-       <% end %>
-    </div>
-<div class="row explorebtnrw">
-<a class="text-center" href="#"><button class="btn btn-primary prmbtnsty">VIEW ALL</button></a>
-</div>
-</div>
-
-
-<div class="container-fluid contboderfour">
-  <h3 style="text-align:center;">RECENTLY ADDED VENDORS</h3>
-<div class="row RowMarginzero">
-<div class="col-sm-6 col-md-3">
-  <div id="wrapper">
-            <div class="cards">
-                <div class="card-header">
-                    <div class="card-header-mask">
-                        <div class="card-header-date">
-                            <div class="card-header-date-day">12</div>
-                            <div class="card-header-date-month">May</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="card-body-header">
-                      <div class="card-body-header-category">
-			          <img class="img-respomsive Companylg" src="/assets/aj.jpg">
-			          </div>
-					  <p class="card-body-header-sentence">
-                           <span>Tabashi Technology Private Limited</span>
-                        </p>
-                        <h5 class="hfivestyle">Lorem ipsum dolor amet consectetur adipisicing elit.
-                        Molestias autem aliquid,recusandae maiores iste fuga,
-                        explicabo dolor vitae magnam!</h5>
-                        <a href="#" target="_blank" class="custanchor">read more...</a>
-                        </div>
-                   <div class="card-body-footer">
-				   <div class="row">
-				      <div class="col-md-4 col-xs-4 text-center">
-					  <ul class="soclmd" style="display: none;">
-					   <a href="#"><li><i class="fa fa-facebook-square"></i></li></a>
-					   <a href="#"><li><i class="fa fa-twitter"></i></li></a>
-					   <a href="#"><li><i class="fa fa-whatsapp"></i></li></a>
-					   <a href="#"><li><i class="fa fa-envelope-o"></i></li></a>
-					   <a href="#"><li><i class="fa fa-linkedin"></i></li></a>
-					   </ul>
-			           <span class="socxialtoggle"><i aria-hidden="true" class="fa fa-share-alt"></i></span>
-					 
-					</div>
-					   <div class=" col-md-8 col-xs-8 text-center">
-                        <a target="_blank" href="viewjobs.html">
-						<span class="Footeranchor">Open in a new tab</span>
-						</a>
-					</div>
-					</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-       </div>
-    <div class="col-sm-6 col-md-3">
-  <div id="wrapper">
-            <div class="cards">
-                <div class="card-header">
-                    <div class="card-header-mask">
-                        <div class="card-header-date">
-                            <div class="card-header-date-day">12</div>
-                            <div class="card-header-date-month">May</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="card-body-header">
-                      <div class="card-body-header-category">
-			          <img class="img-respomsive Companylg" src="/assets/aj.jpg">
-			          </div>
-					  <p class="card-body-header-sentence">
-                           <span>Tabashi Technology Private Limited</span>
-                        </p>
-                        <h5 class="hfivestyle">Lorem ipsum dolor amet consectetur adipisicing elit.
-                        Molestias autem aliquid,recusandae maiores iste fuga,
-                        explicabo dolor vitae magnam!</h5>
-                        <a href="#" target="_blank" class="custanchor">read more...</a>
-                        </div>
-                   <div class="card-body-footer">
-				   <div class="row">
-				      <div class="col-md-4 col-xs-4 text-center">
-					  <ul class="soclmd" style="display: none;">
-					   <a href="#"><li><i class="fa fa-facebook-square"></i></li></a>
-					   <a href="#"><li><i class="fa fa-twitter"></i></li></a>
-					   <a href="#"><li><i class="fa fa-whatsapp"></i></li></a>
-					   <a href="#"><li><i class="fa fa-envelope-o"></i></li></a>
-					   <a href="#"><li><i class="fa fa-linkedin"></i></li></a>
-					   </ul>
-			           <span class="socxialtoggle"><i aria-hidden="true" class="fa fa-share-alt"></i></span>
-					 
-					</div>
-					   <div class=" col-md-8 col-xs-8 text-center">
-                        <a target="_blank" href="viewjobs.html">
-						<span class="Footeranchor">Open in a new tab</span>
-						</a>
-					</div>
-					</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-       </div>
-
-      <div class="col-sm-6 col-md-3">
-  <div id="wrapper">
-            <div class="cards">
-                <div class="card-header">
-                    <div class="card-header-mask">
-                        <div class="card-header-date">
-                            <div class="card-header-date-day">12</div>
-                            <div class="card-header-date-month">May</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="card-body-header">
-                      <div class="card-body-header-category">
-			          <img class="img-respomsive Companylg" src="/assets/aj.jpg">
-			          </div>
-					  <p class="card-body-header-sentence">
-                           <span>Tabashi Technology Private Limited</span>
-                        </p>
-                        <h5 class="hfivestyle">Lorem ipsum dolor amet consectetur adipisicing elit.
-                        Molestias autem aliquid,recusandae maiores iste fuga,
-                        explicabo dolor vitae magnam!</h5>
-                        <a href="#" target="_blank" class="custanchor">read more...</a>
-                        </div>
-                   <div class="card-body-footer">
-				   <div class="row">
-				      <div class="col-md-4 col-xs-4 text-center">
-					  <ul class="soclmd" style="display: none;">
-					   <a href="#"><li><i class="fa fa-facebook-square"></i></li></a>
-					   <a href="#"><li><i class="fa fa-twitter"></i></li></a>
-					   <a href="#"><li><i class="fa fa-whatsapp"></i></li></a>
-					   <a href="#"><li><i class="fa fa-envelope-o"></i></li></a>
-					   <a href="#"><li><i class="fa fa-linkedin"></i></li></a>
-					   </ul>
-			           <span class="socxialtoggle"><i aria-hidden="true" class="fa fa-share-alt"></i></span>
-					 
-					</div>
-					   <div class=" col-md-8 col-xs-8 text-center">
-                        <a target="_blank" href="viewjobs.html">
-						<span class="Footeranchor">Open in a new tab</span>
-						</a>
-					</div>
-					</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-       </div>
-
-     <div class="col-sm-6 col-md-3">
-  <div id="wrapper">
-            <div class="cards">
-                <div class="card-header">
-                    <div class="card-header-mask">
-                        <div class="card-header-date">
-                            <div class="card-header-date-day">12</div>
-                            <div class="card-header-date-month">May</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="card-body-header">
-                      <div class="card-body-header-category">
-			          <img class="img-respomsive Companylg" src="/assets/aj.jpg">
-			          </div>
-					  <p class="card-body-header-sentence">
-                           <span>Tabashi Technology Private Limited</span>
-                        </p>
-                        <h5 class="hfivestyle">Lorem ipsum dolor amet consectetur adipisicing elit.
-                        Molestias autem aliquid,recusandae maiores iste fuga,
-                        explicabo dolor vitae magnam!</h5>
-                        <a href="#" target="_blank" class="custanchor">read more...</a>
-                        </div>
-                   <div class="card-body-footer">
-				   <div class="row">
-				      <div class="col-md-4 col-xs-4 text-center">
-					  <ul class="soclmd" style="display: none;">
-					   <a href="#"><li><i class="fa fa-facebook-square"></i></li></a>
-					   <a href="#"><li><i class="fa fa-twitter"></i></li></a>
-					   <a href="#"><li><i class="fa fa-whatsapp"></i></li></a>
-					   <a href="#"><li><i class="fa fa-envelope-o"></i></li></a>
-					   <a href="#"><li><i class="fa fa-linkedin"></i></li></a>
-					   </ul>
-			           <span class="socxialtoggle"><i aria-hidden="true" class="fa fa-share-alt"></i></span>
-					 
-					</div>
-					   <div class=" col-md-8 col-xs-8 text-center">
-                        <a target="_blank" href="viewjobs.html">
-						<span class="Footeranchor">Open in a new tab</span>
-						</a>
-					</div>
-					</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-       </div>
-    
-</div>
-<div class="row explorebtnrw">
-<a class="text-center" href="#"><button class="btn btn-primary prmbtnsty">VIEW ALL</button></a>
-</div>
-</div>
-
-
-
-        <section class="contact" id="contact">
-			<div class="container">
-				
-				<div class="row">
-					<div class="col-md-6">
-            <div class="section-title st-center">
-              
-              <p>Get in Touch with Us</p>
-            </div>
-						<form class="contact-form" role="form">
-							<input type="text" class="form-control" id="fname" name="fname" placeholder="Your Full Name">
-							<input type="email" class="form-control" id="email" name="email" placeholder="Your E-mail">
-							<input type="text" class="form-control" id="subj" name="subj" placeholder="Phone Number">
-							<textarea id="mssg" name="mssg" placeholder="Requirements" class="form-control" rows="5"></textarea>
-							<button class="btn btn-main btn-lg" type="submit" id="send" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Sending..."><i class="fa fa-paper-plane "></i> Send</button>
-						</form>
-						<div id="result-message" role="alert"></div>
-					</div>
-					<div class="col-md-6">
-             <div class="section-title st-center">
-              
-              <p>star Performer of the week</p>
-            </div>
-						<p>Homines praetore aperiam aegritudine turpe quietus, amorem errore meo horreat triario quantus rectas tollitur. Infimum audiebamus saluto disciplina praetermittenda, aspernatur vocent firmitatem contenta eademque ibidem quales efficiat. </p>
-             <iframe width="100%" height="280"src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=0"></iframe> 
-						<address>
-							<strong>Twitter, Inc.</strong><br>
-							795 Folsom Ave, Suite 600<br>
-							San Francisco, CA 94107<br>
-							<abbr title="Phone">P:</abbr> (123) 456-7890
-						</address>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<footer class="site-footer">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-12">
-						&copy; <a href="https://www.cantothemes.com"></a> 2018.Powered by Tabashi Technology Private Limited
-						
-					</div>
-				</div>
-				</div>
-		</footer>
-		<footer class="site-footerone">
-			<div class="container-fluid">
-		<div class="row">
-					<div class="col-md-12 col-sm-12">
-						<div class="col-md-4 col-sm-4">
-						<h4 class="hfclsd">Eduoracle</h4>
-						<a href="#" class="anChstyle">Contact Us</a>	
-						<a href="#" class="anChstyle">Private Policy</a>	
-						<a href="#" class="anChstyle">Term & Conditions - Refund Policy</a>	
-						</div>	
-						<div class="col-md-4 col-sm-4">
-							<h4 class="hfclsd">Contact Us</h4>
-							<p class="margzero">Email : abc@gmail.com</p>
-							<p class="margzero">Phone No : 675890829</p>
-							<p class="margzero">Fax No : 675890829</p>
-						</div>	
-						<div class="col-md-4 col-sm-4">
-							<h4 class="hfclsd">Social Connect</h4>
-							<a href="#" class="">
-								<img src="/assets/facebook.png" class="img-responsive smediasixe"/>
-							</a>
-							<a href="#" class="">
-								<img src="/assets/twitter.png" class="img-responsive smediasixe"/>
-							</a>	
-							<a href="#" class="">
-								<img src="/assets/google-plus.png" class="img-responsive smediasixe"/>
-							</a>	
-							<a href="#" class="">
-								<img src="/assets/pinterest.png" class="img-responsive smediasixe"/>
-							</a>
-
-							<a href="#" class="platsytr">
-								<img src="/assets/play.png" class="img-responsive playimgsize"/>
-							</a>
-
-
-						</div>	
-						
-					</div>
-				</div>
-			</div>
-		</footer>
-
- 
-
- <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
-    <!-- Modal content-->
-    <div class="modal-content">
-      
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-  
-		
-		<!-- <script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/jquery.stellar.js"></script>
-		<script src="js/jquery.appear.js"></script>
-		<script src="js/jquery.nicescroll.min.js"></script>
-		<script src="js/script.js"></script> -->
-
-
-
-                <%= javascript_include_tag "jquery.min" %>
-    <%= javascript_include_tag "bootstrap.min" %>
-    <%= javascript_include_tag "jquery.stellar" %>
-    <%= javascript_include_tag "jquery.appear" %>
-    <%= javascript_include_tag "jquery.nicescroll.min" %>
-    <%= javascript_include_tag "script" %>
+	  
+<%= javascript_include_tag "jquery.min" %>
+<%= javascript_include_tag "bootstrap.min" %>
+<%= javascript_include_tag "jquery.stellar" %>
+<%= javascript_include_tag "jquery.appear" %>
+<%= javascript_include_tag "jquery.nicescroll.min" %>
+<%= javascript_include_tag "script" %>
    
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
 
-
-    <script type="text/javascript">
-    $(window).load(function(){        
-   $('#myModal').modal('show');
-    }); 
+<script type="text/javascript">
+	$(window).load(function(){        
+	$('#myModal').modal('show');
+	}); 
 </script>

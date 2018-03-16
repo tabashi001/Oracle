@@ -153,7 +153,11 @@
         <h4>Courses</h4>
         <hr>
         <%= form_for(@course, url: school_course_path) do |f| %>
-          <div class="row vdiocont">    
+          <div class="row vdiocont">   
+          <div class="form-group margunrve">
+              <label for="email">Degree</label>
+              <%=f.text_field :degree_name, class: "form-control",placeholder: "Name of Courses" %>
+            </div> 
             <div class="form-group margunrve">
               <label for="email">Name of Courses</label>
               <%=f.text_field :course_name, class: "form-control",placeholder: "Name of Courses" %>
