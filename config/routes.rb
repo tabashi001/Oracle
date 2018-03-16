@@ -19,7 +19,9 @@ Rails.application.routes.draw do
 
 
 	resources :teachers do
+		get :schools
 		get :apply_school
+		post :apply_school
 		get :find_student
 		get :sale_notes
 		get :create_sale_notes
@@ -31,6 +33,7 @@ Rails.application.routes.draw do
 	end
 
 	resources :schools do
+		get :teachers
 		get :overview
 		post :overview
 		get :update_overview

@@ -3,7 +3,7 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
   :scholarship,:scholarships,:update_scholarship,:placements,:update_placement,:placement,
   :cutoffs, :cutoff,:update_cuttoff,:campus,:campu,:update_campu,:schoolinformations,:schoolinformation,
   :update_schoolinformation,:schoolpictures,:schoolpicture,:update_schoolpicture,:schoolvideos,
-  :schoolvideo,:update_schoolvideo]
+  :schoolvideo,:update_schoolvideo,:teachers]
 
   def index
     @course_count = Course.where("user_id = ?",set_school).count
@@ -14,6 +14,11 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
     @news_count = SchoolInformation.where("user_id = ?",set_school).count
     @picture_count = SchoolPicture.where("user_id = ?",set_school).count
     @video_count = SchoolVideo.where("user_id = ?",set_school).count
+    @teachers_count = AppliedSchool.where("school_id = ?",@school).count
+  end
+
+  def teachers
+    @teachers = AppliedSchool.where("school_id = ?",@school)
   end
 
   def overview

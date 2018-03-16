@@ -13,13 +13,13 @@
           <div class="row">
             <div class="col-md-12 col-sm-12">
               <div class="col-md-3 col-sm-6">
-                <a href="">
+                <%= link_to  school_teachers_path(current_user) do %>
                   <div class="counting-box" id="encounter">
                     <img src="https://image.flaticon.com/icons/svg/188/188999.svg" alt="Image 1">
-                    <h4 class="count-this">1582</h4>
+                    <h4 class="count-this"><%= @teachers_count %></h4>
                     <p>TEACHER</p>
                   </div>
-                </a>
+                <%end%>
               </div>
               <div class="col-md-3 col-sm-6">
                 <a href="">

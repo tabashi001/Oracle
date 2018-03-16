@@ -1,12 +1,25 @@
 class TeachersController < ApplicationController
-before_action :set_teacher, only:[:index,:apply_school,:find_student,:sale_notes,:create_sale_notes,
+before_action :set_teacher, only:[:index,:schools,:apply_school,:find_student,:sale_notes,:create_sale_notes,
 :update_sale_notes]
 	
 	def index
+		@schools_count = @teacher.applied_schools.count
 	end
 
-	def apply_school
+	def schools
 		@schools = User.where(:role => "school")
+	end
+	def apply_school
+		if request.get?
+			@apply_school = AppliedSchool.new
+			@school = User.find_by_id(params[:teacher_id])
+		else
+			@apply_school = @teacher.applied_schools.create(apply_school_params)
+		    if @apply_school.save
+		        redirect_to teacher_schools_path
+		    else 
+		    end
+    	end 
 	end
 
 	def find_student
@@ -63,6 +76,10 @@ before_action :set_teacher, only:[:index,:apply_school,:find_student,:sale_notes
 	end
 
 	def sale_notes_params
-    	params.require(:sale_note).permit(:title, :description, :document, :user_id)
+    	params.require(:sale_note).permit(:title,:description,:document,:user_id)
+  	end
+
+  	def apply_school_params
+    	params.require(:applied_school).permit(:name,:email,:phone_no,:description,:school_id,:user_id)
   	end
 end
