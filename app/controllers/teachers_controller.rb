@@ -8,6 +8,7 @@ before_action :set_teacher, only:[:index,:schools,:apply_school,:find_student,:s
 
 	def schools
 		@schools = User.where(:role => "school")
+		@search = User.where("name = ? AND city= ?", params[:name],params[:city]) if params[:name] && params[:city].present?
 	end
 	def apply_school
 		if request.get?
@@ -24,7 +25,11 @@ before_action :set_teacher, only:[:index,:schools,:apply_school,:find_student,:s
 
 	def find_student
 		@students = User.where(:role => "student")
+		@search = User.where("name = ? AND qualification= ? AND city=?", 
+					params[:name],params[:qualification],params[:city])
+					if params[:name] && params[:qualification] && params[:city].present?
 	end
+end
 
 	def sale_notes
 		@sale_notes = @teacher.sale_notes
