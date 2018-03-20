@@ -14,8 +14,8 @@
         <%= form_for(@placement, url: school_placement_path) do |f| %>
           <div class="row vdiocont">    
             <div class="form-group margunrve">
-              <label for="email">Title</label>
-              <%=f.text_field :title, class: "form-control",placeholder: "Title" %>
+              <label for="email">Stream</label>
+              <%=f.text_field :title, class: "form-control",placeholder: "Title" ,required:"required"%>
             </div>
             <div class="form-group margunrve">
               <label for="pwd">Description</label>
@@ -23,19 +23,19 @@
             </div>
             <div class="form-group margunrve">
               <label for="text">No of Company Visited</label>
-              <%=f.text_field :companies_visited, class: "form-control",placeholder: "No of Companies Visited" %>
+              <%=f.text_field :companies_visited, class: "form-control",placeholder: "No of Companies Visited",required:"required" %>
             </div>
             <div class="form-group margunrve">
               <label for="text">No of Student Placed</label>
-              <%=f.text_field :students_placed, class: "form-control",placeholder: "Students Placed" %>
+              <%=f.text_field :students_placed, class: "form-control",placeholder: "Students Placed",required:"required" %>
             </div>
             <div class="form-group margunrve">
               <label for="text">Total No of Students</label>
               <%=f.text_field :total_students, class: "form-control",placeholder: "Total Students" %>
             </div>
             <div class="form-group margunrve">
-              <label for="text">year</label>
-              <%=f.text_field :year, class: "form-control",placeholder: "Year" %>
+              <label for="text">Year</label>
+              <%=f.text_field :year, class: "form-control",placeholder: "Year",required:"required" %>
             </div>
            <div class="form-group margunrve text-center">
             <%=f.submit "Submit", class: "btn btn-default"%>

@@ -120,7 +120,7 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
     else
       @placement = @school.placements.create(placement_params)
         if @placement.save
-          redirect_to school_placements_path
+          redirect_to school_placements_path,notice: 'Placement details saved successfully'
         else 
         end
     end 

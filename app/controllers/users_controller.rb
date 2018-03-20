@@ -7,21 +7,16 @@ class UsersController < ApplicationController
    @role = User.pluck(:role).uniq
    @course = Course.pluck(:course_name).uniq
    @school 	= User.where(:role => "school")
-   #@teacher = User.where(:role => "teacher")
-
    @student = User.where(:role => "student")
-   #@vendor 	= User.where(:role => "vendor")
-   #binding.pry
    if params[:commit]=="Search"
    		@@first_value = params[:user]
 			redirect_to users_search_path
 			end   	 
-
   end
 
-   #@school = User.search.where("city LIKE ?","#{params[:search]}%")
-   #binding.pry
-   # @school = User.search(params[:city]) if params[:commit]=="Search"
+ #@school = User.search.where("city LIKE ?","#{params[:search]}%")
+ #binding.pry
+ # @school = User.search(params[:city]) if params[:commit]=="Search"
 
   def search
   	#binding.pry
@@ -41,6 +36,10 @@ class UsersController < ApplicationController
     @all_college = User.where(:role => "school")
     @course_detail = @college.courses #All Course Details
     @scholership = @college.scholarships
+    @placement = @college.placements
+    @news = @college.school_informations
+    @gallery = @college.school_pictures
+    @video = @college.school_videos
   end
  
 end

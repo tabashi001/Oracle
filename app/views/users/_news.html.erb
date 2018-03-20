@@ -3,61 +3,44 @@
 					<div class="col-sm-12 consw">
 						<div class="col-sm-12 col-xs-12 col-md-9 col-lg-9 ort">
 							<div class="overviewBox">
-								<span class="overview">Indian Institute of Technology News</span>
+								<span class="overview"><%= @college.name %> News</span>
 								<hr>
+								
 								<div class="row">
+									<% @news.each do |news|%>
 									<div class="col-sm-12">
 										<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
 											<div class="building">
-												<img src="/assets/building.jpg" class="img-responsive schBuilding" alt="Building">
+												<%= image_tag news.image.url, class: "img-responsive schBuilding" %>
+												<!-- <img src="/assets/building.jpg" class="img-responsive schBuilding" alt="Building"> -->
+
 											</div>
 										</div>
 										<div class="col-sm-12 col-xs-12 col-md-9 col-lg-9">
-											<p>Indian Institute of Technology is situated in Mumbai in Maharashtra state of India. Established in 1958, it is accredited from AICTE and it is affiliated to Indian Institute of Technology Bombay. IITB, Mumbai offers 71 courses across 6 streams namely Engineering, Science, Arts, Design, Agriculture, Management and across 13 degrees like B.Tech, B.Tech+M.Tech, BS, B.Des+M.Des, B.Des. IITB campus is spread over 550 Acres. Hostel facility is available for its students. Additional campus facilities such as Audi, Boys Hostel, Canteen, Comp. Lab, Counselling, Fest, Cultural zone, Girls Hostel, Guest house, Gym are also there. Indian Institute of Technology accepts JEE Advanced for admission into Engineering courses and Common Admission Test for admission into Management courses </p>
+											<h4><b><%= news.title%></b></h4>
+											<p><%= news.description%></p>
+											<a href="<%= news.url%>" target="_blank"><%= news.url%></a>
 										</div>
 									</div>
+									<hr>
+								<%end%>
+
 								</div>
 								
-								<hr>
-								<div class="row">
-									<div class="col-sm-12">
-										<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
-											<div class="building">
-												<img src="/assets/building.jpg" class="img-responsive schBuilding" alt="Building">
-											</div>
-										</div>
-										<div class="col-sm-12 col-xs-12 col-md-9 col-lg-9">
-											<p>Indian Institute of Technology is situated in Mumbai in Maharashtra state of India. Established in 1958, it is accredited from AICTE and it is affiliated to Indian Institute of Technology Bombay. IITB, Mumbai offers 71 courses across 6 streams namely Engineering, Science, Arts, Design, Agriculture, Management and across 13 degrees like B.Tech, B.Tech+M.Tech, BS, B.Des+M.Des, B.Des. IITB campus is spread over 550 Acres. Hostel facility is available for its students. Additional campus facilities such as Audi, Boys Hostel, Canteen, Comp. Lab, Counselling, Fest, Cultural zone, Girls Hostel, Guest house, Gym are also there. Indian Institute of Technology accepts JEE Advanced for admission into Engineering courses and Common Admission Test for admission into Management courses </p>
-										</div>
-									</div>
-								</div>
-								
-								<hr>
-								<div class="row">
-									<div class="col-sm-12">
-										<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
-											<div class="building">
-												<img src="/assets/building.jpg" class="img-responsive schBuilding" alt="Building">
-											</div>
-										</div>
-										<div class="col-sm-12 col-xs-12 col-md-9 col-lg-9">
-											<p>Indian Institute of Technology is situated in Mumbai in Maharashtra state of India. Established in 1958, it is accredited from AICTE and it is affiliated to Indian Institute of Technology Bombay. IITB, Mumbai offers 71 courses across 6 streams namely Engineering, Science, Arts, Design, Agriculture, Management and across 13 degrees like B.Tech, B.Tech+M.Tech, BS, B.Des+M.Des, B.Des. IITB campus is spread over 550 Acres. Hostel facility is available for its students. Additional campus facilities such as Audi, Boys Hostel, Canteen, Comp. Lab, Counselling, Fest, Cultural zone, Girls Hostel, Guest house, Gym are also there. Indian Institute of Technology accepts JEE Advanced for admission into Engineering courses and Common Admission Test for admission into Management courses </p>
-										</div>
-									</div>
-								</div>
+
 							</div>
 							
 							<div class="overviewBox">
-								<span class="overview">Contact Details of Indian Institute of Technology, Mumbai</span>
+								<span class="overview">Contact Details of <%= @college.name%>,<%= @college.city.capitalize %></span>
 								<hr>
 								<div class="row">
 									<div class="col-sm-12">
 										
 										<div class="col-sm-12 col-xs-12 col-md-4 col-lg-4">
-											<p class="contact">Contact No:&nbsp;<span class="Detastpd"> +91-22-25722545</span></p>
-											<p class="contact"> Email ID: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="Detastpd">nandk@chem.iitb.ac.in</span></p>
-											<p class="contact"> Website:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd">http://www.iitb.ac.in/ </span></p>
-											<p class="contact"> Address: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd">IIT Bombay, Powai, Mumbai , Maharashtra, India 400076  </span></p>
+											<p class="contact">Contact No:&nbsp;<span class="Detastpd"> <%= @college.phone_no %></span></p>
+											<p class="contact"> Email ID: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="Detastpd"><%= @college.email %></span></p>
+											<p class="contact"> Website:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><a target="_blank" class="HanD" href="<%= @college.website%>"><%= @college.website%></a></span></p>
+											<p class="contact"> Address: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><%= @college.address %></span></p>
 										</div>
 										<div class="col-sm-12 col-xs-12 col-md-8 col-lg-8">
 											

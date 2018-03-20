@@ -13,57 +13,33 @@
 							  </tr>
 							</thead>
 							<tbody>
+								<% @course_detail.each do |course|%>
 							  <tr>
-								<td>B.Tech in Aerospace Engineering</td>
-								<td>Doe</td>
+								<td><%= course.degree_name.titleize%> in <%= course.course_name.titleize %></td>
+								<% if course.course_type == true%>
+								<td>Regular</td>
+								<% elsif course.course_type == false%>
+								<td>Correspondence</td>
+								<%end%>
 								<td>john@example.com</td>
 							  </tr>
-							  <tr>
-								<td>B.Tech in Aerospace Engineering</td>
-								<td>Moe</td>
-								<td>mary@example.com</td>
-							  </tr>
-							  <tr>
-								<td>B.Tech in Aerospace Engineering</td>
-								<td>Dooley</td>
-								<td>july@example.com</td>
-							  </tr>
-							  <tr>
-								<td>B.Tech in Aerospace Engineering</td>
-								<td>Dooley</td>
-								<td>july@example.com</td>
-							  </tr>
-							  <tr>
-								<td>B.Tech in Aerospace Engineering</td>
-								<td>Dooley</td>
-								<td>july@example.com</td>
-							  </tr>
-							  <tr>
-								<td>B.Tech in Aerospace Engineering</td>
-								<td>Dooley</td>
-								<td>july@example.com</td>
-							  </tr>
-							  <tr>
-								<td>B.Tech in Aerospace Engineering</td>
-								<td>Dooley</td>
-								<td>july@example.com</td>
-							  </tr>
+							 <%end%>
 							</tbody>
 						</table>
 						</div>
 						</div>
 						</div>
 						<div class="row overviewBox">
-								<span class="overview">Contact Details of Indian Institute of Technology, Mumbai</span>
+								<span class="overview">Contact Details of <%= @college.name%>,<%= @college.city.capitalize %></span>
 								<hr>
 								<div class="row">
 									<div class="col-sm-12">
 										
 										<div class="col-sm-12 col-xs-12 col-md-4 col-lg-4">
-											<p class="contact">Contact No:&nbsp;<span class="Detastpd"> +91-22-25722545</span></p>
-											<p class="contact"> Email ID: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="Detastpd">nandk@chem.iitb.ac.in</span></p>
-											<p class="contact"> Website:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd">http://www.iitb.ac.in/ </span></p>
-											<p class="contact"> Address: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd">IIT Bombay, Powai, Mumbai , Maharashtra, India 400076  </span></p>
+											<p class="contact">Contact No:&nbsp;<span class="Detastpd"> <%= @college.phone_no %></span></p>
+											<p class="contact"> Email ID: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="Detastpd"><%= @college.email %></span></p>
+											<p class="contact"> Website:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><a target="_blank" class="HanD" href="<%= @college.website%>"><%= @college.website%></a></span></p>
+											<p class="contact"> Address: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><%= @college.address %></span></p>
 										</div>
 										<div class="col-sm-12 col-xs-12 col-md-8 col-lg-8">
 											

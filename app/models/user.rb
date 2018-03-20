@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+
   enum role: {school: 0, teacher: 1 ,student: 2, vendor: 3}
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -18,7 +19,8 @@ class User < ApplicationRecord
   validates_attachment :document, :content_type => { :content_type => %w(application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document) }
   
   geocoded_by :address   # can also be an IP address
-  after_validation :geocode          # auto-fetch coordinates
+
+  after_validation :geocode       # auto-fetch coordinates
 
   has_many :overviews, as: :user
   has_many :courses
@@ -39,6 +41,11 @@ class User < ApplicationRecord
       SchoolPicture.create(picture: image)
     end
   end
+
+  # def address
+  #   [city,pincode, address].compact.join(', ')
+  # end
+
 
   def find_location
     loc = Geocoder.coordinates(self.address)
@@ -89,7 +96,7 @@ class User < ApplicationRecord
     #binding.pry
     if search
       User.all
-      #where('city LIKE ?', "%#{search}%" || '')
+      #where('city LIKE ?', "%#{user[city]}%" || '')
     else
       User.all
     end
