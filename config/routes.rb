@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
 	resources :schools do
 		get :teachers
+		get :vendors
 		get :overview
 		post :overview
 		get :update_overview
@@ -88,7 +89,11 @@ Rails.application.routes.draw do
 		get :destroy_schoolvideo
 	end
 
-	resources :vendors
+	resources :vendors do
+		get :schools
+		get :apply_school
+		post :apply_school
+	end
 
 	root to: "users#index"
 	devise_for :users, controllers: { :omniauth_callbacks => "users/omniauth_callbacks",

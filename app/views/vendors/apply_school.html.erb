@@ -3,14 +3,14 @@
 <%= render "layouts/javascripts"%>
 
 <div class="bg-dark dk" id="wrap">
-  <%= render "teachers/top"%>
-  <%= render "teachers/left"%>
+  <%= render "vendors/top"%>
+  <%= render "vendors/left"%>
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
         <h4><p><font size="3" color="blue"> Hi <%=current_user.name%>, You are applying for <%=@school.name%> </font></p></h4>
         <div class="row vdiocont">    
-          <%= form_for @apply_school, url: teacher_apply_school_path do |f| %>
+          <%= form_for @apply_school, url: vendor_apply_school_path do |f| %>
             <div class="form-group margunrve">
               <label for="email">Name</label>
               <%=f.text_field :name, class: "form-control",value: current_user.name %>
@@ -28,7 +28,7 @@
               <%= f.text_area :description, class: "form-control"%>
             </div>
             <div class="form-group margunrve text-center">
-              <%= f.hidden_field :school_id, value: params[:teacher_id]%>
+              <%= f.hidden_field :school_id, value: params[:vendor_id]%>
               <%= f.hidden_field :role, value: current_user.role%>
               <%=f.submit "Submit", class: "btn btn-default"%>
               <button type="submit" class="btn btn-default">Cancel</button>

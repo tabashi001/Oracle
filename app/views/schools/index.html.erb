@@ -31,13 +31,13 @@
                 </a>
               </div>
               <div class="col-md-3 col-sm-6">
-                <a href="">
+                <%= link_to  school_vendors_path(current_user) do %>
                   <div class="counting-box" id="locations">
                     <img src="https://image.flaticon.com/icons/svg/188/188935.svg" alt="Image 13">
-                    <h4 class="count-this">312</h4>
+                    <h4 class="count-this"><%=@vendors_count%></h4>
                     <p>VENDORS</p>
                   </div>
-                </a>
+                <%end%>
               </div>
               <div class="col-md-3 col-sm-6">
                 <a href="">
