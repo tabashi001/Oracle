@@ -85,6 +85,6 @@ end
   	end
 
   	def apply_school_params
-    	params.require(:applied_school).permit(:name,:email,:phone_no,:description,:school_id,:user_id)
+    	params.require(:applied_school).permit(:name,:email,:phone_no,:description,:school_id,:user_id,:role)
   	end
 end

@@ -25,14 +25,14 @@
 </style>  
 
 <div class="bg-dark dk" id="wrap">
-  <%= render "teachers/top"%>
-  <%= render "teachers/left"%>
+  <%= render "vendors/top"%>
+  <%= render "vendors/left"%>
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
         <h3>Apply School</h3>
         <hr>
-        <%= form_tag teacher_schools_path(current_user), :method => 'get' do %>
+        <%= form_tag vendor_schools_path(current_user), :method => 'get' do %>
           <%= text_field_tag "name",nil,:placeholder => "School Name"%>
           <%= text_field_tag "city",nil,:placeholder => "School City"%>
           <%= submit_tag "Search" %>
@@ -58,7 +58,7 @@
                         <%if @id.present?%>
                           <button class="btn btn-primary TxtceNtr" data-toggle="modal" href="#applyModal<%=search.id%>">Apply Now </button>
                         <%else%>
-                          <%=link_to "Apply Now",teacher_apply_school_path(search),class: "btn btn-primary TxtceNtr" %>
+                          <%=link_to "Apply Now",vendor_apply_school_path(search),class: "btn btn-primary TxtceNtr" %>
                         <%end%>
                     </div>
                     <div id="applyModal<%=search.id%>" class="modal fade">
@@ -103,7 +103,7 @@
                           <%if @id.present?%>
                             <button class="btn btn-primary TxtceNtr" data-toggle="modal" href="#applyModal<%=school.id%>">Apply Now </button>
                           <%else%>
-                            <%=link_to "Apply Now",teacher_apply_school_path(school),class: "btn btn-primary TxtceNtr" %>
+                            <%=link_to "Apply Now",vendor_apply_school_path(school),class: "btn btn-primary TxtceNtr" %>
                           <%end%>
                       </div>
                       <div id="applyModal<%=school.id%>" class="modal fade">

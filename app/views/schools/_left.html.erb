@@ -83,10 +83,10 @@
       </ul>
     </li>
     <li class="">
-      <a href="">
+      <%= link_to  school_teachers_path(current_user) do %>
         <i class="fa fa-tasks"></i>
         <span class="link-title">Teachers</span>
-      </a>
+      <%end%>
     </li>
     <li class="">
       <a href="">
@@ -95,10 +95,10 @@
       </a>
     </li>
     <li>
-      <a href="">
+      <%= link_to  school_vendors_path(current_user) do %>
         <i class="fa fa-table"></i>
         <span class="link-title">Vendors</span>
-      </a>
+      <%end%>
     </li>
     <li>
       <a href="">

@@ -1,5 +1,4 @@
-
-<title>Sign Up</title>
+<title>Sign In</title>
 
 <%= stylesheet_link_tag  "bootstrap.min" %>
 <%= stylesheet_link_tag  "font-awesome.min" %>
@@ -33,21 +32,25 @@
           </div>
         </div>
       </div>
-        <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 padzerosty">
-          <div class="right">
-            <div class="scoilbtnctr">
-              <%#= link_to "Sign Up with facebook",user_facebook_omniauth_authorize_path,class: "social-signin facebook"%>
-              <%#= link_to "Sign Up with Twitter",user_twitter_omniauth_authorize_path,class: "social-signin twitter"%>
-              <%#= link_to "Sign Up with Google",user_google_oauth2_omniauth_authorize_path,class: "social-signin google"%>
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 padzerosty">
+        <div class="right">
+          <div class="scoilbtnctr">
+            <%= link_to user_facebook_omniauth_authorize_path do %>
               <button class="social-signin facebook">Sign Up with facebook</button>
+            <% end %>
+            <%= link_to user_twitter_omniauth_authorize_path do %>
               <button class="social-signin twitter">Sign Up with Twitter</button>
+            <% end %>
+            <%= link_to user_google_oauth2_omniauth_authorize_path do %>
               <button class="social-signin google">Sign Up with Google+</button>
-            </div>
+            <% end %>
           </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
 <%= render 'layouts/footer'%>
 
 <%= javascript_include_tag "jquery.min" %>
