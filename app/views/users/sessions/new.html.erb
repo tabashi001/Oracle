@@ -20,16 +20,15 @@
             <%= f.password_field :password, autofocus: true, placeholder: "Password" %>
             <%= recaptcha_tags theme: 'dark' %>
             <%=f.submit "Login"%>
-          <%end%>
-          <div class="signin-text">
-            <div class="text-left">
-              <%= link_to "Forgot Password?",new_password_path(resource_name), class: "text-center"%>
+            <div class="signin-text">
+              <div class="text-left">
+                <%= link_to "Forgot Password?",new_password_path(resource_name), class: "text-center"%>
+              </div>
+              <div class="text-right">
+                <%= link_to "Create New Account?",new_user_registration_path, class: "text-center"%>
+              </div>
+              <div class="clear"> </div>
             </div>
-            <div class="text-right">
-              <%= link_to "Create New Account?",new_user_registration_path, class: "text-center"%>
-            </div>
-            <div class="clear"> </div>
-          </div>
         </div>
       </div>
       <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 padzerosty">
@@ -47,6 +46,7 @@
           </div>
         </div>
       </div>
+      <%end%>
     </div>
   </div>
 </div>
