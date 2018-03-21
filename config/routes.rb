@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 	resources :students do 
 		get :pay_fees_school
 		post :pay_fees_school
+		get :fee_details
 		get :pay_fees_tutor
 		post :pay_fees_tutor
 		get :sale_book

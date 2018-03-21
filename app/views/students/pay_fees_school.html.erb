@@ -93,7 +93,7 @@
                                 <%= image_tag current_user.profile_image,class: "media-object img-thumbnail user-img",:size => "80x80" %>
                                 <%else%>
                                 
-                                <%= image_tag ("/assets/user.png"),class: "media-object img-thumbnail user-img",:size => "80x80" %>
+                                <%= image_tag ("user.png"),class: "media-object img-thumbnail user-img",:size => "80x80" %>
                                 <%end%>
                                     <span class="label label-danger user-label"></span>
                                 </a>
@@ -192,7 +192,9 @@
             <div class="form-group margunrve">
               <label for="text">Name Of School</label>
               <!-- <input type="text" class="form-control" placeholder="Name Of School"> -->
-              <%=f.text_field :name_of_school, class: "form-control",placeholder: "School Name" %>
+              <%#=f.text_field :name_of_school, class: "form-control",placeholder: "School Name" %>
+
+              <%= f.select :name_of_school, options_from_collection_for_select(@school_name, :id, :name),{}, {:class => 'form-control'}%>
             </div>
             <div class="form-group margunrve text-center">
               <!-- <button type="submit" class="btn btn-default">Submit</button> -->

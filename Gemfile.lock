@@ -1,11 +1,3 @@
-GIT
-  remote: https://github.com/arunagw/omniauth-twitter.git
-  revision: c010473b160ab770b38d59bfc79bce8c6772db18
-  specs:
-    omniauth-twitter (1.4.0)
-      omniauth-oauth (~> 1.1)
-      rack
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -87,6 +79,7 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
+    dotenv (2.2.1)
     erubi (1.7.0)
     execjs (2.7.0)
     faraday (0.12.2)
@@ -140,8 +133,8 @@ GEM
       rack (>= 1.6.2, < 3)
     omniauth-facebook (4.0.0)
       omniauth-oauth2 (~> 1.2)
-    omniauth-google-oauth2 (0.5.2)
-      jwt (~> 1.5)
+    omniauth-google-oauth2 (0.4.1)
+      jwt (~> 1.5.2)
       multi_json (~> 1.3)
       omniauth (>= 1.1.1)
       omniauth-oauth2 (>= 1.3.1)
@@ -151,6 +144,9 @@ GEM
     omniauth-oauth2 (1.3.1)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    omniauth-twitter (1.4.0)
+      omniauth-oauth (~> 1.1)
+      rack
     orm_adapter (0.5.0)
     paperclip (5.2.1)
       activemodel (>= 4.2.0)
@@ -262,14 +258,15 @@ DEPENDENCIES
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
   devise
+  dotenv (~> 2.2.1)
   geocoder
   gmaps4rails
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   mysql2
-  omniauth-facebook
-  omniauth-google-oauth2
-  omniauth-twitter!
+  omniauth-facebook (~> 4.0)
+  omniauth-google-oauth2 (~> 0.4.1)
+  omniauth-twitter (~> 1.2, >= 1.2.1)
   paperclip (~> 5.2.1)
   pry-rails
   puma (~> 3.7)
