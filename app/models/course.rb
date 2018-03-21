@@ -2,7 +2,7 @@ class Course < ApplicationRecord
 
  belongs_to :user
 
-
+ 
  # def average(course)
  #   #@course = 
  # end	

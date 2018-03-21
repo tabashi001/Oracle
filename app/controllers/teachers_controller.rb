@@ -25,9 +25,9 @@ before_action :set_teacher, only:[:index,:schools,:apply_school,:find_student,:s
 
 	def find_student
 		@students = User.where(:role => "student")
-		@search = User.where("name = ? AND qualification= ? AND city=?", 
-					params[:name],params[:qualification],params[:city])
-					if params[:name] && params[:qualification] && params[:city].present?
+		@search = @students.where("name LIKE ? or qualification LIKE ? or city LIKE ?", 
+					"%#{params[:name]}%","%#{params[:qualification]}","%#{params[:city]}")
+					if params[:name] || params[:qualification] || params[:city].present?
 	end
 end
 

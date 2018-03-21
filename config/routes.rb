@@ -106,10 +106,12 @@ Rails.application.routes.draw do
 		end
 
 		# resources :user do 
-  #    member do 
-  #        get :showcase
-  #      end
-  #    end
+		# 	collection do
+  # 	    post :find_all_course_name
+  # 	  end
+  #   end
+
+
 
 	# devise_scope :user do 
 	# 	get '/users/login' => 'devise/sessions#new'
@@ -118,5 +120,7 @@ Rails.application.routes.draw do
 	# end
 
 	  get 'users/search' 
+	  post 'users/search'
 	  get 'users/show'
+	  post 'users/find_all_course_name'
 end

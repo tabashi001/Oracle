@@ -29,9 +29,9 @@
         <h3>Students</h3>
         <hr>
         <%= form_tag teacher_find_student_path(current_user), :method => 'get' do %>
-          <%= text_field_tag "name",nil,:placeholder => "Student Name"%>
-          <%= text_field_tag "qualification",nil,:placeholder => "Student Qualification"%>
-          <%= text_field_tag "city",nil,:placeholder => "Student City"%>
+          <%= text_field_tag "name",nil,:placeholder => "Student Name" ,required:"required"%>
+          <%= text_field_tag "qualification",nil,:placeholder => "Student Qualification",required:"required"%>
+          <%= text_field_tag "city",nil,:placeholder => "Student City",required:"required"%>
           <%= submit_tag "Search" %>
         <% end %>
         <hr>
