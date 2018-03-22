@@ -32,9 +32,12 @@
 				<div class="jcarousel" >
 					<ul>
 						<% @all_college.each do |img| %>
-						<li><%= image_tag img.profile_image, class: "img-responsive schBuilding"%></li>
-
-												<%end%>
+							<%if img.profile_image.present?%>
+								<li><%= image_tag img.profile_image, class: "img-responsive schBuilding"%></li>
+							<%else%>
+								<li><img src="/assets/logo1.png" class="img-responsive schBuilding" alt="Building"></li>
+							<%end%>
+						<%end%>
 					</ul>
 				</div>
 				<a href="#" class="jcarousel-control-prev">&lsaquo;</a>
@@ -53,11 +56,11 @@
 				<div class="jcarousel" >
 					<ul>
 					<% @all_college.each do |img| %>
-					<%#if img.profile_image.present?%>
-					<li><a href="/users/show?id=<%= img.id %>" target="_blank"><%= image_tag img.profile_image, class: "img-responsive schBuilding"%><%= img.name %></a></li>
-					<%#else%>
-					<!-- No Image Available -->
-					<%#end%>
+						<%if img.profile_image.present?%>
+							<li><a href="/users/show?id=<%= img.id %>" target="_blank"><%= image_tag img.profile_image, class: "img-responsive schBuilding"%><%= img.name %></a></li>
+						<%else%>
+							<li><img src="/assets/logo1.png" class="img-responsive schBuilding" alt="Building"></li>
+						<%end%>
 					<%end%>
 					</ul>
 				</div>

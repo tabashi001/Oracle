@@ -13,13 +13,21 @@
         <hr>
         <%= form_for(@course, url: school_course_path) do |f| %>
           <div class="row vdiocont">   
-          <div class="form-group margunrve">
-              <label for="email">Degree</label>
-              <%=f.text_field :degree_name, class: "form-control",placeholder: "Name of Courses" %>
+            <div class="form-group margunrve">
+              <!-- <label for="email">Name of Degree</label> -->
+              <%#=f.text_field :degree_name, class: "form-control",placeholder: "Name of Degree" %>
+              <%= label_tag :degree_name, "Name of Degree" %><br />
+              <%= text_field_tag :new_degree_name %>
+              <label for="sel1">Enter or Select Degree</label><br />
+              <%= f.select( :degree_name, Course.all.map {|p| [p.degree_name]}.uniq!, :prompt => "Select a Degree") %>
             </div> 
             <div class="form-group margunrve">
-              <label for="email">Name of Courses</label>
-              <%=f.text_field :course_name, class: "form-control",placeholder: "Name of Courses" %>
+              <%= label_tag :course_name, "Name of Course" %><br />
+              <%= text_field_tag :new_course_name %>
+              <label for="sel1">Enter or Select Course</label><br />
+              <%= f.select( :course_name, Course.all.map {|p| [p.course_name]}.uniq!, :prompt => "Select a Courses") %>
+              <!-- <label for="email">Name of Courses</label>
+              <%#=f.text_field :course_name, class: "form-control",placeholder: "Name of Courses" %> -->
             </div>
              <div class="form-group">
               <label for="sel1">Duration</label>
