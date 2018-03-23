@@ -11,7 +11,7 @@ class UsersController < ApplicationController
    if params[:commit]=="Search"
    		@@first_value = params[:user]
 			redirect_to users_search_path
-		end   	 
+		end	 
   end
 
  #@school = User.search.where("city LIKE ?","#{params[:search]}%")
@@ -19,22 +19,17 @@ class UsersController < ApplicationController
  # @school = User.search(params[:city]) if params[:commit]=="Search"
 
   def search
-  	#binding.pry
+    
   	@course = Course.all
+    city = User.pluck(:city).uniq
+    @city = city.reject { |item| item.nil? || item == '' }
     if params[:myparam1].present?
-      # school = Course.find_by_id(params[:myparam1])
       @school = User.where(:id => params[:myparams]).paginate(:per_page => 1, :page => params[:page])
-      binding.pry
+    elsif @@first_value.present?
+     @school = User.where("city LIKE ? AND role = ?","%#{@@first_value[:city]}%","#{@@first_value[:search_role]}").paginate(:per_page => 4, :page => params[:page])
     else
       binding.pry
-  	#@school = User.where(:role => "school").paginate(:per_page => 5, :page => params[:page])
-  	@school = User.search(@@first_value).paginate(:per_page => 7, :page => params[:page])
     end
-
-  	city = User.pluck(:city).uniq
-    @city = city.reject { |item| item.nil? || item == '' }
-  	#binding.pry
-    
   end
 
   def show

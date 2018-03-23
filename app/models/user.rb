@@ -9,6 +9,20 @@ class User < ApplicationRecord
 
   validates :role, presence: true
 
+#   PASSWORD_FORMAT = /\A
+#   (?=.{8,})          # Must contain 8 or more characters
+#   (?=.*\d)           # Must contain a digit
+#   (?=.*[a-z])        # Must contain a lower case character
+#   (?=.*[A-Z])        # Must contain an upper case character
+#   (?=.*[[:^alnum:]]) # Must contain a symbol
+# /x
+
+# validates :password, 
+#   presence: true, 
+#   format: { with: PASSWORD_FORMAT }, 
+#   confirmation: true, 
+#   on: :create  
+
   has_attached_file :profile_image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment :profile_image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
@@ -66,41 +80,14 @@ class User < ApplicationRecord
 
 
 
-# def self.search
-#   binding.pry
-#   if search
-#     find(:all, :conditions => ['city LIKE ?', "%#{search}%"])
-#    else
-#      find(:all)
-#   end
-# end
-
-
-
-
-  # def search(city,role)
-  #   binding.pry
-  #   conditions = {:city => city,:role => role}
-  #   conditions.delete_if {|k,v| v.blank? || k.blank?}
-  #   query = conditions.map { |k,val|
-  #     if k == :city || k == :role
-  #     "#{k} = '#{val}'"
-  #     end
-  #   }.join(' AND ')
-  #   self.users.where(query)
+  # def self.search(search)
+  #   #binding.pry
+  #   if search
+  #     User.where("city LIKE ? AND role = ?","%#{@@first_value[:city]}%","%#{@@first_value[:role]}").paginate(:per_page => 3, :page => params[:page])
+  #   else
+  #     User.all
+  #   end
   # end
-
-
-
-  def self.search(search)
-    #binding.pry
-    if search
-      User.all
-      #where('city LIKE ?', "%#{user[city]}%" || '')
-    else
-      User.all
-    end
-  end
 
   def self.filter(filter)
     if filter
