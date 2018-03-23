@@ -67,12 +67,21 @@ $(document).ready(function() {
 						<h1 class="edutetitle">Discover The Best</h1>
 						<form class="form-wrapper cf">
 							<%= form_tag users_search_path(:controller => 'users', :action => 'search'), method: :get do %>
-								<%= select("user", "city", @city.map{|city| city.titleize},{} ,{class: "fa-map-marker-alt"}) %>
-								<%= select("user", "role", @role.map{|role| role.titleize}) %>
-								<%= select("user", "course", @course.map{|course| course.upcase}) %>
-								<%= submit_tag 'Search', class: "btn btn-primary" %>
-							<% end %>	
-						</form>
+							<!-- <select> -->
+								<%#= select( School.all.collect(&:city)) %>
+								<%= select("user", "city", @city.map{|city| city.titleize},{:prompt => 'Select Location'} ,{class: "fa fa-map-marker"}) %>
+							<!-- </select> -->
+							
+								<%= select("user", "role", @role.map{|role| role.titleize},{:prompt => 'I am ..'},class: "fa") %>
+
+								<%= select("user", "search_role", @role.map{|role| role.titleize},{:prompt => 'Searching for '},class: "fa") %>
+
+							<!-- <button type="submit">Search</button> -->
+
+							<!-- <button type="submit">Search</button> -->
+							<%= submit_tag 'Search', class: "btn btn-primary" %>
+						</form>		
+						<% end %>
 					</div>
 				</div>
 			</div>
@@ -123,3 +132,16 @@ $(document).ready(function() {
 	$('#myModal').modal('show');
 	}); 
 </script>
+
+ <script type="text/javascript">
+ 	window.onload = function() {
+  var startPos;
+  var geoSuccess = function(position) {
+    startPos = position;
+    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+  };
+  navigator.geolocation.getCurrentPosition(geoSuccess);
+};
+
+</script> 
