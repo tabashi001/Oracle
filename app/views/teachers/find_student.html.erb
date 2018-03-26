@@ -1,6 +1,7 @@
 <title>Find Students</title>
 <%= render "layouts/stylesheets"%>
 <%= render "layouts/javascripts"%>
+<%= stylesheet_link_tag  "searchbar" %>
 
 <style type="text/css">
   .stdboard {
@@ -90,12 +91,15 @@
       <div class="inner bg-light lter">
         <h3>Students</h3>
         <hr>
+         <form class="form-wrapper cf">
         <%= form_tag teacher_find_student_path(current_user), :method => 'get' do %>
           <%= text_field_tag "name",nil,:placeholder => "Student Name" ,required:"required"%>
           <%= text_field_tag "qualification",nil,:placeholder => "Student Qualification",required:"required"%>
           <%= text_field_tag "city",nil,:placeholder => "Student City",required:"required"%>
-          <%= submit_tag "Search" %>
+         
+          <%= button_tag "Search" ,:class => "sEarch"%>
         <% end %>
+      </form>
         <hr>
         <div class="row">
           <div class="col-md-12">

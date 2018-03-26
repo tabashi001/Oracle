@@ -1,7 +1,7 @@
 <title>Apply School</title>
 <%= render "layouts/stylesheets"%>
 <%= render "layouts/javascripts"%>
-
+<%= stylesheet_link_tag  "searchbar" %>
 <style type="text/css">
   .bigbox {
     border: 1px solid;
@@ -93,12 +93,22 @@
     <div class="outer">
       <div class="inner bg-light lter">
         <h3>Apply School</h3>
+<!--  <form class="form-wrapper cf">
+    <input type="text" placeholder="Location" required>
+     <input type="text" placeholder="Category" required>
+      <input type="text" placeholder="Sub Category" required>
+    <button type="submit">Search</button>
+</form> -->
+
         <hr>
+        <form class="form-wrapper cf">
         <%= form_tag teacher_schools_path(current_user), :method => 'get' do %>
           <%= text_field_tag "name",nil,:placeholder => "School Name"%>
-          <%= text_field_tag "city",nil,:placeholder => "School City"%>
-          <%= submit_tag "Search" %>
+          <%= text_field_tag "city",nil,:placeholder => "City"%>
+          <%= text_field_tag "description",nil,:placeholder => "Category"%>
+          <%= button_tag "Search" ,:class => "sEarch"%>
         <% end %>
+        </form>
         <div class="col-md-12">
           <h3>Schools</h3>
           <% if @search.present?%>
@@ -113,6 +123,8 @@
                         <%= image_tag("img.jpg", class: "img-thumbnail img-responsive collglogo")%>
                       <% end %>
                     </div>
+
+
                     <div class="col-md-10">
                       <h4><%= search.name %></h4>
                       <span> <i class="fa fa-map-marker"></i> <%= search.address%>,<%= search.city%>,<%= search.country%></span>
