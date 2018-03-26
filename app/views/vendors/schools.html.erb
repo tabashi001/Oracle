@@ -1,6 +1,7 @@
 <title>Apply School</title>
 <%= render "layouts/stylesheets"%>
 <%= render "layouts/javascripts"%>
+<%= stylesheet_link_tag  "searchbar" %>
 
 <style type="text/css">
   .bigbox {
@@ -82,11 +83,13 @@
       <div class="inner bg-light lter">
         <h3>Apply School</h3>
         <hr>
+         <form class="form-wrapper cf">
         <%= form_tag vendor_schools_path(current_user), :method => 'get' do %>
           <%= text_field_tag "name",nil,:placeholder => "School Name"%>
           <%= text_field_tag "city",nil,:placeholder => "School City"%>
-          <%= submit_tag "Search" %>
+         <%= button_tag "Search" ,:class => "sEarch"%>
         <% end %>
+      </form>
         <div class="col-md-12">
           <h3>Schools</h3>
           <% if @search.present?%>
