@@ -7,8 +7,9 @@ before_action :set_teacher, only:[:index,:schools,:apply_school,:find_student,:s
 	end
 
 	def schools
+		#binding.pry
 		@schools = User.where(:role => "school")
-		@search = User.where("name = ? AND city= ?", params[:name],params[:city]) if params[:name] && params[:city].present?
+		@search = User.where("name = ? AND city= ? AND description LIKE ?", params[:name],params[:city],"%#{params[:description]}%") if params[:name] && params[:city].present?
 	end
 	def apply_school
 		if request.get?

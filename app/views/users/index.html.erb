@@ -70,9 +70,7 @@ $(document).ready(function() {
 								<%= select("user", "role", @role.map{|role| role.titleize},{:prompt => 'I am ..'},class: "fa") %>
 
 								<%= select("user", "search_role", @role.map{|role| role.titleize},{:prompt => 'Searching for '},class: "fa") %>
-
 							<%= submit_tag 'Search', class: "btn btn-primary seARCHbtn" %>
-								
 							<% end %>
 						</form>		
 					</div>
