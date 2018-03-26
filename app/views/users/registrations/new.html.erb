@@ -2,7 +2,7 @@
 
 <%= stylesheet_link_tag  "bootstrap.min" %>
 <%= stylesheet_link_tag  "font-awesome.min" %>
-<%= stylesheet_link_tag  "style" %>
+<%= stylesheet_link_tag  "header" %>
 <%= stylesheet_link_tag  "login" %>
 
 <div class="container-fluid backgrdimg">  
@@ -34,12 +34,12 @@
                <div class="g-recaptcha" data-theme="light" data-sitekey="6LdXHkgUAAAAAD7Np1pRKTNKlHEi2t_fn8Ue6bKo" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></div> 
                
               <%= f.submit "Sign up" %>
-              <p>Already Registered??.. <%= link_to "Sign In",new_user_session_path %></p> 
+              <p class="aldbtnsty">Already Registered??.. <%= link_to "Sign In",new_user_session_path %></p> 
             </div>
           </div>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 padzerosty">
-          <div class="right">
+          <div class="rightone">
             <div class="scoilbtnctr">
               <%= link_to user_facebook_omniauth_authorize_path do %>
                 <button class="social-signin facebook">Sign Up with facebook</button>

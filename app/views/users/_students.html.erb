@@ -2,7 +2,7 @@
 	<h3 style="text-align:center;">RECENTLY ADDED STUDENTS</h3>
 	<%if @student.present?%>
 		<div class="row RowMarginzero">
-			<% @student.each do |student|%>
+			<% @student.last(4).each do |student|%>
 				<div class="col-sm-6 col-md-3">
 					<div id="wrapper">
 						<div class="cards">

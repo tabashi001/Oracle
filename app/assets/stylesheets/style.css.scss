@@ -1,13 +1,4 @@
-/*
- * Sept - Free Bootstrap 3 Theme/Landing page
- * Author: CantoThemes
- * Author URL: https://www.cantothemes.com/
- * License: Attribution-NonCommercial CC BY-NC 
- * License URL: https://creativecommons.org/licenses/by-nc/4.0/
- * 
- * -------------------------------------------------------------------
- * This theme under "Attribution-NonCommercial CC BY-NC". You can't remove footer credit link.
- */
+
 body {
   font-family: "Open Sans";
   color: #808080;
@@ -549,6 +540,8 @@ h1.edutetitle {
 }
 .home .st-home-unit {
   position: relative;
+  opacity: 1;
+    padding: 19px 0 !important;
 }
 .home .hero-txt {
   color: #fff;
@@ -628,9 +621,9 @@ h1.edutetitle {
   background-color: rgba(0, 0, 0, 0.5);
 }
 .navbar-brand.CstLogo {
-  margin: 0;
-  padding: 0px 12px;
   height: auto;
+  margin: 0;
+  padding: 8px 27px;
 }
 .navbar-brand img {
   height:90px;
@@ -1802,10 +1795,11 @@ ul.nav.navbar-nav.navrightmnu {
     font-weight: 700;
 }
 .hfivestyle {
-    font-size: 13px;
-    line-height: 17px;
-    padding: 0 10px;
-    text-align: justify;
+  font-size: 13px;
+  line-height: 17px;
+  margin: 0;
+  padding: 0 10px;
+  text-align: justify;
 }
 .card-body-footer {
     background: #ccc none repeat scroll 0 0;
@@ -2014,6 +2008,25 @@ ul.nav.navbar-nav.navrightmnu {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
   text-transform: uppercase;
   width: 110px;
+}
+.seARCHbtn{
+background:#4ECDC4;
+  border: 0 none;
+  border-radius: 0 3px 3px 0;
+  color: #fff;
+  cursor: pointer;
+  float: right;
+  font: bold 15px/40px "lucida sans","trebuchet MS","Tahoma";
+  height: 40px;
+  margin: 8px 0;
+  overflow: visible;
+  padding: 0;
+  position: relative;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  width: 110px;
+
+
 }
 
 

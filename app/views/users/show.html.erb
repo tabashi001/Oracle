@@ -9,8 +9,11 @@
 	<div class="container-fluid banner">
 		<div class="bannerText text-center">
 			<div class="logo">
-				<!-- <img src="/assets/logo.png" class="img-responsive scHbackimg" alt="Cinque Terre"> -->
-				<%= image_tag @college.profile_image , class: "img-responsive scHbackimg"%>
+				<%if @college.profile_image.present?%>
+					<%= image_tag @college.profile_image , class: "img-responsive scHbackimg"%>
+				<%else%>
+					<%= image_tag('logo.png',class: "img-responsive scHbackimg")%>
+				<%end%>
 			</div>
 			<h1 class="heading"><%= @college.name %></h1>
 			<p class="text">(A Divyashree group)</p><!-- PENDING -->

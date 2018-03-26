@@ -1,27 +1,24 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
-*:focus {
-  outline: none;
-}
 
+body {
+  color: #333;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  line-height: 1.42857;
+   font-size: -moz-calc(12px); /* Firefox */
+  font-size: -webkit-calc(13px); /* Chrome, Safari */
+}
 
 .container-fluid.backgrdimg{
   margin: 0;
   padding: 0;
   background: asset_url("banner1.jpg")no-repeat 0px 0px;
   background-size:cover;
-  
-  font-size: 16px;
-  color: #222;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
   background-attachment: fixed;
-    background-color: #000;
-    
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-    position: relative;
+  background-color: #000;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
 #login-box {
@@ -31,6 +28,9 @@
   
   border-radius: 2px;
   
+}
+.aldbtnsty {
+  margin-top: 10px;
 }
 #login-boxone {
   margin: 8% auto;
@@ -80,6 +80,7 @@ input[type="password"]:focus {
   border-bottom: 2px solid #16a085;
   color: #16a085;
   transition: 0.2s ease;
+   outline: none;
 }
 
 input[type="submit"] {
@@ -90,7 +91,7 @@ input[type="submit"] {
   border: none;
   border-radius: 2px;
   color: #FFF;
-  font-family: 'Roboto', sans-serif;
+  
   font-weight: 500;
   text-transform: uppercase;
   transition: 0.1s ease;
@@ -113,7 +114,7 @@ input[type="submit"]:active {
   transition: 0.1s ease;
 }
 .scoilbtnctr {
-  padding-top: 112px;
+  padding-top:120px;
 }
 .signin-text {
     margin-top: 1.5em;
@@ -143,7 +144,6 @@ input[type="submit"]:active {
   height: 407px;
   background: asset_url("img1.jpg")no-repeat 0px 0px;
   background-size:cover;
-  
   background-position: center;
   border-radius: 0 2px 2px 0;
 }
@@ -161,7 +161,6 @@ input[type="submit"]:active {
   height:507px;
   background: asset_url("img1.jpg")no-repeat 0px 0px;
   background-size:cover;
-  
   background-position: center;
   border-radius: 0 2px 2px 0;
 }
@@ -181,7 +180,7 @@ button.social-signin {
   border: none;
   border-radius: 2px;
   color: #FFF;
-  font-family: 'Roboto', sans-serif;
+ 
   font-weight: 500;
   transition: 0.2s ease;
   cursor: pointer;
@@ -255,3 +254,18 @@ button.social-signin.google {
 }
 
 }
+@media screen and (max-width:360px) {
+  .left {
+  background: #fff none repeat scroll 0 0;
+  padding: 40px 15px 10px;
+  width: 100%;
+}
+
+  }
+  @media screen and (max-width:320px) {
+     .left {
+  background: #fff none repeat scroll 0 0;
+  padding: 40px 21px 10px;
+  width: 100%;
+}
+  }

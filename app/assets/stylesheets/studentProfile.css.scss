@@ -81,7 +81,14 @@ form-group.field {
 .right {
   background: rgba(0, 0, 0, 0) asset_url("bg1.jpg") no-repeat scroll center center / cover ;
   float: left;
-  min-height:767px;
+  min-height: 759px;
+  position: relative;
+  width: 50%;
+}
+.righttwo {
+  background: rgba(0, 0, 0, 0) url("/assets/bg1.jpg") no-repeat scroll center center / cover ;
+  float: left;
+  min-height: 767px;
   position: relative;
   width: 50%;
 }
@@ -264,7 +271,7 @@ fieldset[disabled] .btn {
 @media screen and (max-width: 767px) {
 	
 .content-agileits {
-  margin: 34% auto 21%;
+  margin: 37% auto 21%;
   width: 98%;
 }
 	
