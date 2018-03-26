@@ -66,19 +66,15 @@ $(document).ready(function() {
 						<h1 class="edutetitle">Discover The Best</h1>
 						<form class="form-wrapper cf">
 							<%= form_tag users_search_path(:controller => 'users', :action => 'search'), method: :get do %>
-							<!-- <select> -->
-								<%#= select( School.all.collect(&:city)) %>
 								<%= select("user", "city", @city.map{|city| city.titleize},{:prompt => 'Select Location'} ,{class: "fa fa-map-marker"}) %>
-							<!-- </select> -->
-							
 								<%= select("user", "role", @role.map{|role| role.titleize},{:prompt => 'I am ..'},class: "fa") %>
 
 								<%= select("user", "search_role", @role.map{|role| role.titleize},{:prompt => 'Searching for '},class: "fa") %>
 
-							<!-- <button type="submit">Search</button> -->
 							<%= submit_tag 'Search', class: "btn btn-primary seARCHbtn" %>
+								
+							<% end %>
 						</form>		
-						<% end %>
 					</div>
 				</div>
 			</div>

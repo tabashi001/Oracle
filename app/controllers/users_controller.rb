@@ -26,7 +26,6 @@ class UsersController < ApplicationController
     elsif @@first_value.present?
      @school = User.where("city LIKE ? AND role = ?","%#{@@first_value[:city]}%","#{@@first_value[:search_role]}").paginate(:per_page => 4, :page => params[:page])
     else
-      binding.pry
     end
   end
 
