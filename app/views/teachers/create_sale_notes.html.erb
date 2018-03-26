@@ -4,7 +4,69 @@
 
 <div class="bg-dark dk" id="wrap">
   <%= render "teachers/top"%>
-  <%= render "teachers/left"%>
+  <div id="left">
+  <div class="media user-media bg-dark dker">
+    <div class="user-media-toggleHover">
+        <span class="fa fa-user"></span>
+    </div>
+    <div class="user-wrapper bg-dark">
+      <a class="user-link" href="">
+        <%if current_user.profile_image.present? %>
+          <%= image_tag current_user.profile_image,class: "media-object img-thumbnail user-img",:size => "80x80" %>
+        <%else%>
+          <%= image_tag('user.gif', class: "media-object img-thumbnail user-img")%>
+        <%end%>
+        <span class="label label-danger user-label"><%= current_user.sign_in_count%></span>
+      </a>
+      <div class="media-body">
+        <h5 class="media-heading"><%= current_user.name%></h5>
+        <ul class="list-unstyled user-info">
+          <li><%= current_user.role%></li>
+          <li>Last Access : <br>
+            <small><i class="fa fa-calendar"></i>&nbsp;<%= current_user.last_sign_in_at.strftime("%d %B %t at %I:%M %p")%></small>
+            <%= link_to "(Edit Profile)" ,edit_user_registration_path%>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- #menu -->
+  <ul id="menu" class="bg-blue dker">
+    <li class="nav-divider"></li>  
+      <li class="">
+        <%=link_to teachers_path(@teacher) do%>
+          <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
+        <%end%>
+      </li>
+    <li class="">
+      <%=link_to teacher_schools_path(@teacher) do%>
+        <i class="fa fa-tasks"></i>
+        <span class="link-title">Apply School</span>
+      <%end%>
+    </li>
+    <li class="">
+      <%=link_to teacher_find_student_path(@teacher) do%>
+        <i class="fa fa-pencil"></i>
+        <span class="link-title">Search Student</span>
+      <%end%>
+    </li>
+    <li class="active">
+      <%=link_to teacher_sale_notes_path(@teacher) do%>
+        <i class="fa fa-table"></i>
+        <span class="link-title">Sale Notes</span>
+      <%end%>
+    </li>
+    <li>
+      <a href="">
+        <i class="fa fa-font"></i>
+        <span class="link-title">Total Earning</span>
+      </a>
+    </li>
+    <li class="nav-divider"></li>
+  </ul>
+  <!-- /#menu -->
+</div>
+<!-- /#left -->
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
