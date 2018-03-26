@@ -28,7 +28,11 @@
                 <%= f.label role.to_sym %>
               <% end %>
               </br>
-              <%= recaptcha_tags theme: 'dark' %>
+              <%#= recaptcha_tags theme: 'dark',style: "transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;" %>
+
+
+               <div class="g-recaptcha" data-theme="light" data-sitekey="6LdXHkgUAAAAAD7Np1pRKTNKlHEi2t_fn8Ue6bKo" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></div> 
+               
               <%= f.submit "Sign up" %>
               <p>Already Registered??.. <%= link_to "Sign In",new_user_session_path %></p> 
             </div>
@@ -62,3 +66,23 @@
 <%= javascript_include_tag "jquery.appear" %>
 <%= javascript_include_tag "jquery.nicescroll.min" %>
 <%= javascript_include_tag "script" %>
+
+ <style type="text/css"> 
+#rc-imageselect {
+transform:scale(0.77);
+-webkit-transform:scale(0.77);
+transform-origin:0 0;
+-webkit-transform-origin:0 0;
+} 
+
+@media screen and (max-height: 575px){ 
+  #rc-imageselect, .g-recaptcha {
+    transform:scale(0.77);
+    -webkit-transform:scale(0.77);
+    transform-origin:0 0;
+    -webkit-transform-origin:0 0;
+    } 
+  }
+</style> 
+
+
