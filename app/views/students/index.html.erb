@@ -1,157 +1,11 @@
-<!-- <h1>Students#index</h1>
-<p>Find me in app/views/students/index.html.erb</p>
-<p><%#= link_to "Edit Profile",edit_user_registration_path%>
-<%#=link_to "SignOut", destroy_user_session_path%> -->
-    <meta charset="UTF-8">
-    <!--IE Compatibility modes-->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!--Mobile first-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Student Dashboard</title>
-    
-         <%= stylesheet_link_tag  "bootstrap" %>
-		<%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
-		<%= stylesheet_link_tag  "styles" %>
-		<%= stylesheet_link_tag  "main" %>
-		<%= stylesheet_link_tag  "metisMenu" %>
-		<%= stylesheet_link_tag  "onoffcanvas" %>
-		<%= stylesheet_link_tag  "animate" %>
-		<%= stylesheet_link_tag  "style-switcher" %>
 
-            <div class="bg-dark dk" id="wrap">
-                <div id="top">
-                    <!-- .navbar -->
-                    <nav class="navbar navbar-inverse navbar-static-top">
-                        <div class="container-fluid">
-                    
-                    
-                            <!-- Brand and toggle get grouped for better mobile display -->
-                            <header class="navbar-header">
-                    
-                              
-                                <a href="index.html" class="navbar-brand">
-                                	 <img src="/assets/logoedu.png" alt="" class="img-responsive DashLogo">
-                                </a>
-                    
-                            </header>
-                    
-                    <div class="topnav">
-                               
-                                <div class="btn-group">
-                                    
-                                    <a data-toggle="modal" data-original-title="Help" data-placement="bottom"
-                                       class="btn btn-default btn-sm"
-                                       href="#helpModal">
-                                        <i class="fa fa-question"></i>
-                                    </a>
-                                </div>
-							<div class="btn-group">
-							<%= link_to "",destroy_user_session_path,class: "btn btn-metis-1 btn-sm fa fa-power-off" %>
-							</div>
-                                <!-- <div class="btn-group">
-                                    <a href="login.html" data-toggle="tooltip" data-original-title="Logout" data-placement="bottom"
-                                       class="btn btn-metis-1 btn-sm">
-                                        <i class="fa fa-power-off"></i>
-                                    </a>
-                                </div> -->
-                                <div class="btn-group">
-                                    <a data-placement="bottom" data-original-title="Show / Hide Left" data-toggle="tooltip"
-                                       class="btn btn-primary btn-sm toggle-left" id="menu-toggle">
-                                        <i class="fa fa-bars"></i>
-                                    </a>
-                                    
-                                </div>
-                    
-                            </div>
-                    
-                    
-                    
-                    
-                            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    
-                                <!-- .nav -->
-                                
-                                <!-- /.nav -->
-                            </div>
-                        </div>
-                        <!-- /.container-fluid -->
-                    </nav>
-                    <!-- /.navbar -->
-                        
-                </div>
-                <!-- /#top -->
-<div id="left">
-	<div class="media user-media bg-dark dker">
-		<div class="user-media-toggleHover">
-			<span class="fa fa-user"></span>
-		</div>
-		<div class="user-wrapper bg-dark">
-			<a class="user-link" href="">
-				<!-- <img class="media-object img-thumbnail user-img" alt="User Picture" src="assets/img/user.gif"> -->
-				<% if current_user.profile_image.present? %>
-					<%= image_tag current_user.profile_image,class: "media-object img-thumbnail user-img",:size => "80x80" %>
-				<%else%>
-					<%= image_tag ("/assets/user.png"),class: "media-object img-thumbnail user-img",:size => "80x80" %>
-				<%end%>
-				<span class="label label-danger user-label"></span>
-			</a>
-			<div class="media-body">
-				<h5 class="media-heading"><%= current_user.name%></h5>
-				<ul class="list-unstyled user-info">
-					<li><a href=""><%= current_user.role%></a></li>
-					<li>Last Access : <br>
-						<small><i class="fa fa-calendar"></i>&nbsp;<%= current_user.last_sign_in_at.strftime("%d %B %t at %I %M %p")%></small>
-						<%= link_to "(Edit Profile)" ,edit_user_registration_path%>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-                        <!-- #menu -->
-	<ul id="menu" class="bg-blue dker">
-		<li class="nav-divider"></li>  
-		<li class="active">
-			<a href="">
-				<i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
-			</a>
-		</li>
-		<li class="">
-			<a href="javascript:;">
-				<i class="fa fa-building "></i>
-				<span class="link-title">Pay Fees</span>
-				<span class="fa arrow"></span>
-			</a>
-			<ul class="collapse">
-				<li>
-					<%= link_to student_pay_fees_school_path(@current_user) do%>
-					<i class="fa fa-angle-right"></i>&nbsp; For School<%end%>
-				</li>
-				<li>
-					<%= link_to student_pay_fees_tutor_path(@current_user) do%>
-					<i class="fa fa-angle-right"></i>&nbsp;For Tutor<%end%>
-				</li>
-			</ul>
-		</li>
-		<li class="">
-			<%= link_to student_sale_book_path(@current_user) do%>
-			<i class="fa fa-tasks"></i>
-			<span class="link-title">Sale Book</span>
-			<%end%>
-		</li>
-		<li class="">
-			<a href="buybook_student.html">
-				<i class="fa fa-pencil"></i>
-				<span class="link-title">
-				Buy Book
-				</span>
-			</a>
-		</li>
-		<li class="nav-divider"></li>
-	</ul>
-                        <!-- /#menu -->
-</div>
-	                    <!-- /#left -->
+<title>Student Dashboard</title>
+    
+<%= render 'layouts/javascripts'%>
+<%= render 'layouts/stylesheets'%>
+<div class="bg-dark dk" id="wrap">
+	<%= render 'students/top'%>
+	<%= render 'students/left'%>
 	<div id="content">
 		<div class="outer">
 			<div class="inner bg-light lter">
@@ -160,89 +14,59 @@
 					<hr>
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
-							<div class="col-md-3 col-sm-3">
-								<a href="payfees_school.html">
-								<div class="counting-box" id="encounter">
-									<img src="https://image.flaticon.com/icons/svg/188/188999.svg" alt="Image 1">
-									<h4 class="count-this">1582</h4>
-									<p>For School</p>
-								</div>
+							<div class="col-md-6 col-sm-6">
+								<a href="">
+									<div class="counting-box" id="encounter">
+										<%= image_tag ('https://image.flaticon.com/icons/svg/188/188999.svg')%>
+										<h4 class="count-this">1582</h4>
+										<p>For School</p>
+									</div>
 								</a>
 							</div>
-							<div class="col-md-3 col-sm-3">
-								<a href="payfees_tutor.html">
-								<div class="counting-box" id="locations">
-									<img src="/assets/tlogo.png" alt="Image 13">
-									<h4 class="count-this">312</h4>
-									<p>For Tutor</p>
-								</div>
+							<div class="col-md-6 col-sm-6">
+								<a href="">
+									<div class="counting-box" id="locations">
+										<%= image_tag ('https://image.flaticon.com/icons/svg/188/188935.svg')%>
+										<h4 class="count-this">312</h4>
+										<p>For Tutor</p>
+									</div>
 								</a>
 							</div>
 						</div>
 					</div>
+					<hr>
 				</div>
-				<hr>
 			</div>
-		<!-- /.inner -->
+			<!-- /.inner -->
 		</div>
 		<!-- /.outer -->
 	</div>
-                <!-- /#content -->
+	<!-- /#content -->
+</div>
+<!-- /#wrap -->
 
-                   
-            </div>
-            <!-- /#wrap -->
-            <footer class="Footer bg-dark dker">
-                <p>2017 &copy; Tabashi Technology Private Limited</p>
-            </footer>
-            <!-- /#footer -->
-            <!-- #helpModal -->
-		<div id="helpModal" class="modal fade">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title">Modal title</h4>
-					</div>
-					<div class="modal-body">
-						<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-						</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
+<footer class="Footer bg-dark dker">
+	<p>2017 &copy; Tabashi Technology Private Limited</p>
+</footer>
+<!-- /#footer -->
+<!-- #helpModal -->
+<div id="helpModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Modal title</h4>
 			</div>
-			<!-- /.modal-dialog -->
+			<div class="modal-body">
+				<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+				</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
 		</div>
-            <!-- /.modal -->
-            <!-- /#helpModal -->
-            <!--jQuery -->
-            <!-- <script src="js1/jquery.js"></script> -->
-
-                    
-            <!--Bootstrap -->
-            <!-- <script src="js1/bootstrap.js"></script> -->
-            <!-- MetisMenu -->
-            <!-- <script src="js1/metisMenu.js"></script> -->
-            <!-- onoffcanvas -->
-            <!-- <script src="js1/onoffcanvas.js"></script> -->
-            <!-- Screenfull -->
-           
-
-            <!-- Metis core scripts -->
-            <!-- <script src="js1/core.js"></script> -->
-            <!-- Metis demo scripts -->
-            <!-- <script src="js1/app.js"></script> -->
-            <!-- <script src="js1/style-switcher.js"></script> -->
-             <!-- <script src="js1/counter.js"></script> -->
-		<%= javascript_include_tag "jquery" %>
-		<%= javascript_include_tag "bootstrap" %>
-		<%= javascript_include_tag "metisMenu" %>
-		<%= javascript_include_tag "onoffcanvas" %>
-		<%= javascript_include_tag "core" %>
-		<%= javascript_include_tag "app" %>
-		<%= javascript_include_tag "style-switcher" %>
-		<%= javascript_include_tag "counter" %>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
