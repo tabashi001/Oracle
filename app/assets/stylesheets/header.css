@@ -27,7 +27,7 @@
 }
 
 .navbar-default {
-  background-color:rgba(40, 40, 40, 0.95);
+  background-color:transparent;
   border-width: 0;
   margin-bottom: 0 !important;
   height: 102px;
@@ -51,9 +51,9 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 .navbar-brand.CstLogo {
-  margin: 0;
-  padding: 0px 12px;
   height: auto;
+  margin: 0;
+  padding: 8px 27px;
 }
 .navbar-brand img {
   height:90px;
