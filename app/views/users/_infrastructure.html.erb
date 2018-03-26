@@ -16,7 +16,7 @@
 						<%if @college.cover_image.present?%>
 							<%= image_tag @college.cover_image , class: "img-responsive schBuilding"%>
 						<%else%>
-							<img src="/assets/logo1.png" class="img-responsive scHbackimg" alt="Cinque Terre">
+							<%= image_tag("logo1.png",class: "img-responsive scHbackimg")%>
 						<%end%>
 					</div>
 				</div>
@@ -35,7 +35,7 @@
 							<%if img.profile_image.present?%>
 								<li><%= image_tag img.profile_image, class: "img-responsive schBuilding"%></li>
 							<%else%>
-								<li><img src="/assets/logo1.png" class="img-responsive schBuilding" alt="Building"></li>
+								<li><%= image_tag("logo1.png",class: "img-responsive schBuilding")%></li>
 							<%end%>
 						<%end%>
 					</ul>
@@ -59,7 +59,8 @@
 						<%if img.profile_image.present?%>
 							<li><a href="/users/show?id=<%= img.id %>" target="_blank"><%= image_tag img.profile_image, class: "img-responsive schBuilding"%><%= img.name %></a></li>
 						<%else%>
-							<li><img src="/assets/logo1.png" class="img-responsive schBuilding" alt="Building"></li>
+							<li>
+							<%= image_tag("logo1.png",class: "img-responsive schBuilding")%></li>
 						<%end%>
 					<%end%>
 					</ul>
