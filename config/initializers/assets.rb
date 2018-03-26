@@ -29,7 +29,7 @@ Rails.application.config.assets.precompile += %w( font-awesome.css )
 Rails.application.config.assets.precompile += %w( styles.css )
 Rails.application.config.assets.precompile += %w( schoolProfile.css )
 Rails.application.config.assets.precompile += %w( header.css )
-
+Rails.application.config.assets.precompile += %w( school_show.css )
 
 #JS Precompile
 Rails.application.config.assets.precompile += %w( jquery.min.js )
@@ -48,3 +48,4 @@ Rails.application.config.assets.precompile += %w( app.js )
 Rails.application.config.assets.precompile += %w( style-switcher.js )
 Rails.application.config.assets.precompile += %w( counter.js )
 Rails.application.config.assets.precompile += %w( script.js )
+Rails.application.config.assets.precompile += %w( school_show.js )

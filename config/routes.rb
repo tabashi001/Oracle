@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 	resources :students do 
 		get :pay_fees_school
 		post :pay_fees_school
+		get :fee_details
 		get :pay_fees_tutor
 		post :pay_fees_tutor
 		get :sale_book
@@ -18,39 +19,109 @@ Rails.application.routes.draw do
 	end
 
 
-	resources :teachers 
-
-	resources :schools do
-		get :overview
-		post :overview
-		get :course
-		post :course
-		get :scholarship
-		post :scholarship
-		get :placement
-		post :placement
-		get :cutoff
-		post :cutoff
-		get :campu
-		post :campu
-		get  :schoolinformation
-		post :schoolinformation
-		get  :schoolpicture
-		post :schoolpicture
-		get  :schoolvideo
-		post :schoolvideo
+	resources :teachers do
+		get :schools
+		get :apply_school
+		post :apply_school
+		get :find_student
+		get :sale_notes
+		get :create_sale_notes
+		post :create_sale_notes
+		get :update_sale_notes
+		patch :update_sale_notes
+		get :sale
+		get :destroy_sale_notes
 	end
 
-	resources :vendors
+	resources :schools do
+		get :teachers
+		get :vendors
+		get :overview
+		post :overview
+		get :update_overview
+		patch :update_overview
+		get :courses
+		get :course
+		post :course
+		get :update_course
+		patch :update_course
+		get :destroy_course
+		get :scholarships
+		get :scholarship
+		post :scholarship
+		get :update_scholarship
+		patch :update_scholarship
+		get :destroy_scholarship
+		get :placements
+		get :placement
+		post :placement
+		get :update_placement
+		patch :update_placement
+		get :destroy_placement
+		get :cutoffs
+		get :cutoff
+		post :cutoff
+		get :update_cutoff
+		patch :update_cutoff
+		get :destroy_cutoff
+		get :campus
+		get :campu
+		post :campu
+		get :update_campu
+		patch :update_campu
+		get :destroy_campu
+		get	:schoolinformations
+		get  :schoolinformation
+		post :schoolinformation
+		get :update_schoolinformation
+		patch :update_schoolinformation
+		get :destroy_schoolinformation
+		get :schoolpictures
+		get  :schoolpicture
+		post :schoolpicture
+		get :update_schoolpicture
+		patch :update_schoolpicture
+		get :destroy_schoolpicture
+		get :schoolvideos
+		get  :schoolvideo
+		post :schoolvideo
+		get :update_schoolvideo
+		patch :update_schoolvideo
+		get :destroy_schoolvideo
+	end
+
+	resources :vendors do
+		get :schools
+		get :apply_school
+		post :apply_school
+	end
 
 	root to: "users#index"
 	devise_for :users, controllers: { :omniauth_callbacks => "users/omniauth_callbacks",
 	 sessions: 'users/sessions' ,registrations: 'users/registrations',passwords: 'users/passwords'}
-	devise_scope :user do 
-		get '/users/login' => 'devise/sessions#new'
-	    get '/users/register' => 'devise/registrations#new'
-	    get '/users/sign_out' => 'devise/sessions#destroy'
-	end
+		devise_scope :user do 
+			get '/users/login' => 'devise/sessions#new'
+		    get '/users/register' => 'devise/registrations#new'
+		    get '/users/sign_out' => 'devise/sessions#destroy'
+		    #get '/users/:id/showcase' => 'users#showcase'
+		end
 
-	get 'users/search'
+		# resources :user do 
+		# 	collection do
+  # 	    post :find_all_course_name
+  # 	  end
+  #   end
+
+
+
+	# devise_scope :user do 
+	# 	get '/users/login' => 'devise/sessions#new'
+	#     get '/users/register' => 'devise/registrations#new'
+	#     get '/users/sign_out' => 'devise/sessions#destroy'
+	# end
+
+	  get 'users/search' 
+	  post 'users/search'
+	  get 'users/show'
+	  post 'users/find_all_course_name'
 end

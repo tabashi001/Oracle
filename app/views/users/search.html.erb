@@ -52,25 +52,83 @@ margin-top: 0 !important;
 					<div class="col-md-12">
 						<div class="col-md-2">
 							<h3>Degree</h3>
+							
+					    	<div class="smallbox">
+					    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+					    		<% @course.each do |course|%>
+					     		<div class="checkbox">
+					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo degree_id-<%= course.id %> user_id-<%= course.user_id %>"><%= course.degree_name%></label>
+					      			<script type="text/javascript">
+                        $('.degree_id-<%= course.id %>').click(function(){
+                           $.ajax({
+                              url:'/users/search',
+                              type:'POST',
+                              beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+                              dataType:'json',
+                              data:{
+                                  myparam1: <%= course.id %>,
+                                  myparams: <%= course.user_id%>,
+                              },
+                              success:function(data){
+                                  debugger;
+                              },
+                              error:function(data){
+                                  debugger;
+                              }
+                          });
+                      });
+                      </script>
+					    		</div>
+				        	<%end%>
+
+				        	</div>
+				       
+				        
+							<h3>City</h3>
+					    	<div class="smallbox">
+					    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+					    		<% @city.each do |city|%>
+					     		<div class="checkbox">
+					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo"><%= city %></label>
+					    		</div>
+				        	<%end%>
+
+				        	</div>
+
+				        	<h3>Mode of Eduation</h3>
 					    	<div class="smallbox">
 					    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
 					     		<div class="checkbox">
-					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo">Option 1</label>
+					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="1">Reguler</label>
+					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">Correspondence</label>
 					    		</div>
-							    <div class="checkbox">
-							      <label class="labelfontsize"><input type="checkbox" class="paDtpZeRo">Option 2</label>
-							    </div>
-							    <div class="checkbox">
-							      <label class="labelfontsize"><input type="checkbox" class="paDtpZeRo">Option 1</label>
-							    </div>
-							    <div class="checkbox">
-							      <label class="labelfontsize"><input type="checkbox" class="paDtpZeRo">Option 2</label>
-							    </div>
+
+				        	</div>
+
+				        	<h3>Specialization</h3>
+					    	<div class="smallbox">
+					    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+					    		<% @course.each do |course|%>
+					     		<div class="checkbox">
+					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="1"><%= course.course_name%></label>
+					    		</div>
+					    		<%end%>
 				        	</div>
 				        </div>
+
+
+			<!-- <%#= form_tag users_search_path, :method => 'get', :id => "college_search" do %>
+			  <p>
+			    <%#= text_field_tag :search, params[:search] %>
+			    <%#= submit_tag "Search", :name => nil %>
+			  </p>
+			<%# end %> -->
+
+
 				       
-				        <div class="col-md-8">
-				        	<h3>College in Delhi</h3>
+				        <div class="col-md-10">
+
+				        	<h3>Colleges</h3>
 				        	<%if @school.present? %>
 					        	<% @school.each do |school| %>
 						        	<div class="bigbox">
@@ -84,21 +142,28 @@ margin-top: 0 !important;
 												    <% end %>
 									            </div>
 									            <div class="col-md-10">
-									        		<h4><%= school.name%> </h4>
+									            	<a href="/users/show?id=<%= school.id %>">
+  
+									            <%#= link_to users_show_path do %>
+									        		<h4 id="<%= school.id %>"><%= school.name %> </h4>
+									        		<%#end%>
+									        		</a>
 									        		<span> <i class="fa fa-map-marker"></i> <%= school.address%>,<%= school.city%>,<%= school.country%> </span>
 									            </div>
 							                    <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
 							                    	<div class="col-md-3 col-sm-6 col-xs-6">
 							                    		<i class="fa fa-map-marker "></i> <span>Avg Annual Fees</span>
-									        			<h6>1 lakh</h6>
+							                    		<%if school.courses.present?%>
+									        			<h6><%= school.courses.first.course_fee %></h6>
+									        			<%else%><h6>Not Mention</h6><%end%>
 									        	 	</div>
 										        	<div class="col-md-3 col-sm-6 col-xs-6">
-								                    	<i class="fa fa-map-marker"></i> <span>Avg Annual Fees</span>
-										        		<h6>1 lakh</h6>
+								                    	<i class="fa fas fa-trophy"></i> <span>Scholership</span>
+										        		<h6>Available</h6>
 										        	</div>
 										        	<div class="col-md-3 col-sm-6 col-xs-6">
-								                    	<i class="fa fa-map-marker"></i> <span>Avg Annual Fees</span>
-										        		<h6>1 lakh</h6>
+								                    	<i class="fa fas fa-bed"></i> <span>Hostel</span>
+										        		<h6>Availavle</h6>
 										        	</div>
 									        	 	<div class="col-md-3 col-sm-6 col-xs-6">
 							                    		<button class="btn btn-primary TxtceNtr">Apply Now </button>
@@ -109,62 +174,20 @@ margin-top: 0 !important;
 						        	</div>
 						        <%end%>
 						    <%else%>
-				        		<div class="bigbox">
-					        		<div class="row">
-					        			<div class="col-md-12">
-								        	<div class="col-md-2">
-								        		<img src="/assets/img.jpg" class="img-thumbnail img-responsive collglogo">
-								            </div>
-								            <div class="col-md-10">
-								        		<h4>Indian Institute of Technology (IITB), Mumbai </h4>
-								        		<span> <i class="fa fa-map-marker"></i> Mumbai,Maharshtra</span>
-								            </div>
-						                    <div class="col-md-12 Anxtysf">
-							                    <div class="col-md-3">
-							                    	<i class="fa fa-map-marker "></i> <span>Avg Annual Fees</span>
-									        		<h6>1 lakh</h6>
-									        	</div>
-									        	<div class="col-md-3">
-							                    	<i class="fa fa-map-marker"></i> <span>Avg Annual Fees</span>
-									        		<h6>1 lakh</h6>
-									        	</div>
-									        	<div class="col-md-3">
-							                    	<i class="fa fa-map-marker"></i> <span>Avg Annual Fees</span>
-									        		<h6>1 lakh</h6>
-									        	</div>
-								        	 	<div class="col-md-3">
-						                    		<button class="btn btn-primary TxtceNtr">Apply Now </button>
-								        	 	</div>
-						                    </div>
-			                  			</div>
-					        		</div>
-				        		</div> 
+				        		<p>No Result Found</p>
 				        	<%end%>
 				        </div>	
-				        <div class="col-md-2">
-							<h3>Degree</h3>
-						    <div class="smallbox">
-						    	<input type="search" class="form-control" name="googlesearch" placeholder="search">	
-							    <div class="checkbox">
-							      <label class="labelfontsize"><input type="checkbox" class="paDtpZeRo">Option 1</label>
-							    </div>
-							    <div class="checkbox">
-							      <label class="labelfontsize"><input type="checkbox" class="paDtpZeRo">Option 2</label>
-							    </div>
-							    <div class="checkbox">
-							      <label class="labelfontsize"><input type="checkbox" class="paDtpZeRo">Option 1</label>
-							    </div>
-							    <div class="checkbox">
-							      <label class="labelfontsize"><input type="checkbox" class="paDtpZeRo">Option 2</label>
-							    </div>
-				        	</div>
-				       	</div>
+				       <p class="text-center"><%= will_paginate @school %></p>
+				 
 				    </div>
 				</div><!-- row end -->	
 			</div>
 	</div>
 
 	<%=render "layouts/footer"%>
+	<script type="text/javascript">
+		
+	</script>
 
 <%= javascript_include_tag "jquery.min" %>
 <%= javascript_include_tag "bootstrap.min" %>

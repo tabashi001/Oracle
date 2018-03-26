@@ -1,5 +1,4 @@
-
-<title>Sign Up</title>
+<title>Sign In</title>
 
 <%= stylesheet_link_tag  "bootstrap.min" %>
 <%= stylesheet_link_tag  "font-awesome.min" %>
@@ -16,37 +15,42 @@
           <h1>Login</h1>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <%= devise_error_messages! %>
+            <%= flash[:recaptcha_error] %>
             <%= f.text_field :email, autofocus: true, placeholder: "E-mail" %>
             <%= f.password_field :password, autofocus: true, placeholder: "Password" %>
-            <%#= recaptcha_tags %>
+            <%= recaptcha_tags theme: 'dark' %>
             <%=f.submit "Login"%>
-          <%end%>
-          <div class="signin-text">
-            <div class="text-left">
-              <%= link_to "Forgot Password?",new_password_path(resource_name), class: "text-center"%>
+            <div class="signin-text">
+              <div class="text-left">
+                <%= link_to "Forgot Password?",new_password_path(resource_name), class: "text-center"%>
+              </div>
+              <div class="text-right">
+                <%= link_to "Create New Account?",new_user_registration_path, class: "text-center"%>
+              </div>
+              <div class="clear"> </div>
             </div>
-            <div class="text-right">
-              <%= link_to "Create New Account?",new_user_registration_path, class: "text-center"%>
-            </div>
-            <div class="clear"> </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 padzerosty">
+        <div class="right">
+          <div class="scoilbtnctr">
+            <%= link_to user_facebook_omniauth_authorize_path do %>
+              <button class="social-signin facebook">Sign Up with facebook</button>
+            <% end %>
+            <%= link_to user_twitter_omniauth_authorize_path do %>
+              <button class="social-signin twitter">Sign Up with Twitter</button>
+            <% end %>
+            <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+              <button class="social-signin google">Sign Up with Google+</button>
+            <% end %>
           </div>
         </div>
       </div>
-        <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 padzerosty">
-          <div class="right">
-            <div class="scoilbtnctr">
-              <%#= link_to "Sign Up with facebook",user_facebook_omniauth_authorize_path,class: "social-signin facebook"%>
-              <%#= link_to "Sign Up with Twitter",user_twitter_omniauth_authorize_path,class: "social-signin twitter"%>
-              <%#= link_to "Sign Up with Google",user_google_oauth2_omniauth_authorize_path,class: "social-signin google"%>
-              <button class="social-signin facebook">Sign Up with facebook</button>
-              <button class="social-signin twitter">Sign Up with Twitter</button>
-              <button class="social-signin google">Sign Up with Google+</button>
-            </div>
-          </div>
-      </div>
+      <%end%>
     </div>
   </div>
 </div>
+
 <%= render 'layouts/footer'%>
 
 <%= javascript_include_tag "jquery.min" %>
@@ -55,4 +59,3 @@
 <%= javascript_include_tag "jquery.appear" %>
 <%= javascript_include_tag "jquery.nicescroll.min" %>
 <%= javascript_include_tag "script" %>
-

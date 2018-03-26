@@ -549,6 +549,8 @@ h1.edutetitle {
 }
 .home .st-home-unit {
   position: relative;
+  opacity: 1;
+    padding: 19px 0 !important;
 }
 .home .hero-txt {
   color: #fff;
@@ -1802,10 +1804,11 @@ ul.nav.navbar-nav.navrightmnu {
     font-weight: 700;
 }
 .hfivestyle {
-    font-size: 13px;
-    line-height: 17px;
-    padding: 0 10px;
-    text-align: justify;
+  font-size: 13px;
+  line-height: 17px;
+  margin: 0;
+  padding: 0 10px;
+  text-align: justify;
 }
 .card-body-footer {
     background: #ccc none repeat scroll 0 0;
@@ -2014,6 +2017,25 @@ ul.nav.navbar-nav.navrightmnu {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
   text-transform: uppercase;
   width: 110px;
+}
+.seARCHbtn{
+background:#4ECDC4;
+  border: 0 none;
+  border-radius: 0 3px 3px 0;
+  color: #fff;
+  cursor: pointer;
+  float: right;
+  font: bold 15px/40px "lucida sans","trebuchet MS","Tahoma";
+  height: 40px;
+  margin: 8px 0;
+  overflow: visible;
+  padding: 0;
+  position: relative;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  width: 110px;g1805
+
+
 }
 
 

@@ -7,15 +7,21 @@ class StudentsController < ApplicationController
   end
 
   def pay_fees_school
+    @school_name = User.where(:role => "school")
   	 if request.get?
       @school_fees = PayFee.new
     else
       @school_fees = @school.pay_fees.create(pay_fee_params)
       if @school_fees.save
-        redirect_to students_path,notice: "Fees Saved Succesfully"
+        redirect_to student_fee_details_path 
       else 
       end
     end 
+  end
+
+  def fee_details
+    #binding.pry
+    #@fee_details = 
   end
 
   def pay_fees_tutor

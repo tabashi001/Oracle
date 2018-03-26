@@ -112,7 +112,7 @@ input[type="submit"]:active {
   transition: 0.1s ease;
 }
 .scoilbtnctr {
-  padding-top: 112px;
+  padding-top:200px;
 }
 .signin-text {
     margin-top: 1.5em;
@@ -139,7 +139,7 @@ input[type="submit"]:active {
 .right {
   padding: 40px;
   width: 100%;
-  height: 407px;
+  height: 485px;
   background: url(/assets/img1.jpg)no-repeat 0px 0px;
   background-size:cover;
   
@@ -157,7 +157,7 @@ input[type="submit"]:active {
 .rightone {
   padding: 40px;
   width: 100%;
-  height:507px;
+  height:584px;
   background: url(/assets/img1.jpg)no-repeat 0px 0px;
   background-size:cover;
   

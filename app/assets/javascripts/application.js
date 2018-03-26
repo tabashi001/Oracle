@@ -12,4 +12,16 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require gmaps/google
 //= require_tree .
+
+$(function() {
+  $("#products th a, #products .pagination a").live("click", function() {
+    $.getScript(this.href);
+    return false;
+  });
+  $("#college_search input").keyup(function() {
+    $.get($("#college_search").attr("action"), $("#college_search").serialize(), null, "script");
+    return false;
+  });
+});
