@@ -16,7 +16,7 @@ a {
 	text-decoration: none;
 }
 .container-fluid.studentconter {
-	background: url(/assets/content.jpg) no-repeat;
+	background: asset_url("content.jpg") no-repeat;
 	background-position: center;
 	background-attachment: fixed;
 	background-size: 100% 100%;
@@ -79,7 +79,7 @@ form-group.field {
 }
 
 .right {
-  background: rgba(0, 0, 0, 0) url("/assets/bg1.jpg") no-repeat scroll center center / cover ;
+  background: rgba(0, 0, 0, 0) asset_url("bg1.jpg") no-repeat scroll center center / cover ;
   float: left;
   min-height:767px;
   position: relative;

@@ -16,16 +16,18 @@
             <div class="form-group margunrve">
               <!-- <label for="email">Name of Degree</label> -->
               <%#=f.text_field :degree_name, class: "form-control",placeholder: "Name of Degree" %>
-              <%= label_tag :degree_name, "Name of Degree" %><br />
-              <%= text_field_tag :new_degree_name %>
-              <label for="sel1">Enter or Select Degree</label><br />
-              <%= f.select( :degree_name, Course.all.map {|p| [p.degree_name]}.uniq!, :prompt => "Select a Degree") %>
+              <%= label_tag :degree_name, "Name of Degree" %>
+              <%= text_field_tag :new_degree_name %><br />
+               <p class="text-center">Or</p>
+              <label for="sel1">Enter or Select Degree :</label>
+              <%= f.select( :degree_name, Course.all.map {|p| [p.degree_name]}.uniq, :prompt => "Select a Degree") %>
             </div> 
             <div class="form-group margunrve">
-              <%= label_tag :course_name, "Name of Course" %><br />
-              <%= text_field_tag :new_course_name %>
-              <label for="sel1">Enter or Select Course</label><br />
-              <%= f.select( :course_name, Course.all.map {|p| [p.course_name]}.uniq!, :prompt => "Select a Courses") %>
+              <%= label_tag :course_name, "Name of Course" %>
+              <%= text_field_tag :new_course_name %><br />
+               <p class="text-center">Or</p>
+              <label for="sel1">Enter or Select Course :</label>
+              <%= f.select( :course_name, Course.all.map {|p| [p.course_name]}.uniq, :prompt => "Select a Courses") %>
               <!-- <label for="email">Name of Courses</label>
               <%#=f.text_field :course_name, class: "form-control",placeholder: "Name of Courses" %> -->
             </div>
