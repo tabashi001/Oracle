@@ -56,12 +56,12 @@
   <ul id="menu" class="bg-blue dker">
     <li class="nav-divider"></li>  
     <li class="">
-      <a href="teacher_dashboard.html">
+      <%=link_to vendors_path do%>
         <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
-      </a>
+      <%end%>
     </li>
     <li class="active">
-      <%=link_to vendor_schools_path(@vendor) do%>
+      <%=link_to vendor_schools_path do%>
         <i class="fa fa-tasks"></i>
         <span class="link-title">Apply School</span>
       <%end%>
