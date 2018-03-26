@@ -52,7 +52,7 @@
   <ul id="menu" class="bg-blue dker">
     <li class="nav-divider"></li>  
       <li class="">
-        <%=link_to teachers_path(@teacher) do%>
+        <%=link_to teachers_path do%>
           <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
         <%end%>
       </li>
@@ -133,7 +133,7 @@
               <%else%>
                 <div class="col-md-2">
                    <div class="stdboard">
-                      <img src="/assets/content.jpg" class="img-responsive stdboarspic">
+                      <%= image_tag("content.jpg", class: "img-responsive stdboarspic")%>
                       <h5 class="colorchange">Balbir Kumar</h5>
                       <h5 class="colorchange">1234567890</h5>
                       <h5 class="colorchange">class :12th</h5>
