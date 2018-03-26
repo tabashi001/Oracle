@@ -28,9 +28,9 @@
   <ul id="menu" class="bg-blue dker">
     <li class="nav-divider"></li>  
     <li class="active">
-      <a href="teacher_dashboard.html">
+      <%=link_to vendors_path do%>
         <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
-      </a>
+      <%end%>
     </li>
     <li class="">
       <%=link_to vendor_schools_path(@vendor) do%>
