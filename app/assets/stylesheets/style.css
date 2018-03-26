@@ -532,7 +532,7 @@ h1.edutetitle {
   }
 }
 .home {
-  background-image: url('back1.jpg');
+  background-image: url(back1.jpg);
   background-position: top center;
   background-attachment: fixed;
   background-repeat: no-repeat;
