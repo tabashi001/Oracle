@@ -8,7 +8,7 @@
         <%if current_user.profile_image.present? %>
           <%= image_tag current_user.profile_image,class: "media-object img-thumbnail user-img",:size => "80x80" %>
         <%else%>
-           <img class="media-object img-thumbnail user-img" alt="User Picture" src="/assets/user.gif">
+          <%= image_tag('user.gif',class: "media-object img-thumbnail user-img")%>
         <%end%>
         <span class="label label-danger user-label"><%= current_user.sign_in_count%></span>
       </a>

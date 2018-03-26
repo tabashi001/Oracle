@@ -20,7 +20,7 @@
 										<% if school.profile_image.present?%>
 											<%= image_tag school.profile_image ,class: "img-respomsive Companylg" %>
 										<%else%>
-											<img class="img-respomsive Companylg" src="/assets/aj.jpg">
+											<%= image_tag("aj.jpg",class: "img-respomsive Companylg") %>
 										<%end%>
 									</div>
 									<p class="card-body-header-sentence">
@@ -71,7 +71,7 @@
 		                <div class="card-body">
 		                    <div class="card-body-header">
 		                      	<div class="card-body-header-category">
-					          		<img class="img-respomsive Companylg" src="/assets/aj.jpg">
+		                      		<%= image_tag("aj.jpg",class: "img-respomsive Companylg") %>
 					          	</div>
 							  	<p class="card-body-header-sentence">
 		                           <span>Tabashi Technology Private Limited</span>

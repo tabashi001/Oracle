@@ -48,7 +48,7 @@
                       <% if search.profile_image.present?%>
                         <%= image_tag search.profile_image ,class: "img-thumbnail img-responsive collglogo"%>
                       <%else%>
-                        <img src="/assets/img.jpg" class="img-thumbnail img-responsive collglogo">
+                        <%= link_to image_tag('img.jpg',class: "img-thumbnail img-responsive collglogo")%>
                       <% end %>
                     </div>
                     <div class="col-md-10">
@@ -93,7 +93,7 @@
                         <% if school.profile_image.present?%>
                           <%= image_tag school.profile_image ,class: "img-thumbnail img-responsive collglogo"%>
                         <%else%>
-                          <img src="/assets/img.jpg" class="img-thumbnail img-responsive collglogo">
+                          <%= link_to image_tag('img.jpg',class: "img-thumbnail img-responsive collglogo")%>
                         <% end %>
                       </div>
                       <div class="col-md-10">
@@ -150,7 +150,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="col-md-2">
-                      <img src="/assets/img.jpg" class="img-thumbnail img-responsive collglogo">
+                      <%= link_to image_tag('img.jpg',class: "img-thumbnail img-responsive collglogo")%>
                     </div>
                     <div class="col-md-10">
                       <h4>Indian Institute of Technology (IITB), Mumbai </h4>
