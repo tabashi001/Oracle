@@ -15,7 +15,7 @@
               <div class="col-md-3 col-sm-6">
                 <%= link_to  school_teachers_path(current_user) do %>
                   <div class="counting-box" id="encounter">
-                    <img src="https://image.flaticon.com/icons/svg/188/188999.svg" alt="Image 1">
+                    <%= image_tag ('https://image.flaticon.com/icons/svg/188/188999.svg')%>
                     <h4 class="count-this"><%= @teachers_count %></h4>
                     <p>TEACHER</p>
                   </div>
@@ -24,7 +24,7 @@
               <div class="col-md-3 col-sm-6">
                 <a href="">
                   <div class="counting-box" id="battles">
-                    <img src="https://image.flaticon.com/icons/svg/189/189015.svg" alt="Image 2">
+                    <%= image_tag ('https://image.flaticon.com/icons/svg/189/189015.svg')%>
                     <h4 class="count-this">57</h4>
                     <p>STUDENTS</p>
                   </div>
@@ -33,7 +33,7 @@
               <div class="col-md-3 col-sm-6">
                 <%= link_to  school_vendors_path(current_user) do %>
                   <div class="counting-box" id="locations">
-                    <img src="https://image.flaticon.com/icons/svg/188/188935.svg" alt="Image 13">
+                    <%= image_tag ('https://image.flaticon.com/icons/svg/188/188935.svg')%>
                     <h4 class="count-this"><%=@vendors_count%></h4>
                     <p>VENDORS</p>
                   </div>
@@ -42,7 +42,7 @@
               <div class="col-md-3 col-sm-6">
                 <a href="">
                   <div class="counting-box" id="locations">
-                    <img src="https://image.flaticon.com/icons/svg/188/188935.svg" alt="Image 13">
+                    <%= image_tag ('https://image.flaticon.com/icons/svg/188/188935.svg')%>
                     <h4 class="count-this">312</h4>
                     <p>TOTAL EARNING</p>
                   </div>
@@ -191,16 +191,6 @@
   </div>
   <!-- /.modal-dialog -->
 </div>
-            
-<%= javascript_include_tag "jquery" %>
-<%= javascript_include_tag "bootstrap" %>
-<%= javascript_include_tag "metisMenu" %>
-<%= javascript_include_tag "onoffcanvas" %>
-<%= javascript_include_tag "core" %>
-<%= javascript_include_tag "app" %>
-<%= javascript_include_tag "style-switcher" %>
-<%= javascript_include_tag "counter" %>
-
 
 <!-- <script type="text/javascript">
   $(document).ready(function(){

@@ -44,7 +44,7 @@
                     <% if search.profile_image.present?%>
                         <%= image_tag search.profile_image ,class: "img-responsive stdboarspic"%>
                       <%else%>
-                        <img src="/assets/content.jpg" class="img-responsive stdboarspic">
+                        <%= image_tag("content.jpg", class: "img-responsive stdboarspic")%>
                     <% end %>
                     <h5 class="colorchange"><%= search.name%></h5>
                     <h5 class="colorchange"><%= search.phone_no%></h5>
@@ -60,7 +60,7 @@
                       <% if student.profile_image.present?%>
                           <%= image_tag student.profile_image ,class: "img-responsive stdboarspic"%>
                         <%else%>
-                          <img src="/assets/content.jpg" class="img-responsive stdboarspic">
+                          <%= image_tag("content.jpg", class: "img-responsive stdboarspic")%>
                       <% end %>
                       <h5 class="colorchange"><%= student.name%></h5>
                       <h5 class="colorchange"><%= student.phone_no%></h5>
