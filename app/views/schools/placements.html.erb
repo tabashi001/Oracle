@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <%= render "layouts/stylesheets"%>
-<%= render "layouts/javascripts"%>
+
 
 <style type="text/css">
      .ADDcorsen.text-right {
@@ -48,7 +48,7 @@
         <span class="link-title" >&nbsp;Dashboard</span>
       <%end%>
     </li>
-    <li class="active">
+    <li class="">
       <a href="javascript:;">
         <i class="fa fa-building "></i>
         <span class="link-title">Layouts</span>
@@ -72,7 +72,7 @@
           <%= link_to  school_scholarships_path(current_user) do %>
           <i class="fa fa-angle-right"></i>&nbsp; Scholarship<%end%>
         </li>
-        <li class='active'>
+        <li class=''>
           <%= link_to  school_placements_path(current_user) do %>
           <i class="fa fa-angle-right"></i>&nbsp; Placement<%end%>
         </li>
@@ -98,6 +98,7 @@
         </li>
       </ul>
     </li>
+    
     <li class="">
       <%= link_to  school_teachers_path(current_user) do %>
         <i class="fa fa-tasks"></i>
@@ -128,7 +129,7 @@
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
-        <h4>List of Courses</h4>
+        <h4>List of Placement</h4>
         <hr>
         <div class="ADDcorsen text-right">
           <%=link_to "Back",schools_path, class: "btn btn-primary"%>
@@ -192,3 +193,4 @@
         </div>
     </div>
 </div>
+<%= render "layouts/javascripts"%>
