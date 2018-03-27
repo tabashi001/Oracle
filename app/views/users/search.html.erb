@@ -67,9 +67,22 @@ margin-top: 0 !important;
 					                              myparams: <%= course.user_id%>,
 					                          },
 					                          success:function(data){
+					                          	var data1 = JSON.stringify(data);
+					                          	var stringify = JSON.parse(data1);
+					                          	var dataArray = stringify["event"];
+					                          	if (dataArray.length > 0) {
+																				for (var i = 0; i < dataArray.length; i++) {
+																				    $("#college_list").hide();
+																				    $("#search_res").show();
+																				}
+
+					                          		
+					                          	} else {}
+					                          		
 					                              debugger;
 					                          },
-					                          error:function(data){
+					                          error:function(error){
+					                          	console.log(error.responseText);
 					                              debugger;
 					                          }
 					                      });
@@ -108,7 +121,7 @@ margin-top: 0 !important;
 			        	</div>
 			        </div>
 			       
-			        <div class="col-md-10">
+			        <div id="college_list" class="col-md-10">
 			        	<h3>Colleges</h3>
 			        	<%if @school.present? %>
 				        	<% @school.each do |school| %>
@@ -157,6 +170,10 @@ margin-top: 0 !important;
 					    <%else%>
 			        		<p>No Result Found</p>
 			        	<%end%>
+			        </div>
+
+			        <div id="search_res" class="col-md-10" style="display:none;">
+			        	<%= render "users/search_filter" %>
 			        </div>	
 			       <p class="text-center"><%= will_paginate @school %></p>
 			    </div>
