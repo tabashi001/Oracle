@@ -13,7 +13,7 @@
 //= require rails-ujs
 //= require turbolinks
 //= require gmaps/google
-//= require_tree .
+// = require_tree .
 
 $(function() {
   $("#products th a, #products .pagination a").live("click", function() {
