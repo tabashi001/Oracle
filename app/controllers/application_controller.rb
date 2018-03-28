@@ -27,4 +27,11 @@ class ApplicationController < ActionController::Base
        :profile_image, :document, :qualification, :cover_image, :description])
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email,:password])
   end
+
+  protected
+    def check_user_signed_in
+      if !user_signed_in?
+        redirect_to user_session_path
+      end
+    end
 end

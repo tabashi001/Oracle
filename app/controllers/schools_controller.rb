@@ -5,6 +5,7 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
   :update_schoolinformation,:schoolpictures,:schoolpicture,:update_schoolpicture,:schoolvideos,
   :schoolvideo,:update_schoolvideo,:teachers,:vendors]
 
+ before_action :check_user_signed_in
   def index
     @course_count = Course.where("user_id = ?",set_school).count
     @scholar_count = Scholarship.where("user_id = ?",set_school).count
