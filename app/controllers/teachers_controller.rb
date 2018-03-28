@@ -1,7 +1,9 @@
 class TeachersController < ApplicationController
-before_action :set_teacher, only:[:index,:schools,:apply_school,:find_student,:sale_notes,:create_sale_notes,
-:update_sale_notes]
+ before_action :set_teacher, only:[:index,:schools,:apply_school,:find_student,:sale_notes,:create_sale_notes,
+ :update_sale_notes]
 	
+ before_action :check_user_signed_in
+
 	def index
 		@schools_count = @teacher.applied_schools.count
 	end

@@ -18,7 +18,7 @@
 								<div class="card-body-header">
 									<div class="card-body-header-category">
 										<% if school.profile_image.present?%>
-											<%= image_tag school.profile_image ,class: "img-respomsive Companylg" %>
+											<%= image_tag school.profile_image ,class: "img-respomsive Companylg" , :size => "70x55" %>
 										<%else%>
 											<%= image_tag("aj.jpg",class: "img-respomsive Companylg") %>
 										<%end%>
@@ -28,7 +28,7 @@
 									</p>
 									<h5 class="hfivestyle"><%= school.description.first(150)  if school.description.present? %>..</h5>
 
-									<a href="#" target="_blank" class="custanchor">read more...</a>
+									<a href="/users/show?id=<%= school.id %>" target="_blank" class="custanchor">read more...</a>
 								</div>
 								<div class="card-body-footer">
 									<div class="row">
