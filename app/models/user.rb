@@ -49,6 +49,8 @@ class User < ApplicationRecord
   has_many :sale_notes
   has_many :applied_schools
   has_many :users, through: :applied_schools
+  belongs_to :country
+  belongs_to :state
 
   def create_picture(images)
     images.each do |image|
