@@ -44,6 +44,11 @@ class UsersController < ApplicationController
 
   end
 
+  def student_show
+  end
+
+  def all_view
+  end
 
   def find_all_course_name
     @stream = Course.find_by_id(params[:myparam1])
