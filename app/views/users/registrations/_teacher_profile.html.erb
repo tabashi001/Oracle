@@ -12,7 +12,7 @@
           <div class="col-md-12">
             <div class="form-group frmgrpcust">
               <label for="firstname" class="control-label">Name:</label>
-              <%= f.text_field :name, autofocus: true,class: "form-control",placeholder: "Name"%>
+              <%= f.text_field :name, autofocus: true,class: "form-control",placeholder: "Name" ,required: true%>
               <div class="help-block with-errors"></div>
             </div>
           </div>
@@ -68,14 +68,14 @@
           <div class="col-md-6">
             <div class="form-group frmgrpcust">
               <label for="Class" class="control-label">Specialization:</label>
-              <%= f.text_field :qualification, autofocus: true,class: "form-control"%>
+              <%= f.text_field :qualification, autofocus: true,class: "form-control",required: true%>
               <div class="help-block with-errors"></div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group frmgrpcust">
               <label for="Class" class="control-label">Pincode:</label>
-              <%= f.text_field :pincode, autofocus: true,class: "form-control",placeholder: "Pincode" %>
+              <%= f.text_field :pincode, autofocus: true,class: "form-control",placeholder: "Pincode" ,required: true%>
               <div class="help-block with-errors"></div>
             </div>
           </div>

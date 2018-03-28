@@ -30,7 +30,7 @@ class User < ApplicationRecord
   validates_attachment :cover_image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
   has_attached_file :document
-  validates_attachment :document, :content_type => { :content_type => %w(application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document) }
+  validates_attachment :document, :content_type => { :content_type =>["image/jpg", "image/jpeg", "image/png", "image/gif", "application/pdf" "application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document"]}
   
   geocoded_by :address   # can also be an IP address
 
@@ -49,8 +49,8 @@ class User < ApplicationRecord
   has_many :sale_notes
   has_many :applied_schools
   has_many :users, through: :applied_schools
-  belongs_to :country
-  belongs_to :state
+  # belongs_to :country
+  # belongs_to :state
 
   def create_picture(images)
     images.each do |image|

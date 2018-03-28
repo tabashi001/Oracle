@@ -132,7 +132,9 @@
         <hr>
         <div class="ADDcorsen text-right">
           <%=link_to "Back",schools_path, class: "btn btn-primary"%>
-          <%=link_to "Add Videos",school_schoolvideo_path(current_user), class: "btn btn-primary"%>
+          <%#=link_to "Add Videos",onclick: => "alert('Input collected!')", class: "btn btn-primary"%>
+
+          <%= button_tag "Add Video" ,:class => "btn btn-primary",:onclick => "alert('Please Contact to Admin To Add Video!!..Contact No - +91-9916581681')"%>
         </div> 
         <div class="table-responsive"> 
           <table class="table table-bordered">
