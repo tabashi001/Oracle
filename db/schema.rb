@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180321113448) do
+ActiveRecord::Schema.define(version: 20180327100521) do
 
   create_table "applied_schools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -28,6 +28,12 @@ ActiveRecord::Schema.define(version: 20180321113448) do
     t.string "title"
     t.text "description"
     t.string "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "countries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -166,6 +172,13 @@ ActiveRecord::Schema.define(version: 20180321113448) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
+  create_table "states", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.integer "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "address"
@@ -206,6 +219,9 @@ ActiveRecord::Schema.define(version: 20180321113448) do
     t.string "website"
     t.float "latitude", limit: 24
     t.float "longitude", limit: 24
+    t.integer "country_id"
+    t.integer "state_id"
+    t.integer "city_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

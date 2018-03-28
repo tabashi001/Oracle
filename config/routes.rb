@@ -122,6 +122,8 @@ Rails.application.routes.draw do
 
 	  get 'users/search' 
 	  post 'users/search'
+	  get 'users/student_show'
 	  get 'users/show'
+	  get 'users/all_view'
 	  post 'users/find_all_course_name'
 end

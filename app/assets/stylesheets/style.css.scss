@@ -31,8 +31,8 @@ h6 {
   letter-spacing: 1px;
   font-weight: 400;
 }
-h3{
-  color: #ffffff;
+h3 {
+  color: #4ecdc4;
   font-weight: 700;
 }
 
@@ -42,9 +42,8 @@ h3{
   border-color: #4ECDC4;
 }
 .btn.btn-primary.prmbtnsty {
-  background: #ffffff none repeat scroll 0 0;
+  background: #4ecdc4 none repeat scroll 0 0;
   border-color: #ffffff;
-  color: #333;
 }
 .container-fluid.scrolltext {
   background: #302e2d none repeat scroll 0 0;
@@ -92,19 +91,19 @@ h1.edutetitle {
   box-shadow: none !important;
 }
 .container-fluid.contboderone {
-  background: #f44336 none repeat scroll 0 0;
+  background: #ffffff none repeat scroll 0 0;
   border-bottom: 5px solid;
 }
 .container-fluid.contbodertwo {
-  background: #3f51b5 none repeat scroll 0 0;
+  background: #ffffff none repeat scroll 0 0;
   border-bottom: 5px solid;
 }
 .container-fluid.contboderthree {
-  background:#795548;
+  background:#ffffff;
   border-bottom: 5px solid;
 }
 .container-fluid.contboderfour {
-  background: #00897b none repeat scroll 0 0;
+  background: #ffffff none repeat scroll 0 0;
   border-bottom: 5px solid;
 }
 .form-control:focus {
@@ -533,6 +532,16 @@ h1.edutetitle {
   position: relative
   /* Temp CSS */
   /* Temp CSS End */
+}
+.homeone {
+  background-attachment: fixed;
+  background-color: #000;
+  background-image: url("/assets/back1-829b6b5a47962b42068720be753fe206567bbb5cb0cb2c67ab53b327a079de88.jpg");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 53px 0;
+  position: relative;
 }
 .home .st-brand {
   text-align: center;

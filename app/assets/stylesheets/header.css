@@ -1,4 +1,13 @@
-
+.home {
+  background-attachment: fixed;
+  background-color: #000;
+  background-image: url("/assets/back1-829b6b5a47962b42068720be753fe206567bbb5cb0cb2c67ab53b327a079de88.jpg");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 53px 0;
+  position: relative;
+}
 
 .abouttitle {
   margin: 0;
