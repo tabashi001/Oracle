@@ -6,7 +6,7 @@
 <%= stylesheet_link_tag  "header" %>
 
 <div class="container-fluid pgeBo">
-	<div class="container-fluid banner">
+	<div style="background-image: url(<%= @college.cover_image %>)" >
 		<div class="bannerText text-center">
 			<div class="logo">
 				<%if @college.profile_image.present?%>

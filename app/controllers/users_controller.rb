@@ -7,6 +7,7 @@ class UsersController < ApplicationController
    @course = Course.pluck(:course_name).uniq
    @school 	= User.where(:role => "school")
    @student = User.where(:role => "student")
+   @teacher = User.where(:role => "teacher")
    if params[:commit]=="Search"
    		@@first_value = params[:user]
 			redirect_to users_search_path
