@@ -78,15 +78,38 @@
                 <%end%>
               <%end%>
 
+              <%= link_to  school_campus_path(current_user) do %>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                  <div class="quick-btn">
+                    <i class="fa fa-external-link fa-2x"></i>
+                    <span>INFRASTRUCTURE</span>
+                    <span class="label btn-metis-2"><%= @campus_count %></span>
+                  </div>
+                </div>
+              <%end%>
+
+
               <%= link_to  school_courses_path(current_user) do %>
                 <div class="col-md-2 col-sm-4 col-xs-6">
                   <div class="quick-btn">
                     <i class="fa fa-check fa-2x"></i>
-                    <span>COURSES</span>
+                    <span>COURSES & FEE <br\> STRUCTURE</span>
                     <span class="label label-danger"><%= @course_count %></span>
                   </div>
                 </div>
               <%end%>
+
+              <%= link_to  school_cutoffs_path(current_user) do %>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                  <div class="quick-btn">
+                    <i class="fa fa-signal fa-2x"></i>
+                    <span>ADMISSION</span>
+                    <span class="label label-warning"><%= @cutoff_count %></span>
+                  </div>
+                </div>
+              <%end%>
+
+
 
               <%= link_to  school_scholarships_path(current_user) do %>
                 <div class="col-md-2 col-sm-4 col-xs-6">
@@ -108,25 +131,9 @@
                 </div>
               <%end%>
 
-              <%= link_to  school_cutoffs_path(current_user) do %>
-                <div class="col-md-2 col-sm-4 col-xs-6">
-                  <div class="quick-btn">
-                    <i class="fa fa-signal fa-2x"></i>
-                    <span>CUTOFF</span>
-                    <span class="label label-warning"><%= @cutoff_count %></span>
-                  </div>
-                </div>
-              <%end%>
+              
 
-              <%= link_to  school_campus_path(current_user) do %>
-                <div class="col-md-2 col-sm-4 col-xs-6">
-                  <div class="quick-btn">
-                    <i class="fa fa-external-link fa-2x"></i>
-                    <span>CAMPUS</span>
-                    <span class="label btn-metis-2"><%= @campus_count %></span>
-                  </div>
-                </div>
-              <%end%>
+              
 
               <%= link_to  school_schoolinformations_path(current_user) do %>
                 <div class="col-md-2 col-sm-4 col-xs-6">

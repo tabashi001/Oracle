@@ -16,12 +16,16 @@
 			<div class="stuBbanner">
 			
 		`		<div class="logo">
-					<img src="/assets/su.jpg" class="img-circle stygfh" width="110" height="110" border="0" alt="profile image">
+					<% if @student.profile_image.present? %>
+					<%= image_tag @student.profile_image,class: "img-circle stygfh", width: "110", height: "110", border: "0", alt: "profile image" %>
+					<%else%>
+					<%= image_tag "user.png",class: "img-circle stygfh", width: "110", height: "110", border: "0", alt: "profile image" %>
+					<%end%>
 				</div>
 			</div>
 			<div class="row trt">
-				<h3>SUPRIYA RANI</h3>
-				<h4 class="H4cuStom">INDIA</h4>
+				<h3><%= @student.name %></h3>
+				<h4 class="H4cuStom"><%= @student.city %></h4>
 			</div>
 			
 			<div class="row darf">
@@ -30,10 +34,16 @@
 						<div class="colB">
 							
 							<ul class="list-group">
-								<li class="list-group-item custlist"><b>Email : </b> supriyaranii60@gmail.com</li>
-								<li class="list-group-item custlist"><b>Phone : </b> 7903577787</li>
-								<li class="list-group-item custlist"><b>Class : </b> XII</li>
-								<li class="list-group-item custlist"><b>Gender : </b> Female</li>
+								<li class="list-group-item custlist"><b>Email : </b> <%= @student.email %></li>
+								<li class="list-group-item custlist"><b>Phone : </b><%= @student.phone_no %></li>
+								<li class="list-group-item custlist"><b>Class : </b><%= @student.qualification if present? %></li>
+								<% if @student.gender == true%>
+								<li class="list-group-item custlist"><b>Gender : </b>Male</li>
+								<% elsif @student.gender == false%>
+								<li class="list-group-item custlist"><b>Gender : </b>Female</li>
+								<%else%>
+								<li class="list-group-item custlist"><b>Gender : </b>Not Mentioned</li>
+								<%end%>
 							</ul>
 						
 						</div>
@@ -43,10 +53,10 @@
 							
 							<ul class="list-group">
 								
-								<li class="list-group-item custlist"><b>City : </b> Bangalore</li>
-								<li class="list-group-item custlist"><b>State : </b>Karnataka</li>
-								<li class="list-group-item custlist"><b>Country : </b>India</li>
-								<li class="list-group-item custlist"><b>Address : </b>#7, 3rd A cross, 31st main, sri lakshmi narasimha pg, btm 2nd stage, bangalore</li>
+								<li class="list-group-item custlist"><b>City : </b><%= @student.city %></li>
+								<li class="list-group-item custlist"><b>State : </b><% if @state.present? %><%= @state.name %><%end%></li>
+								<li class="list-group-item custlist"><b>Country : </b><% if @country.present? %><%= @country.name %><%end%></li>
+								<li class="list-group-item custlist"><b>Address : </b><%= @student.address %></li>
 							</ul>
 						
 						</div>

@@ -91,11 +91,15 @@
                 <tr>
                   <td><%= notes.title%></td>
                   <td><%= notes.description%></td>
-                  <td><% if notes.document_content_type == "application/pdf" or "application/msword" %>
-                      <%= link_to (image_tag "/assets/doc.png"),notes.document.url(),class: "Textwh", target: '_blank' %>
-                    <% else %>
-                    <% end %></td>
+                  <% if notes.document_content_type == "application/pdf" or "application/msword" %>
+                     <td> <%= link_to (image_tag "doc.png"),notes.document.url(),class: "Textwh text-center", target: '_blank' %><p>Click to view</p></td>
+                    <% elsif notes.document_content_type == "image/jpeg" or "image/png" %>
+                    <td> <%= link_to (image_tag "dis_image.jpg"),notes.document.url(),class: "Textwh", target: '_blank' %></td>
+                    <% end %>
                   <td>
+
+
+
                     <%=link_to "Edit",teacher_update_sale_notes_path(notes),class: "btn btn-primary btn-xs"%>
                     <% if notes.sale == true%>
                       <%=link_to "UnSale",teacher_sale_path(notes), class: "btn btn-danger btn-xs",:confirm => "Do you want to UnSale?"%>
@@ -149,4 +153,14 @@
   <!-- /.modal-dialog -->
 </div>
 
-<%= render "layouts/javascripts"%>
+
+
+<%= render "layouts/javascripts" %>
+
+<script language="javascript" type="text/javascript">
+  $(document).ready(function() {
+    $('#trigger').click(function(){
+      $("#dialog").dialog();
+    }); 
+  });                  
+</script>

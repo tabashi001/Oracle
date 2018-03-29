@@ -92,7 +92,8 @@
             </div>
             <div class="form-group margunrve text-center">
               <%=f.submit "Submit", class: "btn btn-default"%>
-              <button type="submit" class="btn btn-default">Cancel</button>
+              <%= link_to "Cancel",teacher_sale_notes_path(@teacher) ,class: "btn btn-default"%>
+              <!-- <button type="submit" class="btn btn-default">Cancel</button> -->
             </div>
           <%end%> 
         </div>

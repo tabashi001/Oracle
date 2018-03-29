@@ -45,6 +45,9 @@ class UsersController < ApplicationController
   end
 
   def student_show
+    @student = User.find(id = params[:id])
+    @state = State.find(@student.state_id) if @student.state_id.present?
+    @country = Country.find(@student.country_id) if @student.country_id.present?
   end
 
   def all_view
