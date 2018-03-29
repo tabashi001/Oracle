@@ -16,15 +16,16 @@
           <%#= flash[:recaptcha_error] %>
           <div class="left">
             <h1>Sign up</h1>
-            <%= f.email_field :email, autofocus: true,placeholder: "Email" %>
+            <%= f.email_field :email, autofocus: true,placeholder: "Email" ,required: true%>
             <% if @minimum_password_length %>
-              <%= f.password_field :password, autocomplete: "off",placeholder: "Password" %><em>(<%= @minimum_password_length %> characters minimum)</em>
-              <%= f.password_field :password_confirmation, autocomplete: "off",placeholder: "Confirm Password" %>   
+              <%= f.password_field :password, autocomplete: "off",placeholder: "Password",required: true %><em>(<%= @minimum_password_length %> characters minimum)</em>
+              <%= f.password_field :password_confirmation, autocomplete: "off",placeholder: "Confirm Password",required: true %>   
             <% end %>
-            <%= f.text_field :phone_no, autocomplete: "off",placeholder: "Phone " %>
+            <%= f.text_field :phone_no, autocomplete: "off",placeholder: "Phone ",required: true %>
             <div class="field">
               <%#= f.label :Role %>
               <% User.roles.keys.each do |role| %>
+              <%binding.pry%>
                 <%= f.radio_button :role, role %>
                 <%= f.label role.to_sym %>
               <% end %>
