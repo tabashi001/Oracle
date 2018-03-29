@@ -68,7 +68,7 @@ $(document).ready(function() {
 					<div class="st-home-unit">
 						<h1 class="edutetitle">Discover The Best</h1>
 						<form class="form-wrapper cf">
-							<%= form_tag users_search_path(:controller => 'users', :action => 'search'), method: :get do %>
+							<%= form_tag users_search_path(:controller => 'users', :action => 'search',:search => params[:search]), method: :get do %>
 								<%= select("user", "city", @city.map{|city| city.titleize},{:prompt => 'Select Location'} ,{class: "fa fa-map-marker"}) %>
 								<%= select("user", "role", @role.map{|role| role.titleize},{:prompt => 'I am ..'},class: "fa") %>
 
