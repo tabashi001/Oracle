@@ -1,10 +1,12 @@
 
 <%= stylesheet_link_tag  "schoolProfile" %>
 <%= stylesheet_link_tag  "bootstrap.min" %>
+<%= stylesheet_link_tag  "style" %>
+
 <title>School Profile</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<%= stylesheet_link_tag  "schoolProfile" %>
+
 
 <div class="container-fluid schbckimg">
   <div class="content-agileits">
@@ -51,14 +53,14 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-6">
             <div class="form-group frmgrpcust">
               <label for="City" class="control-label">Country:</label>
                 <%= f.collection_select :country_id, Country.order(:name), :id, :name, include_blank: true,class: "form-control" %>
               <div class="help-block with-errors"></div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6">
             <div class="form-group frmgrpcust">
               <label for="Country" class="control-label">State:</label>
               <%= f.grouped_collection_select :state_id, Country.order(:name), :states, :name, :id, :name, include_blank: true,class: "form-control" %>
