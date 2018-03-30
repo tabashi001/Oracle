@@ -55,14 +55,14 @@
           <div class="col-md-6">
             <div class="form-group frmgrpcust">
               <label for="City" class="control-label">Country:</label>
-                <%= f.collection_select :country_id, Country.order(:name), :id, :name, include_blank: true,class: "form-control" %>
+                <%= f.collection_select :country_id, Country.order(:name), :id, :name, {:include_blank => true}, {:class=>'my-custom-class form-control'} %>
               <div class="help-block with-errors"></div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group frmgrpcust">
               <label for="Country" class="control-label">State:</label>
-              <%= f.grouped_collection_select :state_id, Country.order(:name), :states, :name, :id, :name, include_blank: true,class: "form-control" %>
+              <%= f.grouped_collection_select :state_id, Country.order(:name), :states, :name, :id, :name, {:include_blank => true}, {:class=>'my-custom-class form-control'}%>
               <div class="help-block with-errors"></div>
             </div>
           </div>
