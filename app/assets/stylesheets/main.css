@@ -2492,18 +2492,20 @@ body.error .logo h1 {
   body.error .logo h1 {
     font-size: 60px;
   }
-  .quick-btn {
+ .quick-btn {
   background: #eeeeee none repeat scroll 0 0;
   box-shadow: 0 0 0 1px #f8f8f8 inset, 0 0 0 1px #cccccc;
   color: #444444;
   display: inline-block;
-  height: 80px;
+  font-size: 12px;
+  height: 104px;
   margin: 10px;
   padding-top: 16px;
   position: relative;
   text-align: center;
   text-decoration: none;
   width: 100%;
+  word-wrap: break-word;
 }
 }
 /* END ERROR PAGES STYLES */
