@@ -161,7 +161,10 @@ margin-top: 0 !important;
 								        		<h4 id="<%= school.id %>"><%= school.name %> </h4>
 								        		<%#end%>
 								        		</a>
-								        		<span> <i class="fa fa-map-marker"></i> <%= school.address%>,<%= school.city%>,<%= school.country%> </span>
+								        		<span> <i class="fa fa-map-marker"></i> <%= school.address%>,
+								        		<% if @state = State.find_by_id(school.state_id)%><%= @state.name%> <%end%>,
+								        		<% if @country = Country.find_by_id(school.country_id)%>
+								        		 <%= @country.name%> <%end%></span>
 								            </div>
 						                    <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
 						                    	<div class="col-md-3 col-sm-6 col-xs-6">
@@ -171,7 +174,7 @@ margin-top: 0 !important;
 								        			<%else%><h6>Not Mention</h6><%end%>
 								        	 	</div>
 									        	<div class="col-md-3 col-sm-6 col-xs-6">
-							                    	<i class="fa fas fa-trophy"></i> <span>Scholership</span>
+							                    	<i class="fa fas fa-trophy"></i> <span>Scholarship</span>
 									        		<h6>Available</h6>
 									        	</div>
 									        	<div class="col-md-3 col-sm-6 col-xs-6">
