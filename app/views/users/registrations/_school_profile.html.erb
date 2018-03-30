@@ -49,15 +49,22 @@
         <div class="row">
           <div class="col-md-4">
             <div class="form-group frmgrpcust">
-              <label for="City" class="control-label">Country:</label>
-                <%= f.collection_select :country_id, Country.order(:name), :id, :name, include_blank: true,class: "form-control" %>
+              <label for="Country" class="control-label">Country:</label>
+                <%= f.collection_select :country_id, Countr.order(:name), :id, :name, include_blank: true,class: "form-control" %>
               <div class="help-block with-errors"></div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-group frmgrpcust">
-              <label for="Country" class="control-label">State:</label>
-              <%= f.grouped_collection_select :state_id, Country.order(:name), :states, :name, :id, :name, include_blank: true,class: "form-control" %>
+              <label for="State" class="control-label">State:</label>
+              <%= f.grouped_collection_select :state_id, Countr.order(:name), :stat, :name, :id, :name, include_blank: true,class: "form-control" %>
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group frmgrpcust">
+              <label for="City" class="control-label">City:</label>
+              <%= f.grouped_collection_select :city_id, Stat.order(:name), :city, :name, :id, :name, include_blank: true,class: "form-control" %>
               <div class="help-block with-errors"></div>
             </div>
           </div>
@@ -143,6 +150,28 @@ jQuery(function() {
     } else {
       $('#user_state_id').empty();
       return $('#user_state_id').parent().hide();
+    }
+  });
+});
+</script>
+<script type="text/javascript">
+jQuery(function() {
+  var cities;
+  $('#user_city_id').parent().hide();
+  cities = $('#user_city_id').html();
+  console.log(cities);
+  return $('#user_state_id').change(function() {
+    var state, escaped_state, options;
+    state = $('#user_state_id :selected').text();
+    escaped_state = state.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1');
+    options = $(cities).filter("optgroup[label=" + escaped_state + "]").html();
+    console.log(options);
+    if (options) {
+      $('#user_city_id').html(options);
+      return $('#user_city_id').parent().show();
+    } else {
+      $('#user_city_id').empty();
+      return $('#user_city_id').parent().hide();
     }
   });
 });

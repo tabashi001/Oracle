@@ -14,9 +14,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    debugger
+    @state = Stat.find(params[:country_id]) if params[:country_id].present?
+    #super
+  end
 
   # PUT /resource
   # def update
