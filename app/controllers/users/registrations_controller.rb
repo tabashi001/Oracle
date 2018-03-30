@@ -69,6 +69,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
+    #binding.pry
       if resource.role == "student"
       students_path
     elsif resource.role == "school"

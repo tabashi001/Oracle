@@ -1,7 +1,7 @@
-<%= stylesheet_link_tag  "schoolProfile" %>
-<%= stylesheet_link_tag  "bootstrap.min" %>
-<title>Teacher Profile</title>
 
+
+<title>Teacher Profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <div class="container-fluid studentconter">
   <div class="content-agileits">
     <div class="left">
@@ -12,7 +12,7 @@
           <div class="col-md-12">
             <div class="form-group frmgrpcust">
               <label for="firstname" class="control-label">Name:</label>
-              <%= f.text_field :name, autofocus: true,class: "form-control",placeholder: "Name"%>
+              <%= f.text_field :name, autofocus: true,class: "form-control",placeholder: "Name" ,required: true%>
               <div class="help-block with-errors"></div>
             </div>
           </div>
@@ -51,7 +51,7 @@
           <div class="col-md-4">
             <div class="form-group frmgrpcust">
               <label for="City" class="control-label">Country:</label>
-                <%= f.collection_select :country_id, Country.order(:name), :id, :name, include_blank: true,class: "form-control" %>
+                <%= f.collection_select :country_id, Country.order(:name), :id, :name, {:include_blank => true}, {:class=>'my-custom-class form-control'} %>
               <div class="help-block with-errors"></div>
             </div>
           </div>
@@ -68,14 +68,14 @@
           <div class="col-md-6">
             <div class="form-group frmgrpcust">
               <label for="Class" class="control-label">Specialization:</label>
-              <%= f.text_field :qualification, autofocus: true,class: "form-control"%>
+              <%= f.text_field :qualification, autofocus: true,class: "form-control",required: true%>
               <div class="help-block with-errors"></div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group frmgrpcust">
               <label for="Class" class="control-label">Pincode:</label>
-              <%= f.text_field :pincode, autofocus: true,class: "form-control",placeholder: "Pincode" %>
+              <%= f.text_field :pincode, autofocus: true,class: "form-control",placeholder: "Pincode" ,required: true%>
               <div class="help-block with-errors"></div>
             </div>
           </div>
@@ -119,7 +119,7 @@
       </form>
     <% end %>
     </div>
-    <div class="righttwo">
+    <div class="right">
       <div class="heading-text">
         <h1 class="student-profile">Edit Teacher Profile</h1>
       </div>
@@ -127,8 +127,7 @@
     <div class="clear"></div>
   </div>
 </div>
-<%= javascript_include_tag "jquery.min" %>
-<%= javascript_include_tag "bootstrap.min" %>
+
 <script type="text/javascript">
 jQuery(function() {
   var states;

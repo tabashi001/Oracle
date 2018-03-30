@@ -6,7 +6,7 @@
 <%= stylesheet_link_tag  "header" %>
 
 <div class="container-fluid pgeBo">
-	<div class="container-fluid banner">
+	<div style="background-image: url(<%= @college.cover_image %>)" >
 		<div class="bannerText text-center">
 			<div class="logo">
 				<%if @college.profile_image.present?%>
@@ -16,7 +16,7 @@
 				<%end%>
 			</div>
 			<h1 class="heading"><%= @college.name %></h1>
-			<p class="text">(A Divyashree group)</p><!-- PENDING -->
+			<p class="text">(A EduOracle group)</p><!-- PENDING -->
 			<p class="text"><%= @college.address %></p>
 			<p class="text"><%= @college.email %></p>
 		</div>
@@ -53,7 +53,7 @@
 		<%= render "users/news"%>
 	  	<!--PICTURE TAB-->
 		<%= render "users/picture"%>
-		<!--------------------End of Tabs-------------------->
+
 	</div>
 </div>
 <!-- model-->

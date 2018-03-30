@@ -6,15 +6,40 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
   	if resource.role == "student"
-  		students_path
+      unless fields_check(current_user)
+       flash[:notice] = "Please complete your profile to proceed futher"
+       edit_user_registration_path
+      else
+		   students_path
+      end
   	elsif resource.role == "school"
-  		schools_path
+      unless fields_check(current_user)
+       flash[:notice] = "Please complete your profile to proceed futher"
+       edit_user_registration_path
+      else
+  		 schools_path
+      end
   	elsif resource.role == "teacher"
-  		teachers_path
+      unless fields_check(current_user)
+       flash[:notice] = "Please complete your profile to proceed futher"
+       edit_user_registration_path
+      else
+  		 teachers_path
+      end
   	elsif resource.role == "vendor"
-  		vendors_path
+      unless fields_check(current_user)
+       flash[:notice] = "Please complete your profile to proceed futher"
+       edit_user_registration_path
+      else
+  		 vendors_path
+      end
   	elsif resource.role == "admin"
-  		admin_index_path
+      unless fields_check(current_user)
+       flash[:notice] = "Please complete your profile to proceed futher"
+       edit_user_registration_path
+      else
+  		 admin_index_path
+      end
     else resource.role == " "
       students_path
   	end
@@ -27,4 +52,15 @@ class ApplicationController < ActionController::Base
        :profile_image, :document, :qualification, :cover_image, :description,:country_id,:state_id,:city_id])
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email,:password])
   end
+
+  protected
+    def check_user_signed_in
+      if !user_signed_in?
+        redirect_to user_session_path
+      end
+    end
+
+    def fields_check(resource)
+      resource.name.present? && resource.address.present? && resource.qualification.present?
+    end
 end

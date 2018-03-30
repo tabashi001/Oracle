@@ -1,6 +1,6 @@
 <title>Pay Schoo Tutor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">  
 
-<%= render 'layouts/javascripts'%>
 <%= render 'layouts/stylesheets'%>
 
 <div class="bg-dark dk" id="wrap">
@@ -59,7 +59,7 @@
     <li class="">
       <%= link_to student_sale_book_path(@current_user) do%>
         <i class="fa fa-tasks"></i>
-        <span class="link-title">Sale Book</span>
+        <span class="link-title">Sell Book</span>
       <%end%>
     </li>
     <li class="">
@@ -142,3 +142,5 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
+
+<%= render 'layouts/javascripts'%>

@@ -1,6 +1,11 @@
+
 <%= stylesheet_link_tag  "schoolProfile" %>
-<%= stylesheet_link_tag  "bootstrap.min" %>
+
+
 <title>School Profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 
 <div class="container-fluid schbckimg">
   <div class="content-agileits">
@@ -47,14 +52,14 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-6">
             <div class="form-group frmgrpcust">
               <label for="Country" class="control-label">Country:</label>
                 <%= f.collection_select :country_id, Countr.order(:name), :id, :name, include_blank: true,class: "form-control" %>
               <div class="help-block with-errors"></div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6">
             <div class="form-group frmgrpcust">
               <label for="State" class="control-label">State:</label>
               <%= f.grouped_collection_select :state_id, Countr.order(:name), :stat, :name, :id, :name, include_blank: true,class: "form-control" %>
@@ -130,8 +135,7 @@
     <div class="clear"></div>
   </div>
 </div>
-<%= javascript_include_tag "jquery.min" %>
-<%= javascript_include_tag "bootstrap.min" %>
+
 <script type="text/javascript">
 jQuery(function() {
   var states;

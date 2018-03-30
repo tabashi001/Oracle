@@ -1,6 +1,8 @@
 <title>Overview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <%= render "layouts/stylesheets"%>
-<%= render "layouts/javascripts"%>
+
 
 <div class="bg-dark dk" id="wrap">
   <%= render "schools/top"%>
@@ -38,14 +40,14 @@
         <span class="link-title" >&nbsp;Dashboard</span>
       <%end%>
     </li>
-    <li class="active">
+    <li class="">
       <a href="javascript:;">
         <i class="fa fa-building "></i>
         <span class="link-title">Layouts</span>
         <span class="fa arrow"></span>
       </a>
       <ul class="collapse">
-        <li class='active'>
+        <li class=''>
           <%if current_user.overviews.present?%>
             <%= link_to  school_update_overview_path(current_user) do %>
             <i class="fa fa-angle-right"></i>&nbsp;Overview<%end%>
@@ -115,6 +117,7 @@
     <li class="nav-divider"></li>
   </ul>
 </div>
+
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
@@ -143,6 +146,7 @@
   </div>
 </div>
 
+
 <footer class="Footer bg-dark dker">
     <p>2017 &copy; Tabashi Technology Private Limited</p>
 </footer>
@@ -169,3 +173,5 @@
     </div>
   </div>
 </div>
+
+<%= render "layouts/javascripts"%>

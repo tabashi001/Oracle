@@ -1,5 +1,9 @@
+
+<title>Videos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <%= render "layouts/stylesheets"%>
-<%= render "layouts/javascripts"%>
+
 
 <style type="text/css">
      .ADDcorsen.text-right {
@@ -44,7 +48,7 @@
         <span class="link-title" >&nbsp;Dashboard</span>
       <%end%>
     </li>
-    <li class="active">
+    <li class="">
       <a href="javascript:;">
         <i class="fa fa-building "></i>
         <span class="link-title">Layouts</span>
@@ -88,7 +92,7 @@
           <%= link_to  school_schoolpictures_path(current_user) do %>
           <i class="fa fa-angle-right"></i>&nbsp; Pictures<%end%>
         </li>
-        <li class='active'>
+        <li class=''>
           <%= link_to  school_schoolvideos_path(current_user) do %>
           <i class="fa fa-angle-right"></i>&nbsp; Videos<%end%>
         </li>
@@ -124,11 +128,13 @@
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
-        <h4>List of Courses</h4>
+        <h4>Videos</h4>
         <hr>
         <div class="ADDcorsen text-right">
           <%=link_to "Back",schools_path, class: "btn btn-primary"%>
-          <%=link_to "Add Videos",school_schoolvideo_path(current_user), class: "btn btn-primary"%>
+          <%#=link_to "Add Videos",onclick: => "alert('Input collected!')", class: "btn btn-primary"%>
+
+          <%= button_tag "Add Video" ,:class => "btn btn-primary",:onclick => "alert('Please Contact to Admin To Add Video!!..Contact No - +91-9916581681')"%>
         </div> 
         <div class="table-responsive"> 
           <table class="table table-bordered">
@@ -184,3 +190,5 @@
         </div>
     </div>
 </div>
+
+<%= render "layouts/javascripts"%>

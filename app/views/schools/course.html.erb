@@ -1,7 +1,7 @@
 
 <title>Overview</title>
 <%= render "layouts/stylesheets"%>
-<%= render "layouts/javascripts"%>
+
 
 <div class="bg-dark dk" id="wrap">
   <%= render "schools/top"%>
@@ -39,7 +39,7 @@
         <span class="link-title" >&nbsp;Dashboard</span>
       <%end%>
     </li>
-    <li class="active">
+    <li class="">
       <a href="javascript:;">
         <i class="fa fa-building "></i>
         <span class="link-title">Layouts</span>
@@ -55,7 +55,7 @@
             <i class="fa fa-angle-right"></i>&nbsp;Overview<%end%>
           <%end%>
         </li>
-        <li class='active'>
+        <li class=''>
           <%= link_to  school_courses_path(current_user) do %>
           <i class="fa fa-angle-right"></i>&nbsp; Courses<%end%>
         </li>
@@ -124,16 +124,22 @@
         <%= form_for(@course, url: school_course_path) do |f| %>
           <div class="row vdiocont">   
             <div class="form-group margunrve">
-              <%= label_tag :degree_name, "Name of Degree" %><br />
-              <%= text_field_tag :new_degree_name %>
-              <label for="sel1">Enter or Select Degree</label><br />
-              <%= f.select( :degree_name, Course.all.map {|p| [p.degree_name]}.uniq, :prompt => "Select a Degree") %>
+              <!-- <label for="email">Name of Degree</label> -->
+              <%#=f.text_field :degree_name, class: "form-control",placeholder: "Name of Degree" %>
+              <%= label_tag :degree_name, "Name of Degree" %>
+              <%= text_field_tag :new_degree_name,"", class: 'form-control' %><br />
+               <p class="text-center">Or</p>
+              <label for="sel1">Enter or Select Degree :</label>
+              <%= f.select( :degree_name, Course.all.map {|p| [p.degree_name]}.uniq,{},{:prompt => "Select a Degree",:class => "form-control"}) %>
             </div> 
             <div class="form-group margunrve">
-              <%= label_tag :course_name, "Name of Course" %><br />
-              <%= text_field_tag :new_course_name %>
-              <label for="sel1">Enter or Select Course</label><br />
-              <%= f.select( :course_name, Course.all.map {|p| [p.course_name]}.uniq, :prompt => "Select a Courses") %>
+              <%= label_tag :course_name, "Name of Course" %>
+              <%= text_field_tag :new_course_name,"", class: 'form-control' %><br />
+               <p class="text-center">Or</p>
+              <label for="sel1">Enter or Select Course :</label>
+              <%= f.select( :course_name, Course.all.map {|p| [p.course_name]}.uniq, {},{:prompt => "Select a Courses",:class => "form-control"}) %>
+              <!-- <label for="email">Name of Courses</label>
+              <%#=f.text_field :course_name, class: "form-control",placeholder: "Name of Courses" %> -->
             </div>
              <div class="form-group">
               <label for="sel1">Duration</label>
@@ -194,3 +200,5 @@
     </div>
   </div>
 </div>
+
+<%= render "layouts/javascripts"%>

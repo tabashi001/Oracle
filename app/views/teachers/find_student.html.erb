@@ -1,6 +1,7 @@
 <title>Find Students</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <%= render "layouts/stylesheets"%>
-<%= render "layouts/javascripts"%>
+
 <%= stylesheet_link_tag  "searchbar" %>
 
 <style type="text/css">
@@ -72,7 +73,7 @@
     <li>
       <%=link_to teacher_sale_notes_path(@teacher) do%>
         <i class="fa fa-table"></i>
-        <span class="link-title">Sale Notes</span>
+        <span class="link-title">Sell Notes</span>
       <%end%>
     </li>
     <li>
@@ -187,3 +188,5 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
+
+<%= render "layouts/javascripts"%>

@@ -6,7 +6,7 @@
     <div class="user-wrapper bg-dark">
       <a class="user-link" href="">
         <%if current_user.profile_image.present? %>
-          <%= image_tag current_user.profile_image,class: "media-object img-thumbnail user-img",:size => "80x80" %>
+          <%= image_tag current_user.profile_image.url,class: "media-object img-thumbnail user-img",:size => "80x80" %>
         <%else%>
           <%= image_tag('user.gif',class: "media-object img-thumbnail user-img")%>
         <%end%>
@@ -89,7 +89,8 @@
       <%end%>
     </li>
     <li class="">
-      <a href="">
+      <a href="" style="pointer-events: none;
+   cursor: default;">
         <i class="fa fa-pencil"></i>
         <span class="link-title">School</span>
       </a>

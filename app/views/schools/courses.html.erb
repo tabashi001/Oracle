@@ -1,5 +1,8 @@
+<title>Courses</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <%= render "layouts/stylesheets"%>
-<%= render "layouts/javascripts"%>
+
 
 <style type="text/css">
      .ADDcorsen.text-right {
@@ -44,7 +47,7 @@
         <span class="link-title" >&nbsp;Dashboard</span>
       <%end%>
     </li>
-    <li class="active">
+    <li class="">
       <a href="javascript:;">
         <i class="fa fa-building "></i>
         <span class="link-title">Layouts</span>
@@ -60,7 +63,7 @@
             <i class="fa fa-angle-right"></i>&nbsp;Overview<%end%>
           <%end%>
         </li>
-        <li class='active'>
+        <li class=''>
           <%= link_to  school_courses_path(current_user) do %>
           <i class="fa fa-angle-right"></i>&nbsp; Courses<%end%>
         </li>
@@ -121,6 +124,7 @@
     <li class="nav-divider"></li>
   </ul>
 </div>
+
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
@@ -186,3 +190,5 @@
         </div>
     </div>
 </div>
+
+<%= render "layouts/javascripts"%>

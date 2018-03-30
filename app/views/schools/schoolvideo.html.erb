@@ -1,7 +1,7 @@
 <title>Overview</title>
 
 <%= render "layouts/stylesheets"%>
-<%= render "layouts/javascripts"%>
+
 
 <div class="bg-dark dk" id="wrap">
   <%= render "schools/top"%>
@@ -39,7 +39,7 @@
         <span class="link-title" >&nbsp;Dashboard</span>
       <%end%>
     </li>
-    <li class="active">
+    <li class="">
       <a href="javascript:;">
         <i class="fa fa-building "></i>
         <span class="link-title">Layouts</span>
@@ -83,7 +83,7 @@
           <%= link_to  school_schoolpictures_path(current_user) do %>
           <i class="fa fa-angle-right"></i>&nbsp; Pictures<%end%>
         </li>
-        <li class='active'>
+        <li class=''>
           <%= link_to  school_schoolvideos_path(current_user) do %>
           <i class="fa fa-angle-right"></i>&nbsp; Videos<%end%>
         </li>
@@ -173,3 +173,5 @@
     </div>
   </div>
 </div>
+
+<%= render "layouts/javascripts"%>

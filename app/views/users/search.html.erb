@@ -10,8 +10,9 @@
        background: #f4f3f2 none repeat scroll 0 0;
         }
 	.container-fluid.filterschool {
-     padding: 100px 0px 50px;
-      }
+  padding: 0 0 50px;
+}
+      
       p {
 	  margin-bottom: 26px;
 	  word-wrap: break-word;
@@ -44,6 +45,10 @@ margin-top: 0 !important;
 </style>
 
 	<%=render "layouts/header"%>
+
+		
+		<section class="home" id="home" data-stellar-background-ratio="0.4">
+     </section>
 	<div class="container-fluid Filtercont">
 		<div class="container-fluid filterschool">
 			<div class="row">
@@ -67,9 +72,22 @@ margin-top: 0 !important;
 					                              myparams: <%= course.user_id%>,
 					                          },
 					                          success:function(data){
+					                          	var data1 = JSON.stringify(data);
+					                          	var stringify = JSON.parse(data1);
+					                          	var dataArray = stringify["event"];
+					                          	if (dataArray.length > 0) {
+																				for (var i = 0; i < dataArray.length; i++) {
+																				    $("#college_list").hide();
+																				    $("#search_res").show();
+																				}
+
+					                          		
+					                          	} else {}
+					                          		
 					                              debugger;
 					                          },
-					                          error:function(data){
+					                          error:function(error){
+					                          	// console.log(error.responseText);
 					                              debugger;
 					                          }
 					                      });
@@ -87,6 +105,20 @@ margin-top: 0 !important;
 					    		</div>
 			        		<%end%>
 			        	</div>
+
+              <h3>Fee Structure</h3>
+				    	<div class="smallbox">
+				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+				     		<div class="checkbox">
+				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="1">Less that 50K</label>
+				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">50K to 1Lac</label>
+				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">1Lac to 1.5Lac</label>
+				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">More than 1.5Lac</label>
+
+
+				    		</div>
+			        	</div>
+
 
 			        	<h3>Mode of Eduation</h3>
 				    	<div class="smallbox">
@@ -108,7 +140,7 @@ margin-top: 0 !important;
 			        	</div>
 			        </div>
 			       
-			        <div class="col-md-10">
+			        <div id="college_list" class="col-md-10">
 			        	<h3>Colleges</h3>
 			        	<%if @school.present? %>
 				        	<% @school.each do |school| %>
@@ -160,6 +192,10 @@ margin-top: 0 !important;
 					    <%else%>
 			        		<p>No Result Found</p>
 			        	<%end%>
+			        </div>
+
+			        <div id="search_res" class="col-md-10" style="display:none;">
+			        	<%= render "users/search_filter" %>
 			        </div>	
 			       <p class="text-center"><%= will_paginate @school %></p>
 			    </div>

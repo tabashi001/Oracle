@@ -31,6 +31,7 @@ Rails.application.config.assets.precompile += %w( schoolProfile.css )
 Rails.application.config.assets.precompile += %w( header.css )
 Rails.application.config.assets.precompile += %w( school_show.css )
 Rails.application.config.assets.precompile += %w( searchbar.css )
+Rails.application.config.assets.precompile += %w( student.css )
 
 #JS Precompile
 Rails.application.config.assets.precompile += %w( jquery.min.js )

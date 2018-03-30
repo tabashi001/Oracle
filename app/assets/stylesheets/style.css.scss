@@ -31,8 +31,8 @@ h6 {
   letter-spacing: 1px;
   font-weight: 400;
 }
-h3{
-  color: #ffffff;
+h3 {
+  color: #4ecdc4;
   font-weight: 700;
 }
 
@@ -42,9 +42,8 @@ h3{
   border-color: #4ECDC4;
 }
 .btn.btn-primary.prmbtnsty {
-  background: #ffffff none repeat scroll 0 0;
+  background: #4ecdc4 none repeat scroll 0 0;
   border-color: #ffffff;
-  color: #333;
 }
 .container-fluid.scrolltext {
   background: #302e2d none repeat scroll 0 0;
@@ -92,19 +91,19 @@ h1.edutetitle {
   box-shadow: none !important;
 }
 .container-fluid.contboderone {
-  background: #f44336 none repeat scroll 0 0;
+  background: #ffffff none repeat scroll 0 0;
   border-bottom: 5px solid;
 }
 .container-fluid.contbodertwo {
-  background: #3f51b5 none repeat scroll 0 0;
+  background: #ffffff none repeat scroll 0 0;
   border-bottom: 5px solid;
 }
 .container-fluid.contboderthree {
-  background:#795548;
+  background:#ffffff;
   border-bottom: 5px solid;
 }
 .container-fluid.contboderfour {
-  background: #00897b none repeat scroll 0 0;
+  background: #ffffff none repeat scroll 0 0;
   border-bottom: 5px solid;
 }
 .form-control:focus {
@@ -417,7 +416,7 @@ h1.edutetitle {
   display: block;
   width: 150px;
   height: 51px;
-  background-image: url(/assets/title-top.png);
+  background-image: asset_url("title-top.png");
   background-repeat: no-repeat;
 }
 .bottom-line {
@@ -523,7 +522,7 @@ h1.edutetitle {
   }
 }
 .home {
-  background-image: url('back1.jpg');
+  background-image: asset_url("back1.jpg");
   background-position: top center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -533,6 +532,16 @@ h1.edutetitle {
   position: relative
   /* Temp CSS */
   /* Temp CSS End */
+}
+.homeone {
+  background-attachment: fixed;
+  background-color: #000;
+  background-image: url("/assets/back1-829b6b5a47962b42068720be753fe206567bbb5cb0cb2c67ab53b327a079de88.jpg");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 53px 0;
+  position: relative;
 }
 .home .st-brand {
   text-align: center;
@@ -668,7 +677,7 @@ h1.edutetitle {
   color: #4ecdc4;
 }
 .page-header {
-  background-image: url(../images/hero-img14.png);
+  background-image: asset_url("hero-img14.png");
   background-position: top center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -931,7 +940,7 @@ h1.edutetitle {
   }
 }
 .funfacts {
-  background-image: url(../images/funfact4.png);
+  background-image: asset_url("funfact4.png");
   background-color: #000;
   background-position: center center;
   background-attachment: fixed;
@@ -1039,7 +1048,7 @@ ul.styled-list.list-star li:before {
 }
 .call-2-acction {
   padding: 100px 0;
-  background-image: url(../images/c2a.png);
+  background-image: asset_url("c2a.png");
   background-attachment: fixed;
   background-color: #000;
 }
@@ -1215,7 +1224,7 @@ ul.styled-list.list-star li:before {
 }
 .testimonials {
   padding: 100px 0;
-  background-image: url(../images/testimonials.png);
+  background-image: asset_url("testimonials.png");
   background-size: cover;
   background-attachment: fixed;
   background-color: #000;
@@ -1534,7 +1543,7 @@ ul.styled-list.list-star li:before {
 }
 .subscribe {
   padding: 120px 0;
-  background-image: url(../images/subscribe2.png);
+  background-image: asset_url("subscribe2.png");
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -1736,7 +1745,7 @@ ul.nav.navbar-nav.navrightmnu {
 }
 
 .card-header {
-    background: rgba(0, 0, 0, 0) url("/assets/hero-img9.jpg") no-repeat scroll 0 0 / 371px 235px;
+    background: rgba(0, 0, 0, 0) asset_url("hero-img9.jpg") no-repeat scroll 0 0 / 371px 235px;
     border-radius: 1px 1px 0 0;
     height: 160px;
     width: 260px;
@@ -1820,13 +1829,13 @@ ul.nav.navbar-nav.navrightmnu {
     text-decoration: none;
 }
 .icon-time {
-    background: rgba(0, 0, 0, 0) url("../images/icon-time.png") no-repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0) asset_url("icon-time.png") no-repeat scroll 0 0;
     height: 17px;
     margin-top: -3px;
     width: 10px;
 }
 .icon-comment {
-    background: rgba(0, 0, 0, 0) url("../images/icon-comment.png") no-repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0) asset_url("icon-comment.png") no-repeat scroll 0 0;
     height: 14px;
     margin-left: 12px;
     margin-top: -2px;
@@ -1843,7 +1852,7 @@ ul.nav.navbar-nav.navrightmnu {
     width: 100%;
 }
 .card-header {
-    background: rgba(0, 0, 0, 0) url("/assets/hero-img9.jpg") no-repeat scroll 0 0 / 371px 235px;
+    background: rgba(0, 0, 0, 0) asset_url("hero-img9.jpg") no-repeat scroll 0 0 / 371px 235px;
     border-radius: 1px 1px 0 0;
     height: 160px;
     transition: all 0.3s ease-in-out 0s;

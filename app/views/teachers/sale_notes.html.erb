@@ -1,6 +1,6 @@
-<title>Sale Notes</title>
+<title>Sell Notes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <%= render "layouts/stylesheets"%>
-<%= render "layouts/javascripts"%>
 
 <div class="bg-dark dk" id="wrap">
   <%= render "teachers/top"%>
@@ -53,7 +53,7 @@
     <li class="active">
       <%=link_to teacher_sale_notes_path(@teacher) do%>
         <i class="fa fa-table"></i>
-        <span class="link-title">Sale Notes</span>
+        <span class="link-title">Sell Notes</span>
       <%end%>
     </li>
     <li>
@@ -91,11 +91,15 @@
                 <tr>
                   <td><%= notes.title%></td>
                   <td><%= notes.description%></td>
-                  <td><% if notes.document_content_type == "application/pdf" or "application/msword" %>
-                      <%= link_to (image_tag "/assets/doc.png"),notes.document.url(),class: "Textwh", target: '_blank' %>
-                    <% else %>
-                    <% end %></td>
+                  <% if notes.document_content_type == "application/pdf" or "application/msword" %>
+                     <td> <%= link_to (image_tag "doc.png"),notes.document.url(),class: "Textwh text-center", target: '_blank' %><p>Click to view</p></td>
+                    <% elsif notes.document_content_type == "image/jpeg" or "image/png" %>
+                    <td> <%= link_to (image_tag "dis_image.jpg"),notes.document.url(),class: "Textwh", target: '_blank' %></td>
+                    <% end %>
                   <td>
+
+
+
                     <%=link_to "Edit",teacher_update_sale_notes_path(notes),class: "btn btn-primary btn-xs"%>
                     <% if notes.sale == true%>
                       <%=link_to "UnSale",teacher_sale_path(notes), class: "btn btn-danger btn-xs",:confirm => "Do you want to UnSale?"%>
@@ -148,3 +152,15 @@
   </div>
   <!-- /.modal-dialog -->
 </div>
+
+
+
+<%= render "layouts/javascripts" %>
+
+<script language="javascript" type="text/javascript">
+  $(document).ready(function() {
+    $('#trigger').click(function(){
+      $("#dialog").dialog();
+    }); 
+  });                  
+</script>
