@@ -53,9 +53,9 @@
 							
 							<ul class="list-group">
 								
-								<li class="list-group-item custlist"><b>City : </b><%= @student.city %></li>
-								<li class="list-group-item custlist"><b>State : </b><% if @state.present? %><%= @state.name %><%end%></li>
-								<li class="list-group-item custlist"><b>Country : </b><% if @country.present? %><%= @country.name %><%end%></li>
+								<li class="list-group-item custlist"><b>City : </b><%if @student.city.present?%><%= @student.city %><%else%>Not Mentioned<%end%></li>
+								<li class="list-group-item custlist"><b>State : </b><% if @state.present? %><%= @state.name %><%else%>Not Mentioned<%end%></li>
+								<li class="list-group-item custlist"><b>Country : </b><% if @country.present? %><%= @country.name %><%else%>Not Mentioned<%end%></li>
 								<li class="list-group-item custlist"><b>Address : </b><%= @student.address %></li>
 							</ul>
 						
