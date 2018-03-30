@@ -20,7 +20,7 @@
 								<div class="card-body-header">
 									<div class="card-body-header-category">
 										<% if teacher.profile_image.present?%>
-											<%= image_tag teacher.profile_image ,class: "img-respomsive Companylg" %>
+											<%= image_tag teacher.profile_image ,class: "img-respomsive Companylg",:size => "70x55" %>
 										<%else%>
 											<%= image_tag("aj.jpg",class: "img-respomsive Companylg") %>
 										<%end%>
