@@ -1,11 +1,6 @@
-
 <%= stylesheet_link_tag  "schoolProfile" %>
-
-
+<%= stylesheet_link_tag  "bootstrap.min" %>
 <title>School Profile</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-
 
 <div class="container-fluid schbckimg">
   <div class="content-agileits">
@@ -52,24 +47,27 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-4">
             <div class="form-group frmgrpcust">
               <label for="Country" class="control-label">Country:</label>
-                <%= f.collection_select :country_id, Countr.order(:name), :id, :name, include_blank: true,class: "form-control" %>
+                <%#= f.collection_select :country_id, Countr.order(:name), :id, :name, include_blank: true,class: "form-control" %>
+                <%=select_tag :country_id, options_for_select(@countries.collect{|p| [p.name, p.id]}),prompt: "Select Country", class: "form-control"%>
               <div class="help-block with-errors"></div>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-4">
             <div class="form-group frmgrpcust">
               <label for="State" class="control-label">State:</label>
-              <%= f.grouped_collection_select :state_id, Countr.order(:name), :stat, :name, :id, :name, include_blank: true,class: "form-control" %>
+              <%#= f.grouped_collection_select :state_id, Countr.order(:name), :stat, :name, :id, :name, include_blank: true,class: "form-control" %>
+              <%=select_tag :state_id, options_for_select(@states.collect{|p| [p.name, p.id]}),prompt: "Select State", class: "form-control" %>
               <div class="help-block with-errors"></div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-group frmgrpcust">
               <label for="City" class="control-label">City:</label>
-              <%= f.grouped_collection_select :city_id, Stat.order(:name), :city, :name, :id, :name, include_blank: true,class: "form-control" %>
+              <%=select_tag :city_id, options_for_select(@cities.collect{|p| [p.name, p.id]}),prompt: "Select City", class: "form-control" %>
+              <%#= f.grouped_collection_select :city_id, Stat.order(:name), :city, :name, :id, :name, include_blank: true,class: "form-control" %>
               <div class="help-block with-errors"></div>
             </div>
           </div>
@@ -135,8 +133,9 @@
     <div class="clear"></div>
   </div>
 </div>
-
-<script type="text/javascript">
+<%= javascript_include_tag "jquery.min" %>
+<%= javascript_include_tag "bootstrap.min" %>
+<!-- <script type="text/javascript">
 jQuery(function() {
   var states;
   $('#user_state_id').parent().hide();
@@ -179,4 +178,48 @@ jQuery(function() {
     }
   });
 });
+</script> -->
+<script type="text/javascript">
+  $(document).on("change", "#country_id", function(){
+    var country = $(this).val();
+    $.ajax({
+      url: "/users/edit",
+      method: "GET",
+      dataType: "json",
+      data: {country: country},
+      error: function (xhr, status, error) {
+        console.error('AJAX Error: ' + status + error);
+      },
+      success: function (response) {
+        console.log(response);
+        var states = response["states"];
+        $("#state_id").empty();
+        $("#state_id").append('<option>Select State</option>');
+        for(var i=0; i< states.length; i++){
+          $("#state_id").append('<option value="' + states[i]["id"] + '">' + states[i]["name"] + '</option>');
+        }
+      }
+    });
+  });
+  $(document).on("change", "#state_id", function(){
+    var state = $(this).val();
+    $.ajax({
+      url: "/users/edit",
+      method: "GET",
+      dataType: "json",
+      data: {state: state},
+      error: function (xhr, status, error) {
+        console.error('AJAX Error: ' + status + error);
+      },
+      success: function (response) {
+        console.log(response);
+        var cities = response["cities"];
+        $("#city_id").empty();
+        $("#city_id").append('<option>Select City</option>');
+        for(var i=0; i< cities.length; i++){
+          $("#city_id").append('<option value="' + cities[i]["id"] + '">' + cities[i]["name"] + '</option>');
+        }
+      }
+    });
+  });
 </script>
