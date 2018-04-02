@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :phone_no, :gender, :address, :city, :pincode, :country, :gender, :role,
               :profile_image, :document, :qualification])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :phone_no, :gender, :address, :city, :pincode, :country, :gender, :role,
-       :profile_image, :document, :qualification, :cover_image, :description])
+       :profile_image, :document, :qualification, :cover_image, :description,:country_id,:state_id,:city_id])
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email,:password])
   end
 end
