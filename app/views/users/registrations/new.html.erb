@@ -25,7 +25,6 @@
             <div class="field">
               <%#= f.label :Role %>
               <% User.roles.keys.each do |role| %>
-              <%binding.pry%>
                 <%= f.radio_button :role, role %>
                 <%= f.label role.to_sym %>
               <% end %>
