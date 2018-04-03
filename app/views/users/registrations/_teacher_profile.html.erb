@@ -1,5 +1,5 @@
-
-
+<%= stylesheet_link_tag  "bootstrap.min" %>
+<%= stylesheet_link_tag  "studentProfile" %>
 <title>Teacher Profile</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <div class="container-fluid studentconter">
@@ -46,24 +46,30 @@
             </div>
           </div>
         </div>
-
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-4">
             <div class="form-group frmgrpcust">
-              <label for="City" class="control-label">Country:</label>
-                <%= f.collection_select :country_id, Country.order(:name), :id, :name, {:include_blank => true}, {:class=>'my-custom-class form-control'} %>
+              <label for="Country" class="control-label">Country:</label>
+                <%=f.select :country_id, options_for_select(@countries.collect{|p| [p.name, p.id]}),prompt: "Select Country", class: "form-control"%>
               <div class="help-block with-errors"></div>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-4">
             <div class="form-group frmgrpcust">
-              <label for="Country" class="control-label">State:</label>
-              <%= f.grouped_collection_select :state_id, Country.order(:name), :states, :name, :id, :name, {:include_blank => true}, {:class=>'my-custom-class form-control'} %>
+              <label for="State" class="control-label">State:</label>
+              <%=f.select :state_id, options_for_select(@states.collect{|p| [p.name, p.id]}),prompt: "Select State", class: "form-control" %>
+              <div class="help-block with-errors"></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group frmgrpcust">
+              <label for="City" class="control-label">City:</label>
+              <%=f.select :city_id, options_for_select(@cities.collect{|p| [p.name, p.id]}),prompt: "Select City", class: "form-control" %>
               <div class="help-block with-errors"></div>
             </div>
           </div>
         </div>
-
+       
         <div class="row">
           <div class="col-md-6">
             <div class="form-group frmgrpcust">
@@ -101,9 +107,6 @@
           <label class=" label2">
             <%= f.radio_button :gender, false %>Female
           </label>
-          <!-- <label class="w3layouts label2">
-            <input type="radio" name="work" id="others" value="female">Others
-          </label> -->
         </div>
 
         <div class="form-inline row">
@@ -127,26 +130,49 @@
     <div class="clear"></div>
   </div>
 </div>
-
+<%= javascript_include_tag "jquery.min" %>
+<%= javascript_include_tag "bootstrap.min" %>
 <script type="text/javascript">
-jQuery(function() {
-  var states;
-  $('#user_state_id').parent().hide();
-  states = $('#user_state_id').html();
-  console.log(states);
-  return $('#user_country_id').change(function() {
-    var country, escaped_country, options;
-    country = $('#user_country_id :selected').text();
-    escaped_country = country.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1');
-    options = $(states).filter("optgroup[label=" + escaped_country + "]").html();
-    console.log(options);
-    if (options) {
-      $('#user_state_id').html(options);
-      return $('#user_state_id').parent().show();
-    } else {
-      $('#user_state_id').empty();
-      return $('#user_state_id').parent().hide();
-    }
+  $(document).on("change", "#user_country_id", function(){
+    var country = $(this).val();
+    $.ajax({
+      url: "/users/edit",
+      method: "GET",
+      dataType: "json",
+      data: {country: country},
+      error: function (xhr, status, error) {
+        console.error('AJAX Error: ' + status + error);
+      },
+      success: function (response) {
+        console.log(response);
+        var states = response["states"];
+        $("#user_state_id").empty();
+        $("#user_state_id").append('<option>Select State</option>');
+        for(var i=0; i< states.length; i++){
+          $("#user_state_id").append('<option value="' + states[i]["id"] + '">' + states[i]["name"] + '</option>');
+        }
+      }
+    });
   });
-});
+  $(document).on("change", "#user_state_id", function(){
+    var state = $(this).val();
+    $.ajax({
+      url: "/users/edit",
+      method: "GET",
+      dataType: "json",
+      data: {state: state},
+      error: function (xhr, status, error) {
+        console.error('AJAX Error: ' + status + error);
+      },
+      success: function (response) {
+        console.log(response);
+        var cities = response["cities"];
+        $("#user_city_id").empty();
+        $("#user_city_id").append('<option>Select City</option>');
+        for(var i=0; i< cities.length; i++){
+          $("#user_city_id").append('<option value="' + cities[i]["id"] + '">' + cities[i]["name"] + '</option>');
+        }
+      }
+    });
+  });
 </script>

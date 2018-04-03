@@ -1,18 +1,16 @@
 <%= stylesheet_link_tag  "schoolProfile" %>
 <%= stylesheet_link_tag  "bootstrap.min" %>
 <title>School Profile</title>
-
 <div class="container-fluid schbckimg">
   <div class="content-agileits">
     <div class="left">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= devise_error_messages! %>
+      <%= form_for @school, url:admin_school_update_path do |f| %>
       <form action="#" method="post" data-toggle="validator">
         <div class="row">
           <div class="col-md-12">
             <div class="form-group frmgrpcust">
               <label for="firstname" class="control-label">School Name:</label>
-              <%= f.text_field :name, autofocus: true,class: "form-control",placeholder: "Name",value: resource.name %>
+              <%= f.text_field :name, autofocus: true,class: "form-control",placeholder: "Name" %>
               <div class="help-block with-errors"></div>
             </div>
           </div>
@@ -22,7 +20,7 @@
           <div class="col-md-12">     
             <div class="form-group frmgrpcust">
               <label for="inputEmail" class="control-label">Email:</label>
-              <%= f.email_field :email, autofocus: true,class: "form-control",placeholder: "Name",value: resource.email %>
+              <%= f.email_field :email, autofocus: true,class: "form-control",placeholder: "Name"%>
               <div class="help-block with-errors"></div>
             </div>
           </div>
@@ -32,7 +30,7 @@
           <div class="col-md-12">         
             <div class="form-group frmgrpcust">
               <label for="Phone" class="control-label">Phone:</label>
-              <%= f.text_field :phone_no, autofocus: true,class: "form-control",placeholder: "Phone",value: resource.phone_no %>
+              <%= f.text_field :phone_no, autofocus: true,class: "form-control",placeholder: "Phone"%>
               <div class="help-block with-errors"></div>
             </div>
           </div>
@@ -137,7 +135,7 @@
   $(document).on("change", "#user_country_id", function(){
     var country = $(this).val();
     $.ajax({
-      url: "/users/edit",
+      url: "/admins/<%=current_admin.id%>/school_update",
       method: "GET",
       dataType: "json",
       data: {country: country},
@@ -158,7 +156,7 @@
   $(document).on("change", "#user_state_id", function(){
     var state = $(this).val();
     $.ajax({
-      url: "/users/edit",
+      url: "/admins/<%=current_admin.id%>/school_update",
       method: "GET",
       dataType: "json",
       data: {state: state},

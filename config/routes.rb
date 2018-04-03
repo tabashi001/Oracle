@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 	resource :showcase do 
 		collection do 
@@ -17,7 +18,6 @@ Rails.application.routes.draw do
 		get :sale_book
 		post :sale_book 
 	end
-
 
 	resources :teachers do
 		get :schools
@@ -105,21 +105,23 @@ Rails.application.routes.draw do
 		    get '/users/sign_out' => 'devise/sessions#destroy'
 		    #get '/users/:id/showcase' => 'users#showcase'
 		end
-
-		# resources :user do 
-		# 	collection do
-  # 	    post :find_all_course_name
-  # 	  end
-  #   end
-
-
-
-	# devise_scope :user do 
-	# 	get '/users/login' => 'devise/sessions#new'
-	#     get '/users/register' => 'devise/registrations#new'
-	#     get '/users/sign_out' => 'devise/sessions#destroy'
-	# end
-
+	devise_for :admins, controllers: { sessions: 'admins/sessions' ,registrations: 'admins/registrations'}
+	devise_scope :admin do 
+			get '/admins/login' => 'devise/sessions#new'
+		    get '/admins/sign_out' => 'devise/sessions#destroy'
+		    #get '/users/:id/showcase' => 'users#showcase'
+		end
+	resources :admins do 
+		get :schools
+		get :school_update
+		patch :school_update
+		get :teachers
+		get :students
+		get :vendors
+		post :activate
+		get :video_upload
+		post :video_upload
+	end
 	  get 'users/search' 
 	  post 'users/search'
 	  get 'users/student_show'
