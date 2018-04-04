@@ -18,7 +18,12 @@
 					<li><a href=""><%= current_user.role%></a></li>
 					<li>Last Access : <br>
 						<small><i class="fa fa-calendar"></i>&nbsp;<%= current_user.last_sign_in_at.strftime("%d %B %t at %I %M %p")%></small>
-						<%= link_to "(Edit Profile)" ,edit_user_registration_path%>
+						<% if current_user.active? %>
+							<%= link_to "(Edit Profile)" ,edit_user_registration_path%>
+						<%else%>
+							<a href="#applyModal" data-toggle="modal">(Edit Profile)
+							</a>
+						<%end%>
 					</li>
 				</ul>
 			</div>
@@ -40,19 +45,53 @@
 			</a>
 			<ul class="collapse">
 				<li>
-					<%= link_to student_pay_fees_school_path(@current_user) do%>
-					<i class="fa fa-angle-right"></i>&nbsp; For School<%end%>
+					<% if current_user.active? %>
+						<%= link_to student_pay_fees_school_path(@current_user) do%>
+							<i class="fa fa-angle-right"></i>&nbsp; For School
+						<%end%>
+					<%else%>
+							<a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">For School</a>
+					<%end%>
 				</li>
 				<li>
-					<%= link_to student_pay_fees_tutor_path(@current_user) do%>
-					<i class="fa fa-angle-right"></i>&nbsp;For Tutor<%end%>
+					<% if current_user.active? %>
+						<%= link_to student_pay_fees_tutor_path(@current_user) do%>
+							<i class="fa fa-angle-right"></i>&nbsp;For Tutor
+						<%end%>
+					<%else%>
+						<a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">For Tutor</a>
+					<%end%>
 				</li>
 			</ul>
 		</li>
 		<li class="">
-			<%= link_to student_sale_book_path(@current_user) do%>
-				<i class="fa fa-tasks"></i>
-				<span class="link-title">Sell Book</span>
+			<% if current_user.active? %>
+				<%= link_to student_sale_book_path(@current_user) do%>
+					<i class="fa fa-tasks"></i>
+					<span class="link-title">Sell Book</span>
+				<%end%>
+			<%else%>
+				<a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Sell Book</a>
+			<%end%>
+		</li>
+		<li class="">
+			<% if current_user.active? %>
+				<%= link_to student_schools_path(@current_user) do%>
+					<i class="fa fa-tasks"></i>
+					<span class="link-title">Apply To School</span>
+				<%end%>
+			<%else%>
+				<a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Apply To School</a>
+			<%end%>
+		</li>
+		<li class="">
+			<% if current_user.active? %>
+				<%= link_to student_teachers_path(@current_user) do%>
+					<i class="fa fa-tasks"></i>
+					<span class="link-title">Apply To Teacher</span>
+				<%end%>
+			<%else%>
+				<a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Apply To Teacher</a>
 			<%end%>
 		</li>
 		<li class="">

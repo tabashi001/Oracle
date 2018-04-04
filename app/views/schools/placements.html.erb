@@ -106,10 +106,10 @@
       <%end%>
     </li>
     <li class="">
-      <a href="">
-        <i class="fa fa-pencil"></i>
-        <span class="link-title">School</span>
-      </a>
+      <%= link_to  school_students_path(current_user) do %>
+        <i class="fa fa-tasks"></i>
+        <span class="link-title">Students</span>
+      <%end%>
     </li>
     <li class="">
       <%= link_to  school_vendors_path(current_user) do %>

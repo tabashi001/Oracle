@@ -93,19 +93,19 @@
         <h3>Students</h3>
         <hr>
          <form class="form-wrapper cf">
-        <%= form_tag teacher_find_student_path(current_user), :method => 'get' do %>
-          <%= text_field_tag "name",nil,:placeholder => "Student Name" ,required:"required"%>
-          <%= text_field_tag "qualification",nil,:placeholder => "Student Qualification",required:"required"%>
-          <%= text_field_tag "city",nil,:placeholder => "Student City",required:"required"%>
-         
-          <%= button_tag "Search" ,:class => "sEarch"%>
-        <% end %>
+          <%= form_tag teacher_find_student_path(current_user), :method => 'get' do %>
+            <%= select_tag "name",options_for_select(@name),prompt: "Select Student"%>
+            <%= select_tag "qualification",options_for_select(@qualification),prompt: "Select Subject"%>
+            <%= select_tag "city_id",options_for_select(@cities.collect{|p| [p.name, p.id]}),prompt: "Select City"%>
+            <%= button_tag "Search" ,:class => "sEarch"%>
+          <% end %>
       </form>
         <hr>
         <div class="row">
           <div class="col-md-12">
             <% if @search.present?%>
               <% @search.each do |search|%>
+              <a href="/users/student_show?id=<%= student.id %>" target="_blank">
                 <div class="col-md-2">
                   <div class="stdboard">
                     <% if search.profile_image.present?%>
@@ -118,14 +118,16 @@
                     <h5 class="colorchange"><%= search.qualification%></h5>
                   </div> 
                 </div>
+                </a>
               <%end%>
             <%else%>
               <% if @students.present?%>
                 <% @students.each do |student|%>
+                <a href="/users/student_show?id=<%= student.id %>" target="_blank">
                   <div class="col-md-2">
                     <div class="stdboard">
                       <% if student.profile_image.present?%>
-                          <%= image_tag student.profile_image ,class: "img-responsive stdboarspic"%>
+                          <%= image_tag student.profile_image ,class: "img-responsive stdboarspic", :size => "70x55" %>
                         <%else%>
                           <%= image_tag("content.jpg", class: "img-responsive stdboarspic")%>
                       <% end %>
@@ -134,6 +136,7 @@
                       <h5 class="colorchange"><%= student.qualification%></h5>
                     </div> 
                   </div>
+                  </a>
                 <%end%>
               <%else%>
                 <div class="col-md-2">

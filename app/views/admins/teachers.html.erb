@@ -95,9 +95,9 @@
                                     <td><%=teacher.phone_no%></td>
                                     <td>
                                      <%=link_to "Edit",admin_school_update_path(teacher.id),class: "btn btn-primary btn-xs"%>
-                                        <% if teacher.active? %> <%=link_to "Deactivate",admin_activate_path(teacher.id), method: :post, data: { confirm: "Do you to deactivate User Profile?" }, class: "btn btn-danger btn-xs"%>
+                                        <% if teacher.active? %> <%=link_to "Deactivate",admin_activate_path(teacher.id), method: :post, data: { confirm: "Do you want to Deactivate Teacher Profile?" }, class: "btn btn-danger btn-xs"%>
                                         <%else%>
-                                            <%=link_to "Activate",admin_activate_path(teacher.id), method: :post, data: { confirm: "Do you to deactivate User Profile?" }, class: "btn btn-success btn-xs"%>
+                                            <%=link_to "Activate",admin_activate_path(teacher.id), method: :post, data: { confirm: "Do you want to Activate Teacher Profile?" }, class: "btn btn-success btn-xs"%>
                                         <% end %>
                                         <%=link_to "Upload Video",admin_video_upload_path(teacher.id),class: "btn btn-primary btn-xs"%>
                                     </td>

@@ -95,9 +95,9 @@
                                     <td><%=vendor.phone_no%></td>
                                     <td>
                                      <%=link_to "Edit",admin_school_update_path(vendor.id),class: "btn btn-primary btn-xs"%>
-                                        <% if vendor.active? %> <%=link_to "Deactivate",admin_activate_path(vendor.id), method: :post, data: { confirm: "Do you to deactivate User Profile?" }, class: "btn btn-danger btn-xs"%>
+                                        <% if vendor.active? %> <%=link_to "Deactivate",admin_activate_path(vendor.id), method: :post, data: { confirm: "Do you to want Deactivate Vendor Profile?" }, class: "btn btn-danger btn-xs"%>
                                         <%else%>
-                                            <%=link_to "Activate",admin_activate_path(vendor.id), method: :post, data: { confirm: "Do you to deactivate User Profile?" }, class: "btn btn-success btn-xs"%>
+                                            <%=link_to "Activate",admin_activate_path(vendor.id), method: :post, data: { confirm: "Do you want to Activate Vendor Profile?" }, class: "btn btn-success btn-xs"%>
                                         <% end %>
                                     </td>
                                   </tr>

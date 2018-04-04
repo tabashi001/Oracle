@@ -18,7 +18,12 @@
           <li><%= current_user.role%></li>
           <li>Last Access : <br>
             <small><i class="fa fa-calendar"></i>&nbsp;<%= current_user.last_sign_in_at.strftime("%d %B %t at %I:%M %p")%></small>
-            <%= link_to "(Edit Profile)" ,edit_user_registration_path%>
+            <% if current_user.active? %>
+              <%= link_to "(Edit Profile)" ,edit_user_registration_path%>
+            <%else%>
+              <a href="#applyModal" data-toggle="modal">(Edit Profile)
+              </a>
+            <%end%>
           </li>
         </ul>
       </div>
@@ -33,16 +38,24 @@
       <%end%>
     </li>
     <li class="">
-      <%=link_to vendor_schools_path(@vendor) do%>
-        <i class="fa fa-tasks"></i>
-        <span class="link-title">Apply School</span>
+      <% if current_user.active? %>
+        <%=link_to vendor_schools_path(@vendor) do%>
+          <i class="fa fa-tasks"></i>
+          <span class="link-title">Apply School</span>
+        <%end%>
+      <%else%>
+        <a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Apply School</a>
       <%end%>
     </li>
     <li>
-      <a href="">
-        <i class="fa fa-font"></i>
-        <span class="link-title">Total Earning</span>  
-      </a>
+      <% if current_user.active? %>
+        <a href="">
+          <i class="fa fa-font"></i>
+          <span class="link-title">Total Earning</span>  
+        </a>
+      <%else%>
+        <a href="#applyModal" data-toggle="modal" class="fa fa-font" class="link-title">Total Earning</a>
+      <%end%>
     </li>
     <li class="nav-divider"></li>
   </ul>

@@ -94,21 +94,14 @@
     <div class="outer">
       <div class="inner bg-light lter">
         <h3>Apply School</h3>
-<!--  <form class="form-wrapper cf">
-    <input type="text" placeholder="Location" required>
-     <input type="text" placeholder="Category" required>
-      <input type="text" placeholder="Sub Category" required>
-    <button type="submit">Search</button>
-</form> -->
-
         <hr>
         <form class="form-wrapper cf">
-        <%= form_tag teacher_schools_path(current_user), :method => 'get' do %>
-          <%= text_field_tag "name",nil,:placeholder => "School Name"%>
-          <%= text_field_tag "city",nil,:placeholder => "City"%>
-          <%= text_field_tag "description",nil,:placeholder => "Category"%>
-          <%= button_tag "Search" ,:class => "sEarch"%>
-        <% end %>
+          <%= form_tag teacher_schools_path(current_user), :method => 'get' do %>
+            <%= select_tag "name",options_for_select(@name),prompt: "Select School"%>
+            <%= select_tag "city_id",options_for_select(@cities.collect{|p| [p.name, p.id]}),prompt: "Select City"%>
+            <%#= select_tag "qualification",options_for_select(@subjects),prompt: "Select Subject"%>
+            <%= button_tag "Search" ,:class => "sEarch"%>
+          <% end %>
         </form>
         <div class="col-md-12">
           <h3>Schools</h3>
@@ -124,11 +117,15 @@
                         <%= image_tag("img.jpg", class: "img-thumbnail img-responsive collglogo")%>
                       <% end %>
                     </div>
-
-
                     <div class="col-md-10">
+                    <a href="/users/show?id=<%= search.id %>" target="_blank">
                       <h4><%= search.name %></h4>
-                      <span> <i class="fa fa-map-marker"></i> <%= search.address%>,<%= search.city%>,<%= search.country%></span>
+                      <span> <i class="fa fa-map-marker"></i> <%= search.address%>,
+                        <% if @city = City.find_by_id(search.city_id)%><%= @city.name%><%end%>,
+                        <% if @state = Stat.find_by_id(search.state_id)%><%= @state.name%> <%end%>,
+                        <% if @country = Countr.find_by_id(search.country_id)%><%= @country.name%> <%end%>
+                        </span>
+                        </a>
                         <% @id = AppliedSchool.find_by_user_id_and_school_id(current_user, search)%>
                         <%if @id.present?%>
                           <button class="btn btn-primary TxtceNtr" data-toggle="modal" href="#applyModal<%=search.id%>">Apply Now </button>
@@ -169,8 +166,14 @@
                         <% end %>
                       </div>
                       <div class="col-md-10">
+                      <a href="/users/show?id=<%= school.id %>" target="_blank">
                         <h4><%= school.name %></h4>
-                        <span> <i class="fa fa-map-marker"></i> <%= school.address%>,<%= school.city%>,<%= school.country%></span>
+                        <span> <i class="fa fa-map-marker"></i> <%= school.address%>,
+                        <% if @city = City.find_by_id(school.city_id)%><%= @city.name%><%end%>,
+                        <% if @state = Stat.find_by_id(school.state_id)%><%= @state.name%> <%end%>,
+                        <% if @country = Countr.find_by_id(school.country_id)%><%= @country.name%> <%end%>
+                        </span>
+                        </a>
                           <% @id = AppliedSchool.find_by_user_id_and_school_id(current_user, school)%>
                           <%if @id.present?%>
                             <button class="btn btn-primary TxtceNtr" data-toggle="modal" href="#applyModal<%=school.id%>">Apply Now </button>

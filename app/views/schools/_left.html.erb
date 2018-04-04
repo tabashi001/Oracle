@@ -18,7 +18,12 @@
           <li><%= current_user.role%></li>
           <li>Last Access : <br>
             <small><i class="fa fa-calendar"></i>&nbsp;<%= current_user.last_sign_in_at.strftime("%d %B %t at %I:%M %p")%></small>
-            <%= link_to "(Edit Profile)" ,edit_user_registration_path%>
+            <% if current_user.active? %>
+              <%= link_to "(Edit Profile)" ,edit_user_registration_path%>
+            <%else%>
+              <a href="#applyModal" data-toggle="modal">(Edit Profile)
+              </a>
+            <%end%>
           </li>
         </ul>
       </div>
@@ -40,72 +45,125 @@
       </a>
       <ul class="collapse">
         <li>
-          <%if current_user.overviews.present?%>
-            <%= link_to  school_update_overview_path(current_user) do %>
-            <i class="fa fa-angle-right"></i>&nbsp;Overview<%end%>
+          <% if current_user.active? %>
+            <%if current_user.overviews.present?%>
+              <%= link_to  school_update_overview_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp;Overview
+              <%end%>
           <%else%>
             <%= link_to  school_overview_path(current_user) do %>
-            <i class="fa fa-angle-right"></i>&nbsp;Overview<%end%>
+              <i class="fa fa-angle-right"></i>&nbsp;Overview
+            <%end%>
+          <%end%>
+        <%else%>
+            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Overview</a>
+        <%end%>
+        </li>
+        <li>
+          <% if current_user.active? %>
+            <%= link_to  school_courses_path(current_user) do %>
+            <i class="fa fa-angle-right"></i>&nbsp; Courses<%end%>
+          <%else%>
+            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right"> Courses</a>
           <%end%>
         </li>
         <li>
-          <%= link_to  school_courses_path(current_user) do %>
-          <i class="fa fa-angle-right"></i>&nbsp; Courses<%end%>
-        </li>
-        <li>
-          <%= link_to  school_scholarships_path(current_user) do %>
+          <% if current_user.active? %>
+             <%= link_to  school_scholarships_path(current_user) do %>
           <i class="fa fa-angle-right"></i>&nbsp; Scholarship<%end%>
+          <%else%>
+            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Scholarship</a>
+          <%end%>
         </li>
         <li>
-          <%= link_to  school_placements_path(current_user) do %>
+          <% if current_user.active? %>
+           <%= link_to  school_placements_path(current_user) do %>
           <i class="fa fa-angle-right"></i>&nbsp; Placement<%end%>
+          <%else%>
+            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Placement</a>
+          <%end%>
         </li>
         <li>
-          <%= link_to  school_cutoffs_path(current_user) do %>
+          <% if current_user.active? %>
+            <%= link_to  school_cutoffs_path(current_user) do %>
           <i class="fa fa-angle-right"></i>&nbsp; Cutoff<%end%>
+          <%else%>
+            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Cutoff</a>
+          <%end%>
         </li>
         <li>
-          <%= link_to  school_campus_path(current_user) do %>
+          <% if current_user.active? %>
+            <%= link_to  school_campus_path(current_user) do %>
           <i class="fa fa-angle-right"></i>&nbsp; Campus<%end%>
+          <%else%>
+            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Campus</a>
+          <%end%>
         </li>
         <li>
-          <%= link_to  school_schoolinformations_path(current_user) do %>
+          <% if current_user.active? %>
+            <%= link_to  school_schoolinformations_path(current_user) do %>
           <i class="fa fa-angle-right"></i>&nbsp; News<%end%>
+          <%else%>
+            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">News</a>
+          <%end%>
         </li>
         <li>
-          <%= link_to  school_schoolpictures_path(current_user) do %>
+          <% if current_user.active? %>
+            <%= link_to  school_schoolpictures_path(current_user) do %>
           <i class="fa fa-angle-right"></i>&nbsp; Pictures<%end%>
+          <%else%>
+            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Pictures</a>
+          <%end%>
         </li>
         <li>
-          <%= link_to  school_schoolvideos_path(current_user) do %>
+          <% if current_user.active? %>
+            <%= link_to  school_schoolvideos_path(current_user) do %>
           <i class="fa fa-angle-right"></i>&nbsp; Videos<%end%>
+          <%else%>
+            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Videos</a>
+          <%end%>
         </li>
       </ul>
     </li>
     <li class="">
-      <%= link_to  school_teachers_path(current_user) do %>
-        <i class="fa fa-tasks"></i>
-        <span class="link-title">Teachers</span>
+      <% if current_user.active? %>
+        <%= link_to  school_teachers_path(current_user) do %>
+          <i class="fa fa-tasks"></i>
+          <span class="link-title">Teachers</span>
+        <%end%>
+      <%else%>
+        <a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Teachers</a>
       <%end%>
     </li>
     <li class="">
-      <a href="" style="pointer-events: none;
-   cursor: default;">
-        <i class="fa fa-pencil"></i>
-        <span class="link-title">School</span>
-      </a>
-    </li>
-    <li>
-      <%= link_to  school_vendors_path(current_user) do %>
-        <i class="fa fa-table"></i>
-        <span class="link-title">Vendors</span>
+      <% if current_user.active? %>
+        <%= link_to  school_students_path(current_user) do %>
+          <i class="fa fa-tasks"></i>
+          <span class="link-title">Students</span>
+        <%end%>
+      <%else%>
+        <a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Students</a>
       <%end%>
     </li>
     <li>
-      <a href="">
-        <i class="fa fa-font"></i>
-        <span class="link-title">Total Earning</span>
-      </a>
+      <% if current_user.active? %>
+        <%= link_to  school_vendors_path(current_user) do %>
+          <i class="fa fa-table"></i>
+          <span class="link-title">Vendors</span>
+        <%end%>
+      <%else%>
+        <a href="#applyModal" data-toggle="modal" class="fa fa-table" class="link-title">Vendors</a>
+      <%end%>
+    </li>
+    <li>
+      <% if current_user.active? %>
+        <a href="">
+          <i class="fa fa-font"></i>
+          <span class="link-title">Total Earning</span>
+        </a>
+      <%else%>
+        <a href="#applyModal" data-toggle="modal" class="fa fa-font" class="link-title">Total Earning</a>
+      <%end%>
     </li>
     <li class="nav-divider"></li>
   </ul>

@@ -1,7 +1,5 @@
-<title>Sell Book</title>
- <meta name="viewport" content="width=device-width, initial-scale=1">  
-   
-
+<title>Pay School Fees</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">      
 
 <%= render 'layouts/stylesheets'%>
 
@@ -38,8 +36,8 @@
     <li class="nav-divider"></li>  
     <li class="">
       <%= link_to students_path do%>
-        <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
-      <%end%>
+            <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
+          <%end%>
     </li>
     <li class="">
       <a href="javascript:;">
@@ -61,7 +59,19 @@
     <li class="active">
       <%= link_to student_sale_book_path(@current_user) do%>
         <i class="fa fa-tasks"></i>
-        <span class="link-title">Sale Book</span>
+        <span class="link-title">Sell Book</span>
+      <%end%>
+    </li>
+    <li class="">
+      <%= link_to student_schools_path(@current_user) do%>
+        <i class="fa fa-tasks"></i>
+        <span class="link-title">Apply To School</span>
+      <%end%>
+    </li>
+    <li class="">
+      <%= link_to student_teachers_path(@current_user) do%>
+        <i class="fa fa-tasks"></i>
+        <span class="link-title">Apply To Teacher</span>
       <%end%>
     </li>
     <li class="">
@@ -77,38 +87,41 @@
   <!-- /#menu -->
 </div>
 <!-- /#left -->
-    <div id="content">
-      <div class="outer">
-        <div class="inner bg-light lter">
-          <h4>Pay tutor Fees</h4>
-          <hr>
-          <div class="row vdiocont">    
-            <form class="form-horizontal" action="">
-              <div class="form-group margunrve">
-                <label for="email">Title</label>
-                <input type="email" class="form-control" placeholder="Title">
-              </div>
-              <div class="form-group margunrve">
-                <label for="pwd">Description</label>
-                <textarea class="form-control" rows="3" placeholder="Description"></textarea>
-              </div>
-              <div class="form-group margunrve">
-                <label for="email">Upload Pic</label>
-                <input type="file" class="form-control">
-              </div>
-              <div class="form-group margunrve">
-                <label for="Text">Price</label>
-                <input type="Text" class="form-control" placeholder="Price">
-              </div>
-              <div class="form-group margunrve text-center">
-                <button type="submit" class="btn btn-default">Submit</button>
-                <button type="submit" class="btn btn-default">cancel</button>
-              </div>
-            </form> 
-          </div>   
+<!-- /#left -->
+  <div id="content">
+    <div class="outer">
+      <div class="inner bg-light lter">
+        <h4>Sell Book</h4>
+        <hr>
+        <div class="row vdiocont">   
+          <%= form_for(@sale_book, url: student_sale_book_path) do |f| %> 
+          <form class="form-horizontal" action="">
+            <div class="form-group margunrve">
+              <label for="text">Title</label>
+              <%=f.text_field :title, class: "form-control",placeholder: "Title"%>
+            </div>
+            <div class="form-group margunrve">
+              <label for="email">Description</label>
+              <%=f.text_field :description, class: "form-control",placeholder:"Description"%>
+            </div>
+            <div class="form-group margunrve">
+              <label for="text">Upload Document</label>
+              <%=f.file_field :book, class: "form-control"%>
+            </div>
+            <div class="form-group margunrve">
+              <label for="text">Price</label>
+              <%= f.text_field :price,:class => 'form-control',placeholder:"Price"%>
+            </div>
+            <div class="form-group margunrve text-center">
+              <%=f.submit "Submit", class: "btn btn-default"%>
+              <button type="submit" class="btn btn-default">cancel</button>
+            </div>
+          </form>
+          <%end%> 
+        </div>    
         <hr>
       </div>
-      <!-- /.inner -->
+    <!-- /.inner -->
     </div>
     <!-- /.outer -->
   </div>
@@ -144,5 +157,4 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-
 <%= render 'layouts/javascripts'%>

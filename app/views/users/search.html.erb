@@ -44,11 +44,11 @@ margin-top: 0 !important;
 }
 </style>
 
-	<%=render "layouts/header"%>
+<%=render "layouts/header"%>
 
 		
-		<section class="home" id="home" data-stellar-background-ratio="0.4">
-     </section>
+	<section class="home" id="home" data-stellar-background-ratio="0.4">
+	</section>
 	<div class="container-fluid Filtercont">
 		<div class="container-fluid filterschool">
 			<div class="row">
@@ -100,12 +100,11 @@ margin-top: 0 !important;
 				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
 				    		<% @city.each do |city|%>
 					     		<div class="checkbox">
-					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo"><%= city %></label>
+					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo"><%= city.name %></label>
 					    		</div>
 			        		<%end%>
 			        	</div>
-
-              <h3>Fee Structure</h3>
+              			<h3>Fee Structure</h3>
 				    	<div class="smallbox">
 				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
 				     		<div class="checkbox">
@@ -113,12 +112,8 @@ margin-top: 0 !important;
 				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">50K to 1Lac</label>
 				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">1Lac to 1.5Lac</label>
 				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">More than 1.5Lac</label>
-
-
 				    		</div>
 			        	</div>
-
-
 			        	<h3>Mode of Eduation</h3>
 				    	<div class="smallbox">
 				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
@@ -127,7 +122,6 @@ margin-top: 0 !important;
 				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">Correspondence</label>
 				    		</div>
 			        	</div>
-
 			        	<h3>Specialization</h3>
 				    	<div class="smallbox">
 				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
@@ -138,7 +132,6 @@ margin-top: 0 !important;
 				    		<%end%>
 			        	</div>
 			        </div>
-			       
 			        <div id="college_list" class="col-md-10">
 			        	<h3>Colleges</h3>
 			        	<%if @school.present? %>
@@ -161,9 +154,13 @@ margin-top: 0 !important;
 								        		<%#end%>
 								        		</a>
 								        		<span> <i class="fa fa-map-marker"></i> <%= school.address%>,
-								        		<% if @state = State.find_by_id(school.state_id)%><%= @state.name%> <%end%>,
-								        		<% if @country = Country.find_by_id(school.country_id)%>
-								        		 <%= @country.name%> <%end%></span>
+								        		<% if @city = City.find_by_id(school.city_id)%><%= @city.name%> 
+								        		<%end%>,
+								        		<% if @state = Stat.find_by_id(school.state_id)%><%= @state.name%> 
+								        		<%end%>,
+								        		<% if @country = Countr.find_by_id(school.country_id)%>
+								        		 <%= @country.name%> 
+								        		 <%end%></span>
 								            </div>
 						                    <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
 						                    	<div class="col-md-3 col-sm-6 col-xs-6">
@@ -202,7 +199,7 @@ margin-top: 0 !important;
 		</div>
 	</div>
 
-	<%=render "layouts/footer"%>
+<%=render "layouts/footer"%>
 
 <%= javascript_include_tag "jquery.min" %>
 <%= javascript_include_tag "bootstrap.min" %>

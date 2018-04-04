@@ -17,10 +17,17 @@ Rails.application.routes.draw do
 		post :pay_fees_tutor
 		get :sale_book
 		post :sale_book 
+		get :schools
+		get :apply_school
+		post :apply_school
+		get :teachers
+		get :apply_teacher
+		post :apply_teacher
 	end
 
 	resources :teachers do
 		get :schools
+		get :students
 		get :apply_school
 		post :apply_school
 		get :find_student
@@ -36,6 +43,7 @@ Rails.application.routes.draw do
 	resources :schools do
 		get :teachers
 		get :vendors
+		get :students
 		get :overview
 		post :overview
 		get :update_overview
@@ -105,7 +113,7 @@ Rails.application.routes.draw do
 		    get '/users/sign_out' => 'devise/sessions#destroy'
 		    #get '/users/:id/showcase' => 'users#showcase'
 		end
-	devise_for :admins, controllers: { sessions: 'admins/sessions' ,registrations: 'admins/registrations'}
+	devise_for :admins, controllers: { sessions: 'admins/sessions'}
 	devise_scope :admin do 
 			get '/admins/login' => 'devise/sessions#new'
 		    get '/admins/sign_out' => 'devise/sessions#destroy'

@@ -1,0 +1,189 @@
+<title>Vendors</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%= render "layouts/stylesheets"%>
+<%= render "layouts/javascripts"%>
+
+<div class="bg-dark dk" id="wrap">
+  <%= render "schools/top"%>
+ <div id="left">
+  <div class="media user-media bg-dark dker">
+    <div class="user-media-toggleHover">
+      <span class="fa fa-user"></span>
+    </div>
+    <div class="user-wrapper bg-dark">
+      <a class="user-link" href="">
+        <%if current_user.profile_image.present? %>
+          <%= image_tag current_user.profile_image,class: "media-object img-thumbnail user-img",:size => "80x80" %>
+        <%else%>
+          <%= image_tag('user.gif',class: "media-object img-thumbnail user-img")%>
+        <%end%>
+        <span class="label label-danger user-label"><%= current_user.sign_in_count%></span>
+      </a>
+      <div class="media-body">
+        <h5 class="media-heading"><%= current_user.name%></h5>
+        <ul class="list-unstyled user-info">
+          <li><%= current_user.role%></li>
+          <li>Last Access : <br>
+            <small><i class="fa fa-calendar"></i>&nbsp;<%= current_user.last_sign_in_at.strftime("%d %B %t at %I:%M %p")%></small>
+            <%= link_to "(Edit Profile)" ,edit_user_registration_path%>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <ul id="menu" class="bg-blue dker">
+    <li class="nav-divider"></li>  
+    <li class="">
+      <%= link_to schools_path do %>
+        <i class="fa fa-dashboard"></i>
+        <span class="link-title" >&nbsp;Dashboard</span>
+      <%end%>
+    </li>
+    <li class="">
+      <a href="javascript:;">
+        <i class="fa fa-building "></i>
+        <span class="link-title">Layouts</span>
+        <span class="fa arrow"></span>
+      </a>
+      <ul class="collapse">
+        <li>
+          <%if current_user.overviews.present?%>
+            <%= link_to  school_update_overview_path(current_user) do %>
+            <i class="fa fa-angle-right"></i>&nbsp;Overview<%end%>
+          <%else%>
+            <%= link_to  school_overview_path(current_user) do %>
+            <i class="fa fa-angle-right"></i>&nbsp;Overview<%end%>
+          <%end%>
+        </li>
+        <li>
+          <%= link_to  school_courses_path(current_user) do %>
+          <i class="fa fa-angle-right"></i>&nbsp; Courses<%end%>
+        </li>
+        <li>
+          <%= link_to  school_scholarships_path(current_user) do %>
+          <i class="fa fa-angle-right"></i>&nbsp; Scholarship<%end%>
+        </li>
+        <li>
+          <%= link_to  school_placements_path(current_user) do %>
+          <i class="fa fa-angle-right"></i>&nbsp; Placement<%end%>
+        </li>
+        <li>
+          <%= link_to  school_cutoffs_path(current_user) do %>
+          <i class="fa fa-angle-right"></i>&nbsp; Cutoff<%end%>
+        </li>
+        <li>
+          <%= link_to  school_campus_path(current_user) do %>
+          <i class="fa fa-angle-right"></i>&nbsp; Campus<%end%>
+        </li>
+        <li>
+          <%= link_to  school_schoolinformations_path(current_user) do %>
+          <i class="fa fa-angle-right"></i>&nbsp; News<%end%>
+        </li>
+        <li>
+          <%= link_to  school_schoolpictures_path(current_user) do %>
+          <i class="fa fa-angle-right"></i>&nbsp; Pictures<%end%>
+        </li>
+        <li>
+          <%= link_to  school_schoolvideos_path(current_user) do %>
+          <i class="fa fa-angle-right"></i>&nbsp; Videos<%end%>
+        </li>
+      </ul>
+    </li>
+    <li class="">
+      <%= link_to  school_teachers_path(current_user) do %>
+        <i class="fa fa-tasks"></i>
+        <span class="link-title">Teachers</span>
+      <%end%>
+    </li>
+    <li class="active">
+      <%= link_to  school_students_path(current_user) do %>
+        <i class="fa fa-tasks"></i>
+        <span class="link-title">Students</span>
+      <%end%>
+    </li>
+    <li class="">
+      <%= link_to  school_vendors_path(current_user) do %>
+        <i class="fa fa-table"></i>
+        <span class="link-title">Vendors</span>
+      <%end%>
+    </li>
+    <li>
+      <a href="">
+        <i class="fa fa-font"></i>
+        <span class="link-title">Total Earning</span>
+      </a>
+    </li>
+    <li class="nav-divider"></li>
+  </ul>
+</div>
+  <div id="content">
+    <div class="outer">
+      <div class="inner bg-light lter">
+        <h4>Applied Students</h4> 
+        <div class="table-responsive ">          
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone No</th>
+                <th>Description</th>
+                <!-- <th>Status</th> -->
+              </tr>
+            </thead>
+            <% @students.each do |student|%>
+              <tbody>
+                <tr>
+                  <td><%=student.id%></td>
+                  <td><%=student.name%></td>
+                  <td><%=student.email%></td>
+                  <td><%=student.phone_no%></td>
+                  <td><%=student.description%></td>
+                  <!-- <td>
+                    <button type="button" class="btn btn-primary btn-xs">Delete</button>
+                    <button type="button" class="btn btn-primary btn-xs">Mark Complete</button>
+                  </td> -->
+                </tr>
+              </tbody>
+            <%end%>
+          </table>
+        </div>  
+      </div>
+      <!-- /.inner -->
+    </div>
+    <!-- /.outer -->
+  </div>
+  <!-- /#content -->
+</div>
+<!-- /#wrap -->
+
+<footer class="Footer bg-dark dker">
+    <p>2017 &copy; Tabashi Technology Private Limited</p>
+</footer>
+<!-- /#footer -->
+<!-- #helpModal -->
+<div id="helpModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+          <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+              et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+              culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

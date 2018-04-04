@@ -15,40 +15,99 @@
 				    <div class="row">
 				        <div class="col-md-12 col-sm-12">
 				          	<div class="col-md-3 col-sm-6">
-				            	<%=link_to teacher_schools_path(@teacher) do%>
-							        <div class="counting-box" id="encounter">
-							        	<%= image_tag("Schlogo.png")%>
-							          <h4 class="count-this"><%= @schools_count%></h4>
-							          <p>APPLY SCHOOL</p>
-							        </div>
-				      			<%end%>
+				          		<% if current_user.active? %>
+									<%=link_to teacher_schools_path(@teacher) do%>
+								        <div class="counting-box" id="encounter">
+								        	<%= image_tag("Schlogo.png")%>
+								          <h4 class="count-this"><%= @schools_count%></h4>
+								          <p>APPLY SCHOOL</p>
+								        </div>
+				      				<%end%>
+								<%else%>
+									<a href="#applyModal" data-toggle="modal">
+										<div class="counting-box" id="encounter">
+											<%= image_tag ('Schlogo.png')%>
+											<h4 class="count-this"><%= @schools_count%></h4>
+											<p>APPLY SCHOOL</p>
+										</div>
+									</a>
+								<%end%>
 				      		</div>
 						    <div class="col-md-3 col-sm-6">
-						        <%=link_to teacher_find_student_path(@teacher) do%>
-							        <div class="counting-box" id="battles">
-							        	<%= image_tag("slogo.png")%>
-							          <h4 class="count-this">4</h4>
-							          <p>SEARCH STUDENTS</p>
-							        </div>
-						      	<%end%>
+						    	<% if current_user.active? %>
+									<%=link_to teacher_find_student_path(@teacher) do%>
+								        <div class="counting-box" id="battles">
+								        	<%= image_tag("slogo.png")%>
+								          <h4 class="count-this">4</h4>
+								          <p>SEARCH STUDENTS</p>
+								        </div>
+						      		<%end%>
+								<%else%>
+									<a href="#applyModal" data-toggle="modal">
+										<div class="counting-box" id="encounter">
+											<%= image_tag ('slogo.png')%>
+											<h4 class="count-this">4</h4>
+											<p>SEARCH STUDENTS</p>
+										</div>
+									</a>
+								<%end%>
 						    </div>
 						    <div class="col-md-3 col-sm-6">
-						        <%=link_to teacher_sale_notes_path(@teacher) do%>
-								    <div class="counting-box" id="locations">
-								    	<%= image_tag("nlogo.png")%>
-								        <h4 class="count-this"></h4>
-								        <p>SALE NOTES</p>
-								    </div>
-						      	<%end%>
+						    	<% if current_user.active? %>
+									<%=link_to teacher_sale_notes_path(@teacher) do%>
+									    <div class="counting-box" id="locations">
+									    	<%= image_tag("nlogo.png")%>
+									        <h4 class="count-this">1</h4>
+									        <p>SALE NOTES</p>
+									    </div>
+						      		<%end%>
+								<%else%>
+									<a href="#applyModal" data-toggle="modal">
+										<div class="counting-box" id="encounter">
+											<%= image_tag ('nlogo.png')%>
+											<h4 class="count-this">4</h4>
+											<p>SALE NOTES</p>
+										</div>
+									</a>
+								<%end%>
 						    </div>
 						    <div class="col-md-3 col-sm-6">
-						        <a href="">
-							        <div class="counting-box" id="locations">
-							        	<%= image_tag("mlogo.png")%>
-								        <h4 class="count-this"></h4>
-								        <p>TOTAL EARNING</p>
-							        </div>
-						      	</a>
+						    	<% if current_user.active? %>
+									<%=link_to teacher_students_path(@teacher) do%>
+								        <div class="counting-box" id="locations">
+								        	<%= image_tag("slogo.png")%>
+									        <h4 class="count-this"><%=@students_count%></h4>
+									        <p>FROM STUDENTS</p>
+								        </div>
+							      	<%end%>
+								<%else%>
+									<a href="#applyModal" data-toggle="modal">
+										<div class="counting-box" id="encounter">
+											<%= image_tag ('slogo.png')%>
+											<h4 class="count-this"><%=@students_count%></h4>
+											<p>FROM STUDENTS</p>
+										</div>
+									</a>
+								<%end%>
+						    </div>
+						    <div class="col-md-3 col-sm-6">
+						    	<% if current_user.active? %>
+									<a href="">
+								        <div class="counting-box" id="locations">
+								        	<%= image_tag("mlogo.png")%>
+									        <h4 class="count-this">5</h4>
+									        <p>TOTAL EARNING</p>
+								        </div>
+							      	</a>
+								<%else%>
+									<a href="#applyModal" data-toggle="modal">
+										<div class="counting-box" id="encounter">
+											<%= image_tag ('mlogo.png')%>
+											<h4 class="count-this">4</h4>
+											<p>TOTAL EARNING</p>
+										</div>
+									</a>
+								<%end%>
 						    </div>
 				      	</div>
 				    </div>
@@ -95,4 +154,14 @@
 </div>
 <%= render "layouts/javascripts"%>
 
-
+<div id="applyModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+              <p>
+                  Hi <%=current_user.name%>, You Acount Is Deactivated, Please Contact to Admin.
+              </p>
+          </div>
+        </div>
+    </div>
+</div>
