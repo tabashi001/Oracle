@@ -9,7 +9,7 @@ class UsersController < ApplicationController
    @school 	= User.where(:role => "school")
    @student = User.where(:role => "student")
    @teacher = User.where(:role => "teacher")
-   @vendor = User.where(:role => "vendor")
+   #@vendor = User.where(:role => "vendor")
    if params[:commit]=="Search"
    		@@first_value = params[:user]
 			redirect_to users_search_path
