@@ -1,5 +1,6 @@
 <%= stylesheet_link_tag  "bootstrap.min" %>
 <%= stylesheet_link_tag  "studentProfile" %>
+<%= stylesheet_link_tag  "style" %>
 <title>Vendor profile</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -51,21 +52,21 @@
           <div class="col-md-4">
             <div class="form-group frmgrpcust">
               <label for="Country" class="control-label">Country:</label>
-                <%=f.select :country_id, options_for_select(@countries.collect{|p| [p.name, p.id]}),prompt: "Select Country", class: "form-control"%>
+                <%=f.select :country_id, options_for_select(@countries.collect{|p| [p.name, p.id]}),{include_blank: "Select Country"},{required: 'true',autofocus:'true',class:'form-control'}%>
               <div class="help-block with-errors"></div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-group frmgrpcust">
               <label for="State" class="control-label">State:</label>
-              <%=f.select :state_id, options_for_select(@states.collect{|p| [p.name, p.id]}),prompt: "Select State", class: "form-control" %>
+              <%=f.select :state_id, options_for_select(@states.collect{|p| [p.name, p.id]}),{include_blank: "Select State"},{required: 'true',autofocus:'true',class:'form-control'} %>
               <div class="help-block with-errors"></div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-group frmgrpcust">
               <label for="City" class="control-label">City:</label>
-              <%=f.select :city_id, options_for_select(@cities.collect{|p| [p.name, p.id]}),prompt: "Select City", class: "form-control" %>
+              <%=f.select :city_id, options_for_select(@cities.collect{|p| [p.name, p.id]}),{include_blank: "Select City"},{required: 'true',autofocus:'true',class:'form-control'} %>
               <div class="help-block with-errors"></div>
             </div>
           </div>
@@ -126,7 +127,7 @@
       </form>
     <% end %>
     </div>
-    <div class="righttwo">
+     <div class="righttwo">
       <div class="heading-text">
         <h1 class="student-profile">Edit Vendor Profile</h1>
       </div>
