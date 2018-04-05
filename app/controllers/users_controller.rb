@@ -49,6 +49,20 @@ class UsersController < ApplicationController
     @country = Countr.find(@user.country_id) if @user.country_id.present?
   end
 
+  def current_requirements
+    @user = User.find(params[:format])
+    @teachers  = @user.teacher_requires
+    @vendors  = @user.vendor_requires
+  end
+
+  def apply_to_post
+     if !user_signed_in?
+      redirect_to new_user_session_path
+     else 
+        
+     end
+  end
+
   def all_view
   end
 
