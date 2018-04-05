@@ -47,6 +47,8 @@ class UsersController < ApplicationController
     @city = City.find(@user.city_id) if @user.city_id.present?
     @state = Stat.find(@user.state_id) if @user.state_id.present?
     @country = Countr.find(@user.country_id) if @user.country_id.present?
+    @slots = @user.slots if @user.slots.present?
+    @videos = @user.demo_videos if @user.demo_videos.present?
   end
 
   def current_requirements
