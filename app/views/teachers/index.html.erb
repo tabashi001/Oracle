@@ -4,8 +4,7 @@
 
 <div class="bg-dark dk" id="wrap">
 	<%= render "teachers/top"%>
-	<%= render "teachers/left"%>
-
+	<%= render :partial => "teachers/left", :locals => { :active => 'Dashboard' }%>
     <div id="content">
 	    <div class="outer">
 	        <div class="inner bg-light lter">

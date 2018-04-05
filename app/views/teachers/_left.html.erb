@@ -32,12 +32,12 @@
   <!-- #menu -->
   <ul id="menu" class="bg-blue dker">
     <li class="nav-divider"></li>  
-      <li class="active">
+      <li <%if active == 'Dashboard'%> class="active" <%end%>>
         <%=link_to teachers_path(@teacher) do%>
           <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
         <%end%>
       </li>
-    <li class="">
+    <li <%if active == 'Apply School'%> class="active" <%end%>>
       <% if current_user.active? %>
         <%=link_to teacher_schools_path(@teacher) do%>
           <i class="fa fa-tasks"></i>
@@ -47,7 +47,7 @@
           <a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Apply School</a>
       <%end%>
     </li>
-    <li class="">
+    <li <%if active == 'Search Student'%> class="active" <%end%>>
       <% if current_user.active? %>
         <%=link_to teacher_find_student_path(@teacher) do%>
           <i class="fa fa-pencil"></i>
@@ -57,7 +57,7 @@
           <a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Search Student</a>
       <%end%>
     </li>
-    <li>
+    <li <%if active == 'Sell Notes'%> class="active" <%end%> >
       <% if current_user.active? %>
         <%=link_to teacher_sale_notes_path(@teacher) do%>
           <i class="fa fa-table"></i>
@@ -65,6 +65,36 @@
         <%end%>
       <%else%>
           <a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Sell Notes</a>
+      <%end%>
+    </li>
+    <li <%if active == 'From Students'%> class="active" <%end%> >
+      <% if current_user.active? %>
+        <%=link_to teacher_students_path(@teacher) do%>
+          <i class="fa fa-table"></i>
+          <span class="link-title">From Students</span>
+        <%end%>
+      <%else%>
+          <a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">From Students</a>
+      <%end%>
+    </li>
+    <li <%if active == 'Slots'%> class="active" <%end%> >
+      <% if current_user.active? %>
+        <%=link_to teacher_create_slots_path(@teacher) do%>
+          <i class="fa fa-table"></i>
+          <span class="link-title">Create Slots</span>
+        <%end%>
+      <%else%>
+          <a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Create Slots</a>
+      <%end%>
+    </li>
+    <li <%if active == 'Videos'%> class="active" <%end%> >
+      <% if current_user.active? %>
+        <%=link_to teacher_create_demo_videos_path(@teacher) do%>
+          <i class="fa fa-table"></i>
+          <span class="link-title">Demo Videos</span>
+        <%end%>
+      <%else%>
+          <a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Demo Videos</a>
       <%end%>
     </li>
     <li>

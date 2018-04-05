@@ -29,15 +29,16 @@
       </div>
     </div>
   </div>
+  
   <ul id="menu" class="bg-blue dker">
     <li class="nav-divider"></li>  
-    <li class="active">
-      <%= link_to schools_path do %>
+    <li <%if active == 'Dashboard'%> class="active" <%end%>>
+      <%= link_to schools_path do%>
         <i class="fa fa-dashboard"></i>
         <span class="link-title" >&nbsp;Dashboard</span>
       <%end%>
     </li>
-    <li class="">
+    <li <%if active == 'Layouts'%> class="active"<%end%>>
       <a href="javascript:;">
         <i class="fa fa-building "></i>
         <span class="link-title">Layouts</span>
@@ -125,7 +126,7 @@
         </li>
       </ul>
     </li>
-    <li class="">
+    <li <%if active == 'Teachers'%> class="active" <%end%> >
       <% if current_user.active? %>
         <%= link_to  school_teachers_path(current_user) do %>
           <i class="fa fa-tasks"></i>
@@ -135,7 +136,7 @@
         <a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Teachers</a>
       <%end%>
     </li>
-    <li class="">
+    <li <%if active == 'Students'%> class="active"<%end%> >
       <% if current_user.active? %>
         <%= link_to  school_students_path(current_user) do %>
           <i class="fa fa-tasks"></i>
@@ -145,7 +146,7 @@
         <a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Students</a>
       <%end%>
     </li>
-    <li>
+    <li <%if active == 'Vendors'%>  class="active"<%end%> >
       <% if current_user.active? %>
         <%= link_to  school_vendors_path(current_user) do %>
           <i class="fa fa-table"></i>
@@ -153,6 +154,16 @@
         <%end%>
       <%else%>
         <a href="#applyModal" data-toggle="modal" class="fa fa-table" class="link-title">Vendors</a>
+      <%end%>
+    </li>
+    <li <%if active == 'Post'%>  class="active"<%end%> >
+      <% if current_user.active? %>
+        <%= link_to  school_post_requirements_path(current_user) do %>
+          <i class="fa fa-table"></i>
+          <span class="link-title">Post Requirements</span>
+        <%end%>
+      <%else%>
+        <a href="#applyModal" data-toggle="modal" class="fa fa-table" class="link-title">Post Requirements</a>
       <%end%>
     </li>
     <li>

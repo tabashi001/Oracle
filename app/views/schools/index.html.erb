@@ -2,11 +2,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <%= render "layouts/stylesheets"%>
 
-
 <div class="bg-dark dk" id="wrap">
   <%= render "schools/top"%>
-  <%= render "schools/left"%>
-  
+  <%= render :partial => "schools/left", :locals => { :active => 'Dashboard' }%>
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">

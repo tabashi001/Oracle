@@ -32,12 +32,12 @@
   <!-- #menu -->
   <ul id="menu" class="bg-blue dker">
     <li class="nav-divider"></li>  
-    <li class="active">
+    <li <%if active == 'Dashboard'%> class="active" <%end%> >
       <%=link_to vendors_path do%>
         <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
       <%end%>
     </li>
-    <li class="">
+    <li <%if active == 'Apply School'%> class="active" <%end%> >
       <% if current_user.active? %>
         <%=link_to vendor_schools_path(@vendor) do%>
           <i class="fa fa-tasks"></i>

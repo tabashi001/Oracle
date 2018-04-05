@@ -38,6 +38,10 @@ Rails.application.routes.draw do
 		patch :update_sale_notes
 		get :sale
 		get :destroy_sale_notes
+		get :create_slots
+		post :create_slots
+		get :create_demo_videos
+		post :create_demo_videos
 	end
 
 	resources :schools do
@@ -96,6 +100,9 @@ Rails.application.routes.draw do
 		get :update_schoolvideo
 		patch :update_schoolvideo
 		get :destroy_schoolvideo
+		get :post_requirements
+		post :teacher_requirement
+		post :vendor_requirement
 	end
 
 	resources :vendors do
@@ -136,4 +143,6 @@ Rails.application.routes.draw do
 	  get 'users/show'
 	  get 'users/all_view'
 	  post 'users/find_all_course_name'
+	  get 'users/current_requirements'
+	  get 'users/apply_to_post'
 end
