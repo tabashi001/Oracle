@@ -5,38 +5,41 @@
 
 <div class="bg-dark dk" id="wrap">
   <%= render "teachers/top"%>
-   <%= render :partial => "teachers/left", :locals => { :active => 'Students' }%>
-
+  <%= render :partial => "teachers/left", :locals => { :active => 'Students' }%>
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
-        <h4>Applied Students</h4> 
+        <h4>Booked Slots</h4> 
         <div class="table-responsive ">          
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone No</th>
                 <th>Description</th>
+                <th>Booked Slot</th>
                 <!-- <th>Status</th> -->
               </tr>
             </thead>
-            <% @students.each do |student|%>
-              <tbody>
-                <tr>
-                  <td><%=student.id%></td>
-                  <td><%=student.name%></td>
-                  <td><%=student.email%></td>
-                  <td><%=student.phone_no%></td>
-                  <td><%=student.description%></td>
-                  <!-- <td>
-                    <button type="button" class="btn btn-primary btn-xs">Delete</button>
-                    <button type="button" class="btn btn-primary btn-xs">Mark Complete</button>
-                  </td> -->
-                </tr>
-              </tbody>
+            <% @slots.each do |slot|%>
+              <% @slot = AppliedTeacher.where("teacher_id = ? AND user_role= ?",slot.id,"student")%>
+              <% @slot.each do |s|%>
+                <tbody>
+                  <tr>
+                    <td><%=s.name%></td>
+                    <td><%=s.email%></td>
+                    <td><%=s.phone_no%></td>
+                    <td><%=s.description%></td>
+                    <% slot_name = Slot.find(s.teacher_id)%>
+                    <td><%=slot_name.name%></td>
+                    <!-- <td>
+                      <button type="button" class="btn btn-primary btn-xs">Delete</button>
+                      <button type="button" class="btn btn-primary btn-xs">Mark Complete</button>
+                    </td> -->
+                  </tr>
+                </tbody>
+              <%end%>
             <%end%>
           </table>
         </div>  

@@ -7,7 +7,7 @@
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
-        <h4><p><font size="3" color="blue"> Hi <%=current_user.name%>, You are applying for <%=@school.name%> </font></p></h4>
+        <h4><p><font size="3" color="blue"> Hi <%=current_user.name%>, You are applying for <%=@school.subject%> </font></p></h4>
         <div class="row vdiocont">    
           <%= form_for @apply_school, url: teacher_apply_school_path do |f| %>
             <div class="form-group margunrve">

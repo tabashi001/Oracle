@@ -3,31 +3,30 @@
 
 <div class="bg-dark dk" id="wrap">
   <%= render "teachers/top"%>
-  <%= render :partial => "teachers/left", :locals => { :active => 'Videos' }%>
+  <%= render :partial => "teachers/left", :locals => { :active => 'Slots' }%>
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
         <hr> 
-        <h3>Demo Videos</h3>
+          <h3>Create Slot</h3>
         <hr>
         <div class="row vdiocont">
-          <%= form_for @demo_video, url: teacher_create_demo_videos_path do |f| %>
-            <% if @demo_video.errors.any? %>
-              <% @demo_video.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            <% end %>
+          <%= form_for @slots, url: teacher_update_slots_path do |f| %>
             <div class="form-group">
-              <label for="email">Title :</label>
-              <%=f.text_field :title, class: "form-control",placeholder: "Title" %>
+              <label for="email">Name :</label>
+              <%=f.text_field :name, class: "form-control",placeholder: "Slot Name" %>
             </div>
             <div class="form-group">
-              <label for="pwd">Description :</label>
-             <%=f.text_area :description, class: "form-control",placeholder: "Description" %>
+              <label for="pwd">Date :</label>
+              <%=f.text_field :date, class: "form-control",placeholder: "Date" %>
             </div>
             <div class="form-group">
-              <label for="email">Video Upload :</label>
-              <%=f.file_field :video, class: "form-control"%>
+              <label for="email">Time :</label>
+              <%=f.text_field :time, class: "form-control",placeholder: "Time" %>
+            </div>
+            <div class="form-group">
+              <label for="pwd">Duration :</label>
+              <%=f.text_field :duration, class: "form-control",placeholder: "Duration" %>
             </div>
             <div class="text-center">
               <%=f.submit "Submit",class: "btn btn-primary"%>

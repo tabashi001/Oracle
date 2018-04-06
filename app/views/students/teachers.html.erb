@@ -27,93 +27,11 @@
 
 <div class="bg-dark dk" id="wrap">
   <%= render "students/top"%>
-  <div id="left">
-  <div class="media user-media bg-dark dker">
-    <div class="user-media-toggleHover">
-    <span class="fa fa-user"></span>
-    </div>
-    <div class="user-wrapper bg-dark">
-      <a class="user-link" href="">
-        <% if current_user.profile_image.present? %>
-          <%= image_tag current_user.profile_image,class: "media-object img-thumbnail user-img",:size => "80x80" %>
-        <%else%>
-          <%= image_tag ("user.png"),class: "media-object img-thumbnail user-img",:size => "80x80" %>
-        <%end%>
-        <span class="label label-danger user-label"></span>
-      </a>
-      <div class="media-body">
-        <h5 class="media-heading"><%= current_user.name%></h5>
-        <ul class="list-unstyled user-info">
-          <li><a href=""><%= current_user.role%></a></li>
-          <li>Last Access : <br>
-            <small><i class="fa fa-calendar"></i>&nbsp;<%= current_user.last_sign_in_at.strftime("%d %B %t at %I %M %p")%></small>
-            <%= link_to "(Edit Profile)" ,edit_user_registration_path%>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <!-- #menu -->
-  <ul id="menu" class="bg-blue dker">
-    <li class="nav-divider"></li>  
-    <li class="">
-      <%= link_to students_path do%>
-            <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
-          <%end%>
-    </li>
-    <li class="">
-      <a href="javascript:;">
-        <i class="fa fa-building "></i>
-        <span class="link-title">Pay Fees</span>
-        <span class="fa arrow"></span>
-      </a>
-      <ul class="collapse">
-        <li>
-          <%= link_to student_pay_fees_school_path(@current_user) do%>
-          <i class="fa fa-angle-right"></i>&nbsp; For School<%end%>
-        </li>
-        <li>
-          <%= link_to student_pay_fees_tutor_path(@current_user) do%>
-          <i class="fa fa-angle-right"></i>&nbsp;For Tutor<%end%>
-        </li>
-      </ul>
-    </li>
-    <li class="">
-      <%= link_to student_sale_book_path(@current_user) do%>
-        <i class="fa fa-tasks"></i>
-        <span class="link-title">Sell Book</span>
-      <%end%>
-    </li>
-    <li class="">
-      <%= link_to student_schools_path(@current_user) do%>
-        <i class="fa fa-tasks"></i>
-        <span class="link-title">Apply To School</span>
-      <%end%>
-    </li>
-    <li class="active">
-      <%= link_to student_teachers_path(@current_user) do%>
-        <i class="fa fa-tasks"></i>
-        <span class="link-title">Apply To Teacher</span>
-      <%end%>
-    </li>
-    <li class="">
-      <a href="">
-        <i class="fa fa-pencil"></i>
-        <span class="link-title">
-        Buy Book
-        </span>
-      </a>
-    </li>
-    <li class="nav-divider"></li>
-  </ul>
-  <!-- /#menu -->
-</div>
-<!-- /#left -->
-<!-- /#left -->
+  <%= render :partial => "students/left", :locals => { :active => 'Teachers' }%>
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
-        <h3>Apply School</h3>
+        <h3>Teachers</h3>
         <hr>
         <form class="form-wrapper cf">
           <%= form_tag teacher_schools_path(current_user), :method => 'get' do %>
@@ -138,35 +56,15 @@
                       <% end %>
                     </div>
                     <div class="col-md-10">
-                    <a href="/users/student_show?id=<%= search.id %>" target="_blank">
-                      <h4><%= search.name %></h4>
-                      <span> <i class="fa fa-map-marker"></i> <%= search.address%>,
-                        <% if @city = City.find_by_id(search.city_id)%><%= @city.name%><%end%>,
-                        <% if @state = Stat.find_by_id(search.state_id)%><%= @state.name%> <%end%>,
-                        <% if @country = Countr.find_by_id(search.country_id)%><%= @country.name%> <%end%>
-                        </span>
+                      <a href="/users/student_show?id=<%= search.id %>" target="_blank">
+                        <h4><%= search.name %></h4>
+                        <span> <i class="fa fa-map-marker"></i> <%= search.address%>,
+                          <% if @city = City.find_by_id(search.city_id)%><%= @city.name%><%end%>,
+                          <% if @state = Stat.find_by_id(search.state_id)%><%= @state.name%> <%end%>,
+                          <% if @country = Countr.find_by_id(search.country_id)%><%= @country.name%> <%end%>
+                          </span>
                       </a>
-                        <% @id = AppliedSchool.find_by_user_id_and_school_id(current_user, search)%>
-                        <%if @id.present?%>
-                          <button class="btn btn-primary TxtceNtr" data-toggle="modal" href="#applyModal<%=search.id%>">Apply Now </button>
-                        <%else%>
-                          <%=link_to "Apply Now",student_apply_teacher_path(search),class: "btn btn-primary TxtceNtr" %>
-                        <%end%>
-                    </div>
-                    <div id="applyModal<%=search.id%>" class="modal fade">
-                      <div class="modal-dialog">
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                  <h4 class="modal-title">School</h4>
-                              </div>
-                              <div class="modal-body">
-                                  <p>
-                                      Hi <%=current_user.name%>, You already applied for <%=search.name%>
-                                  </p>
-                              </div>
-                          </div>
-                      </div>
+                      <%=link_to "Available Slots",student_slots_path(teacher),class: "btn btn-primary TxtceNtr" %>
                     </div>
                   </div>
                 </div>
@@ -193,46 +91,9 @@
                         <% if @state = Stat.find_by_id(teacher.state_id)%><%= @state.name%> <%end%>,
                         <% if @country = Countr.find_by_id(teacher.country_id)%><%= @country.name%> <%end%>
                         </span>
-                        </a>
-                          <% @id = AppliedTeacher.find_by_user_id_and_teacher_id(current_user, teacher)%>
-                          <%if @id.present?%>
-                            <button class="btn btn-primary TxtceNtr" data-toggle="modal" href="#applyModal<%=teacher.id%>">Apply Now </button>
-                          <%else%>
-                            <%=link_to "Apply Now",student_apply_teacher_path(teacher),class: "btn btn-primary TxtceNtr" %>
-                          <%end%>
+                      </a>
+                      <%=link_to "Available Slots",student_slots_path(teacher),class: "btn btn-primary TxtceNtr" %>
                       </div>
-                      <div id="applyModal<%=teacher.id%>" class="modal fade">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title">School</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <p>
-                                        Hi <%=current_user.name%>, You already applied for <%=teacher.name%>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                      </div>
-                      <!-- <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
-                        <div class="col-md-3 col-sm-6 col-xs-6">
-                          <i class="fa fa-map-marker "></i> <span>Avg Annual Fees</span>
-                          <h6>1 lakh</h6>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6">
-                          <i class="fa fa-map-marker"></i> <span>Avg Annual Fees</span>
-                          <h6>1 lakh</h6>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6">
-                          <i class="fa fa-map-marker"></i> <span>Avg Annual Fees</span>
-                          <h6>1 lakh</h6>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6">
-                          <%#=link_to "Apply Now",teacher_apply_school_path(school),class: "btn btn-primary TxtceNtr" %>
-                        </div>
-                      </div> -->
                     </div>
                   </div>
                 </div>

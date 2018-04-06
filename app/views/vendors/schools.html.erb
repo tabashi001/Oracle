@@ -106,19 +106,14 @@
                       </div>
                       <div class="col-md-10">
                         <a href="/users/show?id=<%= school.id %>" target="_blank">
-                        <h4><%= school.name %></h4>
-                        <span> <i class="fa fa-map-marker"></i> <%= school.address%>,
-                        <% if @city = City.find_by_id(school.city_id)%><%= @city.name%><%end%>,
-                        <% if @state = Stat.find_by_id(school.state_id)%><%= @state.name%> <%end%>,
-                        <% if @country = Countr.find_by_id(school.country_id)%><%= @country.name%> <%end%>
-                        </span>
+                          <h4><%= school.name %></h4>
+                          <span> <i class="fa fa-map-marker"></i> <%= school.address%>,
+                          <% if @city = City.find_by_id(school.city_id)%><%= @city.name%><%end%>,
+                          <% if @state = Stat.find_by_id(school.state_id)%><%= @state.name%> <%end%>,
+                          <% if @country = Countr.find_by_id(school.country_id)%><%= @country.name%> <%end%>
+                          </span>
                         </a>
-                          <% @id = AppliedSchool.find_by_user_id_and_school_id(current_user, school)%>
-                          <%if @id.present?%>
-                            <button class="btn btn-primary TxtceNtr" data-toggle="modal" href="#applyModal<%=school.id%>">Apply Now </button>
-                          <%else%>
-                            <%=link_to "Apply Now",vendor_apply_school_path(school),class: "btn btn-primary TxtceNtr" %>
-                          <%end%>
+                        <%=link_to "Current Openings",vendor_vendor_openings_path(school),class: "btn btn-primary TxtceNtr" %>
                       </div>
                       <div id="applyModal<%=school.id%>" class="modal fade">
                         <div class="modal-dialog">

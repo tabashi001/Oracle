@@ -1,6 +1,7 @@
 class TeachersController < ApplicationController
  before_action :set_teacher, only:[:index,:schools,:apply_school,:find_student,:sale_notes,:create_sale_notes,
- :update_sale_notes,:students,:create_slots,:create_demo_videos]
+ :update_sale_notes,:students,:slots,:create_slots,:update_slots,:demo_videos,:create_demo_videos,:update_demo_videos,
+ :teacher_openings]
 	
  before_action :check_user_signed_in
 
@@ -19,7 +20,7 @@ class TeachersController < ApplicationController
 	def apply_school
 		if request.get?
 			@apply_school = AppliedSchool.new
-			@school = User.find_by_id(params[:teacher_id])
+			@school = TeacherRequire.find_by_id(params[:teacher_id])
 		else
 			@apply_school = @teacher.applied_schools.create(apply_school_params)
 		    if @apply_school.save
@@ -81,32 +82,79 @@ class TeachersController < ApplicationController
 	    end
   	end
 
+  	def slots
+  		@slots = @teacher.slots
+  	end
   	def create_slots
   		if request.get?
   			@slots = Slot.new
   		else
 	  		@slots = @teacher.slots.create(slot_params)
 	  		if @slots.save
-	  			redirect_to teachers_path
+	  			redirect_to teacher_slots_path
 	  		else
 	  		end
 	  	end
   	end
+  	def update_slots
+	    if request.get?
+	      @slots = Slot.find(params[:teacher_id])
+	    else
+	      @slots = Slot.find(params[:teacher_id])
+	      if @slots.update(slot_params)
+	        redirect_to teacher_slots_path
+	      else
+	      end
+	    end
+  	end
+  	def destroy_slot
+	    @slot = Slot.find(params[:teacher_id])
+	    if @slot.destroy
+	      redirect_to teacher_slots_path
+	    else
+	    end
+  	end
 
+  	def demo_videos
+  		@demo_videos = @teacher.demo_videos
+  	end
   	def create_demo_videos
   		if request.get?
   			@demo_video = DemoVideo.new
   		else
 	  		@demo_video = @teacher.demo_videos.create(demo_video_params)
 	  		if @demo_video.save
-	  			redirect_to teachers_path
+	  			redirect_to teacher_demo_videos_path
 	  		else
 	  		end
 	  	end
   	end
+  	def update_demo_videos
+	    if request.get?
+	      @demo_video = DemoVideo.find(params[:teacher_id])
+	    else
+	      @demo_video = DemoVideo.find(params[:teacher_id])
+	      if @demo_video.update(demo_video_params)
+	        redirect_to teacher_demo_videos_path
+	      else
+	      end
+	    end
+  	end
+  	def destroy_demo_video
+	    @demo_video = DemoVideo.find(params[:teacher_id])
+	    if @demo_video.destroy
+	      redirect_to teacher_demo_videos_path
+	    else
+	    end
+  	end
+
+  	def teacher_openings
+  		@school = User.find(params[:teacher_id])
+  		@teachers = @school.teacher_requires
+  	end
 
   	def students
-  		@students = AppliedTeacher.where("teacher_id = ? AND user_role= ?",@teacher,"student")
+  		@slots = @teacher.slots
   	end
 
 	private

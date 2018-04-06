@@ -5,7 +5,7 @@
 <%= render 'layouts/stylesheets'%>
 <div class="bg-dark dk" id="wrap">
 	<%= render 'students/top'%>
-	<%= render 'students/left'%>
+	<%= render :partial => "students/left", :locals => { :active => 'Dashboard' }%>
 	<div id="content">
 		<div class="outer">
 			<div class="inner bg-light lter">

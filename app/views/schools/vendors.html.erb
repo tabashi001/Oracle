@@ -13,28 +13,32 @@
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone No</th>
                 <th>Description</th>
+                <th>Applied For</th>
                 <!-- <th>Status</th> -->
               </tr>
             </thead>
-            <% @vendors.each do |vendor|%>
-              <tbody>
-                <tr>
-                  <td><%=vendor.id%></td>
-                  <td><%=vendor.name%></td>
-                  <td><%=vendor.email%></td>
-                  <td><%=vendor.phone_no%></td>
-                  <td><%=vendor.description%></td>
-                  <!-- <td>
-                    <button type="button" class="btn btn-primary btn-xs">Delete</button>
-                    <button type="button" class="btn btn-primary btn-xs">Mark Complete</button>
-                  </td> -->
-                </tr>
-              </tbody>
+            <% @vendor_requirements.each do |vendor|%>
+            <% @vendors = AppliedSchool.where("school_id = ? AND role= ?",vendor.id,"vendor")%>
+              <% @vendors.each do |v|%>
+                <tbody>
+                  <tr>
+                    <td><%=v.name%></td>
+                    <td><%=v.email%></td>
+                    <td><%=v.phone_no%></td>
+                    <td><%=v.description%></td>
+                    <% @post = VendorRequire.find(v.school_id)%>
+                    <td><%=@post.name%></td>
+                    <!-- <td>
+                      <button type="button" class="btn btn-primary btn-xs">Delete</button>
+                      <button type="button" class="btn btn-primary btn-xs">Mark Complete</button>
+                    </td> -->
+                  </tr>
+                </tbody>
+              <%end%>
             <%end%>
           </table>
         </div>  

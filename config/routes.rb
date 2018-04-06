@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 		get :teachers
 		get :apply_teacher
 		post :apply_teacher
+		get :slots
 	end
 
 	resources :teachers do
@@ -38,10 +39,19 @@ Rails.application.routes.draw do
 		patch :update_sale_notes
 		get :sale
 		get :destroy_sale_notes
+		get :slots
 		get :create_slots
 		post :create_slots
+		get :update_slots
+		patch :update_slots
+		get :destroy_slot
+		get :demo_videos
 		get :create_demo_videos
 		post :create_demo_videos
+		get :update_demo_videos
+		patch :update_demo_videos
+		get :destroy_demo_video
+		get :teacher_openings
 	end
 
 	resources :schools do
@@ -107,6 +117,7 @@ Rails.application.routes.draw do
 
 	resources :vendors do
 		get :schools
+		get :vendor_openings
 		get :apply_school
 		post :apply_school
 	end
