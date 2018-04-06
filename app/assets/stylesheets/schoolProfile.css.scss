@@ -25,6 +25,17 @@ a {
 	-ms-background-size: 100% 100%;
 	font-family: 'Source Sans Pro', sans-serif;
 }
+.container-fluid.studentconter {
+	background: asset_url("content.jpg") no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-o-background-size: 100% 100%;
+	-ms-background-size: 100% 100%;
+	font-family: 'Source Sans Pro', sans-serif;
+}
 
 label.control-label {
 	color: #000;
@@ -80,25 +91,21 @@ form-group.field {
 .right {
   background: rgba(0, 0, 0, 0)  asset_url("school.jpg") no-repeat scroll center center / cover ;
   float: left;
-  min-height: 818px;
+  min-height:758px;
   position: relative;
   width: 50%;
 }
-.heading-text {
-	position:absolute;
-	top:30px;
-	background:rgba(255,255,255,0.5);
-}
+
 .student-profile {
   color: #fff;
   padding: 25px;
   text-align: center;
 }
 .heading-text {
-  background: rgba(0,0,0,0.5) none repeat scroll 0 0;
+  background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
   display: block;
   position: absolute;
-  top: 50%;
+  top:50%;
   width: 100%;
 }
 
@@ -250,6 +257,13 @@ fieldset[disabled] .btn {
     font-size: 1em;
     margin-left: 0;
     padding: 0.5em 0;
+}
+.heading-text {
+  background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+  display: block;
+  position: absolute;
+  top:24%;
+  width: 100%;
 }
 	
 }
