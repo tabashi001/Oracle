@@ -5,9 +5,6 @@
 <%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
 <%= stylesheet_link_tag  "style" %>
 
-
-
-
 <script type="text/javascript">
 $(document).ready(function() {    
 		var id = '#dialog';
@@ -69,7 +66,7 @@ $(document).ready(function() {
 						<h1 class="edutetitle">Discover The Best</h1>
 						<form class="form-wrapper cf">
 							<%= form_tag users_search_path(:controller => 'users', :action => 'search',:search => params[:search]), method: :get do %>
-								<%= select("user", "city", @city.map{|city| city.titleize},{:prompt => 'Select Location'} ,{class: "fa fa-map-marker"}) %>
+								<%= select("user", "city", @city.map{|city| city.name.titleize},{:prompt => 'Select Location'} ,{class: "fa fa-map-marker"}) %>
 								<%= select("user", "role", @role.map{|role| role.titleize},{:prompt => 'I am ..'},class: "fa") %>
 
 								<%= select("user", "search_role", @role.map{|role| role.titleize},{:prompt => 'Searching for '},class: "fa") %>
@@ -96,7 +93,7 @@ $(document).ready(function() {
 	<%= render 'users/students'%>
 	<%= render 'users/vendors'%>
 	<%= render 'users/contact'%>
-	<%=render "layouts/footer"%>
+	<%= render "layouts/footer"%>
 
 	<div id="myModal" class="modal fade" role="dialog">
 	  <div class="modal-dialog modal-lg">

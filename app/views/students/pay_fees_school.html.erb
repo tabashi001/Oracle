@@ -36,8 +36,8 @@
     <li class="nav-divider"></li>  
     <li class="">
       <%= link_to students_path do%>
-        <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
-      <%end%>
+            <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
+          <%end%>
     </li>
     <li class="active">
       <a href="javascript:;">
@@ -59,7 +59,19 @@
     <li class="">
       <%= link_to student_sale_book_path(@current_user) do%>
         <i class="fa fa-tasks"></i>
-        <span class="link-title">Sale Book</span>
+        <span class="link-title">Sell Book</span>
+      <%end%>
+    </li>
+    <li class="">
+      <%= link_to student_schools_path(@current_user) do%>
+        <i class="fa fa-tasks"></i>
+        <span class="link-title">Apply To School</span>
+      <%end%>
+    </li>
+    <li class="">
+      <%= link_to student_teachers_path(@current_user) do%>
+        <i class="fa fa-tasks"></i>
+        <span class="link-title">Apply To Teacher</span>
       <%end%>
     </li>
     <li class="">
@@ -74,6 +86,7 @@
   </ul>
   <!-- /#menu -->
 </div>
+<!-- /#left -->
 <!-- /#left -->
   <div id="content">
     <div class="outer">

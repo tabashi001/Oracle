@@ -3,7 +3,7 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
   :scholarship,:scholarships,:update_scholarship,:placements,:update_placement,:placement,
   :cutoffs, :cutoff,:update_cuttoff,:campus,:campu,:update_campu,:schoolinformations,:schoolinformation,
   :update_schoolinformation,:schoolpictures,:schoolpicture,:update_schoolpicture,:schoolvideos,
-  :schoolvideo,:update_schoolvideo,:teachers,:vendors]
+  :schoolvideo,:update_schoolvideo,:teachers,:vendors,:students,:teacher_requirement,:vendor_requirement]
 
  before_action :check_user_signed_in
   def index
@@ -17,14 +17,17 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
     @video_count = SchoolVideo.where("user_id = ?",set_school).count
     @teachers_count = AppliedSchool.where("school_id = ? AND role= ?",@school,"teacher").count
     @vendors_count = AppliedSchool.where("school_id = ? AND role= ?",@school,"vendor").count
+    @students_count = AppliedSchool.where("school_id = ? AND role= ?",@school,"student").count
   end
 
   def teachers
     @teachers = AppliedSchool.where("school_id = ? AND role= ?",@school,"teacher")
   end
-
   def vendors
     @vendors = AppliedSchool.where("school_id = ? AND role= ?",@school,"vendor")
+  end
+  def students
+    @students = AppliedSchool.where("school_id = ? AND role= ?",@school,"student")
   end
 
   def overview
@@ -320,6 +323,25 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
     end
   end
 
+  def post_requirements
+    @teacher_post = TeacherRequire.new
+    @vendor_post = VendorRequire.new
+  end
+  def teacher_requirement
+    @post = @school.teacher_requires.create(teacher_require_params)
+    if @post.save
+      redirect_to schools_path
+    else 
+    end
+  end
+  def vendor_requirement
+    @post = @school.vendor_requires.create(vendor_require_params)
+    if @post.save
+      redirect_to schools_path
+    else 
+    end
+  end
+
   private
 
   def set_school
@@ -363,6 +385,15 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
 
   def schoolvideo_params
     params.require(:school_video).permit(:title, :description, :video, :user_id)
+  end
+
+  def teacher_require_params
+    params.require(:teacher_require).permit(:name,:qualification,:subject,:level,:new_level,
+      :experience,:annual_salary,:job_type,:user_id)
+  end
+
+  def vendor_require_params
+    params.require(:vendor_require).permit(:name,:location,:article,:vendor_value,:supplier,:user_id)
   end
 
 end

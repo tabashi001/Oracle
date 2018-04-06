@@ -164,8 +164,8 @@
 .panelone {
   background-color: #e5eecc;
   border: 1px solid #c3c3c3;
-  height: 350px;
-  overflow-y:scroll;
+  height: 320px;
+  overflow-y: scroll;
 }
 .flipone {
     padding: 5px;
@@ -174,6 +174,14 @@
     border: solid 1px #c3c3c3;
 	cursor:pointer;
 	color:#ffffff;
+}
+.fliptwo {
+    padding: 5px;
+    
+    background-color:#c6a0d5;
+    border: solid 1px #c3c3c3;
+  cursor:pointer;
+  color:#ffffff;
 }
 .desc {
   word-wrap: break-word;

@@ -14,9 +14,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @countries = Countr.all
+    @states = []
+    @cities = []
+    if params[:country].present? or params[:state].present?
+      @states = Stat.where(:countr_id => params[:country] )
+      @cities = City.where(:stat_id => params[:state] )
+    end
+    if request.xhr?
+      respond_to do |format|
+        format.json {
+          render json: {states: @states} if params[:country].present?
+          render json: {cities: @cities} if params[:state].present?
+        }
+      end
+    end
+  end
 
   # PUT /resource
   # def update
@@ -67,8 +81,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    #binding.pry
-      if resource.role == "student"
+    if resource.role == "student"
       students_path
     elsif resource.role == "school"
       schools_path

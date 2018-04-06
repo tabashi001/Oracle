@@ -49,6 +49,13 @@ class User < ApplicationRecord
   has_many :sale_notes
   has_many :applied_schools
   has_many :users, through: :applied_schools
+  has_many :pay_fee_to_teachers
+  has_many :sell_books
+  has_many :applied_teachers
+  has_many :teacher_requires
+  has_many :vendor_requires
+  has_many :slots
+  has_many :demo_videos
   # belongs_to :country
   # belongs_to :state
 

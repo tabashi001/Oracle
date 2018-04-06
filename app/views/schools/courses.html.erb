@@ -3,128 +3,15 @@
 
 <%= render "layouts/stylesheets"%>
 
-
 <style type="text/css">
      .ADDcorsen.text-right {
   padding: 20px 0;
 }
-
 </style> 
 
 <div class="bg-dark dk" id="wrap">
   <%= render "schools/top"%>
-  <div id="left">
-  <div class="media user-media bg-dark dker">
-    <div class="user-media-toggleHover">
-      <span class="fa fa-user"></span>
-    </div>
-    <div class="user-wrapper bg-dark">
-      <a class="user-link" href="">
-        <%if current_user.profile_image.present? %>
-          <%= image_tag current_user.profile_image,class: "media-object img-thumbnail user-img",:size => "80x80" %>
-        <%else%>
-          <%= image_tag('user.gif',class: "media-object img-thumbnail user-img")%>
-        <%end%>
-        <span class="label label-danger user-label"><%= current_user.sign_in_count%></span>
-      </a>
-      <div class="media-body">
-        <h5 class="media-heading"><%= current_user.name%></h5>
-        <ul class="list-unstyled user-info">
-          <li><%= current_user.role%></li>
-          <li>Last Access : <br>
-            <small><i class="fa fa-calendar"></i>&nbsp;<%= current_user.last_sign_in_at.strftime("%d %B %t at %I:%M %p")%></small>
-            <%= link_to "(Edit Profile)" ,edit_user_registration_path%>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <ul id="menu" class="bg-blue dker">
-    <li class="nav-divider"></li>  
-    <li class="">
-      <%= link_to schools_path do %>
-        <i class="fa fa-dashboard"></i>
-        <span class="link-title" >&nbsp;Dashboard</span>
-      <%end%>
-    </li>
-    <li class="">
-      <a href="javascript:;">
-        <i class="fa fa-building "></i>
-        <span class="link-title">Layouts</span>
-        <span class="fa arrow"></span>
-      </a>
-      <ul class="collapse">
-        <li class=''>
-          <%if current_user.overviews.present?%>
-            <%= link_to  school_update_overview_path(current_user) do %>
-            <i class="fa fa-angle-right"></i>&nbsp;Overview<%end%>
-          <%else%>
-            <%= link_to  school_overview_path(current_user) do %>
-            <i class="fa fa-angle-right"></i>&nbsp;Overview<%end%>
-          <%end%>
-        </li>
-        <li class=''>
-          <%= link_to  school_courses_path(current_user) do %>
-          <i class="fa fa-angle-right"></i>&nbsp; Courses<%end%>
-        </li>
-        <li>
-          <%= link_to  school_scholarships_path(current_user) do %>
-          <i class="fa fa-angle-right"></i>&nbsp; Scholarship<%end%>
-        </li>
-        <li>
-          <%= link_to  school_placements_path(current_user) do %>
-          <i class="fa fa-angle-right"></i>&nbsp; Placement<%end%>
-        </li>
-        <li>
-          <%= link_to  school_cutoffs_path(current_user) do %>
-          <i class="fa fa-angle-right"></i>&nbsp; Cutoff<%end%>
-        </li>
-        <li>
-          <%= link_to  school_campus_path(current_user) do %>
-          <i class="fa fa-angle-right"></i>&nbsp; Campus<%end%>
-        </li>
-        <li>
-          <%= link_to  school_schoolinformations_path(current_user) do %>
-          <i class="fa fa-angle-right"></i>&nbsp; News<%end%>
-        </li>
-        <li>
-          <%= link_to  school_schoolpictures_path(current_user) do %>
-          <i class="fa fa-angle-right"></i>&nbsp; Pictures<%end%>
-        </li>
-        <li>
-          <%= link_to  school_schoolvideos_path(current_user) do %>
-          <i class="fa fa-angle-right"></i>&nbsp; Videos<%end%>
-        </li>
-      </ul>
-    </li>
-    <li class="">
-      <%= link_to  school_teachers_path(current_user) do %>
-        <i class="fa fa-tasks"></i>
-        <span class="link-title">Teachers</span>
-      <%end%>
-    </li>
-    <li class="">
-      <a href="">
-        <i class="fa fa-pencil"></i>
-        <span class="link-title">School</span>
-      </a>
-    </li>
-    <li class="">
-      <%= link_to  school_vendors_path(current_user) do %>
-        <i class="fa fa-table"></i>
-        <span class="link-title">Vendors</span>
-      <%end%>
-    </li>
-    <li>
-      <a href="">
-        <i class="fa fa-font"></i>
-        <span class="link-title">Total Earning</span>
-      </a>
-    </li>
-    <li class="nav-divider"></li>
-  </ul>
-</div>
-
+  <%= render :partial => "schools/left", :locals => { :active => 'Layouts' }%>
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">

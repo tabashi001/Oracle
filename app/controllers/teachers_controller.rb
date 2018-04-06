@@ -1,17 +1,20 @@
 class TeachersController < ApplicationController
  before_action :set_teacher, only:[:index,:schools,:apply_school,:find_student,:sale_notes,:create_sale_notes,
- :update_sale_notes]
+ :update_sale_notes,:students,:create_slots,:create_demo_videos]
 	
  before_action :check_user_signed_in
 
 	def index
 		@schools_count = @teacher.applied_schools.count
+		@students_count = AppliedTeacher.where("teacher_id = ? AND user_role= ?",@teacher,"student").count
 	end
 
 	def schools
-		#binding.pry
 		@schools = User.where(:role => "school")
-		@search = User.where("name = ? AND city= ? AND description LIKE ?", params[:name],params[:city],"%#{params[:description]}%") if params[:name] && params[:city].present?
+	    @name = @schools.pluck(:name)
+	    @city_id = @schools.pluck(:city_id)
+	    @cities = City.find(@city_id)
+	    @search = User.where("name = ? AND city_id= ?", params[:name],params[:city_id]) if params[:name] && params[:city_id].present?
 	end
 	def apply_school
 		if request.get?
@@ -28,11 +31,12 @@ class TeachersController < ApplicationController
 
 	def find_student
 		@students = User.where(:role => "student")
-		@search = @students.where("name LIKE ? or qualification LIKE ? or city LIKE ?", 
-					"%#{params[:name]}%","%#{params[:qualification]}","%#{params[:city]}")
-					if params[:name] || params[:qualification] || params[:city].present?
+		@name = @students.pluck(:name)
+		@qualification = @students.pluck(:qualification).uniq
+	    @city_id = @students.pluck(:city_id)
+	    @cities = City.find(@city_id)
+	    @search = User.where("name = ? AND qualification = ? AND city_id= ?", params[:name],params[:qualification],params[:city_id]) if params[:name] && params[:city_id].present?
 	end
-end
 
 	def sale_notes
 		@sale_notes = @teacher.sale_notes
@@ -77,6 +81,34 @@ end
 	    end
   	end
 
+  	def create_slots
+  		if request.get?
+  			@slots = Slot.new
+  		else
+	  		@slots = @teacher.slots.create(slot_params)
+	  		if @slots.save
+	  			redirect_to teachers_path
+	  		else
+	  		end
+	  	end
+  	end
+
+  	def create_demo_videos
+  		if request.get?
+  			@demo_video = DemoVideo.new
+  		else
+	  		@demo_video = @teacher.demo_videos.create(demo_video_params)
+	  		if @demo_video.save
+	  			redirect_to teachers_path
+	  		else
+	  		end
+	  	end
+  	end
+
+  	def students
+  		@students = AppliedTeacher.where("teacher_id = ? AND user_role= ?",@teacher,"student")
+  	end
+
 	private
 
 	def set_teacher
@@ -89,5 +121,13 @@ end
 
   	def apply_school_params
     	params.require(:applied_school).permit(:name,:email,:phone_no,:description,:school_id,:user_id,:role)
+  	end
+
+  	def slot_params
+    	params.require(:slot).permit(:name,:date,:time,:duration,:user_id)
+  	end
+
+  	def demo_video_params
+    	params.require(:demo_video).permit(:title,:description,:video,:user_id,:user_role)
   	end
 end

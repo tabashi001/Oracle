@@ -1,34 +1,31 @@
 class UsersController < ApplicationController
   
   def index
-   city = User.pluck(:city).uniq
+   city_id = User.pluck(:city_id).uniq
+   city = City.find(city_id)
    @city = city.reject { |item| item.nil? || item == '' }
    @role = User.pluck(:role).uniq
    @course = Course.pluck(:course_name).uniq
    @school 	= User.where(:role => "school")
    @student = User.where(:role => "student")
    @teacher = User.where(:role => "teacher")
+   #@vendor = User.where(:role => "vendor")
    if params[:commit]=="Search"
    		@@first_value = params[:user]
 			redirect_to users_search_path
 		end	 
   end
 
- #@school = User.search.where("city LIKE ?","#{params[:search]}%")
- #binding.pry
- # @school = User.search(params[:city]) if params[:commit]=="Search"
-
   def search
   	@course = Course.all
-    city = User.pluck(:city).uniq
+    city_id = User.pluck(:city_id).uniq
+    city = City.find(city_id)
     @city = city.reject { |item| item.nil? || item == '' }
     if params[:myparam1].present?
       @school1 = User.where(:id => params[:myparams]).paginate(:per_page => 1, :page => params[:page])
       render json: {:event => @school1}
     elsif @@first_value.present?
-      #binding.pry
      @school = User.where("city LIKE ? AND role = ?","%#{@@first_value[:city]}%","#{@@first_value[:search_role]}").paginate(:per_page => 4, :page => params[:page])
-    
     else
     end
   end
@@ -46,9 +43,26 @@ class UsersController < ApplicationController
   end
 
   def student_show
-    @student = User.find(id = params[:id])
-    @state = State.find(@student.state_id) if @student.state_id.present?
-    @country = Country.find(@student.country_id) if @student.country_id.present?
+    @user = User.find(id = params[:id])
+    @city = City.find(@user.city_id) if @user.city_id.present?
+    @state = Stat.find(@user.state_id) if @user.state_id.present?
+    @country = Countr.find(@user.country_id) if @user.country_id.present?
+    @slots = @user.slots if @user.slots.present?
+    @videos = @user.demo_videos if @user.demo_videos.present?
+  end
+
+  def current_requirements
+    @user = User.find(params[:format])
+    @teachers  = @user.teacher_requires
+    @vendors  = @user.vendor_requires
+  end
+
+  def apply_to_post
+     if !user_signed_in?
+      redirect_to new_user_session_path
+     else 
+        
+     end
   end
 
   def all_view

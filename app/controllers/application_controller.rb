@@ -5,44 +5,41 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-  	if resource.role == "student"
-      unless fields_check(current_user)
-       flash[:notice] = "Please complete your profile to proceed futher"
-       edit_user_registration_path
-      else
-		   students_path
+    if current_admin.present?
+      admins_path
+    else
+      if resource.role == "student"
+        unless fields_check(current_user)
+         flash[:notice] = "Please complete your profile to proceed futher"
+         edit_user_registration_path
+        else
+         students_path
+        end
+      elsif resource.role == "school"
+        unless fields_check(current_user)
+         flash[:notice] = "Please complete your profile to proceed futher"
+         edit_user_registration_path
+        else
+         schools_path
+        end
+      elsif resource.role == "teacher"
+        unless fields_check(current_user)
+         flash[:notice] = "Please complete your profile to proceed futher"
+         edit_user_registration_path
+        else
+         teachers_path
+        end
+      elsif resource.role == "vendor"
+        unless fields_check(current_user)
+         flash[:notice] = "Please complete your profile to proceed futher"
+         edit_user_registration_path
+        else
+         vendors_path
+        end
+      else resource.role == " "
+        students_path
       end
-  	elsif resource.role == "school"
-      unless fields_check(current_user)
-       flash[:notice] = "Please complete your profile to proceed futher"
-       edit_user_registration_path
-      else
-  		 schools_path
-      end
-  	elsif resource.role == "teacher"
-      unless fields_check(current_user)
-       flash[:notice] = "Please complete your profile to proceed futher"
-       edit_user_registration_path
-      else
-  		 teachers_path
-      end
-  	elsif resource.role == "vendor"
-      unless fields_check(current_user)
-       flash[:notice] = "Please complete your profile to proceed futher"
-       edit_user_registration_path
-      else
-  		 vendors_path
-      end
-  	elsif resource.role == "admin"
-      unless fields_check(current_user)
-       flash[:notice] = "Please complete your profile to proceed futher"
-       edit_user_registration_path
-      else
-  		 admin_index_path
-      end
-    else resource.role == " "
-      students_path
-  	end
+    end
   end
 
   def configure_permitted_parameters

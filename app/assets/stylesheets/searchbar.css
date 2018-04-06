@@ -21,7 +21,7 @@
   padding: 15px;
  
 }
-  .form-wrapper input {
+  .form-wrapper select {
   -moz-border-bottom-colors: none;
   -moz-border-left-colors: none;
   -moz-border-right-colors: none;
@@ -37,7 +37,7 @@
   padding: 12px 5px;
   width: 275px;
 }
-    .form-wrapper input:focus {
+    .form-wrapper select:focus {
         outline: 0;
         background: #fff;
         -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
@@ -45,19 +45,19 @@
         box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
     }
     
-    .form-wrapper input::-webkit-input-placeholder {
+    .form-wrapper select::-webkit-input-placeholder {
        color: #999;
        font-weight: normal;
        font-style: italic;
     }
     
-    .form-wrapper input:-moz-placeholder {
+    .form-wrapper select:-moz-placeholder {
         color: #999;
         font-weight: normal;
         font-style: italic;
     }
     
-    .form-wrapper input:-ms-input-placeholder {
+    .form-wrapper select:-ms-input-placeholder {
         color: #999;
         font-weight: normal;
         font-style: italic;

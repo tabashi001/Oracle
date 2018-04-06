@@ -3,10 +3,9 @@
 
 <%= render "layouts/stylesheets"%>
 
-
 <div class="bg-dark dk" id="wrap">
 	<%= render "vendors/top"%>
-	<%= render "vendors/left"%>
+	<%= render :partial => "vendors/left", :locals => { :active => 'Dashboard' }%>
     <div id="content">
         <div class="outer">
             <div class="inner bg-light lter">
@@ -15,22 +14,42 @@
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
 							<div class="col-md-3 col-sm-6">
-								<%=link_to vendor_schools_path(@vendor) do%>
-									<div class="counting-box" id="encounter">
-                                        <%= image_tag('Schlogo.png')%>
-										<h4 class="count-this"><%=@schools_count%></h4>
-										<p>APPLY SCHOOL</p>
-									</div>
-								<%end%>
+                                <% if current_user.active? %>
+                                    <%=link_to vendor_schools_path(@vendor) do%>
+                                        <div class="counting-box" id="encounter">
+                                            <%= image_tag('Schlogo.png')%>
+                                            <h4 class="count-this"><%=@schools_count%></h4>
+                                            <p>APPLY SCHOOL</p>
+                                        </div>
+                                    <%end%>
+                                <%else%>
+                                    <a href="#applyModal" data-toggle="modal">
+                                        <div class="counting-box" id="encounter">
+                                            <%= image_tag ('Schlogo.png')%>
+                                            <h4 class="count-this"><%=@schools_count%></h4>
+                                            <p>APPLY SCHOOL</p>
+                                        </div>
+                                    </a>
+                                <%end%>
 							</div>
 							<div class="col-md-3 col-sm-6">
-								<a href="">
-									<div class="counting-box" id="locations">
-                                        <%= image_tag('mlogo.png')%>
-										<h4 class="count-this">312</h4>
-										<p>TOTAL EARNING</p>
-									</div>
-								</a>
+                                <% if current_user.active? %>
+                                    <a href="">
+                                        <div class="counting-box" id="locations">
+                                            <%= image_tag('mlogo.png')%>
+                                            <h4 class="count-this">312</h4>
+                                            <p>TOTAL EARNING</p>
+                                        </div>
+                                    </a>
+                                <%else%>
+                                    <a href="#applyModal" data-toggle="modal">
+                                        <div class="counting-box" id="encounter">
+                                            <%= image_tag ('mlogo.png')%>
+                                            <h4 class="count-this">312</h4>
+                                            <p>TOTAL EARNING</p>
+                                        </div>
+                                    </a>
+                                <%end%>
 							</div>
 						</div>
 					</div>
@@ -74,3 +93,14 @@
     <!-- /.modal-dialog -->
 </div> 
 <%= render "layouts/javascripts"%>       
+<div id="applyModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+              <p>
+                  Hi <%=current_user.name%>, You Acount Is Deactivated, Please Contact to Admin.
+              </p>
+          </div>
+        </div>
+    </div>
+</div>

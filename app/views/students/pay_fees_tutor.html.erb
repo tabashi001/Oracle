@@ -1,11 +1,11 @@
-<title>Pay Schoo Tutor</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">  
+<title>Pay School Fees</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">      
 
 <%= render 'layouts/stylesheets'%>
 
 <div class="bg-dark dk" id="wrap">
-    <%= render 'students/top'%>
-    <div id="left">
+  <%= render 'students/top'%>
+  <div id="left">
   <div class="media user-media bg-dark dker">
     <div class="user-media-toggleHover">
     <span class="fa fa-user"></span>
@@ -36,8 +36,8 @@
     <li class="nav-divider"></li>  
     <li class="">
       <%= link_to students_path do%>
-        <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
-      <%end%>
+            <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
+          <%end%>
     </li>
     <li class="active">
       <a href="javascript:;">
@@ -63,6 +63,18 @@
       <%end%>
     </li>
     <li class="">
+      <%= link_to student_schools_path(@current_user) do%>
+        <i class="fa fa-tasks"></i>
+        <span class="link-title">Apply To School</span>
+      <%end%>
+    </li>
+    <li class="">
+      <%= link_to student_teachers_path(@current_user) do%>
+        <i class="fa fa-tasks"></i>
+        <span class="link-title">Apply To Teacher</span>
+      <%end%>
+    </li>
+    <li class="">
       <a href="">
         <i class="fa fa-pencil"></i>
         <span class="link-title">
@@ -75,42 +87,46 @@
   <!-- /#menu -->
 </div>
 <!-- /#left -->
-    <div id="content">
-        <div class="outer">
-            <div class="inner bg-light lter">
-                <h4>Pay tutor Fees</h4>
-                <hr>
-                <div class="row vdiocont">    
-                    <form class="form-horizontal" action="">
-                        <div class="form-group margunrve">
-                            <label for="text">Name</label>
-                            <input type="Text" class="form-control" placeholder="Name">
-                        </div>
-                        <div class="form-group margunrve">
-                            <label for="email">Email</label>
-                           <input type="Text" class="form-control" placeholder="Email">
-                        </div>
-                        <div class="form-group margunrve">
-                            <label for="text">Phone No</label>
-                            <input type="text" class="form-control" placeholder="Phone No">
-                        </div>
-                        <div class="form-group margunrve">
-                            <label for="text">Name Of Tutor</label>
-                            <input type="text" class="form-control" placeholder="Name Of Tutor">
-                        </div>
-                        <div class="form-group margunrve text-center">
-                          <button type="submit" class="btn btn-default">Submit</button>
-                          <button type="submit" class="btn btn-default">cancel</button>
-                        </div>
-                    </form> 
-                </div>    
-                <hr>
+<!-- /#left -->
+  <div id="content">
+    <div class="outer">
+      <div class="inner bg-light lter">
+        <h4>Pay Teacher Fees</h4>
+        <hr>
+        <div class="row vdiocont">   
+          <%= form_for(@teacher_fees, url: student_pay_fees_tutor_path) do |f| %> 
+          <form class="form-horizontal" action="">
+            <div class="form-group margunrve">
+              <label for="text">Name</label>
+              <%=f.text_field :name, class: "form-control",placeholder: "Name",value: current_user.name %>
             </div>
-            <!-- /.inner -->
-        </div>
-        <!-- /.outer -->
-        </div>
-        <!-- /#content -->
+            <div class="form-group margunrve">
+              <label for="email">Email</label>
+              <%=f.text_field :email, class: "form-control",placeholder: "email", value: current_user.email%>
+            </div>
+            <div class="form-group margunrve">
+              <label for="text">Phone No</label>
+              <%=f.text_field :phone_no, class: "form-control",placeholder: "phone_no", value: current_user.phone_no %>
+            </div>
+            <div class="form-group margunrve">
+              <label for="text">Name Of School</label>
+              <%= f.select :teacher_name, options_from_collection_for_select(@teacher_name, :id, :name),{}, {:class => 'form-control'}%>
+            </div>
+            <div class="form-group margunrve text-center">
+              <%= f.hidden_field :user_role, value: current_user.role%>
+              <%=f.submit "Submit", class: "btn btn-default"%>
+              <button type="submit" class="btn btn-default">cancel</button>
+            </div>
+          </form>
+          <%end%> 
+        </div>    
+        <hr>
+      </div>
+    <!-- /.inner -->
+    </div>
+    <!-- /.outer -->
+  </div>
+  <!-- /#content -->
 </div>
 <!-- /#wrap -->
 <footer class="Footer bg-dark dker">
@@ -142,5 +158,4 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-
 <%= render 'layouts/javascripts'%>

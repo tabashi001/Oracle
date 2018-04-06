@@ -27,88 +27,19 @@
 
 <div class="bg-dark dk" id="wrap">
   <%= render "teachers/top"%>
-  <div id="left">
-  <div class="media user-media bg-dark dker">
-    <div class="user-media-toggleHover">
-        <span class="fa fa-user"></span>
-    </div>
-    <div class="user-wrapper bg-dark">
-      <a class="user-link" href="">
-        <%if current_user.profile_image.present? %>
-          <%= image_tag current_user.profile_image,class: "media-object img-thumbnail user-img",:size => "80x80" %>
-        <%else%>
-          <%= image_tag('user.gif', class: "media-object img-thumbnail user-img")%>
-        <%end%>
-        <span class="label label-danger user-label"><%= current_user.sign_in_count%></span>
-      </a>
-      <div class="media-body">
-        <h5 class="media-heading"><%= current_user.name%></h5>
-        <ul class="list-unstyled user-info">
-          <li><%= current_user.role%></li>
-          <li>Last Access : <br>
-            <small><i class="fa fa-calendar"></i>&nbsp;<%= current_user.last_sign_in_at.strftime("%d %B %t at %I:%M %p")%></small>
-            <%= link_to "(Edit Profile)" ,edit_user_registration_path%>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <!-- #menu -->
-  <ul id="menu" class="bg-blue dker">
-    <li class="nav-divider"></li>  
-      <li class="">
-        <%=link_to teachers_path do%>
-          <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
-        <%end%>
-      </li>
-    <li class="active">
-      <%=link_to teacher_schools_path(@teacher) do%>
-        <i class="fa fa-tasks"></i>
-        <span class="link-title">Apply School</span>
-      <%end%>
-    </li>
-    <li class="">
-      <%=link_to teacher_find_student_path(@teacher) do%>
-        <i class="fa fa-pencil"></i>
-        <span class="link-title">Search Student</span>
-      <%end%>
-    </li>
-    <li>
-      <%=link_to teacher_sale_notes_path(@teacher) do%>
-        <i class="fa fa-table"></i>
-        <span class="link-title">Sale Notes</span>
-      <%end%>
-    </li>
-    <li>
-      <a href="">
-        <i class="fa fa-font"></i>
-        <span class="link-title">Total Earning</span>
-      </a>
-    </li>
-    <li class="nav-divider"></li>
-  </ul>
-  <!-- /#menu -->
-</div>
-<!-- /#left -->
+  <%= render :partial => "teachers/left", :locals => { :active => 'Apply School' }%>
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
         <h3>Apply School</h3>
-<!--  <form class="form-wrapper cf">
-    <input type="text" placeholder="Location" required>
-     <input type="text" placeholder="Category" required>
-      <input type="text" placeholder="Sub Category" required>
-    <button type="submit">Search</button>
-</form> -->
-
         <hr>
         <form class="form-wrapper cf">
-        <%= form_tag teacher_schools_path(current_user), :method => 'get' do %>
-          <%= text_field_tag "name",nil,:placeholder => "School Name"%>
-          <%= text_field_tag "city",nil,:placeholder => "City"%>
-          <%= text_field_tag "description",nil,:placeholder => "Category"%>
-          <%= button_tag "Search" ,:class => "sEarch"%>
-        <% end %>
+          <%= form_tag teacher_schools_path(current_user), :method => 'get' do %>
+            <%= select_tag "name",options_for_select(@name),prompt: "Select School"%>
+            <%= select_tag "city_id",options_for_select(@cities.collect{|p| [p.name, p.id]}),prompt: "Select City"%>
+            <%#= select_tag "qualification",options_for_select(@subjects),prompt: "Select Subject"%>
+            <%= button_tag "Search" ,:class => "sEarch"%>
+          <% end %>
         </form>
         <div class="col-md-12">
           <h3>Schools</h3>
@@ -124,11 +55,15 @@
                         <%= image_tag("img.jpg", class: "img-thumbnail img-responsive collglogo")%>
                       <% end %>
                     </div>
-
-
                     <div class="col-md-10">
+                    <a href="/users/show?id=<%= search.id %>" target="_blank">
                       <h4><%= search.name %></h4>
-                      <span> <i class="fa fa-map-marker"></i> <%= search.address%>,<%= search.city%>,<%= search.country%></span>
+                      <span> <i class="fa fa-map-marker"></i> <%= search.address%>,
+                        <% if @city = City.find_by_id(search.city_id)%><%= @city.name%><%end%>,
+                        <% if @state = Stat.find_by_id(search.state_id)%><%= @state.name%> <%end%>,
+                        <% if @country = Countr.find_by_id(search.country_id)%><%= @country.name%> <%end%>
+                        </span>
+                        </a>
                         <% @id = AppliedSchool.find_by_user_id_and_school_id(current_user, search)%>
                         <%if @id.present?%>
                           <button class="btn btn-primary TxtceNtr" data-toggle="modal" href="#applyModal<%=search.id%>">Apply Now </button>
@@ -169,8 +104,14 @@
                         <% end %>
                       </div>
                       <div class="col-md-10">
+                      <a href="/users/show?id=<%= school.id %>" target="_blank">
                         <h4><%= school.name %></h4>
-                        <span> <i class="fa fa-map-marker"></i> <%= school.address%>,<%= school.city%>,<%= school.country%></span>
+                        <span> <i class="fa fa-map-marker"></i> <%= school.address%>,
+                        <% if @city = City.find_by_id(school.city_id)%><%= @city.name%><%end%>,
+                        <% if @state = Stat.find_by_id(school.state_id)%><%= @state.name%> <%end%>,
+                        <% if @country = Countr.find_by_id(school.country_id)%><%= @country.name%> <%end%>
+                        </span>
+                        </a>
                           <% @id = AppliedSchool.find_by_user_id_and_school_id(current_user, school)%>
                           <%if @id.present?%>
                             <button class="btn btn-primary TxtceNtr" data-toggle="modal" href="#applyModal<%=school.id%>">Apply Now </button>

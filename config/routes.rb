@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 	resource :showcase do 
 		collection do 
@@ -16,11 +17,17 @@ Rails.application.routes.draw do
 		post :pay_fees_tutor
 		get :sale_book
 		post :sale_book 
+		get :schools
+		get :apply_school
+		post :apply_school
+		get :teachers
+		get :apply_teacher
+		post :apply_teacher
 	end
-
 
 	resources :teachers do
 		get :schools
+		get :students
 		get :apply_school
 		post :apply_school
 		get :find_student
@@ -31,11 +38,16 @@ Rails.application.routes.draw do
 		patch :update_sale_notes
 		get :sale
 		get :destroy_sale_notes
+		get :create_slots
+		post :create_slots
+		get :create_demo_videos
+		post :create_demo_videos
 	end
 
 	resources :schools do
 		get :teachers
 		get :vendors
+		get :students
 		get :overview
 		post :overview
 		get :update_overview
@@ -88,6 +100,9 @@ Rails.application.routes.draw do
 		get :update_schoolvideo
 		patch :update_schoolvideo
 		get :destroy_schoolvideo
+		get :post_requirements
+		post :teacher_requirement
+		post :vendor_requirement
 	end
 
 	resources :vendors do
@@ -105,25 +120,29 @@ Rails.application.routes.draw do
 		    get '/users/sign_out' => 'devise/sessions#destroy'
 		    #get '/users/:id/showcase' => 'users#showcase'
 		end
-
-		# resources :user do 
-		# 	collection do
-  # 	    post :find_all_course_name
-  # 	  end
-  #   end
-
-
-
-	# devise_scope :user do 
-	# 	get '/users/login' => 'devise/sessions#new'
-	#     get '/users/register' => 'devise/registrations#new'
-	#     get '/users/sign_out' => 'devise/sessions#destroy'
-	# end
-
+	devise_for :admins, controllers: { sessions: 'admins/sessions'}
+	devise_scope :admin do 
+			get '/admins/login' => 'devise/sessions#new'
+		    get '/admins/sign_out' => 'devise/sessions#destroy'
+		    #get '/users/:id/showcase' => 'users#showcase'
+		end
+	resources :admins do 
+		get :schools
+		get :school_update
+		patch :school_update
+		get :teachers
+		get :students
+		get :vendors
+		post :activate
+		get :video_upload
+		post :video_upload
+	end
 	  get 'users/search' 
 	  post 'users/search'
 	  get 'users/student_show'
 	  get 'users/show'
 	  get 'users/all_view'
 	  post 'users/find_all_course_name'
+	  get 'users/current_requirements'
+	  get 'users/apply_to_post'
 end

@@ -3,7 +3,7 @@
 	<h3 style="text-align:center;">RECENTLY ADDED TEACHERS</h3>
 	<%if @teacher.present?%>
 		<div class="row RowMarginzero">
-			<% @teacher.each do |teacher|%>
+			<% @teacher.last(4).each do |teacher|%>
 				<div class="col-sm-6 col-md-3">
 					<div id="wrapper">
 						<div class="cards">
@@ -30,7 +30,7 @@
 										<span><%= teacher.name %></span>
 									</p>
 									<h5 class="hfivestyle"><%= teacher.description %>..</h5>
-									<a href="#" target="_blank" class="custanchor">read more...</a>
+									<a href="/users/student_show?id=<%= teacher.id %>" target="_blank" class="custanchor"> read more...</a>
 								</div>
 								<div class="card-body-footer">
 									<div class="row">

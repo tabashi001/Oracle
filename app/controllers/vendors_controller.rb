@@ -7,7 +7,10 @@ before_action :set_vendor, only:[:index,:schools,:apply_school]
 
   	def schools
 		@schools = User.where(:role => "school")
-		@search = User.where("name = ? AND city= ?", params[:name],params[:city]) if params[:name] && params[:city].present?
+	    @name = @schools.pluck(:name)
+	    @city_id = @schools.pluck(:city_id)
+	    @cities = City.find(@city_id)
+	    @search = User.where("name = ? AND city_id= ?", params[:name],params[:city_id]) if params[:name] && params[:city_id].present?
 	end
 	def apply_school
 		if request.get?
