@@ -55,6 +55,10 @@
                 <div id="menu1" class="tab-pane fade">
                   <%= form_for(@vendor_post, url: school_vendor_requirement_path) do |f| %>
                     <div class="form-group">
+                      <label for="email">Name :</label>
+                      <%= f.text_field :name,class: "form-control",placeholder: "Tendor Name",autofocus:'true'%>
+                    </div>
+                    <div class="form-group">
                       <label for="email">Location :</label>
                       <%= f.text_field :location,class: "form-control",placeholder: "Address",autofocus:'true'%>
                     </div>

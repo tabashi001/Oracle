@@ -79,7 +79,7 @@
     </li>
     <li <%if active == 'Slots'%> class="active" <%end%> >
       <% if current_user.active? %>
-        <%=link_to teacher_create_slots_path(@teacher) do%>
+        <%=link_to teacher_slots_path(@teacher) do%>
           <i class="fa fa-table"></i>
           <span class="link-title">Create Slots</span>
         <%end%>
@@ -89,7 +89,7 @@
     </li>
     <li <%if active == 'Videos'%> class="active" <%end%> >
       <% if current_user.active? %>
-        <%=link_to teacher_create_demo_videos_path(@teacher) do%>
+        <%=link_to teacher_demo_videos_path(@teacher) do%>
           <i class="fa fa-table"></i>
           <span class="link-title">Demo Videos</span>
         <%end%>

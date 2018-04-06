@@ -32,12 +32,12 @@
 	<!-- #menu -->
 	<ul id="menu" class="bg-blue dker">
 		<li class="nav-divider"></li>  
-		<li class="active">
+		<li <%if active == 'Dashboard'%> class="active" <%end%>>
 			<%= link_to students_path do%>
         		<i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
       		<%end%>
 		</li>
-		<li class="">
+		<li <%if active == 'Fee'%> class="active" <%end%>>
 			<a href="javascript:;">
 				<i class="fa fa-building "></i>
 				<span class="link-title">Pay Fees</span>
@@ -64,7 +64,7 @@
 				</li>
 			</ul>
 		</li>
-		<li class="">
+		<li <%if active == 'Book'%> class="active" <%end%>>
 			<% if current_user.active? %>
 				<%= link_to student_sale_book_path(@current_user) do%>
 					<i class="fa fa-tasks"></i>
@@ -74,7 +74,7 @@
 				<a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Sell Book</a>
 			<%end%>
 		</li>
-		<li class="">
+		<li <%if active == 'Schools'%> class="active" <%end%>>
 			<% if current_user.active? %>
 				<%= link_to student_schools_path(@current_user) do%>
 					<i class="fa fa-tasks"></i>
@@ -84,7 +84,7 @@
 				<a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Apply To School</a>
 			<%end%>
 		</li>
-		<li class="">
+		<li <%if active == 'Teachers'%> class="active" <%end%>>
 			<% if current_user.active? %>
 				<%= link_to student_teachers_path(@current_user) do%>
 					<i class="fa fa-tasks"></i>

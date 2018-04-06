@@ -1,45 +1,52 @@
-<title>Apply School</title>
+<title>Teachers</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <%= render "layouts/stylesheets"%>
+
 
 <div class="bg-dark dk" id="wrap">
   <%= render "teachers/top"%>
-  <%= render :partial => "teachers/left", :locals => { :active => 'Videos' }%>
+  <%= render :partial => "teachers/left", :locals => { :active => 'Slots' }%>
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
-        <hr> 
-        <h3>Demo Videos</h3>
-        <hr>
-        <div class="row vdiocont">
-          <%= form_for @demo_video, url: teacher_create_demo_videos_path do |f| %>
-            <% if @demo_video.errors.any? %>
-              <% @demo_video.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            <% end %>
-            <div class="form-group">
-              <label for="email">Title :</label>
-              <%=f.text_field :title, class: "form-control",placeholder: "Title" %>
-            </div>
-            <div class="form-group">
-              <label for="pwd">Description :</label>
-             <%=f.text_area :description, class: "form-control",placeholder: "Description" %>
-            </div>
-            <div class="form-group">
-              <label for="email">Video Upload :</label>
-              <%=f.file_field :video, class: "form-control"%>
-            </div>
-            <div class="text-center">
-              <%=f.submit "Submit",class: "btn btn-primary"%>
-              <button type="button" class="btn btn-danger">Cancel</button>
-            </div>
-          <%end%>
-        </div>
+        <h4>Generated Slots</h4> 
+        <div class="ADDcorsen text-right">
+          <%=link_to "Back",teachers_path, class: "btn btn-primary"%>
+          <%=link_to "Add Slots",teacher_create_slots_path,class: "btn btn-primary"%>
+        </div> 
+        <div class="table-responsive ">          
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Duration</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <% @slots.each do |slot|%>
+              <tbody>
+                <tr>
+                  <td><%=slot.name%></td>
+                  <td><%=slot.date%></td>
+                  <td><%=slot.time%></td>
+                  <td><%=slot.duration%></td>
+                  <td>
+                    <%=link_to "Edit",teacher_update_slots_path(slot),class: "btn btn-primary btn-xs"%>
+                    <%=link_to "Delete",teacher_destroy_slot_path(slot),class: "btn btn-danger btn-xs", data: { confirm: "Do you to want to Delete?" }%>
+                  </td>
+                </tr>
+              </tbody>
+            <%end%>
+          </table>
+        </div>  
       </div>
       <!-- /.inner -->
     </div>
     <!-- /.outer -->
   </div>
+  <!-- /#content -->
 </div>
 <!-- /#wrap -->
 
@@ -47,7 +54,6 @@
     <p>2017 &copy; Tabashi Technology Private Limited</p>
 </footer>
 <!-- /#footer -->
-
 <!-- #helpModal -->
 <div id="helpModal" class="modal fade">
   <div class="modal-dialog">
@@ -69,7 +75,7 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
-      <!-- /.modal-content -->
+    <!-- /.modal-content -->
   </div>
   <!-- /.modal-dialog -->
 </div>

@@ -29,7 +29,7 @@ CSV.foreach(Rails.root.join("state.csv"), headers: true) do |row|
   Stat.create! do |state|
   	state.id = row[0]
     state.name = row[1]
-    state.country_id = row[2]
+    state.countr_id = row[2]
   end
 end
 
@@ -38,7 +38,7 @@ CSV.foreach(Rails.root.join("city.csv"), headers: true) do |row|
   City.create! do |city|
   	city.id = row[0]
     city.name = row[1]
-    city.state_id = row[2]
+    city.stat_id = row[2]
   end
 end
 

@@ -89,6 +89,12 @@ class StudentsController < ApplicationController
       end 
   end
 
+  def slots
+    @apply_teacher = AppliedTeacher.new
+    @teacher = User.find(params[:student_id])
+    @slots = @teacher.slots
+  end
+
 
   private
 

@@ -21,10 +21,10 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
   end
 
   def teachers
-    @teachers = AppliedSchool.where("school_id = ? AND role= ?",@school,"teacher")
+    @teacher_requirements = @school.teacher_requires
   end
   def vendors
-    @vendors = AppliedSchool.where("school_id = ? AND role= ?",@school,"vendor")
+    @vendor_requirements = @school.vendor_requires
   end
   def students
     @students = AppliedSchool.where("school_id = ? AND role= ?",@school,"student")
@@ -323,6 +323,8 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
     end
   end
 
+  def requirements
+  end
   def post_requirements
     @teacher_post = TeacherRequire.new
     @vendor_post = VendorRequire.new
