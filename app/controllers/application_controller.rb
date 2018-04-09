@@ -8,35 +8,35 @@ class ApplicationController < ActionController::Base
     if current_admin.present?
       admins_path
     else
-      if resource.role == "student"
+      if resource.role_name == "3"
         unless fields_check(current_user)
          flash[:notice] = "Please complete your profile to proceed futher"
          edit_user_registration_path
         else
          students_path
         end
-      elsif resource.role == "school"
+      elsif resource.role_name == "1"
         unless fields_check(current_user)
          flash[:notice] = "Please complete your profile to proceed futher"
          edit_user_registration_path
         else
          schools_path
         end
-      elsif resource.role == "teacher"
+      elsif resource.role_name == "2"
         unless fields_check(current_user)
          flash[:notice] = "Please complete your profile to proceed futher"
          edit_user_registration_path
         else
          teachers_path
         end
-      elsif resource.role == "vendor"
+      elsif resource.role_name == "4"
         unless fields_check(current_user)
          flash[:notice] = "Please complete your profile to proceed futher"
          edit_user_registration_path
         else
          vendors_path
         end
-      else resource.role == " "
+      else resource.role_name == " "
         students_path
       end
     end
@@ -44,9 +44,9 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :phone_no, :gender, :address, :city, :pincode, :country, :gender, :role,
-              :profile_image, :document, :qualification])
+              :profile_image, :document, :qualification, :role_name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :phone_no, :gender, :address, :city, :pincode, :country, :gender, :role,
-       :profile_image, :document, :qualification, :cover_image, :description,:country_id,:state_id,:city_id])
+       :profile_image, :document, :qualification, :cover_image, :description,:country_id,:state_id,:city_id, :role_name])
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email,:password])
   end
 

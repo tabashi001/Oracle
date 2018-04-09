@@ -12,7 +12,7 @@
     <div class="row mainrowcust">
       <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 padzerosty">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%#= devise_error_messages! %>
+          <%= devise_error_messages! %>
           <%#= flash[:recaptcha_error] %>
           <div class="left">
             <h1>Sign up</h1>
@@ -24,9 +24,9 @@
             <%= f.text_field :phone_no, autocomplete: "off",placeholder: "Phone ",required: true %>
             <div class="field">
               <%#= f.label :Role %>
-              <% User.roles.keys.each do |role| %>
-                <%= f.radio_button :role, role %>
-                <%= f.label role.to_sym %>
+              <% Role.all.each do |role| %>
+                <%= f.radio_button :role_name,role.id%>
+                <%= f.label :role_name, role.name %>
               <% end %>
               </br>
               <%#= recaptcha_tags theme: 'dark',style: "transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;" %>

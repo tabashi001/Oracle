@@ -33,14 +33,13 @@
               </div>
               <div class="col-md-3 col-sm-6">
                 <% if current_user.active? %>
-                 <%= link_to  school_students_path(current_user) do %>
+                  <%= link_to  school_students_path(current_user) do %>
                     <div class="counting-box" id="battles">
                       <%= image_tag ('slogo.png')%>
                       <h4 class="count-this"><%=@students_count%></h4>
                       <p>FROM STUDENTS</p>
                     </div>
                   <%end%>
-                </a>
                 <%else%>
                   <a href="#applyModal" data-toggle="modal">
                     <div class="counting-box" id="encounter">
@@ -71,14 +70,14 @@
                 <%end%>
               </div>
               <div class="col-md-3 col-sm-6">
-              <% if current_user.active? %>
-                <a href="">
-                  <div class="counting-box" id="locations">
-                    <%= image_tag ('mlogo.png')%>
-                    <h4 class="count-this">312</h4>
-                    <p>TOTAL EARNING</p>
-                  </div>
-                </a>
+                <% if current_user.active? %>
+                  <a href="">
+                    <div class="counting-box" id="locations">
+                      <%= image_tag ('mlogo.png')%>
+                      <h4 class="count-this">312</h4>
+                      <p>TOTAL EARNING</p>
+                    </div>
+                  </a>
                 <%else%>
                   <a href="#applyModal" data-toggle="modal">
                     <div class="counting-box" id="encounter">

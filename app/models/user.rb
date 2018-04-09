@@ -2,12 +2,12 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   
-  enum role: {school: 0, teacher: 1 ,student: 2, vendor: 3}
+  #enum role: {school: '0', teacher: '1' ,student: '2', vendor: '3'}
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook,:twitter,:google_oauth2]
 
-  validates :role, presence: true
+  validates :role_name, presence: true
 
 #   PASSWORD_FORMAT = /\A
 #   (?=.{8,})          # Must contain 8 or more characters
@@ -58,7 +58,7 @@ class User < ApplicationRecord
   has_many :demo_videos
   # belongs_to :country
   # belongs_to :state
-
+  #belongs_to :role
   def create_picture(images)
     images.each do |image|
       SchoolPicture.create(picture: image)

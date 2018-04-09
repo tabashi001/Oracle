@@ -158,7 +158,7 @@
     </li>
     <li <%if active == 'Post'%>  class="active"<%end%> >
       <% if current_user.active? %>
-        <%= link_to  school_post_requirements_path(current_user) do %>
+        <%= link_to  school_requirements_path(current_user) do %>
           <i class="fa fa-table"></i>
           <span class="link-title">Post Requirements</span>
         <%end%>

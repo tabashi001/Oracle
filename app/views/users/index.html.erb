@@ -67,9 +67,9 @@ $(document).ready(function() {
 						<form class="form-wrapper cf">
 							<%= form_tag users_search_path(:controller => 'users', :action => 'search',:search => params[:search]), method: :get do %>
 								<%= select("user", "city", @city.map{|city| city.name.titleize},{:prompt => 'Select Location'} ,{class: "fa fa-map-marker"}) %>
-								<%= select("user", "role", @role.map{|role| role.titleize},{:prompt => 'I am ..'},class: "fa") %>
+								<%= select("user", "role", @roles.map{|role| role.name.titleize},{:prompt => 'I am ..'},class: "fa") %>
 
-								<%= select("user", "search_role", @role.map{|role| role.titleize},{:prompt => 'Searching for '},class: "fa") %>
+								<%= select("user", "search_role", @roles.map{|role| role.name.titleize},{:prompt => 'Searching for '},class: "fa") %>
 							<%= submit_tag 'Search', class: "btn btn-primary seARCHbtn" %>
 							<% end %>
 						</form>		

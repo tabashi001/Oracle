@@ -110,9 +110,16 @@ Rails.application.routes.draw do
 		get :update_schoolvideo
 		patch :update_schoolvideo
 		get :destroy_schoolvideo
+		get :requirements
 		get :post_requirements
 		post :teacher_requirement
+		get :update_teacher_requirement
+		patch :update_teacher_requirement
+		get :destroy_teacher_requirement
 		post :vendor_requirement
+		get :update_vendor_requirement
+		patch :update_vendor_requirement
+		get :destroy_vendor_requirement
 	end
 
 	resources :vendors do

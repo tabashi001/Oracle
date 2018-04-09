@@ -4,11 +4,12 @@ class UsersController < ApplicationController
    city_id = User.pluck(:city_id).uniq
    city = City.find(city_id)
    @city = city.reject { |item| item.nil? || item == '' }
-   @role = User.pluck(:role).uniq
+   @role = User.pluck(:role_name).uniq
+   @roles = Role.find(@role)
    @course = Course.pluck(:course_name).uniq
-   @school 	= User.where(:role => "school")
-   @student = User.where(:role => "student")
-   @teacher = User.where(:role => "teacher")
+   @school 	= User.where(:role_name => "1")
+   @student = User.where(:role_name => "3")
+   @teacher = User.where(:role_name => "2")
    #@vendor = User.where(:role => "vendor")
    if params[:commit]=="Search"
    		@@first_value = params[:user]

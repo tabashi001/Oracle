@@ -16,8 +16,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/edit
   def edit
     @countries = Countr.all
-    @states = []
-    @cities = []
+    if current_user.state_id && current_user.country_id.present?
+      state = Stat.find(current_user.state_id) if current_user.state_id.present?
+      city = City.find(current_user.city_id) if current_user.city_id.present?
+      @states = [state] 
+      @cities = [city] 
+    else
+      @states = [] 
+      @cities = [] 
+    end
     if params[:country].present? or params[:state].present?
       @states = Stat.where(:countr_id => params[:country] )
       @cities = City.where(:stat_id => params[:state] )

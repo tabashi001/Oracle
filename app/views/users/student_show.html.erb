@@ -54,7 +54,7 @@
 		</div>
 	</div>
 </div>
-<% if @user.role == "teacher"%>
+<% if @user.role_name == "2"%>
   <div class="container">
     <div class="row RWObtcust">
       <h4>Slots</h4>
@@ -72,6 +72,7 @@
           </thead>
           <tbody>
             <tr>
+              <% if @slots.present? %>
               <% @slots.each do |slot|%>
                 <td><%=slot.id%></td>
                 <td><%=slot.name%></td>
@@ -80,6 +81,9 @@
                 <td><%=slot.duration%></td>
                 <td><button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#student_model">Apply</button></td>
               <%end%>
+              <%else%>
+               No Slots Available
+              <%end%>
             </tr>
           </tbody>
         </table>
@@ -87,13 +91,17 @@
     </div>
     <div class="row RWObtcust">
     	<h4>Demo Videos</h4>
+      <%if @videos.present?%>
       <% @videos.each do |video|%>
       	<div class="col-md-4">
           <h3><%= video.title%></h3>
           <iframe width="100%" height="150" src="<%= video.video%>"></iframe>
           <p class="taxtjust"><%= video.description%></p>
         </div>
-      <%end%>			
+      <%end%>	
+      <%else%>
+       No Demo Videos
+      <%end%>		
     </div>
   </div>
 <%end%>	

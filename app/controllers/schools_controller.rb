@@ -3,7 +3,7 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
   :scholarship,:scholarships,:update_scholarship,:placements,:update_placement,:placement,
   :cutoffs, :cutoff,:update_cuttoff,:campus,:campu,:update_campu,:schoolinformations,:schoolinformation,
   :update_schoolinformation,:schoolpictures,:schoolpicture,:update_schoolpicture,:schoolvideos,
-  :schoolvideo,:update_schoolvideo,:teachers,:vendors,:students,:teacher_requirement,:vendor_requirement]
+  :schoolvideo,:update_schoolvideo,:teachers,:vendors,:students,:requirements,:teacher_requirement,:vendor_requirement]
 
  before_action :check_user_signed_in
   def index
@@ -324,23 +324,63 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
   end
 
   def requirements
+    @teachers_post = @school.teacher_requires
+    @vendors_post = @school.vendor_requires
   end
   def post_requirements
     @teacher_post = TeacherRequire.new
     @vendor_post = VendorRequire.new
   end
+
   def teacher_requirement
     @post = @school.teacher_requires.create(teacher_require_params)
     if @post.save
-      redirect_to schools_path
+      redirect_to school_requirements_path
     else 
     end
   end
+  def update_teacher_requirement
+    if request.get?
+      @teacher_post = TeacherRequire.find(params[:school_id])
+    else
+      @teacher_post = TeacherRequire.find(params[:school_id])
+      if @teacher_post.update(teacher_require_params)
+        redirect_to school_requirements_path
+      else
+      end
+    end
+  end
+  def destroy_teacher_requirement
+    @teacher_post = TeacherRequire.find(params[:school_id])
+    if @teacher_post.destroy
+      redirect_to school_requirements_path
+    else
+    end
+  end
+
   def vendor_requirement
     @post = @school.vendor_requires.create(vendor_require_params)
     if @post.save
-      redirect_to schools_path
+      redirect_to school_requirements_path
     else 
+    end
+  end
+  def update_vendor_requirement
+    if request.get?
+      @vendor_post = VendorRequire.find(params[:school_id])
+    else
+      @vendor_post = VendorRequire.find(params[:school_id])
+      if @vendor_post.update(vendor_require_params)
+        redirect_to school_requirements_path
+      else
+      end
+    end
+  end
+  def destroy_vendor_requirement
+    @vendor_post = VendorRequire.find(params[:school_id])
+    if @vendor_post.destroy
+      redirect_to school_requirements_path
+    else
     end
   end
 
