@@ -53,8 +53,7 @@
           <div class="col-md-4">
             <div class="form-group frmgrpcust">
               <label for="Country" class="control-label">Country:</label>
-                <%=f.select :country_id, options_for_select(@countries.collect{|p| [p.name, p.id]}),{include_blank: "Select Country"},{required: 'true',autofocus:'true',class:'form-control'}%>
-
+                <%=f.select :country_id, options_for_select(@countries.collect{|p| [p.name, p.id]},:selected => f.object.country_id),{include_blank: "Select Country"},{required: 'true',autofocus:'true',class:'form-control'}%>
               <div class="help-block with-errors"></div>
             </div>
           </div>

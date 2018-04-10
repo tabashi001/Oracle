@@ -16,8 +16,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/edit
   def edit
     @countries = Countr.all
-    @states = []
-    @cities = []
+    if current_user.state_id && current_user.country_id.present?
+      state = Stat.find(current_user.state_id) if current_user.state_id.present?
+      city = City.find(current_user.city_id) if current_user.city_id.present?
+      @states = [state] 
+      @cities = [city] 
+    else
+      @states = [] 
+      @cities = [] 
+    end
     if params[:country].present? or params[:state].present?
       @states = Stat.where(:countr_id => params[:country] )
       @cities = City.where(:stat_id => params[:state] )
@@ -81,18 +88,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    if resource.role == "student"
+    binding.pry
+    if resource.role_name == "3"
       students_path
-    elsif resource.role == "school"
+    elsif resource.role_name == "1"
       schools_path
-    elsif resource.role == "teacher"
+    elsif resource.role_name == "2"
       teachers_path
-    elsif resource.role == "vendor"
+    elsif resource.role_name == "4"
       vendors_path
-    elsif resource.role == "admin"
+    elsif resource.role_name == "admin"
       admin_index_path
     else resource.role == " "
-      students_index_path
+      students_path
     end
   end
 

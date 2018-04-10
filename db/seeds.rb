@@ -24,22 +24,26 @@ require 'csv'
 #   end
 # end
 
-puts "Importing states..."
-CSV.foreach(Rails.root.join("state.csv"), headers: true) do |row|
-  Stat.create! do |state|
-  	state.id = row[0]
-    state.name = row[1]
-    state.countr_id = row[2]
-  end
-end
+# puts "Importing states..."
+# CSV.foreach(Rails.root.join("state.csv"), headers: true) do |row|
+#   Stat.create! do |state|
+#   	state.id = row[0]
+#     state.name = row[1]
+#     state.countr_id = row[2]
+#   end
+# end
 
-puts "Importing cities..."
-CSV.foreach(Rails.root.join("city.csv"), headers: true) do |row|
-  City.create! do |city|
-  	city.id = row[0]
-    city.name = row[1]
-    city.stat_id = row[2]
-  end
-end
+# puts "Importing cities..."
+# CSV.foreach(Rails.root.join("city.csv"), headers: true) do |row|
+#   City.create! do |city|
+#   	city.id = row[0]
+#     city.name = row[1]
+#     city.stat_id = row[2]
+#   end
+# end
 
-Admin.create(email: 'superadmin@gmail.com', password: "Password@123", password_confirmation: "Password@123")
+# Admin.create(email: 'superadmin@gmail.com', password: "Password@123", password_confirmation: "Password@123")
+
+['school', 'teacher', 'student', 'vendor'].each do |role|
+  Role.find_or_create_by({name: role})
+end

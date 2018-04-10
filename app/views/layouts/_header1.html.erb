@@ -8,10 +8,16 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-           <%= link_to image_tag('logoedu.png',class: "img-responsive imgsize"),root_path, class: "navbar-brand CstLogo" %>
-
+        <%if resource.role_name == "2" %>
+            <%= link_to image_tag('logoedu.png',class: "img-responsive imgsize"),teachers_path, class: "navbar-brand CstLogo" %>
+          <%elsif resource.role_name == "1" %>
+            <%= link_to image_tag('logoedu.png',class: "img-responsive imgsize"),schools_path, class: "navbar-brand CstLogo" %>
+          <%elsif resource.role_name == "3" %>
+            <%= link_to image_tag('logoedu.png',class: "img-responsive imgsize"),students_path, class: "navbar-brand CstLogo" %>
+          <%elsif resource.role_name == "4" %>
+            <%= link_to image_tag('logoedu.png',class: "img-responsive imgsize"),vendors_path, class: "navbar-brand CstLogo" %>
+        <%end%>
       </div>
-      
       <div class="collapse navbar-collapse main-nav" id="sept-main-nav">
         <ul class="nav navbar-nav navbar-right navrightmnu">
           <li class="active"><a href="index.html">Home</a></li>

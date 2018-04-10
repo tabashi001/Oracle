@@ -53,14 +53,13 @@
 <%#= stylesheet_link_tag  "studentProfile" %>
 
 
-
-<%if resource.role == "teacher" %>
+<%if resource.role_name = "2" %>
   <%= render "users/registrations/teacher_profile" %>
-<%elsif resource.role == "school" %>
-  <%= render "users/registrations/school_profile" %>
-<%elsif resource.role == "student" %>
+<%elsif resource.role = "1" %>
+  <%= render "school_profile" %>
+<%elsif resource.role = "3" %>
   <%= render "users/registrations/student_profile" %>
-<%elsif resource.role == "vendor" %>
+<%elsif resource.role = "4" %>
   <%= render "users/registrations/vendor_profile" %>
 <%end%>
 
