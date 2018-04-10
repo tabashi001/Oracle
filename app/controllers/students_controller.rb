@@ -7,13 +7,13 @@ class StudentsController < ApplicationController
   end
 
   def pay_fees_school
-    @school_name = User.where(:role => "school")
+    @school_name = User.where(:role_name => "1")
   	 if request.get?
       @school_fees = PayFee.new
     else
       @school_fees = @student.pay_fees.create(pay_fee_params)
       if @school_fees.save
-        redirect_to student_fee_details_path 
+        redirect_to students_path 
       else 
       end
     end 
@@ -23,7 +23,7 @@ class StudentsController < ApplicationController
   end
 
   def pay_fees_tutor
-    @teacher_name = User.where(:role => "teacher")
+    @teacher_name = User.where(:role_name => "2")
      if request.get?
       @teacher_fees = PayFeeToTeacher.new
     else
@@ -48,7 +48,7 @@ class StudentsController < ApplicationController
   end
 
   def schools
-    @schools = User.where(:role => "school")
+    @schools = User.where(:role_name => "1")
     @name = @schools.pluck(:name)
     @city_id = @schools.pluck(:city_id)
     @cities = City.find(@city_id)
@@ -68,7 +68,7 @@ class StudentsController < ApplicationController
   end
 
   def teachers
-    @teachers = User.where(:role => "teacher")
+    @teachers = User.where(:role_name => "2")
     @name = @teachers.pluck(:name)
     @city_id = @teachers.pluck(:city_id)
     @cities = City.find(@city_id)

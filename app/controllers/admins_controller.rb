@@ -2,23 +2,23 @@ class AdminsController < ApplicationController
 before_action :find_admin, only: [:schools,:teachers,:students,:vensors,:school_update,:activate]
 
 	def index
-		@schools_count = User.where(:role => "school").count
-		@teachers_count = User.where(:role => "teacher").count
-		@students_count = User.where(:role => "student").count
-		@vendors_count = User.where(:role => "vendor").count
+		@schools_count = User.where(:role_name => "1").count
+		@teachers_count = User.where(:role_name => "2").count
+		@students_count = User.where(:role_name => "3").count
+		@vendors_count = User.where(:role_name => "4").count
 	end
 
 	def schools
-		@schools = User.where(:role => "school")
+		@schools = User.where(:role_name => "1")
 	end
 	def teachers
-		@teachers = User.where(:role => "teacher")
+		@teachers = User.where(:role_name => "2")
 	end
 	def students
-		@students = User.where(:role => "student")
+		@students = User.where(:role_name => "3")
 	end
 	def vendors
-		@vendors = User.where(:role => "vendor")
+		@vendors = User.where(:role_name => "4")
 	end
 	
 	def school_update
@@ -104,7 +104,7 @@ before_action :find_admin, only: [:schools,:teachers,:students,:vensors,:school_
 	private
 
 	def find_admin
-		@admin = User.find(current_admin.id)
+		@admin = Admin.find(current_admin.id)
 	end
 
 	def user_params

@@ -16,7 +16,6 @@ class ApplicationController < ActionController::Base
          students_path
         end
       elsif resource.role_name == "1"
-        binding.pry
         unless fields_check(current_user)
          flash[:notice] = "Please complete your profile to proceed futher"
          edit_user_registration_path

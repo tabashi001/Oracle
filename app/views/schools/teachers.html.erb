@@ -23,7 +23,7 @@
               </tr>
             </thead>
             <% @teacher_requirements.each do |teacher|%>
-              <% @teachers = AppliedSchool.where("school_id = ? AND role= ?",teacher.id,"teacher")%>
+              <% @teachers = AppliedSchool.where("school_id = ? AND role= ?",teacher.id,"2")%>
               <% @teachers.each do |t|%>
                 <tbody>
                   <tr>
