@@ -19,6 +19,7 @@ set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 # set :linked_files, %w(config/application.yml)
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp', 'public/system', "public/downloads", "public/assets")
+set :rvm_ruby_string, '1.29.3@EduOracle' # you probably have this already
 #sidekiq
 # set :sidekiq_role, [:app]
 # set :sidekiq_pid => File.join(current_path, 'tmp', 'pids', 'sidekiq.pid')
