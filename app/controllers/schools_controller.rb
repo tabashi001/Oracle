@@ -15,9 +15,9 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
     @news_count = SchoolInformation.where("user_id = ?",set_school).count
     @picture_count = SchoolPicture.where("user_id = ?",set_school).count
     @video_count = SchoolVideo.where("user_id = ?",set_school).count
-    @teachers_count = AppliedSchool.where("school_id = ? AND role= ?",@school,"teacher").count
-    @vendors_count = AppliedSchool.where("school_id = ? AND role= ?",@school,"vendor").count
-    @students_count = AppliedSchool.where("school_id = ? AND role= ?",@school,"student").count
+    @teachers_count = AppliedSchool.where("role= ?","2").count
+    @vendors_count = AppliedSchool.where("role= ?","4").count
+    @students_count = AppliedSchool.where("school_id = ? AND role= ?",@school,"3").count
   end
 
   def teachers
@@ -27,7 +27,7 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
     @vendor_requirements = @school.vendor_requires
   end
   def students
-    @students = AppliedSchool.where("school_id = ? AND role= ?",@school,"student")
+    @students = AppliedSchool.where("school_id = ? AND role= ?",@school,"3")
   end
 
   def overview

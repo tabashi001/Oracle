@@ -26,7 +26,7 @@
               <%#= f.label :Role %>
               <% Role.all.each do |role| %>
                 <%= f.radio_button :role_name,role.id%>
-                <%= f.label :role_name, role.name %>
+                <%= f.label :role_name, role.name.titleize %>
               <% end %>
               </br>
               <%#= recaptcha_tags theme: 'dark',style: "transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;" %>

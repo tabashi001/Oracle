@@ -23,7 +23,7 @@
               </tr>
             </thead>
             <% @slots.each do |slot|%>
-              <% @slot = AppliedTeacher.where("teacher_id = ? AND user_role= ?",slot.id,"student")%>
+              <% @slot = AppliedTeacher.where("teacher_id = ? AND user_role= ?",slot.id,"3")%>
               <% @slot.each do |s|%>
                 <tbody>
                   <tr>
