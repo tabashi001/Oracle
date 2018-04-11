@@ -33,7 +33,10 @@
 				</div>
 				
 				<div class="overviewBox">
-					<span class="overview">Contact Details of <%= @college.name%>,<%= @college.city.capitalize %></span>
+					<span class="overview">Contact Details of <%= @college.name%>,
+						<% @city = City.find(@college.city_id) if @college.city_id.present?%>
+						<%= @city.name.capitalize if @city.present?%>
+					</span>
 					<hr>
 					<div class="row">
 						<div class="col-sm-12">

@@ -43,7 +43,7 @@
           <div class="col-md-12">
             <% if @search.present?%>
               <% @search.each do |search|%>
-              <a href="/users/student_show?id=<%= student.id %>" target="_blank">
+              <a href="/users/student_show?id=<%= search.id %>" target="_blank">
                 <div class="col-md-2">
                   <div class="stdboard">
                     <% if search.profile_image.present?%>

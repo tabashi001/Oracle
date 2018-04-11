@@ -1,5 +1,8 @@
 <%= stylesheet_link_tag  "schoolProfile" %>
 <%= stylesheet_link_tag  "bootstrap.min" %>
+<%= stylesheet_link_tag  "style" %>
+
+<%= render "layouts/header1" %>
 <title>School Profile</title>
 <div class="container-fluid schbckimg">
   <div class="content-agileits">
@@ -44,25 +47,25 @@
             </div>
           </div>
         </div>
-        <div class="row">
+       <div class="row">
           <div class="col-md-4">
             <div class="form-group frmgrpcust">
               <label for="Country" class="control-label">Country:</label>
-                <%=f.select :country_id, options_for_select(@countries.collect{|p| [p.name, p.id]}),prompt: "Select Country", class: "form-control"%>
+                <%=f.select :country_id, options_for_select(@countries.collect{|p| [p.name, p.id]},:selected => f.object.country_id),{include_blank: "Select Country"},{required: 'true',autofocus:'true',class:'form-control'}%>
               <div class="help-block with-errors"></div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-group frmgrpcust">
               <label for="State" class="control-label">State:</label>
-              <%=f.select :state_id, options_for_select(@states.collect{|p| [p.name, p.id]}),prompt: "Select State", class: "form-control" %>
+              <%=f.select :state_id, options_for_select(@states.collect{|p| [p.name, p.id]},:selected => f.object.state_id),{include_blank: "Select State"},{required: 'true',autofocus:'true',class:'form-control'} %>
               <div class="help-block with-errors"></div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-group frmgrpcust">
               <label for="City" class="control-label">City:</label>
-              <%=f.select :city_id, options_for_select(@cities.collect{|p| [p.name, p.id]}),prompt: "Select City", class: "form-control" %>
+              <%=f.select :city_id, options_for_select(@cities.collect{|p| [p.name, p.id]},:selected => f.object.city_id),{include_blank: "Select City"},{required: 'true',autofocus:'true',class:'form-control'}%>
               <div class="help-block with-errors"></div>
             </div>
           </div>
@@ -128,6 +131,7 @@
     <div class="clear"></div>
   </div>
 </div>
+
 <%= javascript_include_tag "jquery.min" %>
 <%= javascript_include_tag "bootstrap.min" %>
 

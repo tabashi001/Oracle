@@ -22,7 +22,7 @@
               </tr>
             </thead>
             <% @vendor_requirements.each do |vendor|%>
-            <% @vendors = AppliedSchool.where("school_id = ? AND role= ?",vendor.id,"vendor")%>
+            <% @vendors = AppliedSchool.where("school_id = ? AND role= ?",vendor.id,"4")%>
               <% @vendors.each do |v|%>
                 <tbody>
                   <tr>

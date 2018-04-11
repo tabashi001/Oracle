@@ -28,7 +28,7 @@
             </div>
             <div class="form-group margunrve text-center">
               <%= f.hidden_field :school_id, value: params[:student_id]%>
-              <%= f.hidden_field :role, value: current_user.role%>
+              <%= f.hidden_field :role, value: current_user.role_name%>
               <%=f.submit "Submit", class: "btn btn-default"%>
               <button type="submit" class="btn btn-default">Cancel</button>
             </div>

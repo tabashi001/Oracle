@@ -8,14 +8,18 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%if resource.role_name == "2" %>
-            <%= link_to image_tag('logoedu.png',class: "img-responsive imgsize"),teachers_path, class: "navbar-brand CstLogo" %>
-          <%elsif resource.role_name == "1" %>
-            <%= link_to image_tag('logoedu.png',class: "img-responsive imgsize"),schools_path, class: "navbar-brand CstLogo" %>
-          <%elsif resource.role_name == "3" %>
-            <%= link_to image_tag('logoedu.png',class: "img-responsive imgsize"),students_path, class: "navbar-brand CstLogo" %>
-          <%elsif resource.role_name == "4" %>
-            <%= link_to image_tag('logoedu.png',class: "img-responsive imgsize"),vendors_path, class: "navbar-brand CstLogo" %>
+        <%if current_admin.present? %>
+          <%= link_to image_tag('logoedu.png',class: "img-responsive imgsize"),admins_path, class: "navbar-brand CstLogo" %>
+        <%else%>
+          <%if resource.role_name == "2" %>
+              <%= link_to image_tag('logoedu.png',class: "img-responsive imgsize"),teachers_path, class: "navbar-brand CstLogo" %>
+            <%elsif resource.role_name == "1" %>
+              <%= link_to image_tag('logoedu.png',class: "img-responsive imgsize"),schools_path, class: "navbar-brand CstLogo" %>
+            <%elsif resource.role_name == "3" %>
+              <%= link_to image_tag('logoedu.png',class: "img-responsive imgsize"),students_path, class: "navbar-brand CstLogo" %>
+            <%elsif resource.role_name == "4" %>
+              <%= link_to image_tag('logoedu.png',class: "img-responsive imgsize"),vendors_path, class: "navbar-brand CstLogo" %>
+          <%end%>
         <%end%>
       </div>
       <div class="collapse navbar-collapse main-nav" id="sept-main-nav">

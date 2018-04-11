@@ -46,6 +46,7 @@ Rails.application.configure do
   {
     :address=> "mail.utradefair.com",
     :port => 25,
+    :domain => "utradefair.com",
     :user_name => 'sales@utradefair.com',
     :password=> 'Password@123',
     :enable_starttls_auto => true,

@@ -7,11 +7,11 @@ class TeachersController < ApplicationController
 
 	def index
 		@schools_count = @teacher.applied_schools.count
-		@students_count = AppliedTeacher.where("teacher_id = ? AND user_role= ?",@teacher,"student").count
+		@students_count = AppliedTeacher.where("user_role= ?","3").count
 	end
 
 	def schools
-		@schools = User.where(:role => "school")
+		@schools = User.where(:role_name => "1")
 	    @name = @schools.pluck(:name)
 	    @city_id = @schools.pluck(:city_id)
 	    @cities = City.find(@city_id)
@@ -31,7 +31,7 @@ class TeachersController < ApplicationController
 	end
 
 	def find_student
-		@students = User.where(:role => "student")
+		@students = User.where(:role_name => "3")
 		@name = @students.pluck(:name)
 		@qualification = @students.pluck(:qualification).uniq
 	    @city_id = @students.pluck(:city_id)

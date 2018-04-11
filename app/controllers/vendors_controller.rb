@@ -6,7 +6,7 @@ before_action :set_vendor, only:[:index,:schools,:apply_school,:vendor_openings]
 	end
 
   	def schools
-		@schools = User.where(:role => "school")
+		@schools = User.where(:role_name => "1")
 	    @name = @schools.pluck(:name)
 	    @city_id = @schools.pluck(:city_id)
 	    @cities = City.find(@city_id)
