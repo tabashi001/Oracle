@@ -23,7 +23,7 @@ gem 'mysql2','~> 0.3.18'
 gem 'devise'
 gem 'pry-rails'
 gem 'geocoder'
-gem "nokogiri"
+gem "nokogiri",'>= 1.3.3'
 # gem 'ccavenue'
 gem 'gmaps4rails'
 gem 'omniauth-facebook', '~> 4.0'
