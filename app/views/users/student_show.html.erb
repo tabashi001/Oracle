@@ -28,7 +28,7 @@
 					<div class="colB">
 						<ul class="list-group">
 							<li class="list-group-item custlist"><b>Email : </b> <%= @user.email %></li>
-							<li class="list-group-item custlist"><b>Phone : </b><%= @user.phone_no %></li>
+							<li class="list-group-item custlist"><b>Phone : </b><%if @user.role_name == "3"%>xxxxxx<%=@user.phone_no.last(4)%><%else%><%= @user.phone_no %><%end%></li>
 							<li class="list-group-item custlist"><b>Class : </b><%= @user.qualification if present? %></li>
 							<% if @user.gender == true%>
 							<li class="list-group-item custlist"><b>Gender : </b>Male</li>
@@ -89,6 +89,42 @@
         </table>
       </div> 	
     </div>
+
+
+
+    <div class="row RWObtcust">
+      <h4>Notes</h4>
+      <div class="table-responsive">          
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <% if @notes.present? %>
+              <% @notes.each do |slot|%>
+                <td><%=slot.id%></td>
+                <td><%=slot.title%></td>
+                <td><%=slot.description%></td>
+                <td><button type="button" class="btn btn-primary btn-xs">Buy</button></td>
+              <%end%>
+              <%else%>
+               No Slots Available
+              <%end%>
+            </tr>
+          </tbody>
+        </table>
+      </div>  
+    </div>
+
+
+
+
     <div class="row RWObtcust">
     	<h4>Demo Videos</h4>
       <%if @videos.present?%>
@@ -113,7 +149,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Slot Book</h4>
       </div>
       <div class="modal-body">
         <form class="log">

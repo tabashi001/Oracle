@@ -10,7 +10,7 @@ class UsersController < ApplicationController
    @school 	= User.where(:role_name => "1")
    @student = User.where(:role_name => "3")
    @teacher = User.where(:role_name => "2")
-   #@vendor = User.where(:role => "vendor")
+   @vendor = User.where(:role_name => "4")
    if params[:commit]=="Search"
    		@@first_value = params[:user]
 			redirect_to users_search_path
@@ -49,6 +49,7 @@ class UsersController < ApplicationController
     @state = Stat.find(@user.state_id) if @user.state_id.present?
     @country = Countr.find(@user.country_id) if @user.country_id.present?
     @slots = @user.slots if @user.slots.present?
+    @notes = @user.sale_notes if @user.sale_notes.present?
     @videos = @user.demo_videos if @user.demo_videos.present?
   end
 

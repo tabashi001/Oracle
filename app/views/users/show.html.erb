@@ -5,8 +5,14 @@
 <%= stylesheet_link_tag  "school_show" %>
 <%= stylesheet_link_tag  "header" %>
 
+
+
 <div class="container-fluid pgeBo">
+	<% if @college.cover_image.present?%>
 	<div style="background-image: url(<%= @college.cover_image %>)" >
+		<%else%>
+		<div class = "BaCKgR">
+			<%end%>
 		<div class="bannerText text-center">
 			<div class="logo">
 				<%if @college.profile_image.present?%>

@@ -62,13 +62,13 @@ var marker = new google.maps.Marker({
 								<div class="col-sm-4 col-xs-12 col-md-4 ">
 									<div class="img-thumbnail">
 										<iframe width="100%" height="200" src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0"></iframe>
-		                             	<p class="desc">hgfhgffjhgfhgjkgjkgjk</p>
+		                             	<p class="desc">Demo Video</p>
 									</div>
 								</div>
 								<div class="col-sm-4 col-xs-12 col-md-4 ">
 									<div class="img-thumbnail">
 										<iframe width="100%" height="200" src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0"></iframe>
-		                             	<p class="desc">hgfhgffjhgfhgjkgjkgjk</p>
+		                             	<p class="desc">Demo Video</p>
 									</div>
 								</div>
 							<%end%>
@@ -140,7 +140,8 @@ var marker = new google.maps.Marker({
 						<iframe width="100%" height="200" src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0"></iframe>
 					<%end%>
 				</div>
-				<div class="Reviewbox">
+				<%=link_to "CURRENT REQUIREMENTS",users_current_requirements_path(@college), class: "fliptwo blink", target: "_blank"%>
+				<div class="Reviewbox PoStn">
 					<div class="flipone">REVIEWS</div>
 					<div class="panelone">
 					 	<ul class="list-group">
@@ -159,7 +160,7 @@ var marker = new google.maps.Marker({
 						</ul> 
 					</div>
 				</div>
-				<%=link_to "CURRENT REQUIREMENTS",users_current_requirements_path(@college), class: "fliptwo", target: "_blank"%>
+				
 			</div>
 		</div>
 	</div>
@@ -167,3 +168,52 @@ var marker = new google.maps.Marker({
 
 <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key= AIzaSyDMEnG0GKj_YRFsOSmUBG-1dcMg57N2Qio&callback=myMap'%>
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script> -->
+
+
+<style type="text/css">
+	.PoStn{
+		margin-top: 14px;
+	}
+
+.blink {
+	-webkit-animation: blink .75s linear infinite;
+	-moz-animation: blink .75s linear infinite;
+	-ms-animation: blink .75s linear infinite;
+	-o-animation: blink .75s linear infinite;
+	 animation: blink .75s linear infinite;
+}
+@-webkit-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@-moz-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@-ms-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@-o-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+/* @end */
+-->
+</style>
+
+
