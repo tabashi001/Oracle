@@ -28,7 +28,8 @@
 					<div class="colB">
 						<ul class="list-group">
 							<li class="list-group-item custlist"><b>Email : </b> <%= @user.email %></li>
-							<li class="list-group-item custlist"><b>Phone : </b><%if @user.role_name == "3"%>xxxxxx<%=@user.phone_no.last(4)%><%else%><%= @user.phone_no %><%end%></li>
+              <%binding.pry%>
+							<li class="list-group-item custlist"><b>Phone : </b><%if @user.role_name == "3" && @user.gender == false %>xxxxxx<%=@user.phone_no.last(4)%><%else%><%= @user.phone_no %><%end%></li>
 							<li class="list-group-item custlist"><b>Class : </b><%= @user.qualification if present? %></li>
 							<% if @user.gender == true%>
 							<li class="list-group-item custlist"><b>Gender : </b>Male</li>
