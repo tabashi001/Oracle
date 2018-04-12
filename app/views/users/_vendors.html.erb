@@ -2,7 +2,7 @@
 	<h3 style="text-align:center;">RECENTLY ADDED VENDORS</h3>
 	<%if @vendor.present?%>
 		<div class="row RowMarginzero">
-			<% @vendor.each do |vendor|%>
+			<% @vendor.last(4).each do |vendor|%>
 				<div class="col-sm-6 col-md-3">
 					<div id="wrapper">
 						<div class="cards">
@@ -18,7 +18,7 @@
 								<div class="card-body-header">
 									<div class="card-body-header-category">
 										<% if vendor.profile_image.present?%>
-											<%= image_tag vendor.profile_image ,class: "img-respomsive Companylg" %>
+											<%= image_tag vendor.profile_image ,class: "img-respomsive Companylg",:size => "70x55" %>
 										<%else%>
 											<%= image_tag("aj.jpg",class: "img-respomsive Companylg") %>
 										<%end%>
