@@ -67,9 +67,20 @@ class UsersController < ApplicationController
      end
   end
 
-  def all_view
+  def all_school
+   @school   = User.where(:role_name => "1")
+  end
+  def all_student
+    @student = User.where(:role_name => "3")
   end
 
+  def all_teacher
+    @teacher = User.where(:role_name => "2")
+  end
+
+  def all_vendor
+   @vendor = User.where(:role_name => "4")
+  end
   def find_all_course_name
     @stream = Course.find_by_id(params[:myparam1])
   end

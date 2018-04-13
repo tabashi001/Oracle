@@ -1,7 +1,7 @@
 
-	
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>student</title>
+	<title>School</title>
 	
 <%= stylesheet_link_tag  "bootstrap.min" %>
 <%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
@@ -12,7 +12,6 @@
 	
 		
 	<%= render "layouts/header"%>
-<% if @school.present? %>
  <section class="homeone" id="home" data-stellar-background-ratio="0.4"> </section>
 	<div class="container-fluid contboderthree">
 	  <h3 style="text-align:center;">REGISTERED SCHOOL</h3>
@@ -69,7 +68,7 @@
 			</div>
 	  <%end%>
 	</div>
-<%end%>
+
 	<%=render "layouts/footer"%>
 
 <%= javascript_include_tag "jquery.min" %>
@@ -78,4 +77,3 @@
 <%= javascript_include_tag "jquery.appear" %>
 <%= javascript_include_tag "jquery.nicescroll.min" %>
 <%= javascript_include_tag "script" %>	
-	

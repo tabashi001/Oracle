@@ -1,36 +1,45 @@
+<title>student</title>
+	
+<%= stylesheet_link_tag  "bootstrap.min" %>
+<%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
+<%= stylesheet_link_tag  "student" %>
+<%= stylesheet_link_tag  "style" %>
 
-<div class="container-fluid contbodertwo">
-	<h3 style="text-align:center;">RECENTLY ADDED TEACHERS</h3>
-	<%if @teacher.present?%>
-		<div class="row RowMarginzero">
-			<% @teacher.last(4).each do |teacher|%>
+
+	
+		
+	<%= render "layouts/header"%>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<section class="homeone" id="home" data-stellar-background-ratio="0.4"> </section>
+	<div class="container-fluid contboderthree">
+	  <h3 style="text-align:center;">REGISTERED STUDENT</h3>
+			<% @student.each do |student|%>
 				<div class="col-sm-6 col-md-3">
 					<div id="wrapper">
 						<div class="cards">
 							<div class="card-header">
 								<div class="card-header-mask">
-									<div class="card-header-mask">
 									<div class="card-header-date">
-										<div class="card-header-date-day"><%=teacher.created_at.strftime("%d")%></div>
-										<div class="card-header-date-month"><%=teacher.created_at.strftime("%b")%></div>
+										<div class="card-header-date-day"><%=student.created_at.strftime("%d")%></div>
+										<div class="card-header-date-month"><%=student.created_at.strftime("%b")%></div>
 									</div>
-								</div>
 								</div>
 							</div>
 							<div class="card-body">
 								<div class="card-body-header">
 									<div class="card-body-header-category">
-										<% if teacher.profile_image.present?%>
-											<%= image_tag teacher.profile_image ,class: "img-respomsive Companylg",:size => "70x55" %>
+										<% if student.profile_image.present?%>
+											<%= image_tag student.profile_image ,class: "img-respomsive Companylg" ,:size => "70x55"%>
 										<%else%>
 											<%= image_tag("aj.jpg",class: "img-respomsive Companylg") %>
 										<%end%>
 									</div>
 									<p class="card-body-header-sentence">
-										<span><%= teacher.name %></span>
+										<span><%= student.name %></span>
 									</p>
-									<h5 class="hfivestyle"><%= teacher.description %>..</h5>
-									<a href="/users/student_show?id=<%= teacher.id %>" target="_blank" class="custanchor"> read more...</a>
+									<h5 class="hfivestyle"><%= student.description %>..</h5>
+									<a href="/users/student_show?id=<%= student.id %>" target="_blank" class="custanchor"> read more...</a>
 								</div>
 								<div class="card-body-footer">
 									<div class="row">
@@ -54,13 +63,16 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				 </div>
 			<%end%>
 		</div>
-	<%else%>
-		<h4 style="text-align:center;">No Teacher Added Yet</h4>
-	<%end%>
-	<div class="row explorebtnrw">
-		<a class="text-center" href="/users/all_teacher" target="_blank"><button class="btn btn-primary prmbtnsty">VIEW ALL</button></a>
-	</div>
-</div>
+
+
+			<%=render "layouts/footer"%>
+
+<%= javascript_include_tag "jquery.min" %>
+<%= javascript_include_tag "bootstrap.min" %>
+<%= javascript_include_tag "jquery.stellar" %>
+<%= javascript_include_tag "jquery.appear" %>
+<%= javascript_include_tag "jquery.nicescroll.min" %>
+<%= javascript_include_tag "script" %>	

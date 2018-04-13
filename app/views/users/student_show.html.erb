@@ -110,7 +110,7 @@
               <% @notes.each do |slot|%>
                 <td><%=slot.id%></td>
                 <td><%=slot.title%></td>
-                <td><%=slot.description.last(100)%></td>
+                <td><%=slot.description.first(100)%></td>
                 <td><button type="button" class="btn btn-primary btn-xs">Buy</button></td>
               <%end%>
               <%else%>

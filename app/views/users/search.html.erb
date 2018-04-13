@@ -192,7 +192,9 @@ margin-top: 0 !important;
 									        		<h6>Availavle</h6>
 									        	</div>
 								        	 	<div class="col-md-3 col-sm-6 col-xs-6">
-						                    		<button class="btn btn-primary TxtceNtr" type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#student_model">Contact Now </button>
+
+								        	 		<%= link_to "Contact Now",new_user_registration_path,class: "btn btn-primary TxtceNtr",target: "_blank"%>
+						                    		<!-- <button class="btn btn-primary TxtceNtr" type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#student_model">Contact Now </button> -->
 						                    		<!-- <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#student_model">Apply</button> -->
 
 											<!-- 	<div id="student_model" class="modal fade" role="dialog">
@@ -205,13 +207,13 @@ margin-top: 0 !important;
 												<div class="modal-body">
 												<form class="log">
 												<div class="form-group">
-												<label for="text">Name :<%= school.name %></label>
+												<label for="text">Name :<%#= school.name %></label>
 												</div>
 												<div class="form-group">
-												<label for="email">Email :<%= school.email %></label>
+												<label for="email">Email :<%#= school.email %></label>
 												</div>
 												<div class="form-group">
-												<label for="text">Phone Number :<%= school.phone_no %></label>
+												<label for="text">Phone Number :<%#= school.phone_no %></label>
 												</div>
 												<div class="text-center">
 												<button type="submit" class="btn btn-primary">OK</button>
