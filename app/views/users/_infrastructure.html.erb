@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag  "bootstrap.min" %>
+
 <div id="campus">
 	<div class="container overviewBox">
 		<span class="overview">Infrastructure</span>
@@ -5,21 +7,24 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="col-sm-12 col-xs-12 col-md-9 col-lg-9">
-					<p><% if @college.overviews.present? %>
-					<p class="crdtxt"><%=@college.overviews.first.description %> </p>
+					<p><% if @facilities.present? %>
+					<% @facilities.each do |fac| %>
+					<p class="crdtxt"><%=fac.title %> </p>
+					<p class="crdtxt"><%=fac.description %> </p>
+					<%end%>
 					<%else%>
-					<p class="crdtxt">abcd</p>
+						<p class="crdtxt">abcd</p>
 					<%end%> </p>
 				</div>
-				<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
+				<!-- <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
 					<div class="building">
-						<%if @college.cover_image.present?%>
-							<%= image_tag @college.cover_image , class: "img-responsive schBuilding"%>
-						<%else%>
-							<%= image_tag("logo1.png",class: "img-responsive scHbackimg")%>
-						<%end%>
+						<%#if @college.cover_image.present?%>
+							<%#= image_tag @college.cover_image , class: "img-responsive schBuilding"%>
+						<%#else%>
+							<%#= image_tag("logo1.png",class: "img-responsive scHbackimg")%>
+						<%#end%>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -31,22 +36,85 @@
 			<div class="jcarousel-wrapper">
 				<div class="jcarousel" >
 					<ul>
-						<% @all_college.each do |img| %>
-							<%if img.profile_image.present?%>
-								<li><%= image_tag img.profile_image, class: "img-responsive schBuilding"%></li>
-							<%else%>
-								<li><%= image_tag("logo1.png",class: "img-responsive schBuilding")%></li>
+						<% @facilities.each do |fac| %>
+							<%if fac.boys_hostel.present?%>
+								<li><%= image_tag('bhostel.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Boys Hostel</p></li>
 							<%end%>
-						<%end%>
+							<%if fac.girls_hostel.present?%>
+								<li><%= image_tag('ghostel.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Girls Hostel</p></li>
+							<%end%>
+							<%if fac.library.present?%>
+								<li><%= image_tag('library.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Library</p></li>
+							<%end%>
+							<%if fac.sports.present?%>
+								<li><%= image_tag('sports.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Sports</p></li>
+							<%end%>
+							<%if fac.gym.present?%>
+								<li><%= image_tag('gym.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Gym</p></li>
+							<%end%>
+							<%if fac.s_pool.present?%>
+								<li><%= image_tag('s_pool.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Swimming Pool</p></li>
+							<%end%>
+							<%if fac.p_ground.present?%>
+								<li><%= image_tag('p_ground.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Play Ground</p></li>
+							<%end%>
+							<%if fac.canteen.present?%>
+								<li><%= image_tag('canteen.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Canteen</p></li>
+							<%end%>
+							<%if fac.classroom.present?%>
+								<li><%= image_tag('classroom.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Classrooms</p></li>
+							<%end%>
+							<%if fac.placement.present?%>
+								<li><%= image_tag('placement.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Placements</p></li>
+							<%end%>
+							<%if fac.club.present?%>
+								<li><%= image_tag('club.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Club</p></li>
+							<%end%>
+							<%if fac.h_centre.present?%>
+								<li><%= image_tag('h_centre.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Health Centre</p></li>
+							<%end%>
+							<%if fac.yoga.present?%>
+								<li><%= image_tag('yoga.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Yoga</p></li>
+							<%end%>
+							<%if fac.auditorium.present?%>
+								<li><%= image_tag('auditorium.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Auditorium</p></li>
+							<%end%>
+						
 					</ul>
 				</div>
 				<a href="#" class="jcarousel-control-prev">&lsaquo;</a>
 				<a href="#" class="jcarousel-control-next">&rsaquo;</a>
 			</div>
 		</div>
+		<span class="overview">Infrastructure Images</span>
+		<div class="factvdt">
+          <div class="row">
+            <div class="col-md-4 text-center">
+               	<%if fac.image1.present?%>
+					<li><%= image_tag fac.image1, class: "img-responsive IMGdgcust"%></li>
+				<%else%>
+					<li><%= image_tag("logo1.png",class: "img-responsive IMGdgcust")%></li>
+				<%end%>
+            </div> 
+            <div class="col-md-4 text-center">
+                <%if fac.image2.present?%>
+					<li><%= image_tag fac.image2, class: "img-responsive IMGdgcust"%></li>
+				<%else%>
+					<li><%= image_tag("logo1.png",class: "img-responsive IMGdgcust")%></li>
+				<%end%>
+            </div> 
+            <div class="col-md-4 text-center">
+                <%if fac.image3.present?%>
+					<li><%= image_tag fac.image3, class: "img-responsive IMGdgcust"%></li>
+				<%else%>
+					<li><%= image_tag("logo1.png",class: "img-responsive IMGdgcust")%></li>
+				<%end%>
+            </div> 
+          </div> 
+        </div> 
+        <%end%>
 	</div>
-					
-			
+								
 	<div class="container CollegeBox">
 		<span class="overview">Similar Schools</span>
 		<hr>
@@ -57,9 +125,9 @@
 					<ul>
 					<% @all_college.each do |img| %>
 						<%if img.profile_image.present?%>
-							<li><a href="/users/show?id=<%= img.id %>" target="_blank"><%= image_tag img.profile_image, class: "img-responsive schBuilding"%><%= img.name %></a></li>
+							<li><a href="/users/show?id=<%= img.id %>"><%= image_tag img.profile_image, class: "img-responsive schBuilding"%><%= img.name %></a></li>
 						<%else%>
-							<li>
+							<li><a href="/users/show?id=<%= img.id %>">
 							<%= image_tag("logo1.png",class: "img-responsive schBuilding")%></li>
 						<%end%>
 					<%end%>
@@ -72,3 +140,5 @@
 	</div>
 </div>
 <%= javascript_include_tag "school_show" %>
+<%= javascript_include_tag "jquery.min" %>
+<%= javascript_include_tag "bootstrap.min" %>

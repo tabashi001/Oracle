@@ -19,13 +19,124 @@
             <label for="pwd">Description</label>
             <%=f.text_area :description, class: "form-control",placeholder: "Title" %>
           </div>
-          <div class="form-group margunrve text-center">
-            <%=f.submit "Submit", class: "btn btn-default"%>
+        </div>    
+        <hr>
+        <div class="facilcust"> 
+          <h4>Facilities</h4>      
+        <div class="row">
+          <div class="col-md-2 col-xs-6">   
+            <label class="checkbox-inline">
+               <%= f.check_box :boys_hostel, {}, true, false %>Boys Hostel
+            </label>
+          </div>
+          <div class="col-md-2 col-xs-6">   
+            <label class="checkbox-inline">
+              <%= f.check_box :girls_hostel, {}, true, false %>Girls Hostel
+            </label>
+             </div>
+           <div class="col-md-2 col-xs-6">  
+            <label class="checkbox-inline">
+              <%= f.check_box :library, {}, true, false %>Library
+            </label>
+             </div>
+           <div class="col-md-2 col-xs-6">    
+             <label class="checkbox-inline">
+              <%= f.check_box :sports, {}, true, false %>Sports
+            </label>
+             </div>
+          <div class="col-md-2 col-xs-6">  
+            <label class="checkbox-inline">
+              <%= f.check_box :gym, {}, true, false %>Gym
+            </label>
+             </div>
+          <div class="col-md-2 col-xs-6">    
+            <label class="checkbox-inline">
+              <%= f.check_box :s_pool, {}, true, false %>Swimming Pool
+            </label>
+             </div>
+           <div class="col-md-2 col-xs-6">    
+             <label class="checkbox-inline">
+              <%= f.check_box :p_ground, {}, true, false %>Play-ground
+            </label>
+             </div>
+           <div class="col-md-2 col-xs-6">  
+            <label class="checkbox-inline">
+              <%= f.check_box :canteen, {}, true, false %>Canteen
+            </label>
+             </div>
+          <div class="col-md-2 col-xs-6">  
+            <label class="checkbox-inline">
+              <%= f.check_box :classroom, {}, true, false %>Classroom
+            </label>
+             </div>
+          <div class="col-md-2 col-xs-6">    
+            <label class="checkbox-inline">
+              <%= f.check_box :placement, {}, true, false %>Placement
+            </label>
+             </div>
+          <div class="col-md-2 col-xs-6">  
+            <label class="checkbox-inline">
+              <%= f.check_box :club, {}, true, false %>Club
+            </label>
+             </div>
+           <div class="col-md-2 col-xs-6">   
+            <label class="checkbox-inline">
+              <%= f.check_box :h_centre, {}, true, false %>Health Center
+            </label>
+             </div>
+           <div class="col-md-2 col-xs-6">    
+            <label class="checkbox-inline">
+              <%= f.check_box :yoga, {}, true, false %>Yoga
+            </label>
+             </div>
+           <div class="col-md-2 col-xs-6">    
+            <label class="checkbox-inline">
+              <%= f.check_box :auditorium, {}, true, false %>Auditorium
+            </label>
+          </div>
+         </div>   
+          
+        </div> 
+
+        <div class="factvdt">
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <%if @campu.image1.exists? %>
+                <%= image_tag @campu.image1,class: "img-responsive IMGdgcust"%>
+              <%else%>
+                <div class="upload-btn-wrapper">
+                  <button class="btnupl">Browse</button>
+                  <%=f.file_field :image1%>
+                </div>
+              <%end%>
+            </div> 
+            <div class="col-md-4 text-center">
+              <%if @campu.image2.exists? %>
+                <%= image_tag @campu.image2,class: "img-responsive IMGdgcust"%>
+              <%else%>
+                <div class="upload-btn-wrapper">
+                  <button class="btnupl">Browse</button>
+                  <%=f.file_field :image2%>
+                </div>
+              <%end%>
+            </div> 
+            <div class="col-md-4 text-center">
+              <%if @campu.image3.exists? %>
+                <%= image_tag @campu.image3,class: "img-responsive IMGdgcust"%>
+              <%else%>
+                <div class="upload-btn-wrapper">
+                  <button class="btnupl">Browse</button>
+                  <%=f.file_field :image3%>
+                </div>
+              <%end%>
+            </div> 
+          </div> 
+          <div class="Subrdws text-center">
+            <%=f.submit "Submit" ,class: "btn btn-default"%>
             <button type="submit" class="btn btn-default">cancel</button>
           </div>
         </div> 
-        <%end%>   
-        <hr>
+        <%end%>
       </div>
     </div>
   </div>
