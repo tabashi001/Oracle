@@ -56,6 +56,7 @@ class User < ApplicationRecord
   has_many :vendor_requires
   has_many :slots
   has_many :demo_videos
+  has_many :buy_books
   # belongs_to :country
   # belongs_to :state
   #belongs_to :role

@@ -54,7 +54,7 @@ var marker = new google.maps.Marker({
 									<div class="col-sm-4 col-xs-12 col-md-4 ">
 										<div class="img-thumbnail">
 											<!-- <iframe width="100%" height="200" autoplay controls controlsList="nodownload" src="<%#= video.video%>"></iframe> -->
-											<%= video_tag video.video, width: "100%",height: "200", autoplay: true%>
+											<%= video_tag video.video, width: "100%",height: "200", autoplay: true,:loop => true%>
 											<p class="desc"><%= video.description%></p>	
 										</div>
 									</div>
@@ -136,7 +136,7 @@ var marker = new google.maps.Marker({
 			<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
 				<div class="vidBox">
 					<% if @videos.present? %>
-						<%= video_tag @videos.first.video, width: "100%",height: "200", autoplay: true%>
+						<%= video_tag @videos.first.video, width: "100%",height: "200", autoplay: true,:loop => true%>
 						<!-- <iframe width="100%" height="200" src="<%#= @videos.first.video%>"></iframe> -->
 					<%else%>
 						<iframe width="100%" height="200" src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0"></iframe>

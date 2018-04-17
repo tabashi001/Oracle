@@ -28,7 +28,7 @@
 									</p>
 									<h5 class="hfivestyle"><%= school.description.first(150)  if school.description.present? %>..</h5>
 
-									<a href="/users/show?id=<%= school.id %>" target="_blank" class="custanchor">read more...</a>
+									<a href="/users/show?id=<%= school.id %>" class="custanchor">read more...</a>
 								</div>
 								<div class="card-body-footer">
 									<div class="row">
@@ -59,6 +59,6 @@
 		<h4 style="text-align:center;">No School Added Yet</h4>
 	<%end%>
 	<div class="row explorebtnrw">
-		<a class="text-center" href="/users/all_school" target="_blank"><button class="btn btn-primary prmbtnsty">VIEW ALL</button></a>
+		<a class="text-center" href="/users/all_school"><button class="btn btn-primary prmbtnsty">VIEW ALL</button></a>
 	</div>
 </div>

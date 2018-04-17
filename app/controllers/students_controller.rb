@@ -95,6 +95,23 @@ class StudentsController < ApplicationController
     @slots = @teacher.slots
   end
 
+  def books
+    @buy_book = BuyBook.new
+    @teacher = User.find(params[:student_id])
+    @books = @teacher.sale_notes
+  end
+  def buy_book
+    if request.get?
+      @buy_book = BuyBook.new
+      @book = User.find_by_id(params[:student_id])
+    else
+      @buy_book = @student.buy_books.create(buy_book_params)
+        if @buy_book.save
+            redirect_to student_teachers_path
+        else 
+        end
+      end 
+  end
 
   private
 
@@ -120,6 +137,10 @@ class StudentsController < ApplicationController
 
   def apply_teacher_params
       params.require(:applied_teacher).permit(:name,:email,:phone_no,:description,:teacher_id,:user_id,:user_role)
+  end
+
+  def buy_book_params
+      params.require(:buy_book).permit(:name,:email,:phone_no,:description,:book_id,:user_id,:user_role)
   end
   
 end

@@ -64,6 +64,7 @@
                           <% if @country = Countr.find_by_id(search.country_id)%><%= @country.name%> <%end%>
                           </span>
                       </a>
+                      <%=link_to "Available Books",student_books_path(teacher),class: "btn btn-primary TxtceNtr" %>
                       <%=link_to "Available Slots",student_slots_path(teacher),class: "btn btn-primary TxtceNtr" %>
                     </div>
                   </div>
@@ -92,6 +93,7 @@
                         <% if @country = Countr.find_by_id(teacher.country_id)%><%= @country.name%> <%end%>
                         </span>
                       </a>
+                      <%=link_to "Available Books",student_books_path(teacher),class: "btn btn-primary TxtceNtr" %>
                       <%=link_to "Available Slots",student_slots_path(teacher),class: "btn btn-primary TxtceNtr" %>
                       </div>
                     </div>
