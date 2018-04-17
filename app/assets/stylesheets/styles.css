@@ -6,6 +6,45 @@
 	padding: 12px;
 	flex: auto;
 }
+.facilcust {
+  padding-bottom: 20px;
+}
+.upload-btn-wrapper {
+  display: inline-block;
+  margin-top: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.Subrdws.text-center {
+  padding: 25px 0;
+}
+
+.btnupl {
+  background-color: white;
+  border: 2px solid gray;
+  border-radius: 8px;
+  color: gray;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 6px;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.img-responsive.IMGdgcust {
+  height: 150px;
+  width: 100%;
+}
+
+
+
+
 .counting-box img {
   height: 90px;
   width: 70%;

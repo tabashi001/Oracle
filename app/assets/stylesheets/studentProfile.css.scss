@@ -77,18 +77,17 @@ form-group.field {
 	padding:1em 2em;
 	background: #fff;
 }
-
 .right {
-  background: rgba(0, 0, 0, 0) asset_url("bg1.jpg") no-repeat scroll center center / cover ;
+  background: rgba(0, 0, 0, 0) url("/assets/bg1-4578c463d3adc3284712d12e125f4388646013c71cf98cd0c2f661770dd2e629.jpg") no-repeat scroll center center / cover ;
   float: left;
-  min-height: 758px;
+  min-height: 717px;
   position: relative;
   width: 50%;
 }
 .righttwo {
   background: rgba(0, 0, 0, 0) url("/assets/bg1.jpg") no-repeat scroll center center / cover ;
   float: left;
-  min-height:757px;
+  min-height: 717px;
   position: relative;
   width: 50%;
 }

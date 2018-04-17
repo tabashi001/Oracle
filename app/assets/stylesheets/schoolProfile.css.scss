@@ -89,9 +89,9 @@ form-group.field {
 }
 
 .right {
-  background: rgba(0, 0, 0, 0)  asset_url("school.jpg") no-repeat scroll center center / cover ;
+  background: rgba(0, 0, 0, 0) url("/assets/school-bc526d3033a3e14811c0152bb2c988c5fb7584ad92f931898c471ae5fd32ec1b.jpg") no-repeat scroll center center / cover ;
   float: left;
-  min-height:758px;
+  min-height: 808px;
   position: relative;
   width: 50%;
 }
@@ -153,8 +153,8 @@ label.w3layouts {
 .w3ls-opt input[type="radio"] {
 	margin-right: 0.5em;
 }
-.frmgrpcust{
-	margin-bottom:5px;
+.form-group.frmgrpcust {
+  margin-bottom: 0;
 }
 .content-agileits button.btn.btn-lg {
 	width: 100%;
