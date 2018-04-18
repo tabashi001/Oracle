@@ -1,31 +1,28 @@
 <title>School Showcase</title>
-
 <%= stylesheet_link_tag  "bootstrap.min" %>
 <%= stylesheet_link_tag  "font-awesome" %>
 <%= stylesheet_link_tag  "school_show" %>
 <%= stylesheet_link_tag  "header" %>
 
-
-
 <div class="container-fluid pgeBo">
 	<% if @college.cover_image.present?%>
-	<div style="background-image: url(<%= @college.cover_image %>)" >
-		<%else%>
+		<div style="background-image: url(<%= @college.cover_image %>)" >
+	<%else%>
 		<div class = "BaCKgR">
+	<%end%>
+	<div class="bannerText text-center">
+		<div class="logo">
+			<%if @college.profile_image.present?%>
+				<%= image_tag @college.profile_image , class: "img-responsive scHbackimg"%>
+			<%else%>
+				<%= image_tag('logo.png',class: "img-responsive scHbackimg")%>
 			<%end%>
-		<div class="bannerText text-center">
-			<div class="logo">
-				<%if @college.profile_image.present?%>
-					<%= image_tag @college.profile_image , class: "img-responsive scHbackimg"%>
-				<%else%>
-					<%= image_tag('logo.png',class: "img-responsive scHbackimg")%>
-				<%end%>
-			</div>
-			<h1 class="heading"><%= @college.name %></h1>
-			<p class="text">(A EduOracle group)</p><!-- PENDING -->
-			<p class="text"><%= @college.address %></p>
-			<p class="text"><%= @college.email %></p>
 		</div>
+		<h1 class="heading"><%= @college.name %></h1>
+		<p class="text">(A EduOracle group)</p><!-- PENDING -->
+		<p class="text"><%= @college.address %></p>
+		<p class="text"><%= @college.email %></p>
+	</div>
 	</div>
 	<div class="tabs">
 		<nav role='navigation' class="transformer-tabs">		

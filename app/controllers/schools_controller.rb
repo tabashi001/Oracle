@@ -395,7 +395,7 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
   end
 
   def course_params
-    params.require(:course).permit(:course_name,:degree_name,:course_duration,:course_type,
+    params.require(:course).permit({:course_name => []},:degree_name,:course_duration,:course_type,
      :course_fee,:course_affliation,:course_description,:user_id,:new_course_name,:new_degree_name)
   end
 
