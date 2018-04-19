@@ -16,13 +16,20 @@
 						<div class="col-md-12 col-sm-12">
 							<div class="col-md-3 col-sm-3">
 								<% if current_user.active? %>
-									<%= link_to student_pay_fees_school_path(@current_user) do%>
+									<%#= link_to student_pay_fees_school_path(@current_user) do%>
+										<!-- <div class="counting-box" id="encounter">
+											<%#= image_tag ('Schlogo.png')%>
+											<h4 class="count-this">1582</h4>
+											<p>Pay Fee For School</p>
+										</div> -->
+									<%#end%>
+									<a href="#appModal" data-toggle="modal">
 										<div class="counting-box" id="encounter">
 											<%= image_tag ('Schlogo.png')%>
 											<h4 class="count-this">1582</h4>
 											<p>Pay Fee For School</p>
 										</div>
-									<%end%>
+									</a>
 								<%else%>
 									<a href="#applyModal" data-toggle="modal">
 										<div class="counting-box" id="encounter">
@@ -35,13 +42,20 @@
 							</div>
 							<div class="col-md-3 col-sm-3">
 								<% if current_user.active? %>
-									<%= link_to student_pay_fees_tutor_path(@current_user) do%>
-										<div class="counting-box" id="locations">
-											<%= image_tag ('tlogo.png')%>
+									<%#= link_to student_pay_fees_tutor_path(@current_user) do%>
+										<!-- <div class="counting-box" id="locations">
+											<%#= image_tag ('tlogo.png')%>
 											<h4 class="count-this">312</h4>
 											<p>Pay Fee For Tutor</p>
+										</div> -->
+									<%#end%>
+									<a href="#appModal" data-toggle="modal">
+										<div class="counting-box" id="encounter">
+											<%= image_tag ('tlogo.png')%>
+											<h4 class="count-this">1582</h4>
+											<p>Pay Fee For Tutor</p>
 										</div>
-									<%end%>
+									</a>
 								<%else%>
 									<a href="#applyModal" data-toggle="modal">
 										<div class="counting-box" id="encounter">
@@ -137,6 +151,18 @@
           <div class="modal-body">
               <p>
                   Hi <%=current_user.name%>, You Acount Is Deactivated, Please Contact to Admin.
+              </p>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div id="appModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+              <p>
+                  Coming Soon.........!
               </p>
           </div>
         </div>

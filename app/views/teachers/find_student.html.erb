@@ -32,7 +32,7 @@
         <hr>
          <form class="form-wrapper cf">
           <%= form_tag teacher_find_student_path(current_user), :method => 'get' do %>
-            <%= select_tag "name",options_for_select(@name),prompt: "Select Student"%>
+            <%#= select_tag "name",options_for_select(@name),prompt: "Select Student"%>
             <%= select_tag "qualification",options_for_select(@qualification),prompt: "Select Subject"%>
             <%= select_tag "city_id",options_for_select(@cities.collect{|p| [p.name, p.id]}),prompt: "Select City"%>
             <%= button_tag "Search" ,:class => "sEarch"%>

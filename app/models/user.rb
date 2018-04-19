@@ -38,6 +38,7 @@ class User < ApplicationRecord
 
   has_many :overviews, as: :user
   has_many :courses
+  accepts_nested_attributes_for :courses, allow_destroy: true
   has_many :scholarships
   has_many :placements
   has_many :cutoffs
@@ -63,6 +64,13 @@ class User < ApplicationRecord
   def create_picture(images)
     images.each do |image|
       SchoolPicture.create(picture: image)
+    end
+  end
+
+  def create_course(courses)
+    self.courses.destroy_all
+    courses.each do |course|
+      self.courses.create(course_name: course)
     end
   end
 

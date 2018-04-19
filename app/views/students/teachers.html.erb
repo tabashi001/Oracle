@@ -35,14 +35,14 @@
         <hr>
         <form class="form-wrapper cf">
           <%= form_tag teacher_schools_path(current_user), :method => 'get' do %>
-            <%= select_tag "name",options_for_select(@name),prompt: "Select Teacher"%>
+            <%#= select_tag "name",options_for_select(@name),prompt: "Select Teacher"%>
             <%= select_tag "city_id",options_for_select(@cities.collect{|p| [p.name, p.id]}),prompt: "Select City"%>
             <%= select_tag "qualification",options_for_select(@subjects),prompt: "Select Subject"%>
             <%= button_tag "Search" ,:class => "sEarch"%>
           <% end %>
         </form>
         <div class="col-md-12">
-          <h3>Schools</h3>
+          <h3>Teachers</h3>
           <% if @search.present?%>
             <% @search.each do |search|%>
               <div class="bigbox">
@@ -64,8 +64,8 @@
                           <% if @country = Countr.find_by_id(search.country_id)%><%= @country.name%> <%end%>
                           </span>
                       </a>
-                      <%=link_to "Available Books",student_books_path(teacher),class: "btn btn-primary TxtceNtr" %>
-                      <%=link_to "Available Slots",student_slots_path(teacher),class: "btn btn-primary TxtceNtr" %>
+                      <%#=link_to "Available Books",student_books_path(teacher),class: "btn btn-primary TxtceNtr" %>
+                      <%=link_to "Available Slots",student_slots_path(search),class: "btn btn-primary TxtceNtr" %>
                     </div>
                   </div>
                 </div>
@@ -93,7 +93,7 @@
                         <% if @country = Countr.find_by_id(teacher.country_id)%><%= @country.name%> <%end%>
                         </span>
                       </a>
-                      <%=link_to "Available Books",student_books_path(teacher),class: "btn btn-primary TxtceNtr" %>
+                      <%#=link_to "Available Books",student_books_path(teacher),class: "btn btn-primary TxtceNtr" %>
                       <%=link_to "Available Slots",student_slots_path(teacher),class: "btn btn-primary TxtceNtr" %>
                       </div>
                     </div>

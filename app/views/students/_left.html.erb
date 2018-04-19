@@ -46,18 +46,20 @@
 			<ul class="collapse">
 				<li>
 					<% if current_user.active? %>
-						<%= link_to student_pay_fees_school_path(@current_user) do%>
-							<i class="fa fa-angle-right"></i>&nbsp; For School
-						<%end%>
+						<%#= link_to student_pay_fees_school_path(@current_user) do%>
+							<!-- <i class="fa fa-angle-right"></i>&nbsp; For School -->
+						<%#end%>
+						<a href="#appModal" data-toggle="modal" class="fa fa-angle-right">For School</a>
 					<%else%>
 							<a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">For School</a>
 					<%end%>
 				</li>
 				<li>
 					<% if current_user.active? %>
-						<%= link_to student_pay_fees_tutor_path(@current_user) do%>
-							<i class="fa fa-angle-right"></i>&nbsp;For Tutor
-						<%end%>
+						<%#= link_to student_pay_fees_tutor_path(@current_user) do%>
+							<!-- <i class="fa fa-angle-right"></i>&nbsp;For Tutor -->
+						<%#end%>
+						<a href="#appModal" data-toggle="modal" class="fa fa-angle-right">For Tutor</a>
 					<%else%>
 						<a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">For Tutor</a>
 					<%end%>
@@ -92,6 +94,16 @@
 				<%end%>
 			<%else%>
 				<a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Apply To Teacher</a>
+			<%end%>
+		</li>
+		<li <%if active == 'Books'%> class="active" <%end%>>
+			<% if current_user.active? %>
+				<%= link_to student_books_path(@current_user) do%>
+					<i class="fa fa-tasks"></i>
+					<span class="link-title">Buy Notes</span>
+				<%end%>
+			<%else%>
+				<a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Buy Notes</a>
 			<%end%>
 		</li>
 		<li class="nav-divider"></li>

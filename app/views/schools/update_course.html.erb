@@ -12,16 +12,19 @@
         <%= form_for(@course, url: school_update_course_path) do |f| %>
           <div class="row vdiocont"> 
             <div class="form-group margunrve">
-              <%= label_tag :degree_name, "Name of Degree" %><br />
-              <%= text_field_tag :new_degree_name %>
-              <label for="sel1">Enter or Select Degree</label><br />
-              <%= f.select( :degree_name, Course.all.map {|p| [p.degree_name]}.uniq!, :prompt => "Select a Degree") %>
+              <label for="sel1">Select Stream :</label>
+              <%=f.select :stream_id, options_for_select(@streams.collect{|p| [p.stream_name, p.id]},:selected => f.object.stream_id),{include_blank: "Select Stream"},{required: 'true',autofocus:'true',class:'form-control'}%>
             </div>   
             <div class="form-group margunrve">
-              <%= label_tag :course_name, "Name of Course" %><br />
-              <%= text_field_tag :new_course_name %>
-              <label for="sel1">Enter or Select Course</label><br />
-              <%= f.select( :course_name, Course.all.map {|p| [p.course_name]}.uniq!, :prompt => "Select a Courses") %>
+              <label for="sel1">Select Degree :</label>
+              <%=f.select :degree_id, options_for_select(@degrees.collect{|p| [p.degree_name, p.id]}),{include_blank: "Select Degree"},{required: 'true',autofocus:'true',class:'form-control'} %>
+            </div> 
+            <div class="form-group margunrve">
+              <%= label_tag :new_course_name, "Name of Course" %>
+              <%= text_field_tag :new_course_name,"", class: 'form-control' %><br />
+               <p class="text-center">Or</p>
+              <label for="sel1">Select Course :</label>
+              <%= f.select( :course_name, Course.all.map {|p| [p.course_name]}.uniq, {},{:prompt => "Select a Courses",:class => "form-control"}) %>
             </div>
              <div class="form-group">
               <label for="sel1">Duration</label>
@@ -83,3 +86,27 @@
   </div>
 </div>
 <%= render "layouts/javascripts"%>
+
+<script type="text/javascript">
+  $(document).on("change", "#course_stream_id", function(){
+    var stream = $(this).val();
+    $.ajax({
+      url: "/schools/<%=current_user.id%>/update_course",
+      method: "GET",
+      dataType: "json",
+      data: {stream: stream},
+      error: function (xhr, status, error) {
+        console.error('AJAX Error: ' + status + error);
+      },
+      success: function (response) {
+        console.log(response);
+        var degrees = response["degrees"];
+        $("#course_degree_id").empty();
+        $("#course_degree_id").append('<option>Select Degree</option>');
+        for(var i=0; i< degrees.length; i++){
+          $("#course_degree_id").append('<option value="' + degrees[i]["id"] + '">' + degrees[i]["degree_name"] + '</option>');
+        }
+      }
+    });
+  });
+</script>

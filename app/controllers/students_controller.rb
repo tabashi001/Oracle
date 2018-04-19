@@ -73,8 +73,7 @@ class StudentsController < ApplicationController
     @city_id = @teachers.pluck(:city_id)
     @cities = City.find(@city_id)
     @subjects = @teachers.pluck(:qualification).uniq
-    @search = User.where("name = ? AND city_id= ? AND qualification= ?",
-      params[:name],params[:city_id],params[:qualification]) if params[:name] && params[:city_id] && params[:qualification].present?
+    @search = User.where("city_id= ? AND qualification= ?",params[:city_id],params[:qualification]) if params[:city_id] && params[:qualification].present?
   end
   def apply_teacher
     if request.get?
@@ -97,8 +96,10 @@ class StudentsController < ApplicationController
 
   def books
     @buy_book = BuyBook.new
-    @teacher = User.find(params[:student_id])
-    @books = @teacher.sale_notes
+    # @teacher = User.find(params[:student_id])
+    # @books = @teacher.sale_notes
+    @search = SaleNote.where("title LIKE ?", "%#{params[:notes]}%") if params[:notes].present?
+    @books = SaleNote.all
   end
   def buy_book
     if request.get?

@@ -60,11 +60,25 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
   def course
     if request.get?
       @course = Course.new
+      @streams = Stream.all
+      @degrees = [] 
+      if params[:stream].present?
+        @degrees = Degree.where(:stream_id => params[:stream] )
+      end
+      if request.xhr?
+        respond_to do |format|
+          format.json {
+            render json: {degrees: @degrees} if params[:stream].present?
+          }
+        end
+      end
     else
       @course = @school.courses.create(course_params)
-      @course.degree_name = params[:new_degree_name] unless params[:new_degree_name].empty?
-      @course.course_name = params[:new_course_name] unless params[:new_course_name].empty?
-      if @course.save
+      #@course.degree_name = params[:new_degree_name] unless params[:new_degree_name].empty?
+      #@course.course_name = params[:new_course_name] unless params[:new_course_name].empty?
+      if @course.save(validate: false)
+        debugger
+        @school.create_course(params[:courses]) if params[:courses]
         redirect_to school_courses_path
       else 
       end
@@ -73,10 +87,22 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
   def update_course
     if request.get?
       @course = Course.find(params[:school_id])
+      @streams = Stream.all
+      @degrees = [] 
+      if params[:stream].present?
+        @degrees = Degree.where(:stream_id => params[:stream] )
+      end
+      if request.xhr?
+        respond_to do |format|
+          format.json {
+            render json: {degrees: @degrees} if params[:stream].present?
+          }
+        end
+      end
     else
       @course = Course.find(params[:school_id])
-      @course.degree_name = params[:new_degree_name] unless params[:new_degree_name].empty?
-      @course.course_name = params[:new_course_name] unless params[:new_course_name].empty?
+      #@course.degree_name = params[:new_degree_name] unless params[:new_degree_name].empty?
+      #@course.course_name = params[:new_course_name] unless params[:new_course_name].empty?
       if @course.update(course_params)
         redirect_to school_courses_path
       else
@@ -199,18 +225,20 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
     else
       @campu = @school.campus.create(campu_params)
         if @campu.save
-          redirect_to school_campus_path
+          redirect_to schools_path
         else 
         end
     end 
   end
   def update_campu
     if request.get?
-      @campu = Campu.find(params[:school_id])
+      @id = @school.campus.first
+      @campu = Campu.find_by_id(@id)
     else
-      @campu = Campu.find(params[:school_id])
+      @id = @school.campus.first
+      @campu = Campu.find_by_id(@id)
       if @campu.update(campu_params)
-        redirect_to school_campus_path
+        redirect_to schools_path
       else
       end
     end
@@ -395,8 +423,9 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
   end
 
   def course_params
-    params.require(:course).permit({:course_name => []},:degree_name,:course_duration,:course_type,
-     :course_fee,:course_affliation,:course_description,:user_id,:new_course_name,:new_degree_name)
+    params.require(:course).permit(:degree_name,:course_duration,:course_type,
+     :course_fee,:course_affliation,:course_description,:user_id,:new_course_name,
+     :new_degree_name,:stream_id,:degree_id,courses_attributes: [:id, :course_name])
   end
 
   def scholar_params

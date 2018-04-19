@@ -84,23 +84,17 @@
 	          	<% @facilities.each do |fac| %>
 		            <div class="col-md-4 text-center">
 		               	<%if fac.image1.present?%>
-						<%= image_tag fac.image1, class: "img-responsive IMGdgcust"%>
-						<%else%>
-						<%= image_tag("logo1.png",class: "img-responsive IMGdgcust")%>
+							<%= image_tag fac.image1, class: "img-responsive IMGdgcust"%>
 						<%end%>
 		            </div> 
 		            <div class="col-md-4 text-center">
 		                <%if fac.image2.present?%>
-						<%= image_tag fac.image2, class: "img-responsive IMGdgcust"%>
-						<%else%>
-						<%= image_tag("logo1.png",class: "img-responsive IMGdgcust")%>
+							<%= image_tag fac.image2, class: "img-responsive IMGdgcust"%>
 						<%end%>
 		            </div> 
 		            <div class="col-md-4 text-center">
 		                <%if fac.image3.present?%>
-						<%= image_tag fac.image3, class: "img-responsive IMGdgcust"%>
-						<%else%>
-						<%= image_tag("logo1.png",class: "img-responsive IMGdgcust")%>
+							<%= image_tag fac.image3, class: "img-responsive IMGdgcust"%>
 						<%end%>
 		            </div>
 	          <%end%>

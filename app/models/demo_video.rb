@@ -12,6 +12,6 @@ class DemoVideo < ApplicationRecord
   end
 
   def video_size_validation
-    errors[:video] << "should be less than 2MB" if video.size > 2.megabytes
+    errors[:video] << "should be less than 30MB" if video.size > 30.megabytes
   end
 end

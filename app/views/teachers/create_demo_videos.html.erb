@@ -28,7 +28,7 @@
             <div class="form-group">
               <label for="email">Video Upload :</label>
               <%=f.file_field :video, class: "form-control"%>
-            </div>
+            </div><p><font size="3" color="red">*Video must be lessthan 30MB</font></p> 
             <div class="text-center">
               <%=f.submit "Submit",class: "btn btn-primary"%>
               <button type="button" class="btn btn-danger">Cancel</button>
