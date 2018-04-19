@@ -18,11 +18,11 @@
 								<% @course_detail.each do |course|%>
 									<tr>
 										<td>
-										<% @stream = Stream.find(course.stream_id)%>
-										<%= @stream.stream_name.titleize%></td>
+										<% @stream = Stream.find(course.stream_id) if course.stream_id.present? %>
+										<%= @stream.stream_name.titleize if @stream.present?%></td>
 										<td>
-										<% @degree = Degree.find(course.degree_id)%>
-										<%= @degree.degree_name.titleize%>  <%#= course.course_name.titleize %></td>
+										<% @degree = Degree.find(course.degree_id) if course.degree_id.present?%>
+										<%= @degree.degree_name.titleize if @degree.present?%>  <%#= course.course_name.titleize %></td>
 										<% if course.course_type == true%>
 											<td>Regular</td>
 										<% elsif course.course_type == false%>
