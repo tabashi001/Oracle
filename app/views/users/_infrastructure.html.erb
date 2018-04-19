@@ -8,10 +8,10 @@
 			<div class="col-sm-12">
 				<div class="col-sm-12 col-xs-12 col-md-9 col-lg-9">
 					<p><% if @facilities.present? %>
-					<% @facilities.each do |fac| %>
-					<p class="crdtxt"><%=fac.title %> </p>
-					<p class="crdtxt"><%=fac.description %> </p>
-					<%end%>
+					<% #@facilities.each do |fac| %>
+					<p class="crdtxt"><%=@facilities.first.title %> </p>
+					<p class="crdtxt"><%=@facilities.first.description %> </p>
+					<%#end%>
 					<%else%>
 						<p class="crdtxt">abcd</p>
 					<%end%> </p>
@@ -29,50 +29,50 @@
 				<div class="jcarousel" >
 					<ul>
 						<% if @facilities.present? %>
-						<% @facilities.each do |fac| %>
-							<%if fac.boys_hostel.present?%>
+						<%# @facilities.each do |fac| %>
+							<%if @facilities.first.boys_hostel.present?%>
 								<li><%= image_tag('bhostel.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Boys Hostel</p></li>
 							<%end%>
-							<%if fac.girls_hostel.present?%>
+							<%if @facilities.first.girls_hostel.present?%>
 								<li><%= image_tag('ghostel.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Girls Hostel</p></li>
 							<%end%>
-							<%if fac.library.present?%>
+							<%if @facilities.first.library.present?%>
 								<li><%= image_tag('library.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Library</p></li>
 							<%end%>
-							<%if fac.sports.present?%>
+							<%if @facilities.first.sports.present?%>
 								<li><%= image_tag('sports.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Sports</p></li>
 							<%end%>
-							<%if fac.gym.present?%>
+							<%if @facilities.first.gym.present?%>
 								<li><%= image_tag('gym.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Gym</p></li>
 							<%end%>
-							<%if fac.s_pool.present?%>
+							<%if @facilities.first.s_pool.present?%>
 								<li><%= image_tag('s_pool.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Swimming Pool</p></li>
 							<%end%>
-							<%if fac.p_ground.present?%>
+							<%if @facilities.first.p_ground.present?%>
 								<li><%= image_tag('p_ground.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Play Ground</p></li>
 							<%end%>
-							<%if fac.canteen.present?%>
+							<%if @facilities.first.canteen.present?%>
 								<li><%= image_tag('canteen.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Canteen</p></li>
 							<%end%>
-							<%if fac.classroom.present?%>
+							<%if @facilities.first.classroom.present?%>
 								<li><%= image_tag('classroom.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Classrooms</p></li>
 							<%end%>
-							<%if fac.placement.present?%>
+							<%if @facilities.first.placement.present?%>
 								<li><%= image_tag('placement.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Placements</p></li>
 							<%end%>
-							<%if fac.club.present?%>
+							<%if @facilities.first.club.present?%>
 								<li><%= image_tag('club.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Club</p></li>
 							<%end%>
-							<%if fac.h_centre.present?%>
+							<%if @facilities.first.h_centre.present?%>
 								<li><%= image_tag('h_centre.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Health Centre</p></li>
 							<%end%>
-							<%if fac.yoga.present?%>
+							<%if @facilities.first.yoga.present?%>
 								<li><%= image_tag('yoga.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Yoga</p></li>
 							<%end%>
-							<%if fac.auditorium.present?%>
+							<%if @facilities.first.auditorium.present?%>
 								<li><%= image_tag('auditorium.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Auditorium</p></li>
 							<%end%>
-						<%end%>
+						<%#end%>
 						<%else%>
 						  No Facilities Provided
 						<%end%>
@@ -86,23 +86,23 @@
 		<div class="factvdt">
           	<div class="row">
           		<% if @facilities.present? %>
-		          	<% @facilities.each do |fac| %>
+		          	<% #@facilities.each do |fac| %>
 			            <div class="col-md-4 text-center">
-			               	<%if fac.image1.present?%>
-								<%= image_tag fac.image1, class: "img-responsive IMGdgcust"%>
+			               	<%if @facilities.first.image1.present?%>
+								<%= image_tag @facilities.first.image1, class: "img-responsive IMGdgcust"%>
 							<%end%>
 			            </div> 
 			            <div class="col-md-4 text-center">
-			                <%if fac.image2.present?%>
-								<%= image_tag fac.image2, class: "img-responsive IMGdgcust"%>
+			                <%if @facilities.first.image2.present?%>
+								<%= image_tag @facilities.first.image2, class: "img-responsive IMGdgcust"%>
 							<%end%>
 			            </div> 
 			            <div class="col-md-4 text-center">
-			                <%if fac.image3.present?%>
-								<%= image_tag fac.image3, class: "img-responsive IMGdgcust"%>
+			                <%if @facilities.first.image3.present?%>
+								<%= image_tag @facilities.first.image3, class: "img-responsive IMGdgcust"%>
 							<%end%>
 			            </div>
-			        <%end%>
+			        <%#end%>
 		        <%else%>
 		          No Infrastructure Images
 	            <%end%>
