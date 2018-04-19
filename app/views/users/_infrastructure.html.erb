@@ -28,6 +28,7 @@
 			<div class="jcarousel-wrapper">
 				<div class="jcarousel" >
 					<ul>
+						<% if @facilities.present? %>
 						<% @facilities.each do |fac| %>
 							<%if fac.boys_hostel.present?%>
 								<li><%= image_tag('bhostel.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Boys Hostel</p></li>
@@ -72,6 +73,9 @@
 								<li><%= image_tag('auditorium.jpeg',class: "img-responsive schBuilding")%><p class="crdtxt">Auditorium</p></li>
 							<%end%>
 						<%end%>
+						<%else%>
+						  No Facilities Provided
+						<%end%>
 					</ul>
 				</div>
 				<a href="#" class="jcarousel-control-prev">&lsaquo;</a>
@@ -81,23 +85,27 @@
 		<span class="overview">Infrastructure Images</span>
 		<div class="factvdt">
           	<div class="row">
-	          	<% @facilities.each do |fac| %>
-		            <div class="col-md-4 text-center">
-		               	<%if fac.image1.present?%>
-							<%= image_tag fac.image1, class: "img-responsive IMGdgcust"%>
-						<%end%>
-		            </div> 
-		            <div class="col-md-4 text-center">
-		                <%if fac.image2.present?%>
-							<%= image_tag fac.image2, class: "img-responsive IMGdgcust"%>
-						<%end%>
-		            </div> 
-		            <div class="col-md-4 text-center">
-		                <%if fac.image3.present?%>
-							<%= image_tag fac.image3, class: "img-responsive IMGdgcust"%>
-						<%end%>
-		            </div>
-	          <%end%>
+          		<% if @facilities.present? %>
+		          	<% @facilities.each do |fac| %>
+			            <div class="col-md-4 text-center">
+			               	<%if fac.image1.present?%>
+								<%= image_tag fac.image1, class: "img-responsive IMGdgcust"%>
+							<%end%>
+			            </div> 
+			            <div class="col-md-4 text-center">
+			                <%if fac.image2.present?%>
+								<%= image_tag fac.image2, class: "img-responsive IMGdgcust"%>
+							<%end%>
+			            </div> 
+			            <div class="col-md-4 text-center">
+			                <%if fac.image3.present?%>
+								<%= image_tag fac.image3, class: "img-responsive IMGdgcust"%>
+							<%end%>
+			            </div>
+			        <%end%>
+		        <%else%>
+		          No Infrastructure Images
+	            <%end%>
         	</div> 
         </div> 
 	</div>
