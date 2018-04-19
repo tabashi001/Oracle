@@ -7,10 +7,10 @@ before_action :set_vendor, only:[:index,:schools,:apply_school,:vendor_openings]
 
   	def schools
 		@schools = User.where(:role_name => "1")
-	    @name = @schools.pluck(:name)
-	    @city_id = @schools.pluck(:city_id)
+	    @name = @schools.pluck(:qualification).uniq.compact
+	    @city_id = @schools.pluck(:city_id).uniq
 	    @cities = City.find(@city_id)
-	    @search = User.where("name = ? AND city_id= ?", params[:name],params[:city_id]) if params[:name] && params[:city_id].present?
+	    @search = User.where("city_id = ? AND qualification= ?", params[:city_id],params[:name]) if params[:name] && params[:city_id].present?
 	end
 
 	def vendor_openings

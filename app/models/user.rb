@@ -68,7 +68,7 @@ class User < ApplicationRecord
   end
 
   def create_course(courses)
-    self.courses.destroy_all
+    #self.courses.destroy_all
     courses.each do |course|
       self.courses.create(course_name: course)
     end

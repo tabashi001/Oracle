@@ -49,10 +49,10 @@ class StudentsController < ApplicationController
 
   def schools
     @schools = User.where(:role_name => "1")
-    @name = @schools.pluck(:name)
+    @name = @schools.pluck(:qualification).uniq
     @city_id = @schools.pluck(:city_id)
     @cities = City.find(@city_id)
-    @search = User.where("name = ? AND city_id= ?", params[:name],params[:city_id]) if params[:name] && params[:city_id].present?
+    @search = User.where("city_id = ? AND qualification= ?", params[:city_id],params[:name]) if params[:name] && params[:city_id].present?
   end
   def apply_school
     if request.get?
