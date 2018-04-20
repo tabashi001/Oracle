@@ -79,7 +79,7 @@
                 <td><%=slot.date%></td>
                 <td><%=slot.time%></td>
                 <td><%=slot.duration%></td>
-                <td><button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#student_model">Apply</button></td>
+                <td><%=link_to "Apply",users_apply_to_post_path(slot),class: "btn btn-primary"%></button></td>
               <%end%>
               <%else%>
                No Slots Available
@@ -111,7 +111,7 @@
                 <td><%=slot.id%></td>
                 <td><%=slot.title%></td>
                 <td><%=slot.description.first(100)%></td>
-                <td><button type="button" class="btn btn-primary btn-xs">Buy</button></td>
+                <td><%=link_to "Buy",users_apply_to_post_path(slot),class: "btn btn-primary"%></button></td>
               <%end%>
               <%else%>
                No Slots Available
@@ -131,7 +131,8 @@
       <% @videos.each do |video|%>
       	<div class="col-md-4">
           <h3><%= video.title%></h3>
-          <iframe width="100%" height="150" src="<%= video.video%>"></iframe>
+          <!-- <iframe width="100%" height="150" src="<%= video.video%>"></iframe> -->
+          <%= video_tag video.video, width: "100%",height: "150", autoplay: true,:loop => true%>
           <p class="taxtjust"><%= video.description%></p>
         </div>
       <%end%>	

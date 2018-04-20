@@ -24,6 +24,9 @@ Rails.application.routes.draw do
 		get :apply_teacher
 		post :apply_teacher
 		get :slots
+		get :books
+		get :buy_book
+		post :buy_book
 	end
 
 	resources :teachers do

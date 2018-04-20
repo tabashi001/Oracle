@@ -32,11 +32,11 @@ class TeachersController < ApplicationController
 
 	def find_student
 		@students = User.where(:role_name => "3")
-		@name = @students.pluck(:name)
+		#@name = @students.pluck(:name)
 		@qualification = @students.pluck(:qualification).uniq
 	    @city_id = @students.pluck(:city_id)
 	    @cities = City.find(@city_id)
-	    @search = User.where("name = ? AND qualification = ? AND city_id= ?", params[:name],params[:qualification],params[:city_id]) if params[:name] && params[:city_id].present?
+	    @search = User.where("qualification = ? AND city_id= ?",params[:qualification],params[:city_id]) if params[:city_id].present?
 	end
 
 	def sale_notes

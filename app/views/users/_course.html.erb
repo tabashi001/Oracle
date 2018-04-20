@@ -1,22 +1,22 @@
-<div id="courses">
+<!-- <div id="courses">
 	<div class="container-fluid courses">
 		<div class="row">
 			<div class="col-md-12 bhoechie-tab-container">
 				<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 bhoechie-tab-menu">
 				  	<div class="list-group">
-				  		<%@course_detail.select("DISTINCT(degree_name)").each do |course|%>
-							<a href="#" class="list-group-item active text-center course_id-<%= course.id %>">
-						  		<h4 class="glyphicon glyphicon-credit-card" id="<%= course.id %>"></h4><br/>
-						  		<%= course.degree_name %>
+				  		<%#@course_detail.select("DISTINCT(degree_name)").each do |course|%>
+							<a href="#" class="list-group-item active text-center course_id-<%#= course.id %>">
+						  		<h4 class="glyphicon glyphicon-credit-card" id="<%#= course.id %>"></h4><br/>
+						  		<%#= course.degree_name %>
 							  	<script type="text/javascript">
-						            $('.course_id-<%= course.id %>').click(function(){
+						            $('.course_id-<%#= course.id %>').click(function(){
 						               $.ajax({
 						                  url:'/users/find_all_course_name',
 						                  type:'POST',
 						                  beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 						                  dataType:'json',
 						                  data:{
-						                      myparam1: <%= course.id %>,
+						                      myparam1: <%#= course.id %>,
 						                  },
 						                  success:function(data){
 						                      debugger;
@@ -28,7 +28,7 @@
 						          });
 		          				</script>
 							</a>
-						<%end%>
+						<%#end%>
 				  	</div>
 				</div>
 				<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 bhoechie-tab">
@@ -62,7 +62,7 @@
 								</div>
 								<%#end%>
 						</div>
-					</div>
+					</div> -->
 
 			
 					<!-- <div class="bhoechie-tab-content">
@@ -119,9 +119,173 @@
 					</div> -->
 
 
+<!-- 
+				</div>
+			</div>
+		</div>
+	</div>
+</div> -->
 
+<%= stylesheet_link_tag  "bootstrap.min" %>
+<%= stylesheet_link_tag  "font-awesome" %>
+<%= stylesheet_link_tag  "school_show" %>
+<%= stylesheet_link_tag  "header" %>
+
+<div id="courses">
+	<div class="container-fluid courses">
+		<div class="row">
+			<div class="col-md-12 bhoechie-tab-container">
+				<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 bhoechie-tab-menu">
+				  <div class="list-group">
+					<a href="#" class="list-group-item active text-center">
+					  <h4 class="glyphicon glyphicon-credit-card"></h4><br/>
+					  <%#@degree = Degree.find(@first.degree_id) if @first.degree_id.present?%>
+					  <%#= @degree.degree_name if @degree.present?%>
+					</a>
+					<%# @courses.select("DISTINCT(degree_id)").each do |cou|%>
+					<%#@degree = Degree.find(cou.degree_id)%>
+					<a href="#" class="list-group-item text-center">
+					  <h4 class="glyphicon glyphicon-credit-card"></h4><br/><%#= @degree.degree_name%>
+					</a>
+					<%#end%>
+				  </div>
+				</div>
+				<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 bhoechie-tab">
+					<div class="bhoechie-tab-content active">
+						
+							<div class="row conserti">
+								<div class="col-sm-12 consw">
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg3 ort">
+									
+									<div class="eNGlbox" data-toggle="modal" data-target=".myModalpopup">
+										<h1 class="glyphicon glyphicon-credit-card" style="color:#55518a"></h1>
+										<h4 style="margin-top: 0;color:#55518a">Mechanical Engineering</h4>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg3">
+									
+									<div class="eNGlbox" data-toggle="modal" data-target=".myModalpopup">
+										<h1 class="glyphicon glyphicon-credit-card" style="color:#55518a"></h1>
+										<h4 style="margin-top: 0;color:#55518a">Mechanical Engineering</h4>
+									</div>
+									</div>
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg3">
+									
+									<div class="eNGlbox" data-toggle="modal" data-target=".myModalpopup">
+										<h1 class="glyphicon glyphicon-credit-card" style="color:#55518a"></h1>
+										<h4 style="margin-top: 0;color:#55518a">Mechanical Engineering</h4>
+									</div>
+									</div>
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg3">
+									
+									<div class="eNGlbox" data-toggle="modal" data-target=".myModalpopup">
+										<h1 class="glyphicon glyphicon-credit-card" style="color:#55518a"></h1>
+										<h4 style="margin-top: 0;color:#55518a">Mechanical Engineering</h4>
+									</div>
+									</div>
+								</div>
+							</div>
+						
+					</div>
+		
+					<div class="bhoechie-tab-content">
+						<div class="row">
+								<div class="col-sm-12">
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg3">
+									
+										<h1 class="glyphicon glyphicon-credit-card" style="color:#55518a"></h1>
+										<h3 style="margin-top: 0;color:#55518a">Mechanical Engineering</h3>
+									</div>
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg3">
+									
+										<h1 class="glyphicon glyphicon-credit-card" style="color:#55518a"></h1>
+										<h3 style="margin-top: 0;color:#55518a">Mechanical Engineering</h3>
+									</div>
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg3">
+									
+										<h1 class="glyphicon glyphicon-credit-card" style="color:#55518a"></h1>
+										<h3 style="margin-top: 0;color:#55518a">Mechanical Engineering</h3>
+									</div>
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg3">
+									
+										<h1 class="glyphicon glyphicon-credit-card" style="color:#55518a"></h1>
+										<h3 style="margin-top: 0;color:#55518a">Mechanical Engineering</h3>
+									</div>
+								</div>
+							</div>
+					</div>
+
+			
+					<div class="bhoechie-tab-content">
+						<div class="row">
+								<div class="col-sm-12">
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg3">
+									
+										<h1 class="glyphicon glyphicon-credit-card" style="color:#55518a"></h1>
+										<h3 style="margin-top: 0;color:#55518a">Mechanical Engineering</h3>
+									</div>
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg3">
+									
+										<h1 class="glyphicon glyphicon-credit-card" style="color:#55518a"></h1>
+										<h3 style="margin-top: 0;color:#55518a">Mechanical Engineering</h3>
+									</div>
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg3">
+									
+										<h1 class="glyphicon glyphicon-credit-card" style="color:#55518a"></h1>
+										<h3 style="margin-top: 0;color:#55518a">Mechanical Engineering</h3>
+									</div>
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg3">
+									
+										<h1 class="glyphicon glyphicon-credit-card" style="color:#55518a"></h1>
+										<h3 style="margin-top: 0;color:#55518a">Mechanical Engineering</h3>
+									</div>
+								</div>
+							</div>
+					</div>
+					<div class="bhoechie-tab-content">
+						<div class="row">
+								<div class="col-sm-12">
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg3">
+									
+										<h1 class="glyphicon glyphicon-credit-card" style="color:#55518a"></h1>
+										<h3 style="margin-top: 0;color:#55518a">Mechanical Engineering</h3>
+									</div>
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg3">
+									
+										<h1 class="glyphicon glyphicon-credit-card" style="color:#55518a"></h1>
+										<h3 style="margin-top: 0;color:#55518a">Mechanical Engineering</h3>
+									</div>
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg3">
+									
+										<h1 class="glyphicon glyphicon-credit-card" style="color:#55518a"></h1>
+										<h3 style="margin-top: 0;color:#55518a">Mechanical Engineering</h3>
+									</div>
+									<div class="col-xs-12 col-sm-3 col-md-3 col-lg3">
+									
+										<h1 class="glyphicon glyphicon-credit-card" style="color:#55518a"></h1>
+										<h3 style="margin-top: 0;color:#55518a">Mechanical Engineering</h3>
+									</div>
+								</div>
+							</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<%= javascript_include_tag "jquery.min" %>
+<%= javascript_include_tag "bootstrap.min" %>
+
+<script>
+	$(document).ready(function() {
+    $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
+        e.preventDefault();
+        $(this).siblings('a.active').removeClass("active");
+        $(this).addClass("active");
+        var index = $(this).index();
+        $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+        $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+    });
+});
+</script>

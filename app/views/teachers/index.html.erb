@@ -91,7 +91,7 @@
 						    </div>
 						    <div class="col-md-3 col-sm-6">
 						    	<% if current_user.active? %>
-									<a href="">
+									<a  href="#appModal" data-toggle="modal">
 								        <div class="counting-box" id="locations">
 								        	<%= image_tag("mlogo.png")%>
 									        <h4 class="count-this">5</h4>
@@ -159,6 +159,17 @@
           <div class="modal-body">
               <p>
                   Hi <%=current_user.name%>, You Acount Is Deactivated, Please Contact to Admin.
+              </p>
+          </div>
+        </div>
+    </div>
+</div>
+<div id="appModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+              <p>
+                 Coming Soon.........!
               </p>
           </div>
         </div>

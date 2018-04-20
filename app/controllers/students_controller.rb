@@ -49,10 +49,10 @@ class StudentsController < ApplicationController
 
   def schools
     @schools = User.where(:role_name => "1")
-    @name = @schools.pluck(:name)
+    @name = @schools.pluck(:qualification).uniq
     @city_id = @schools.pluck(:city_id)
     @cities = City.find(@city_id)
-    @search = User.where("name = ? AND city_id= ?", params[:name],params[:city_id]) if params[:name] && params[:city_id].present?
+    @search = User.where("city_id = ? AND qualification= ?", params[:city_id],params[:name]) if params[:name] && params[:city_id].present?
   end
   def apply_school
     if request.get?
@@ -73,8 +73,7 @@ class StudentsController < ApplicationController
     @city_id = @teachers.pluck(:city_id)
     @cities = City.find(@city_id)
     @subjects = @teachers.pluck(:qualification).uniq
-    @search = User.where("name = ? AND city_id= ? AND qualification= ?",
-      params[:name],params[:city_id],params[:qualification]) if params[:name] && params[:city_id] && params[:qualification].present?
+    @search = User.where("city_id= ? AND qualification= ?",params[:city_id],params[:qualification]) if params[:city_id] && params[:qualification].present?
   end
   def apply_teacher
     if request.get?
@@ -95,6 +94,25 @@ class StudentsController < ApplicationController
     @slots = @teacher.slots
   end
 
+  def books
+    @buy_book = BuyBook.new
+    # @teacher = User.find(params[:student_id])
+    # @books = @teacher.sale_notes
+    @search = SaleNote.where("title LIKE ?", "%#{params[:notes]}%") if params[:notes].present?
+    @books = SaleNote.all
+  end
+  def buy_book
+    if request.get?
+      @buy_book = BuyBook.new
+      @book = User.find_by_id(params[:student_id])
+    else
+      @buy_book = @student.buy_books.create(buy_book_params)
+        if @buy_book.save
+            redirect_to student_teachers_path
+        else 
+        end
+      end 
+  end
 
   private
 
@@ -120,6 +138,10 @@ class StudentsController < ApplicationController
 
   def apply_teacher_params
       params.require(:applied_teacher).permit(:name,:email,:phone_no,:description,:teacher_id,:user_id,:user_role)
+  end
+
+  def buy_book_params
+      params.require(:buy_book).permit(:name,:email,:phone_no,:description,:book_id,:user_id,:user_role)
   end
   
 end

@@ -24,17 +24,10 @@ var marker = new google.maps.Marker({
 					<hr>
 					<div class="row">
 						<div class="col-sm-12">
-							<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
-								<div class="building">
-									<%if @college.cover_image.present?%>
-										<%= image_tag @college.cover_image , class: "img-responsive schBuilding"%>
-									<%else%>
-										<%= image_tag("logo1.png",class: "img-responsive schBuilding")%>
-									<%end%>
-								</div>
-							</div>
+							
 							<div class="col-sm-12 col-xs-12 col-md-9 col-lg-9">
 								<% if @college.overviews.present? %>
+								<strong><p class="crdtxt"><%=@college.overviews.first.title %> </p></strong>
 								<p class="crdtxt"><%=@college.overviews.first.description %> </p>
 								<%else%>
 								<p class="crdtxt">abcd</p>
@@ -54,7 +47,7 @@ var marker = new google.maps.Marker({
 									<div class="col-sm-4 col-xs-12 col-md-4 ">
 										<div class="img-thumbnail">
 											<!-- <iframe width="100%" height="200" autoplay controls controlsList="nodownload" src="<%#= video.video%>"></iframe> -->
-											<%= video_tag video.video, width: "100%",height: "200", autoplay: true%>
+											<%= video_tag video.video, width: "100%",height: "200", autoplay: true,:loop => true%>
 											<p class="desc"><%= video.description%></p>	
 										</div>
 									</div>
@@ -136,7 +129,7 @@ var marker = new google.maps.Marker({
 			<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
 				<div class="vidBox">
 					<% if @videos.present? %>
-						<%= video_tag @videos.first.video, width: "100%",height: "200", autoplay: true%>
+						<%= video_tag @videos.first.video, width: "100%",height: "200", autoplay: true,:loop => true%>
 						<!-- <iframe width="100%" height="200" src="<%#= @videos.first.video%>"></iframe> -->
 					<%else%>
 						<iframe width="100%" height="200" src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0"></iframe>
@@ -217,5 +210,3 @@ var marker = new google.maps.Marker({
 /* @end */
 -->
 </style>
-
-

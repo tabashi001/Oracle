@@ -71,7 +71,7 @@
               </div>
               <div class="col-md-3 col-sm-6">
                 <% if current_user.active? %>
-                  <a href="">
+                  <a href="#appModal" data-toggle="modal">
                     <div class="counting-box" id="locations">
                       <%= image_tag ('mlogo.png')%>
                       <h4 class="count-this">312</h4>
@@ -96,7 +96,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
               <% if current_user.active? %>
                 <%if current_user.overviews.present?%>
-                  <%= link_to  school_update_overview_path(current_user) do %>
+                  <%= link_to school_update_overview_path(current_user) do %>
                     <div class="col-md-2 col-sm-4 col-xs-6">
                       <div class="quick-btn">
                         <i class="fa fa-bolt fa-2x"></i>
@@ -106,7 +106,7 @@
                     </div>
                   <%end%>
                 <%else%>
-                  <%= link_to  school_overview_path(current_user) do %>
+                  <%= link_to school_overview_path(current_user) do %>
                     <div class="col-md-2 col-sm-4 col-xs-6">
                       <div class="quick-btn">
                         <i class="fa fa-bolt fa-2x"></i>
@@ -129,7 +129,18 @@
               <%end%>
 
               <% if current_user.active? %>
-                <%= link_to  school_campus_path(current_user) do %>
+                <%if current_user.campus.present?%>
+                  <%= link_to  school_update_campu_path(current_user) do %>
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                      <div class="quick-btn">
+                        <i class="fa fa-bolt fa-2x"></i>
+                        <span>INFRASTRUCTURE</span>
+                        <span class="label label-default"></span>
+                      </div>
+                    </div>
+                  <%end%>
+                <%else%>
+                  <%= link_to  school_campus_path(current_user) do %>
                   <div class="col-md-2 col-sm-4 col-xs-6">
                     <div class="quick-btn">
                       <i class="fa fa-external-link fa-2x"></i>
@@ -137,6 +148,7 @@
                       <span class="label btn-metis-2"><%= @campus_count %></span>
                     </div>
                   </div>
+                <%end%>
                 <%end%>
               <%else%>
                 <a href="#applyModal" data-toggle="modal">
@@ -362,6 +374,18 @@
           <div class="modal-body">
               <p>
                   Hi <%=current_user.name%>, You Acount Is Deactivated, Please Contact to Admin.
+              </p>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div id="appModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+              <p>
+                  Coming Soon........!
               </p>
           </div>
         </div>

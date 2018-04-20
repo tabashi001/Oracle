@@ -37,7 +37,8 @@ class User < ApplicationRecord
   after_validation :geocode       # auto-fetch coordinates
 
   has_many :overviews, as: :user
-  has_many :courses
+  has_many :courses,dependent: :destroy
+  accepts_nested_attributes_for :courses, allow_destroy: true, reject_if: :all_blank
   has_many :scholarships
   has_many :placements
   has_many :cutoffs
@@ -56,12 +57,20 @@ class User < ApplicationRecord
   has_many :vendor_requires
   has_many :slots
   has_many :demo_videos
+  has_many :buy_books
   # belongs_to :country
   # belongs_to :state
   #belongs_to :role
   def create_picture(images)
     images.each do |image|
       SchoolPicture.create(picture: image)
+    end
+  end
+
+  def create_course(courses)
+    #self.courses.destroy_all
+    courses.each do |course|
+      self.courses.create(course_name: course)
     end
   end
 
