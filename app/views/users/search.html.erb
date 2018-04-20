@@ -167,7 +167,7 @@ margin-top: 0 !important;
 								        		<h4 id="<%= school.id %>"><%= school.name %> </h4>
 								        		<%#end%>
 								        		</a>
-								        		<span> <i class="fa fa-map-marker"></i> <%= school.address%>,
+								        		<span> <i class="fa fa-address"></i> <%= school.address%>,
 								        		<% if @city = City.find_by_id(school.city_id)%><%= @city.name%> 
 								        		<%end%>,
 								        		<% if @state = Stat.find_by_id(school.state_id)%><%= @state.name%> 
@@ -178,17 +178,19 @@ margin-top: 0 !important;
 								            </div>
 						                    <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
 						                    	<div class="col-md-3 col-sm-6 col-xs-6">
-						                    		<i class="fa fa-map-marker "></i> <span>Avg Annual Fees</span>
+						                    		<i class="fa fa-user"></i> 
+                                                   
+						                    		<span>Avg Annual Fees </span>
 						                    		<%if school.courses.present?%>
 								        			<h6><%= school.courses.first.course_fee %></h6>
 								        			<%else%><h6>Not Mention</h6><%end%>
 								        	 	</div>
 									        	<div class="col-md-3 col-sm-6 col-xs-6">
-							                    	<i class="fa fas fa-trophy"></i> <span>Scholarship</span>
+							                    	<i class="fa fa-trophy"></i> <span>Affliation</span>
 									        		<h6>Available</h6>
 									        	</div>
 									        	<div class="col-md-3 col-sm-6 col-xs-6">
-							                    	<i class="fa fas fa-bed"></i> <span>Hostel</span>
+							                    	<i class="fab fa-stripe-s"></i> <span>Stream</span>
 									        		<h6>Availavle</h6>
 									        	</div>
 								        	 	<div class="col-md-3 col-sm-6 col-xs-6">
