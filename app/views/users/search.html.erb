@@ -178,7 +178,7 @@ margin-top: 0 !important;
 								            </div>
 						                    <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
 						                    	<div class="col-md-3 col-sm-6 col-xs-6">
-						                    		<i class="fa fa-user"></i> 
+						                    		<i class="fa fa-align-justify"></i>
                                                    
 						                    		<span>Avg Annual Fees </span>
 						                    		<%if school.courses.present?%>
@@ -186,12 +186,12 @@ margin-top: 0 !important;
 								        			<%else%><h6>Not Mention</h6><%end%>
 								        	 	</div>
 									        	<div class="col-md-3 col-sm-6 col-xs-6">
-							                    	<i class="fa fa-trophy"></i> <span>Affliation</span>
+							                    	<i class="fa fa-align-justify"></i> <span>Affliation</span>
 									        		<h6>Available</h6>
 									        	</div>
 									        	<div class="col-md-3 col-sm-6 col-xs-6">
-							                    	<i class="fab fa-stripe-s"></i> <span>Stream</span>
-									        		<h6>Availavle</h6>
+							                    <i class="fa fa-align-justify"></i> <span>Stream</span>
+									        		<h6>Available</h6>
 									        	</div>
 								        	 	<div class="col-md-3 col-sm-6 col-xs-6">
 
@@ -241,7 +241,9 @@ margin-top: 0 !important;
 			        <div id="search_res" class="col-md-10" style="display:none;">
 			        	<%= render "users/search_filter" %>
 			        </div>	
+			        <div class="text-center">
 			       <p class="text-center"><%= will_paginate @school %></p>
+			   </div>
 			    </div>
 			</div><!-- row end -->	
 		</div>
