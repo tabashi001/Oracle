@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require turbolinks
 //= require gmaps/google
+//= require cocoon
 
 $(function() {
   $("#products th a, #products .pagination a").live("click", function() {
