@@ -38,7 +38,7 @@ class User < ApplicationRecord
 
   has_many :overviews, as: :user
   has_many :courses, inverse_of: :user
-  accepts_nested_attributes_for :courses, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :courses
   has_many :scholarships
   has_many :placements
   has_many :cutoffs

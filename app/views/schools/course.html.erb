@@ -8,7 +8,7 @@
       <div class="inner bg-light lter">
         <h4>Courses</h4>
         <hr>
-        <%= form_for(@course, url: school_course_path,multipart: true) do |f| %>
+        <%= form_for @course, url: school_course_path do |f| %>
           <div class="row vdiocont"> 
             <div class="form-group margunrve">
               <label for="sel1">Select Stream :</label>
@@ -25,13 +25,23 @@
               <label for="sel1">Select Course :</label>
               <%#= f.select( :course_name, Course.all.map {|p| [p.course_name]}.uniq, {},{:prompt => "Select a Courses",:class => "form-control"}) %>
             </div> -->
-            <div class="form-group margunrve">
+            <!-- <div class="form-group margunrve">
               <button id="add_course_name">Add Course</button>
               <div id="course_names" class="">
                 <div class="course_name "> 
-                  <%=text_field_tag "courses[]"%>
+                  <%#=text_field_tag "courses[]"%>
                   <button class="remove">x</button>
                 </div>
+              </div>
+            </div> -->
+            <h3>Courses</h3>
+            <div id='tasks'>
+              <%= f.simple_fields_for :courses do |task| %>
+                <%= render 'course_fields', :f => task %>
+              <% end %>
+              <div class='links'>
+              <%debugger%>
+                <%= link_to_add_association 'add task', f, :courses %>
               </div>
             </div>
             <div class="form-group">

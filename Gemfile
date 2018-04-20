@@ -19,7 +19,8 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'mysql2','~> 0.3.18'
-
+gem "cocoon"
+gem 'simple_form'
 gem 'devise'
 gem 'pry-rails'
 gem 'geocoder'
