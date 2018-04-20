@@ -74,12 +74,12 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
         end
       end
     else
-      @course = Course.new
-      @course = @school.courses.create(course_params)
+      #@course = Course.new
+      @course = @school.courses.new(course_params)
       #@course.degree_name = params[:new_degree_name] unless params[:new_degree_name].empty?
       #@course.course_name = params[:new_course_name] unless params[:new_course_name].empty?
       if @course.save(validate: false)
-        @school.create_course(params[:course_name]) if params[:course_name]
+        @course.create_course(params[:courses]) if params[:courses]
         redirect_to school_courses_path
       else 
       end
@@ -426,7 +426,7 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
   def course_params
     params.require(:course).permit(:degree_name,:course_duration,:course_type,
      :course_fee,:course_affliation,:course_description,:user_id,:new_course_name,
-     :new_degree_name,:stream_id,:degree_id,{:course_name => []})
+     :new_degree_name,:stream_id,:degree_id,:course_name,course_names_attributes: [:id,:course_name,:stream_id,:degree_id,:_destroy])
   end
 
   def scholar_params

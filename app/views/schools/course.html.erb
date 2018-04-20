@@ -8,7 +8,7 @@
       <div class="inner bg-light lter">
         <h4>Courses</h4>
         <hr>
-        <%= simple_form_for(@course, url: school_course_path) do |f| %>
+        <%= form_for(@course, url: school_course_path) do |f| %>
           <div class="row vdiocont"> 
             <div class="form-group margunrve">
               <label for="sel1">Select Stream :</label>
@@ -29,18 +29,18 @@
               <button id="add_course_name">Add Course</button>
               <div id="course_names" class="">
                 <div class="course_name "> 
-                  <%=text_field_tag "course_name[]"%>
+                  <%=text_field_tag "courses[]"%>
                   <button class="remove">x</button>
                 </div>
               </div>
             </div>
-            <!-- <h3>Courses</h3>
-            <div id='tasks'>
-              <%#= f.simple_fields_for :courses do |task| %>
-                <%#= render 'course_fields', :ff => task %>
+            <!-- <h3>Tasks</h3>
+            <div id='courses'>
+              <%#= f.fields_for :course_names do |task| %>
+                <%#= render 'course_fields', :f => task %>
               <% #end %>
               <div class='links'>
-                <%#= link_to_add_association 'add task', f, :courses %>
+                <%#= link_to_add_association 'Add Course', f, :course_names %>
               </div>
             </div> -->
             <div class="form-group">
@@ -131,7 +131,7 @@
 
 <script type="text/javascript">
   $('#add_course_name').on('click', function() { 
-    $('#course_names').append('<div class="course_name"><%=text_field_tag "course_name[]"%><button class="remove">x</button></div>');
+    $('#course_names').append('<div class="course_name"><%=text_field_tag "courses[]"%><button class="remove">x</button></div>');
     return false; //prevent form submission
   });
   $('#course_names').on('click', '.remove', function() {
