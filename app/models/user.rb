@@ -37,8 +37,8 @@ class User < ApplicationRecord
   after_validation :geocode       # auto-fetch coordinates
 
   has_many :overviews, as: :user
-  has_many :courses,dependent: :destroy
-  accepts_nested_attributes_for :courses, allow_destroy: true, reject_if: :all_blank
+  has_many :courses, inverse_of: :user
+  accepts_nested_attributes_for :courses, reject_if: :all_blank, allow_destroy: true
   has_many :scholarships
   has_many :placements
   has_many :cutoffs

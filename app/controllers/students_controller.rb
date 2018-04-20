@@ -37,9 +37,9 @@ class StudentsController < ApplicationController
 
   def sale_book
      if request.get?
-      @sale_book = SellBook.new
+      @sale_book = SaleNote.new
     else
-      @sale_book = @student.sell_books.create(sale_book_params)
+      @sale_book = @student.sale_notes.create(sale_book_params)
       if @sale_book.save
         redirect_to students_path 
       else 
@@ -99,7 +99,8 @@ class StudentsController < ApplicationController
     # @teacher = User.find(params[:student_id])
     # @books = @teacher.sale_notes
     @search = SaleNote.where("title LIKE ?", "%#{params[:notes]}%") if params[:notes].present?
-    @books = SaleNote.all
+    @user = SaleNote.where.not(:user_id => current_user.id)
+    @books = @user.all
   end
   def buy_book
     if request.get?
@@ -129,7 +130,7 @@ class StudentsController < ApplicationController
   end
 
   def sale_book_params
-    params.require(:sell_book).permit(:title,:description,:price,:book,:user_id)
+    params.require(:sale_note).permit(:title,:description,:document,:user_id)
   end
 
   def apply_school_params
