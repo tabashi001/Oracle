@@ -37,8 +37,8 @@ class User < ApplicationRecord
   after_validation :geocode       # auto-fetch coordinates
 
   has_many :overviews, as: :user
-  has_many :courses, inverse_of: :user
-  accepts_nested_attributes_for :courses
+  has_many :courses, dependent: :destroy
+  #accepts_nested_attributes_for :courses, allow_destroy: true
   has_many :scholarships
   has_many :placements
   has_many :cutoffs
@@ -67,7 +67,7 @@ class User < ApplicationRecord
     end
   end
 
-  def create_course(courses)
+  def create_course(course_name)
     #self.courses.destroy_all
     courses.each do |course|
       self.courses.create(course_name: course)
