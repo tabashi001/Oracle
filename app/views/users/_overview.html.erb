@@ -1,19 +1,3 @@
-<script>
-function myMap() {
-	var myLatLng = {lat: <%= @college.latitude%>, lng: <%= @college.longitude%>};
-var mapProp= {
-    center:myLatLng,
-    zoom:12,
-};
-var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-}
-var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-  
-  });
-
-</script>
 
 <div id="overview" class="active">
 	<div class="row conserti">
@@ -136,6 +120,7 @@ var marker = new google.maps.Marker({
 					<%end%>
 				</div>
 				<%=link_to "CURRENT REQUIREMENTS",users_current_requirements_path(@college), class: "fliptwo blink", target: "_blank"%>
+				
 				<div class="Reviewbox PoStn">
 					<div class="flipone">REVIEWS</div>
 					<div class="panelone">
@@ -164,6 +149,22 @@ var marker = new google.maps.Marker({
 <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key= AIzaSyDMEnG0GKj_YRFsOSmUBG-1dcMg57N2Qio&callback=myMap'%>
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script> -->
 
+<script>
+function myMap() {
+	var myLatLng = {lat: <%= @college.latitude%>, lng: <%= @college.longitude%>};
+var mapProp= {
+    center:myLatLng,
+    zoom:12,
+};
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
+var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+  
+  });
+
+</script>
 
 <style type="text/css">
 	.PoStn{

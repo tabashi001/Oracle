@@ -78,6 +78,7 @@ h1.edutetitle {
 }
 .margzero {
   margin-bottom: -2px;
+  word-wrap: break-word;
 }
 .anChstyle {
   display: block;
@@ -2109,6 +2110,9 @@ h2.youthdvcont {
     text-indent: 0.01px;
     text-overflow: "";
     width: 100px;
+}
+.img-responsive.smediasixe {
+  width: 24px;
 }
 
 .form-wrapper {
