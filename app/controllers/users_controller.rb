@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     @facilities =  @college.campus
     @course_detail = @college.courses
     @first = @college.courses.first if @college.courses.present?
-    @course_name = @first.course_names if @first.present?
+    @course_name = @first.course_names if @first.present? && @first.course_names.present?
     @courses = @college.courses.where.not("id=?",@first.id) if @first.present?
     @scholership = @college.scholarships
     @placement = @college.placements
