@@ -34,8 +34,8 @@
             <% @courses.each do |course|%>
               <tbody>
                 <tr>
-                  <td><% @degree = Degree.find(course.degree_id)%>
-                  <%= @degree.degree_name%></td>
+                  <td><% @degree = Degree.find(course.degree_id) if course.degree_id.present? %>
+                  <%= @degree.degree_name if @degree.present? %></td>
                   <td><%= course.course_duration%></td>
                   <td><%= course.course_fee%></td>
                   <td>
