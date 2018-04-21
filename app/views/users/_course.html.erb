@@ -134,11 +134,14 @@
 			<div class="col-md-12 bhoechie-tab-container">
 				<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 bhoechie-tab-menu">
 				  <div class="list-group">
+				  	<%if @first.present? %>
 					<a href="#" class="list-group-item active text-center">
 					   <h4 class="glyphicon glyphicon-credit-card"></h4><br/>
-					  <%@degree = Degree.find(@first.degree_id) if @first.present?%>
+					  <%@degree = Degree.find(@first.degree_id) if @first.degree_id.present?%>
 					  <%= @degree.degree_name if @degree.present?%>
 					</a>
+					<%else%>
+					<%end%>
 					<%if @courses.present?%>
 						<% @courses.select("DISTINCT(degree_id)").each do |cou|%>
 						<%@degree = Degree.find(cou.degree_id) if cou.degree_id.present?%>
