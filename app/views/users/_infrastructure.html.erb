@@ -1,5 +1,3 @@
-
-
 <div id="campus">
 	<div class="container overviewBox">
 		<span class="overview">Infrastructure</span>
@@ -8,10 +6,8 @@
 			<div class="col-sm-12">
 				<div class="col-sm-12 col-xs-12 col-md-9 col-lg-9">
 					<p><% if @facilities.present? %>
-					<% #@facilities.each do |fac| %>
 					<p class="crdtxt"><%=@facilities.first.title %> </p>
 					<p class="crdtxt"><%=@facilities.first.description %> </p>
-					<%#end%>
 					<%else%>
 						<p class="crdtxt">abcd</p>
 					<%end%> </p>

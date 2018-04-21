@@ -3,7 +3,7 @@
 		<div class="col-sm-12 consw">
 			<div class="col-sm-12 col-xs-12 col-md-9 col-lg-9 ort">
 				<div class="overviewBox">
-					<span class="overview"><%= @college.name %> News</span>
+					<span class="overview"><%= @college.name if @college.name.present?%> News</span>
 					<hr>
 					<% if @news.present? %>
 						<div class="row">
@@ -27,13 +27,13 @@
 							<%end%>
 						</div>
 					<%else%>
-						<p>No News yet</p>
+						<p>No News Yet</p>
 					<%end%>
 					<hr>
 				</div>
 				
 				<div class="overviewBox">
-					<span class="overview">Contact Details of <%= @college.name%>,
+					<span class="overview">Contact Details of <%= @college.name if @college.name.present? %>,
 						<% @city = City.find(@college.city_id) if @college.city_id.present?%>
 						<%= @city.name.capitalize if @city.present?%>
 					</span>
@@ -41,10 +41,10 @@
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="col-sm-12 col-xs-12 col-md-5 col-lg-5">
-								<p class="contact">Contact No:&nbsp;<span class="Detastpd"> <%= @college.phone_no %></span></p>
-								<p class="contact"> Email ID: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="Detastpd"><%= @college.email %></span></p>
-								<p class="contact"> Website:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><a target="_blank" class="HanD" href="<%= @college.website%>"><%= @college.website%></a></span></p>
-								<p class="contact"> Address: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><%= @college.address %></span></p>
+								<p class="contact">Contact No:&nbsp;<span class="Detastpd"> <%= @college.phone_no if @college.phone_no.present?%></span></p>
+								<p class="contact"> Email ID: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="Detastpd"><%= @college.email if @college.email.present?%></span></p>
+								<p class="contact"> Website:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><a target="_blank" class="HanD" href="<%= @college.website%>"><%= @college.website if @college.website.present?%></a></span></p>
+								<p class="contact"> Address: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><%= @college.address if @college.address.present?%></span></p>
 							</div>
 							<div class="col-sm-12 col-xs-12 col-md-7 col-lg-7">
 								

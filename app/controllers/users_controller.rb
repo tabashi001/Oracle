@@ -36,9 +36,9 @@ class UsersController < ApplicationController
     @colleges = User.where.not(:id => @college)
     @all_college = @colleges.where("city_id = ? AND role_name = ?",@college.city_id,@college.role_name)
     @facilities =  @college.campus
-    @course_detail = @college.courses
+    @course_detail = @college.courses if @college.courses.present?
     @first = @college.courses.first if @college.courses.present?
-    @course_name = @first.course_names if @first.present? && @first.course_names.present?
+    @course_name = @first.course_names if @first.present?
     @courses = @college.courses.where.not("id=?",@first.id) if @first.present?
     @scholership = @college.scholarships
     @placement = @college.placements
