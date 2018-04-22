@@ -62,7 +62,8 @@
 							<div class="item active">
 								<div class="row">
 									<div class="col-sm-12">
-										<% @all_college.first(3).each do |img| %>
+										<%if @all_college.present? %>
+										<% @all_college.each do |img| %>
 											<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
 												<div class="building">
 													<%if img.profile_image.present?%>
@@ -73,6 +74,9 @@
 												</div>
 											</div>
 										<%end%>
+										<%else%>
+										 No Similar Colleges
+										 <%end%>
 									</div>
 								</div>
 							</div>
