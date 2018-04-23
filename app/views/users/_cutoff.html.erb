@@ -45,7 +45,7 @@
 			</div>
 		</div>
 		<div class="row overviewBox">
-			<span class="overview">Contact Details of <%= @college.name%>,
+			<span class="overview">Contact Details of <%= @college.name if @college.name.present? %>,
 				<% @city = City.find(@college.city_id) if @college.city_id.present?%>
 				<%= @city.name.capitalize if @city.present?%>
 			</span>
@@ -53,10 +53,10 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="col-sm-12 col-xs-12 col-md-4 col-lg-4">
-						<p class="contact">Contact No:&nbsp;<span class="Detastpd"> <%= @college.phone_no %></span></p>
-						<p class="contact"> Email ID: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="Detastpd"><%= @college.email %></span></p>
-						<p class="contact"> Website:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><a target="_blank" class="HanD" href="<%= @college.website%>"><%= @college.website%></a></span></p>
-						<p class="contact"> Address: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><%= @college.address %></span></p>
+						<p class="contact">Contact No:&nbsp;<span class="Detastpd"> <%= @college.phone_no if @college.phone_no.present? %></span></p>
+						<p class="contact"> Email ID: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="Detastpd"><%= @college.email if @college.email.present? %></span></p>
+						<p class="contact"> Website:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><a target="_blank" class="HanD" href="<%= @college.website%>"><%= @college.website if @college.website.present?%></a></span></p>
+						<p class="contact"> Address: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><%= @college.address if @college.address.present?%></span></p>
 					</div>
 					<div class="col-sm-12 col-xs-12 col-md-8 col-lg-8">
 					</div>

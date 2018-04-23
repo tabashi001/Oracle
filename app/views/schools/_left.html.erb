@@ -94,11 +94,18 @@
         </li>
         <li>
           <% if current_user.active? %>
-            <%= link_to  school_campus_path(current_user) do %>
-          <i class="fa fa-angle-right"></i>&nbsp; Campus<%end%>
+            <%if current_user.campus.present?%>
+              <%= link_to  school_update_campu_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp;Infrastructure
+              <%end%>
           <%else%>
-            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Campus</a>
+            <%= link_to school_campus_path(current_user) do %>
+              <i class="fa fa-angle-right"></i>&nbsp;Infrastructure
+            <%end%>
           <%end%>
+        <%else%>
+            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Overview</a>
+        <%end%>
         </li>
         <li>
           <% if current_user.active? %>

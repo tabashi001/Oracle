@@ -25,7 +25,7 @@
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th>Course Name</th>
+                <th>Degree Name</th>
                 <th>Duration</th>
                 <th>Fees</th>
                 <th>Action</th>
@@ -34,7 +34,8 @@
             <% @courses.each do |course|%>
               <tbody>
                 <tr>
-                  <td><%= course.course_name%></td>
+                  <td><% @degree = Degree.find(course.degree_id) if course.degree_id.present? %>
+                  <%= @degree.degree_name if @degree.present? %></td>
                   <td><%= course.course_duration%></td>
                   <td><%= course.course_fee%></td>
                   <td>

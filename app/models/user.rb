@@ -37,8 +37,7 @@ class User < ApplicationRecord
   after_validation :geocode       # auto-fetch coordinates
 
   has_many :overviews, as: :user
-  has_many :courses, inverse_of: :user
-  accepts_nested_attributes_for :courses
+  has_many :courses
   has_many :scholarships
   has_many :placements
   has_many :cutoffs
@@ -66,18 +65,6 @@ class User < ApplicationRecord
       SchoolPicture.create(picture: image)
     end
   end
-
-  def create_course(courses)
-    #self.courses.destroy_all
-    courses.each do |course|
-      self.courses.create(course_name: course)
-    end
-  end
-
-  # def address
-  #   [city,pincode, address].compact.join(', ')
-  # end
-
 
   def find_location
     loc = Geocoder.coordinates(self.address)

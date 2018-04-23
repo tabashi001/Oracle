@@ -1,4 +1,3 @@
-
 <div id="overview" class="active">
 	<div class="row conserti">
 		<div class="col-sm-12 consw">
@@ -63,7 +62,8 @@
 							<div class="item active">
 								<div class="row">
 									<div class="col-sm-12">
-										<% @all_college.first(3).each do |img| %>
+										<%if @all_college.present? %>
+										<% @all_college.each do |img| %>
 											<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
 												<div class="building">
 													<%if img.profile_image.present?%>
@@ -74,6 +74,9 @@
 												</div>
 											</div>
 										<%end%>
+										<%else%>
+										 No Similar Colleges
+										 <%end%>
 									</div>
 								</div>
 							</div>
@@ -89,7 +92,7 @@
 					</div>
 				</div>
 				<div class="overviewBox">
-					<span class="overview">Contact Details of <%= @college.name%>,
+					<span class="overview">Contact Details of <%= @college.name if @college.name.present? %>,
 						<% @city = City.find(@college.city_id) if @college.city_id.present?%>
 						<%= @city.name.capitalize if @city.present?%>
 					</span>
@@ -98,10 +101,10 @@
 						<div class="col-sm-12 col-md-12">
 							
 							<div class="col-sm-12 col-xs-12 col-md-5 col-lg-5">
-								<p class="contact">Contact No:&nbsp;<span class="Detastpd"> <%= @college.phone_no %></span></p>
-								<p class="contact"> Email ID: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="Detastpd"><%= @college.email %></span></p>
-								<p class="contact"> Website:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><a target="_blank" class="HanD" href="<%= @college.website%>"><%= @college.website%></a></span></p>
-								<p class="contact"> Address: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><%= @college.address %></span></p>
+								<p class="contact">Contact No:&nbsp;<span class="Detastpd"> <%= @college.phone_no if @college.phone_no.present?%></span></p>
+								<p class="contact"> Email ID: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="Detastpd"><%= @college.email if @college.email.present?%></span></p>
+								<p class="contact"> Website:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><a target="_blank" class="HanD" href="<%= @college.website%>"><%= @college.website if @college.website.present?%></a></span></p>
+								<p class="contact"> Address: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Detastpd"><%= @college.address if @college.address.present?%></span></p>
 							</div>
 							<div class="col-sm-12 col-xs-12 col-md-7 col-lg-7">
 							<div id="googleMap" style="width:100%;height:290px;"></div>
