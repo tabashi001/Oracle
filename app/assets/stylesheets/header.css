@@ -12,6 +12,9 @@
   height: 130px;
   width: 100%;
 }
+.img-responsive {
+  display: inline-block;
+}
 
 .abouttitle {
   margin: 0;
