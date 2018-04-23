@@ -17,67 +17,8 @@
 	</div>
 
 	<div class="container CollegeBox">
-		<span class="overview">Facilities</span>
-		<hr>
-		<div id="myCarousel" class="carousel slide" data-ride="carousel">
-			<!-- Indicators -->
-			<div class="jcarousel-wrapper">
-				<div class="jcarousel" >
-					<ul>
-						<% if @facilities.present? %>
-						<%# @facilities.each do |fac| %>
-							<%if @facilities.boys_hostel.present?%>
-								<li><%= image_tag("bhostel.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">BOYS HOSTEL</center> </li>
-							<%end%>
-							<%if @facilities.girls_hostel.present?%>
-								<li><%= image_tag("ghostel.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">GRLS HOSTEL</center></p></li>
-							<%end%>
-							<%if @facilities.library.present?%>
-								<li><%= image_tag("library.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">LIBRARY</center></li>
-							<%end%>
-							<%if @facilities.sports.present?%>
-								<li><%= image_tag("sports.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">SPORTS</center></li>
-							<%end%>
-							<%if @facilities.gym.present?%>
-								<li><%= image_tag("gym.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">GYM</center></li>
-							<%end%>
-							<%if @facilities.s_pool.present?%>
-								<li><%= image_tag("s_pool.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">SWIMMING POOL</center></li>
-							<%end%>
-							<%if @facilities.p_ground.present?%>
-								<li><%= image_tag("p_ground.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">PLAY GROUND</center></li>
-							<%end%>
-							<%if @facilities.canteen.present?%>
-								<li><%= image_tag("canteen.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">CANTEEN</center></li>
-							<%end%>
-							<%if @facilities.classroom.present?%>
-								<li><%= image_tag("classroom.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">CLASS ROOMS</center></li>
-							<%end%>
-							<%if @facilities.placement.present?%>
-								<li><%= image_tag("placement.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">PLACEMENTS</center></li>
-							<%end%>
-							<%if @facilities.club.present?%>
-								<li><%= image_tag("club.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">CLUB</center></li>
-							<%end%>
-							<%if @facilities.h_centre.present?%>
-								<li><%= image_tag("h_centre.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">HEALTH CENTRE</center></li>
-							<%end%>
-							<%if @facilities.yoga.present?%>
-								<li><%= image_tag("yoga.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">YOGA</center></li>
-							<%end%>
-							<%if @facilities.auditorium.present?%>
-								<li><%= image_tag("auditorium.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">AUDITORIUM</center></li>
-							<%end%>
-						<%#end%>
-						<%else%>
-						  No Facilities Provided
-						<%end%>
-					</ul>
-				</div>
-				<a href="#" class="jcarousel-control-prev">&lsaquo;</a>
-				<a href="#" class="jcarousel-control-next">&rsaquo;</a>
-			</div>
-		</div>
+		
+		
 		<span class="overview">Infrastructure Images</span>
 		<div class="factvdt">
           	<div class="row">
@@ -105,30 +46,260 @@
         	</div> 
         </div> 
 	</div>
-	<div class="container CollegeBox">
+	<!-- <div class="container CollegeBox">
 		<span class="overview">Similar Schools</span>
 		<hr>
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			<!-- Indicators -->
-			<div class="jcarousel-wrapper">
+			<!-- <div class="jcarousel-wrapper">
 				<div class="jcarousel" >
 					<ul>
-						<% if @all_college.present? %>
-							<% @all_college.each do |img| %>
-								<%if img.profile_image.present?%>
-									<li><a href="/users/show?id=<%= img.id %>"><%= image_tag img.profile_image, class: "img-responsive schBuilding"%><%= img.name %></a></li>
-								<%else%>
-									<li><a href="/users/show?id=<%= img.id %>">
-									<%= image_tag("logo1.png",class: "img-responsive schBuilding")%></a></li>
-								<%end%>
-							<%end%>
-						<%else%>
+						<% #if @all_college.present? %>
+							<% #@all_college.each do |img| %>
+								<%#if img.profile_image.present?%>
+									<li><a href="/users/show?id=<%#= img.id %>"><%#= image_tag img.profile_image, class: "img-responsive schBuilding"%><%#= img.name %></a></li>
+								<%#else%>
+									<li><a href="/users/show?id=<%#= img.id %>">
+									<%#= image_tag("logo1.png",class: "img-responsive schBuilding")%></a></li>
+								<%#end%>
+							<%#end%>
+						<%#else%>
 							No Similar Colleges
-						<%end%>
+						<%#end%>
 					</ul>
 				</div>
-				<a href="#" class="jcarousel-control-prev">&lsaquo;</a>
-				<a href="#" class="jcarousel-control-next">&rsaquo;</a>
+				<a class="left carousel-control sliDerbacktrans" href="#myCarousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control sliDerbacktrans" href="#myCarousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				<span class="sr-only">Next</span>
+			</a>
+			</div>
+		</div>
+	</div>  -->
+	<div class="container CollegeBox">
+	<span class="overview">Facilities</span>
+	<hr>
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<div class="carousel-inner">
+				<% if @facilities.present? %>
+					<div class="item active">
+						<div class="row">
+							<div class="col-sm-12">
+							<%# @facilities.each do |co|%>
+								<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+									<div class="building">
+										<%if @facilities.boys_hostel.present?%>
+											<%= image_tag("bhostel.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">BOYS HOSTEL</center>
+										<%end%>
+									</div>
+								</div>
+								<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+									<div class="building">
+										<%if @facilities.girls_hostel.present?%>
+											<%= image_tag("ghostel.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">GRLS HOSTEL</center></p>
+										<%end%>
+									</div>
+								</div>
+								<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+									<div class="building">
+										<%if @facilities.library.present?%>
+											<li><%= image_tag("library.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">LIBRARY</center>
+										<%end%>
+									</div>
+								</div>
+								<%#end%>
+							</div>
+						</div>
+					</div>
+				<%end%>
+				<% if @facilities.present? %>
+					<%# @facilities.each do |co|%>
+						<div class="item">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+										<div class="building">
+											<%if @facilities.sports.present?%>
+												<%= image_tag("sports.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">SPORTS</center>
+											<%end%>
+											
+												
+										</div>
+									</div>
+									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+										<div class="building">
+											<%if @facilities.gym.present?%>
+												<%= image_tag("gym.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">GYM</center>
+											<%end%>	
+										</div>
+									</div>
+									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+										<div class="building">
+											<%if @facilities.s_pool.present?%>
+												<%= image_tag("s_pool.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">SWIMMING POOL</center>
+											<%end%>	
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+										<div class="building">
+											<%if @facilities.p_ground.present?%>
+												<%= image_tag("p_ground.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">PLAY GROUND</center>
+											<%end%>
+											
+											
+										</div>
+									</div>
+									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+										<div class="building">
+											<%if @facilities.canteen.present?%>
+												<%= image_tag("canteen.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">CANTEEN</center>
+											<%end%>
+										</div>
+									</div>
+									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+										<div class="building">
+											<%if @facilities.classroom.present?%>
+												<%= image_tag("classroom.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">CLASS ROOMS</center>
+											<%end%>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+										<div class="building">
+											<%if @facilities.placement.present?%>
+												<%= image_tag("placement.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">PLACEMENTS</center>
+											<%end%>
+											
+											
+										</div>
+									</div>
+									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+										<div class="building">
+											<%if @facilities.club.present?%>
+												<%= image_tag("club.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">CLUB</center>
+											<%end%>
+										</div>
+									</div>
+									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+										<div class="building">
+											<%if @facilities.h_centre.present?%>
+												<%= image_tag("h_centre.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">HEALTH CENTRE</center>
+											<%end%>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+										<div class="building">
+											<%if @facilities.yoga.present?%>
+												<%= image_tag("yoga.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">YOGA</center>
+											<%end%>
+										</div>
+									</div>
+									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+										<div class="building">
+											<%if @facilities.auditorium.present?%>
+												<%= image_tag("auditorium.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">AUDITORIUM</center>
+											<%end%>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+				<%#end%>
+				<%end%>
+				<a class="left carousel-control sliDerbacktrans" href="#myCarousel" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control sliDerbacktrans" href="#myCarousel" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="container CollegeBox">
+	<span class="overview">Similar Colleges</span>
+	<hr>
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<div class="carousel-inner">
+				<%if @all_college.present? %>
+					<div class="item active">
+						<div class="row">
+							<div class="col-sm-12">
+							<% @all_college.first(3).each do |co|%>
+								<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+									<div class="building">
+										<% if co.profile_image.present? %>
+											<a href="/users/show?id=<%= co.id %>">
+												<%= image_tag img.profile_image, class: "img-responsive schBuilding"%>
+												<%= co.name %>
+											</a>
+										<%else%>
+											<a href="/users/show?id=<%= co.id %>">
+												<img src="/assets/logo.png" class="img-responsive schBuilding" alt="Building">
+											<%= co.name %>
+										<%end%>
+									</div>
+								</div>
+								<%end%>
+							</div>
+						</div>
+					</div>
+				<%end%>
+				<%if @all_college.present? %>
+					<% @all_college.each do |co|%>
+						<div class="item">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+												<div class="building">
+													<% if co.profile_image.present? %>
+														<a href="/users/show?id=<%= co.id %>">
+															<%= image_tag img.profile_image, class: "img-responsive schBuilding"%>
+															<%= co.name %>
+														</a>
+													<%else%>
+														<a href="/users/show?id=<%= co.id %>">
+															<img src="/assets/logo.png" class="img-responsive schBuilding" alt="Building">
+														<%= co.name %>
+													<%end%>
+												</div>
+											</div>
+											
+								
+								</div>
+							</div>
+						</div>
+				<%end%>
+				<%end%>
+				<a class="left carousel-control sliDerbacktrans" href="#myCarousel" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control sliDerbacktrans" href="#myCarousel" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+					<span class="sr-only">Next</span>
+				</a>
 			</div>
 		</div>
 	</div>
@@ -140,5 +311,5 @@
      interval: 3000
   });
 });
-	
+
 </script>

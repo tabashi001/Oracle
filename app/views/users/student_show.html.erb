@@ -129,7 +129,7 @@
       	<div class="col-md-4">
           <h3><%= video.title%></h3>
           <!-- <iframe width="100%" height="150" src="<%#= video.video%>"></iframe> -->
-          <embed width="100%" height="150" src="<%= video.video%>"></embed>
+          <iframe width="100%" height="150" src="<%= video.video%>?autoplay=1&showinfo=0&controls=0"></iframe>
   
         
           <%#= video_tag video.video, width: "100%",height: "150", autoplay: true,:loop => true%>
