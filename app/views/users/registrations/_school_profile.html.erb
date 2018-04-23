@@ -170,7 +170,7 @@
   $(document).on("change", "#user_state_id", function(){
     var state = $(this).val();
     $.ajax({
-      url: "/users/<%=current_user.id%>/edit",
+      url: "/users/edit",
       method: "GET",
       dataType: "json",
       data: {state: state},
