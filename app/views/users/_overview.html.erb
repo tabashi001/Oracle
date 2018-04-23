@@ -70,7 +70,7 @@
 									<div class="building">
 										<% if co.profile_image.present? %>
 											<a href="/users/show?id=<%= co.id %>">
-												<%= image_tag img.profile_image, class: "img-responsive schBuilding"%>
+												<%= image_tag co.profile_image, class: "img-responsive schBuilding"%>
 												<%= co.name %>
 											</a>
 										<%else%>
@@ -94,7 +94,7 @@
 												<div class="building">
 													<% if co.profile_image.present? %>
 														<a href="/users/show?id=<%= co.id %>">
-															<%= image_tag img.profile_image, class: "img-responsive schBuilding"%>
+															<%= image_tag co.profile_image, class: "img-responsive schBuilding"%>
 															<%= co.name %>
 														</a>
 													<%else%>
