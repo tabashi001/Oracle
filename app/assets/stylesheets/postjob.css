@@ -66,6 +66,9 @@ border-radius: 0px;
     top: 50px;
     left: 7%;
 }
+.container-fluid.background {
+  height:auto;
+}
 .log{
 	padding:10px 20px;
 }
