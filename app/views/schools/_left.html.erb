@@ -71,9 +71,9 @@
         <li>
           <% if current_user.active? %>
              <%= link_to  school_scholarships_path(current_user) do %>
-          <i class="fa fa-angle-right"></i>&nbsp; Scholarship<%end%>
+          <i class="fa fa-angle-right"></i>&nbsp; Teacher's Profile<%end%>
           <%else%>
-            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Scholarship</a>
+            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Teacher's Profile</a>
           <%end%>
         </li>
         <li>
@@ -81,15 +81,15 @@
            <%= link_to  school_placements_path(current_user) do %>
           <i class="fa fa-angle-right"></i>&nbsp; Placement<%end%>
           <%else%>
-            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Placement</a>
+            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Success Story</a>
           <%end%>
         </li>
         <li>
           <% if current_user.active? %>
             <%= link_to  school_cutoffs_path(current_user) do %>
-          <i class="fa fa-angle-right"></i>&nbsp; Cutoff<%end%>
+          <i class="fa fa-angle-right"></i>&nbsp; Admission<%end%>
           <%else%>
-            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Cutoff</a>
+            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Admission</a>
           <%end%>
         </li>
         <li>
