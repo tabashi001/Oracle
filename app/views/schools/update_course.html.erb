@@ -17,14 +17,23 @@
             </div>   
             <div class="form-group margunrve">
               <label for="sel1">Select Degree :</label>
-              <%=f.select :degree_id, options_for_select(@degrees.collect{|p| [p.degree_name, p.id]}),{include_blank: "Select Degree"},{required: 'true',autofocus:'true',class:'form-control'} %>
+              <%=f.select :degree_id, options_for_select(@degrees.collect{|p| [p.degree_name, p.id]},:selected => f.object.degree_id),{include_blank: "Select Degree"},{required: 'true',autofocus:'true',class:'form-control'} %>
             </div> 
-            <div class="form-group margunrve">
-              <%= label_tag :new_course_name, "Name of Course" %>
-              <%= text_field_tag :new_course_name,"", class: 'form-control' %><br />
+            <!-- <div class="form-group margunrve">
+              <%#= label_tag :new_course_name, "Name of Course" %>
+              <%#= text_field_tag :new_course_name,"", class: 'form-control' %><br />
                <p class="text-center">Or</p>
               <label for="sel1">Select Course :</label>
-              <%= f.select( :course_name, Course.all.map {|p| [p.course_name]}.uniq, {},{:prompt => "Select a Courses",:class => "form-control"}) %>
+              <%#= f.select( :course_name, Course.all.map {|p| [p.course_name]}.uniq, {},{:prompt => "Select a Courses",:class => "form-control"}) %>
+            </div> -->
+            <div class="form-group margunrve">
+              <button id="add_course_name">Add Course</button>
+              <div id="course_names" class="">
+                <div class="course_name "> 
+                  <%=text_field_tag "courses[]"%>
+                  <button class="remove">x</button>
+                </div>
+              </div>
             </div>
              <div class="form-group">
               <label for="sel1">Duration</label>
@@ -108,5 +117,16 @@
         }
       }
     });
+  });
+</script>
+
+<script type="text/javascript">
+  $('#add_course_name').on('click', function() { 
+    $('#course_names').append('<div class="course_name"><%=text_field_tag "courses[]"%><button class="remove">x</button></div>');
+    return false; //prevent form submission
+  });
+  $('#course_names').on('click', '.remove', function() {
+      $(this).parent().remove();
+      return false; //prevent form submission
   });
 </script>

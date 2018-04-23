@@ -113,18 +113,18 @@
 			<div class="jcarousel-wrapper">
 				<div class="jcarousel" >
 					<ul>
-					<% if @all_college.present? %>
-					<% @all_college.each do |img| %>
-						<%if img.profile_image.present?%>
-							<li><a href="/users/show?id=<%= img.id %>"><%= image_tag img.profile_image, class: "img-responsive schBuilding"%><%= img.name %></a></li>
+						<% if @all_college.present? %>
+							<% @all_college.each do |img| %>
+								<%if img.profile_image.present?%>
+									<li><a href="/users/show?id=<%= img.id %>"><%= image_tag img.profile_image, class: "img-responsive schBuilding"%><%= img.name %></a></li>
+								<%else%>
+									<li><a href="/users/show?id=<%= img.id %>">
+									<%= image_tag("logo1.png",class: "img-responsive schBuilding")%></a></li>
+								<%end%>
+							<%end%>
 						<%else%>
-							<li><a href="/users/show?id=<%= img.id %>">
-							<%= image_tag("logo1.png",class: "img-responsive schBuilding")%></a></li>
+							No Similar Colleges
 						<%end%>
-					<%end%>
-					<%else%>
-						No Similar Colleges
-					<%end%>
 					</ul>
 				</div>
 				<a href="#" class="jcarousel-control-prev">&lsaquo;</a>
