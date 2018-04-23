@@ -34,7 +34,7 @@
           <%= form_tag teacher_find_student_path(current_user), :method => 'get' do %>
             <%#= select_tag "name",options_for_select(@name),prompt: "Select Student"%>
             <%= select_tag "qualification",options_for_select(@qualification),prompt: "Select Subject"%>
-            <%= select_tag "city_id",options_for_select(@cities.collect{|p| [p.name, p.id]}),prompt: "Select City"%>
+            <%= select_tag "city_id",options_for_select(@cities.collect{|p| [p.name, p.id]}),prompt: "Select City" if @cities.present? %>
             <%= button_tag "Search" ,:class => "sEarch"%>
           <% end %>
       </form>
@@ -100,7 +100,7 @@
 <!-- /#wrap -->
 
 <footer class="Footer bg-dark dker">
-    <p>2017 &copy; Tabashi Technology Private Limited</p>
+    <p> © 2018.Eduoracle Educational Services Pvt. Ltd. All rights reserved. </p>
 </footer>
 <!-- /#footer -->
 

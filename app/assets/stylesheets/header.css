@@ -8,6 +8,10 @@
   padding: 53px 0;
   position: relative;
 }
+.img-responsive.schBuilding {
+  height: 130px;
+  width: 100%;
+}
 
 .abouttitle {
   margin: 0;
@@ -29,11 +33,7 @@
   width: 35px;
 }
 
-.img-responsive {
-  display: inline-block;
-  *display: inline;
-  *zoom: 1;
-}
+
 
 .navbar-default {
   background-color:transparent;
