@@ -79,7 +79,7 @@
                 <td><%=slot.date%></td>
                 <td><%=slot.time%></td>
                 <td><%=slot.duration%></td>
-                <td><%=link_to "Apply",users_apply_to_post_path(slot),class: "btn btn-primary"%></button></td>
+                <td><%=link_to "Express Interest",users_apply_to_post_path(slot),class: "btn btn-primary"%></button></td>
               <%end%>
               <%else%>
                No Slots Available
@@ -111,7 +111,7 @@
                 <td><%=slot.id%></td>
                 <td><%=slot.title%></td>
                 <td><%=slot.description.first(100)%></td>
-                <td><%=link_to "Buy",users_apply_to_post_path(slot),class: "btn btn-primary"%></button></td>
+                <td><%=link_to "Express Interest",users_apply_to_post_path(slot),class: "btn btn-primary"%></button></td>
               <%end%>
               <%else%>
                No Slots Available
