@@ -158,11 +158,11 @@ margin-top: 0 !important;
 								            <div class="col-md-10">
 								            <%#debugger%>
 								            	<% if school.role_name == "1"%>
-								            		<a href="/users/show?id=<%= school.id %>" target="_blank"></a>
+								            		<a href="/users/show?id=<%= school.id %>" target="_blank">
 								            	<%else%>
-								            		<a href="/users/student_show?id=<%= school.id %>" target="_blank"></a>
+								            		<a href="/users/student_show?id=<%= school.id %>" target="_blank">
 								            	<%end%>
-								        		<h4 id="<%= school.id %>"><%= school.name %> </h4>
+								        		<h4 id="<%= school.id %>"><%= school.name %> </h4></a>
 								        		<span> <i class="fa fa-address"></i> <%= school.address%>,
 								        		<% if @city = City.find_by_id(school.city_id)%><%= @city.name%> 
 								        		<%end%>,
