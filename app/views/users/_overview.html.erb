@@ -65,12 +65,13 @@
 													<% if co.profile_image.present? %>
 														<a href="/users/show?id=<%= co.id %>">
 															<%= image_tag co.profile_image, class: "img-responsive schBuilding"%>
-															<%= co.name %>
+															<center><%= co.name %></center>
 														</a>
 													<%else%>
 														<a href="/users/show?id=<%= co.id %>">
 															<%= image_tag("logo.png",class: "img-responsive schBuilding")%>
-														<%= co.name %>
+														<center><%= co.name %></center>
+														</a>
 													<%end%>
 												</div>
 											</div>
@@ -89,12 +90,13 @@
 														<% if co.profile_image.present? %>
 															<a href="/users/show?id=<%= co.id %>">
 																<%= image_tag co.profile_image, class: "img-responsive schBuilding"%>
-																<%= co.name %>
+																<center><%= co.name %></center>
 															</a>
 														<%else%>
 															<a href="/users/show?id=<%= co.id %>">
 																<%= image_tag("logo.png",class: "img-responsive schBuilding")%>
-															<%= co.name %>
+															<center><%= co.name %></center>
+															</a>
 														<%end%>
 													</div>
 												</div>
