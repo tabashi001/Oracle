@@ -51,22 +51,22 @@
 					<div class="item active">
 						<div class="row">
 							<div class="col-sm-12">
-								<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+								<div class="col-sm-3 col-xs-6 col-md-3 col-lg-3">
 									<div class="building">
 										<%if @facilities.boys_hostel.present?%>
 											<%= image_tag("icon4.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">BOYS HOSTEL</center>
 										<%end%>
 									</div>
 								</div>
-								<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+								<div class="col-sm-3 col-xs-6 col-md-3 col-lg-3">
 									<div class="building">
 										<%if @facilities.girls_hostel.present?%>
-											<%= image_tag("icon5.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">GRLS HOSTEL</center></p>
+											<%= image_tag("icon5.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">GRLS HOSTEL</center>
 									
 										<%end%>
 									</div>
 								</div>
-								<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+								<div class="col-sm-3 col-xs-6 col-md-3 col-lg-3">
 									<div class="building">
 										<%if @facilities.library.present?%>
 											<li><%= image_tag("icon14.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">LIBRARY</center>
@@ -74,6 +74,15 @@
 										<%end%>
 									</div>
 								</div>
+								<div class="col-sm-3 col-xs-6 col-md-3 col-lg-3">
+										<div class="building">
+											<%if @facilities.sports.present?%>
+												<%= image_tag("icon12.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">SPORTS</center>
+											<%end%>
+											
+												
+										</div>
+									</div>
 							</div>
 						</div>
 					</div>
@@ -83,36 +92,22 @@
 						<div class="item">
 							<div class="row">
 								<div class="col-sm-12">
-									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
-										<div class="building">
-											<%if @facilities.sports.present?%>
-												<%= image_tag("icon12.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">SPORTS</center>
-											<%end%>
-											
-												
-										</div>
-									</div>
-									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+									
+									<div class="col-sm-3 col-xs-6 col-md-3 col-lg-3">
 										<div class="building">
 											<%if @facilities.gym.present?%>
 												<%= image_tag("icon2.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">GYM</center>
 											<%end%>	
 										</div>
 									</div>
-									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+									<div class="col-sm-3 col-xs-6 col-md-3 col-lg-3">
 										<div class="building">
 											<%if @facilities.s_pool.present?%>
 												<%= image_tag("icon1.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">SWIMMING POOL</center>
 											<%end%>	
 										</div>
 									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="row">
-								<div class="col-sm-12">
-									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+									<div class="col-sm-3 col-xs-6 col-md-3 col-lg-3">
 										<div class="building">
 											<%if @facilities.p_ground.present?%>
 												<%= image_tag("icon6.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">PLAY GROUND</center>
@@ -121,17 +116,10 @@
 											
 										</div>
 									</div>
-									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+									<div class="col-sm-3 col-xs-6 col-md-3 col-lg-3">
 										<div class="building">
 											<%if @facilities.canteen.present?%>
 												<%= image_tag("icon9.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">CANTEEN</center>
-											<%end%>
-										</div>
-									</div>
-									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
-										<div class="building">
-											<%if @facilities.classroom.present?%>
-												<%= image_tag("icon10.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">CLASS ROOMS</center>
 											<%end%>
 										</div>
 									</div>
@@ -141,7 +129,15 @@
 						<div class="item">
 							<div class="row">
 								<div class="col-sm-12">
-									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+									
+									<div class="col-sm-3 col-xs-6 col-md-3 col-lg-3">
+										<div class="building">
+											<%if @facilities.classroom.present?%>
+												<%= image_tag("icon10.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">CLASS ROOMS</center>
+											<%end%>
+										</div>
+									</div>
+									<div class="col-sm-3 col-xs-6 col-md-3 col-lg-3">
 										<div class="building">
 											<%if @facilities.placement.present?%>
 												<%= image_tag("icon13.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">PLACEMENTS</center>
@@ -150,14 +146,14 @@
 											
 										</div>
 									</div>
-									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+									<div class="col-sm-3 col-xs-6 col-md-3 col-lg-3">
 										<div class="building">
 											<%if @facilities.club.present?%>
 												<%= image_tag("icon11.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">CLUB</center>
 											<%end%>
 										</div>
 									</div>
-									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+									<div class="col-sm-3 col-xs-6 col-md-3 col-lg-3">
 										<div class="building">
 											<%if @facilities.h_centre.present?%>
 												<%= image_tag("icon3.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">HEALTH CENTRE</center>
@@ -167,17 +163,18 @@
 								</div>
 							</div>
 						</div>
+						
 						<div class="item">
 							<div class="row">
 								<div class="col-sm-12">
-									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+									<div class="col-sm-3 col-xs-6 col-md-3 col-lg-3">
 										<div class="building">
 											<%if @facilities.yoga.present?%>
 												<%= image_tag("icon7.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">YOGA</center>
 											<%end%>
 										</div>
 									</div>
-									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+									<div class="col-sm-3 col-xs-6 col-md-3 col-lg-3">
 										<div class="building">
 											<%if @facilities.auditorium.present?%>
 												<%= image_tag("icon8.png",:size => "260x180",class: "img-responsive schBuilding")%><center class="crdtxt">AUDITORIUM</center>
