@@ -34,7 +34,9 @@ class UsersController < ApplicationController
   def show
     @college 	= User.find(id = params[:id])
     @colleges = User.where.not(:id => @college)
-    @all_college = @colleges.where("city_id = ? AND role_name = ?",@college.city_id,@college.role_name)
+    @all_college = @colleges.where("city_id = ? AND role_name = ?",@college.city_id,@college.role_name).first(3)
+    @first_colleges = User.where.not(:id => @all_college)
+    @r_college = @first_colleges.where("city_id = ? AND role_name = ?",@college.city_id,@college.role_name)
     @facilities =  @college.campus.first
     @course_detail = @college.courses if @college.courses.present?
     @first = @college.courses.first if @college.courses.present?
