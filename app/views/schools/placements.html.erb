@@ -25,10 +25,12 @@
             <thead>
               <tr>
                 <th>Title</th>
-                <th>challenges</th>
+                <th>Challenges</th>
                 <th>Students Qualified</th>
+                <th>Total Students</th>
                 <th>Year</th>
                 <th>Milestones</th>
+                <th>Status</th>
               </tr>
             </thead>
             <% @placements.each do |placement|%>
@@ -37,7 +39,9 @@
                   <td><%= placement.title%></td>
                   <td><%= placement.companies_visited%></td>
                   <td><%= placement.students_placed%></td>
+                  <td><%= placement.total_students%></td>
                   <td><%= placement.year%></td>
+                  <td><%= placement.description%></td>
                   <td>
                     <%=link_to "Edit", school_update_placement_path(placement),class: "btn btn-primary btn-xs"%>
                     <%=link_to "Delete", school_destroy_placement_path(placement),class: "btn btn-danger btn-xs", data: {confirm: "Are you sure?"}%>

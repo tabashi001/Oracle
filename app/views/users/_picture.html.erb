@@ -6,21 +6,26 @@
 			<div class="row imgVid">
 				<% if @gallery.present? %>
 					<% @gallery.each do |gallery|%>
+					<% @pics = gallery.school_images %>
+						 		<%@pics.each do |p|%>
 						<div class="col-md-3">
 						  	<div class="thumbnail">
 						  		<div class="caption">
 									<p><%= gallery.title%></p>
 							 	</div>
-								<%if gallery.picture.present?%>
-								  	<%= image_tag gallery.picture,style: "width:100%"%>
-								<%else%>
-								  	<%= image_tag('building.jpg',style: "width:100%")%>
-								<%end%>
+							 	
+									<%if p.school_picture.present?%>
+									  	<%= image_tag p.school_picture,size:'400x300'%>
+									<%else%>
+									  	<%= image_tag('building.jpg',style: "width:100%")%>
+									<%end%>
+								
 							  	<div class="caption">
 									<p><%= gallery.description%></p>
 							 	</div>
 						  	</div>
 						</div>
+						<%end%>
 					<%end%>
 				<%else%>
 					<p>No Images are present.....</p>

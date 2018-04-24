@@ -6,9 +6,10 @@
 					<table class="table table-striped">
 						<thead>
 						  <tr>
-							<th>STREAM NAME</th>
+							<th>TITLE</th>
 							<th>CHALLENGES</th>
 							<th>STUDENT QUALIFIED</th>
+							<th>TOTAL STUDENTS</th>
 							<th>YEAR</th>
 							<th>MILESTONES</th>
 						  </tr>
@@ -20,8 +21,9 @@
 										<td><%= place.title%></td>
 										<td><%= place.companies_visited%></td>
 										<td><%= place.students_placed%></td>
+										<td><%= place.total_students%></td>
 										<td><%= place.year%></td>
-										<td></td>
+										<td><%= place.description%></td>
 								  	</tr>
 							  	<%end%>
 							<%else%>
