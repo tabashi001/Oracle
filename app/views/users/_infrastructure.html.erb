@@ -21,19 +21,24 @@
 		<div class="factvdt">
           	<div class="row">
           		<% if @facilities.present? %>
-		            <div class="col-md-4 text-center">
+		            <div class="col-md-3 text-center">
 		               	<%if @facilities.image1.present?%>
 							<%= image_tag @facilities.image1, class: "img-responsive IMGdgcust"%>
 						<%end%>
 		            </div> 
-		            <div class="col-md-4 text-center">
+		            <div class="col-md-3 text-center">
 		                <%if @facilities.image2.present?%>
 							<%= image_tag @facilities.image2, class: "img-responsive IMGdgcust"%>
 						<%end%>
 		            </div> 
-		            <div class="col-md-4 text-center">
+		            <div class="col-md-3 text-center">
 		                <%if @facilities.image3.present?%>
 							<%= image_tag @facilities.image3, class: "img-responsive IMGdgcust"%>
+						<%end%>
+		            </div>
+		            <div class="col-md-3 text-center">
+		                <%if @facilities.image4.present?%>
+							<%= image_tag @facilities.image4, class: "img-responsive IMGdgcust"%>
 						<%end%>
 		            </div>
 		        <%else%>
@@ -201,7 +206,7 @@
 						<div class="row">
 							<div class="col-sm-12">
 								<% @all_college.each do |co|%>
-									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+								<div class="col-sm-3 col-xs-6 col-md-3 col-lg-3">
 										<div class="building">
 											<% if co.profile_image.present? %>
 												<a href="/users/show?id=<%= co.id %>">
@@ -226,7 +231,7 @@
 						<div class="item">
 							<div class="row">
 								<div class="col-sm-12">
-									<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+									<div class="col-sm-3 col-xs-6 col-md-3 col-lg-3">
 										<div class="building">
 											<% if co.profile_image.present? %>
 												<a href="/users/show?id=<%= co.id %>">
