@@ -100,7 +100,7 @@
 
         <div class="factvdt">
           <div class="row">
-            <div class="col-md-4 text-center">
+            <div class="col-md-3 text-center">
               <%if @campu.image1.exists? %>
                 <%= image_tag @campu.image1,class: "img-responsive IMGdgcust"%>
               <%else%>
@@ -110,7 +110,7 @@
                 </div>
               <%end%>
             </div> 
-            <div class="col-md-4 text-center">
+            <div class="col-md-3 text-center">
               <%if @campu.image2.exists? %>
                 <%= image_tag @campu.image2,class: "img-responsive IMGdgcust"%>
               <%else%>
@@ -120,13 +120,23 @@
                 </div>
               <%end%>
             </div> 
-            <div class="col-md-4 text-center">
+            <div class="col-md-3 text-center">
               <%if @campu.image3.exists? %>
                 <%= image_tag @campu.image3,class: "img-responsive IMGdgcust"%>
               <%else%>
                 <div class="upload-btn-wrapper">
                   <button class="btnupl">Browse</button>
                   <%=f.file_field :image3%>
+                </div>
+              <%end%>
+            </div> 
+            <div class="col-md-3 text-center">
+              <%if @campu.image4.exists? %>
+                <%= image_tag @campu.image4,class: "img-responsive IMGdgcust"%>
+              <%else%>
+                <div class="upload-btn-wrapper">
+                  <button class="btnupl">Browse</button>
+                  <%=f.file_field :image4%>
                 </div>
               <%end%>
             </div> 

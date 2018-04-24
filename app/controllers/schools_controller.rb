@@ -446,7 +446,7 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
 
   def campu_params
     params.require(:campu).permit(:title, :description, :user_id,:boys_hostel,:girls_hostel,:library,:sports,
-      :gym,:s_pool,:p_ground,:canteen,:classroom,:placement,:club,:h_centre,:yoga,:auditorium,:image1,:image2,:image3)
+      :gym,:s_pool,:p_ground,:canteen,:classroom,:placement,:club,:h_centre,:yoga,:auditorium,:image1,:image2,:image3,:image4)
   end
 
   def news_params
