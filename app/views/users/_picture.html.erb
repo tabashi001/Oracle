@@ -21,7 +21,7 @@
 									<%end%>
 								
 							  	<div class="caption">
-									<p><%= gallery.description%></p>
+									<p><%= gallery.description.first(120) if gallery.description.present? %></p>
 							 	</div>
 						  	</div>
 						</div>
