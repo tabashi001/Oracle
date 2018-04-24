@@ -55,8 +55,7 @@ $(document).ready(function() {
 	}
 </style>
 
-<%=render "layouts/header"%>
-
+<%= render :partial => "layouts/header", :locals => { :active => 'Home' }%>
 <body data-spy="scroll" data-target=".main-nav">
 	<section class="home" id="home" data-stellar-background-ratio="0.4">
 		<div class="container">

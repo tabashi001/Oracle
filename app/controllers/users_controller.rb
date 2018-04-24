@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   def index
-   city_id = User.pluck(:city_id).uniq
+   city_id = User.pluck(:city_id).uniq.compact
    city = City.find(city_id)
    @city = city.reject { |item| item.nil? || item == '' }
    @role = User.pluck(:role_name).uniq
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def search
   	@course = Course.all
-    city_id = User.pluck(:city_id).uniq
+    city_id = User.pluck(:city_id).uniq.compact
     city = City.find(city_id)
     @city = city.reject { |item| item.nil? || item == '' }
     if params[:myparam1].present?

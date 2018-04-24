@@ -55,7 +55,8 @@ $(document).ready(function() {
 	}
 </style>
 
-<%=render "layouts/header"%>
+<%= render :partial => "layouts/header", :locals => { :active => 'Service' }%>
+
 
 	<section class="homeone" id="home" data-stellar-background-ratio="0.4">
 		
