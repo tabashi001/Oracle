@@ -12,9 +12,15 @@
     -moz-box-shadow: 0 0 2px #999;
     box-shadow: 0 0 2px #999;
 }
+.col-sm-12.col-md-12.coltwcust {
+  margin-bottom: 20px;
+}
 .img-responsive.IMGdgcust {
   height: 150px;
   width: 100%;
+}
+.discrticust{
+  height:150px;
 }
 
 
@@ -339,10 +345,10 @@ font-weight: bold;
 	border:1px solid #EBEBEB;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.tabx{
-	
-	border:1px solid #EBEBEB;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.tabx {
+  border: 1px solid #ebebeb;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 20px;
 }
 .sship {
   padding: 10px 8px 0;
