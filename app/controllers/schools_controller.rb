@@ -292,9 +292,9 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
     if request.get?
       @picture = SchoolPicture.new
     else
-      @picture = @school.school_pictures.create(schoolpicture_params)
-        if @picture.save
-          @school.create_picture(params[:images]) if params[:images]
+      @picture = @school.school_pictures.new(schoolpicture_params)
+        if @picture.save(validate: false)
+          @picture.create_images(params[:images]) if params[:images]
           redirect_to school_schoolpictures_path
         else 
         end
@@ -306,6 +306,7 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
     else
       @picture = SchoolPicture.find(params[:school_id])
       if @picture.update(schoolpicture_params)
+        @picture.create_images(params[:images]) if params[:images]
         redirect_to school_schoolpictures_path
       else
       end
@@ -453,7 +454,8 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
   end
 
   def schoolpicture_params
-    params.require(:school_picture).permit(:title, :description, :picture, :user_id)
+    params.require(:school_picture).permit(:title, :description, :picture, :user_id,
+      school_images_attributes: [:id,:school_picture,:_destroy])
   end
 
   def schoolvideo_params

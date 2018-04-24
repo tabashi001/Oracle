@@ -62,10 +62,33 @@
         </li>
         <li>
           <% if current_user.active? %>
-            <%= link_to  school_courses_path(current_user) do %>
-            <i class="fa fa-angle-right"></i>&nbsp; Courses<%end%>
+            <%if current_user.campus.present?%>
+              <%= link_to  school_update_campu_path(current_user) do %>
+                <i class="fa fa-angle-right"></i>&nbsp;Infrastructure
+              <%end%>
           <%else%>
-            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right"> Courses</a>
+            <%= link_to school_campus_path(current_user) do %>
+              <i class="fa fa-angle-right"></i>&nbsp;Infrastructure
+            <%end%>
+          <%end%>
+        <%else%>
+            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Overview</a>
+        <%end%>
+        </li>
+        <li>
+          <% if current_user.active? %>
+            <%= link_to  school_courses_path(current_user) do %>
+            <i class="fa fa-angle-right"></i>&nbsp; Courses & Fee Structure<%end%>
+          <%else%>
+            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right"> Courses & Fee Structure</a>
+          <%end%>
+        </li>
+        <li>
+          <% if current_user.active? %>
+            <%= link_to  school_cutoffs_path(current_user) do %>
+          <i class="fa fa-angle-right"></i>&nbsp; Admission<%end%>
+          <%else%>
+            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Admission</a>
           <%end%>
         </li>
         <li>
@@ -79,33 +102,10 @@
         <li>
           <% if current_user.active? %>
            <%= link_to  school_placements_path(current_user) do %>
-          <i class="fa fa-angle-right"></i>&nbsp; Placement<%end%>
+          <i class="fa fa-angle-right"></i>&nbsp; Success Story<%end%>
           <%else%>
             <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Success Story</a>
           <%end%>
-        </li>
-        <li>
-          <% if current_user.active? %>
-            <%= link_to  school_cutoffs_path(current_user) do %>
-          <i class="fa fa-angle-right"></i>&nbsp; Admission<%end%>
-          <%else%>
-            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Admission</a>
-          <%end%>
-        </li>
-        <li>
-          <% if current_user.active? %>
-            <%if current_user.campus.present?%>
-              <%= link_to  school_update_campu_path(current_user) do %>
-                <i class="fa fa-angle-right"></i>&nbsp;Infrastructure
-              <%end%>
-          <%else%>
-            <%= link_to school_campus_path(current_user) do %>
-              <i class="fa fa-angle-right"></i>&nbsp;Infrastructure
-            <%end%>
-          <%end%>
-        <%else%>
-            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Overview</a>
-        <%end%>
         </li>
         <li>
           <% if current_user.active? %>

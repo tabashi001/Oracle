@@ -1,9 +1,9 @@
 class SchoolPicture < ApplicationRecord
-	#validates_presence_of :title, :description, :picture
-	
-	has_attached_file :picture
-  	validates_attachment :picture, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
-  	belongs_to :user
-	#validates_presence_of :title, :description
-  	
+ has_many :school_images
+ accepts_nested_attributes_for :school_images, reject_if: :all_blank, allow_destroy: true
+  def create_images(images)
+    images.each do |image|
+      self.school_images.create(school_picture: image)
+    end
+  end
 end
