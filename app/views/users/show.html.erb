@@ -6,7 +6,7 @@
 
 <div class="container-fluid pgeBo">
 	<% if @college.cover_image.present?%>
-		<div style="background-image: url(<%= @college.cover_image %>)" >
+		<div style="background-image: url(<%= @college.cover_image, class: 'dvfdg'; %>);" >
 	<%else%>
 		<div class = "BaCKgR">
 	<%end%>
