@@ -8,8 +8,7 @@
 
 <div class="container-fluid bg">
 	<div class="stuB">
-	<%=render "layouts/header"%>
-		<div class="stuBbanner">
+	<%= render :partial => "layouts/header", :locals => { :active => 'Home' }%>
 	`		<div class="logo">
 				<% if @user.profile_image.present? %>
 				<%= image_tag @user.profile_image,class: "img-circle stygfh", width: "110", height: "110", border: "0", alt: "profile image" %>
