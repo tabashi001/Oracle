@@ -12,9 +12,9 @@
       </div>
       <div class="collapse navbar-collapse main-nav" id="sept-main-nav">
         <ul class="nav navbar-nav navbar-right navrightmnu">
-          <li class="active"><%= link_to "Home",root_path%></li>
+          <li><%= link_to "Home",root_path%></li>
           <!-- <li><a href="#about">About</a></li> -->
-          <li><a href="#service">Service</a></li>
+          <li class="active"><%= link_to "Services", users_services_path%></li>
           <!-- <li><a href="#contact">Contact Us</a></li> -->
           <li><%= link_to "Login", new_user_session_path%></li>
           <li><%= link_to "Sign Up",new_user_registration_path%></li>

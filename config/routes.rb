@@ -169,4 +169,5 @@ Rails.application.routes.draw do
 	  post 'users/find_all_course_name'
 	  get 'users/current_requirements'
 	  get 'users/apply_to_post'
+	  get 'users/services' 
 end
