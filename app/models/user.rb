@@ -83,17 +83,6 @@ class User < ApplicationRecord
     end
   end
 
-
-
-  # def self.search(search)
-  #   #binding.pry
-  #   if search
-  #     User.where("city LIKE ? AND role = ?","%#{@@first_value[:city]}%","%#{@@first_value[:role]}").paginate(:per_page => 3, :page => params[:page])
-  #   else
-  #     User.all
-  #   end
-  # end
-
   def self.filter(filter)
     if filter
       where(degree_name: filter)

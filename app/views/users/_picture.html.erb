@@ -19,9 +19,8 @@
 									<%else%>
 									  	<%= image_tag('building.jpg',style: "width:100%")%>
 									<%end%>
-								
 							  	<div class="discrticust">
-									<p><%= gallery.description%></p>
+									<p><%= gallery.description.first(120) if gallery.description.present? %></p>
 							 	</div>
 						  	</div>
 						</div>
