@@ -27,7 +27,7 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -44,14 +44,21 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings =
   {
-    :address=> "mail.utradefair.com",
-    :port => 25,
-    :domain => "utradefair.com",
-    :user_name => 'sales@utradefair.com',
-    :password=> 'Password@123',
-    :enable_starttls_auto => true,
-    :authentication       => 'login',
-    :openssl_verify_mode  => 'none'
+    # :address=> "mail.utradefair.com",
+    # :port => 25,
+    # :domain => "utradefair.com",
+    # :user_name => 'sales@utradefair.com',
+    # :password=> 'Password@123',
+    # :enable_starttls_auto => true,
+    # :authentication       => 'plain',
+    # :openssl_verify_mode  => 'none'
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'gmail.com',
+    user_name:            'n.giri0588@gmail.com',
+    password:             'IrIg681?',
+    authentication:       'plain',
+    enable_starttls_auto: true
   }
 
   # Suppress logger output for asset requests.

@@ -64,14 +64,21 @@ Rails.application.configure do
 
   config.action_mailer.smtp_settings =
   {
-    :address=> "mail.utradefair.com",
-    :port => 25,
-    :domain => "utradefair.com",
-    :user_name => 'sales@utradefair.com',
-    :password=> 'Password@123',
-    :enable_starttls_auto => true,
-    :authentication       => 'login',
-    :openssl_verify_mode  => 'none'
+    # :address=> "mail.utradefair.com",
+    # :port => 25,
+    # :domain => "utradefair.com",
+    # :user_name => 'sales@utradefair.com',
+    # :password=> 'Password@123',
+    # :enable_starttls_auto => true,
+    # :authentication       => 'login',
+    # :openssl_verify_mode  => 'none'
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'gmail.com',
+    user_name:            'n.giri0588@gmail.com',
+    password:             'IrIg681?',
+    authentication:       'plain',
+    enable_starttls_auto: true
   }
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
