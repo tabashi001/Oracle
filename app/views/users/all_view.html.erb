@@ -10,8 +10,9 @@
 
 
 	
-		
-	<%= render "layouts/header"%>
+		<%= render :partial => "layouts/header", :locals => { :active => 'Home' }%>
+
+	
 <% if @school.present? %>
  <section class="homeone" id="home" data-stellar-background-ratio="0.4"> </section>
 	<div class="container-fluid contboderthree">
