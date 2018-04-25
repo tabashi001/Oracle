@@ -65,7 +65,7 @@ $(document).ready(function() {
 						<h1 class="edutetitle">Discover The Best</h1>
 						<form class="form-wrapper cf">
 							<%= form_tag users_search_path(:controller => 'users', :action => 'search',:search => params[:search]), method: :get do %>
-								<%= select("user", "city", @city.map{|city| [city.name.titleize,city.id]},{:prompt => 'Select Location'} ,{class: "fa fa-map-marker"}) %>
+								<%= select("user", "city", @city.uniq.sort.map{|city| [city.name.titleize,city.id]},{:prompt => 'Select Location'} ,{class: "fa fa-map-marker"}) %>
 								<%= select("user", "role", @roles.map{|role| [role.name.titleize,role.id]},{:prompt => 'I am ..'},class: "fa") %>
 								<%= select("user", "search_role", @roles.map{|role| [role.name.titleize,role.id]},{:prompt => 'Searching for '},class: "fa") %>
 								<%= submit_tag 'Search', class: "btn btn-primary seARCHbtn" %>
