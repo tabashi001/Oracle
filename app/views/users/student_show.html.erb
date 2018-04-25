@@ -7,8 +7,9 @@
 <%= stylesheet_link_tag  "style" %>
 
 <div class="container-fluid bg">
+    <%= render :partial => "layouts/header", :locals => { :active => 'Home' }%>
 	<div class="stuB">
-	<%= render :partial => "layouts/header", :locals => { :active => 'Home' }%>
+
 	`		<div class="logo">
 				<% if @user.profile_image.present? %>
 				<%= image_tag @user.profile_image,class: "img-circle stygfh", width: "110", height: "110", border: "0", alt: "profile image" %>
@@ -16,7 +17,7 @@
 				<%= image_tag "user.png",class: "img-circle stygfh", width: "110", height: "110", border: "0", alt: "profile image" %>
 				<%end%>
 			</div>
-		</div>
+		
 		<div class="row trt">
 			<h3><%= @user.name if @user.present?%></h3>
 			<h4 class="H4cuStom"><%= @city.name if @city.present?%></h4>
