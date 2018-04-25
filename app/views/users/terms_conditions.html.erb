@@ -1,0 +1,155 @@
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<%= stylesheet_link_tag  "bootstrap.min" %>
+<%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
+<%= stylesheet_link_tag  "style" %>
+
+<script type="text/javascript">
+$(document).ready(function() {    
+		var id = '#dialog';
+	
+		//Get the screen height and width
+		var maskHeight = $(document).height();
+		var maskWidth = $(window).width();
+	
+		//Set heigth and width to mask to fill up the whole screen
+		$('#mask').css({'width':maskWidth,'height':maskHeight});
+		
+		//transition effect		
+		$('#mask').fadeIn(500);	
+		$('#mask').fadeTo("slow",0.9);	
+	
+		//Get the window height and width
+		var winH = $(window).height();
+		var winW = $(window).width();
+              
+		//Set the popup window to center
+		$(id).css('top',  winH/2-$(id).height()/2);
+		$(id).css('left', winW/2-$(id).width()/2);
+	
+		//transition effect
+		$(id).fadeIn(2000); 	
+	
+	//if close button is clicked
+	$('.window .close').click(function (e) {
+		//Cancel the link behavior
+		e.preventDefault();
+		
+		$('#mask').hide();
+		$('.window').hide();
+	});		
+	
+	//if mask is clicked
+	$('#mask').click(function () {
+		$(this).hide();
+		$('.window').hide();
+	});		
+	
+});
+</script>
+
+<style type="text/css">
+	.img-respomsive.Companylg.stdImG{
+		width: 50px;
+	}
+</style>
+
+<%= render :partial => "layouts/header", :locals => { :active => 'Service' }%>
+
+
+	<section class="homeone" id="home" data-stellar-background-ratio="0.4">
+		
+	</section>
+
+	<div class="container">
+      <div class="row">
+      	<div class="col-md-12 colstcustgfth">
+      	 <h4>Introduction</h4>
+
+<p class="PJstufytr">Eduoracle Educational Services Pvt. Ltd. having its registered office at Flat no. S 36, C-Block, PSR Aster, Chambenahalli, Bangalore - 562125 (hereinafter referred to as "Eduoracle", "we", "us", or "our") provides an online platform that connects schools, teachers, students and vendors for marketing, branding and advertisement of their products and services.By accessing or using the Site, Application or Services or by downloading or posting any content from or on the Site, via the Applications, you would be indicating that you have read, and that you understand and agree to be bound by these terms and receive our Services (“Terms of Services” or “Terms”), whether or not you have registered with the Site and/or Application.Therefore, please read these Terms of service before accessing or using the website, application or services or downloading or posting any content from or on the website, via the applications or through the Services, carefully as they contain important information regarding your legal rights, remedies and obligations.If you do not agree to these Terms, then you have no right to access or use the website, applications, Services, or Collective Content (as defined below).
+If you are using the Site, Application or Services then these Terms of Service are binding between you and Eduoracle.</p>
+
+   </div>
+
+      	<div class="col-md-12 colstcustgfth">
+      		
+      		<h4>Definitions</h4>
+
+
+<p class="pcstmdg"><b>Content</b> means text, graphics, images, music, software (excluding the Application), audio, video, information or other materials.</p>
+<p class="pcstmdg"><b>Listing</b> means information posted by school, students, teachers and vendors as available via the Site, Application, and Services.</p>
+<p class="pcstmdg"><b>Member</b> means a person who completes Eduoracle's account registration process, including but not limited to schools, vendors, teachers and Students.</p>
+<p class="pcstmdg"><b>Member Content</b> means all Content that a Member posts, uploads, publishes, submits, transmits, or includes in their Listing, Member profile or Eduoracle promotional campaign to be made available through the Site, Application or Services.</p>
+<p class="pcstmdg"><b>Student</b> means a Member who enrols for Courses on Application or Site, in case of minor student the parent or guardian who enrol their child or ward for the Courses on Application or Site.</p>
+<p class="pcstmdg"><b>Entities</b> means a School/College or any other Educational Institution; Vendor; students and Teachers/Tutors.</p>
+      			
+      	</div>
+
+      	<div class="col-md-12 colstcustgfth">
+      		<h4>Terms of Service</h4>
+
+<p class="PJstufytr">By using the Site, Application or Services, you agree to comply with and be legally bound by the terms and conditions of these Terms, whether or not you become a registered user of the Services. These Terms govern your access to and use of the Site, Application and Services and all Collective Content (defined above), and constitute a binding legal agreement between you and Eduoracle.In addition, certain areas of the Site and Application (and your access to or use of certain aspects of the Services or Collective Content) may have different terms and conditions, standards, guidelines, or policies posted or may require you to agree with and accept additional terms and conditions. If there is a conflict between these Terms and terms and conditions posted for a specific area of the Site, Application, Services, or Collective Content, the latter terms and conditions will take precedence with respect to your use of or access to that area of the Site, Application, Services, or Collective Content.If you do not agree to these Terms, you have no right to obtain information from or otherwise continue using the Site, Application or Services. Failure to use the Site, Application or Services in accordance with these Terms may subject you to civil and criminal liabilities.The Site, Application and Services comprise a web platform through which Schools,teachers,students and vendors may create listings for for their own branding and promotion.You understand and agree that upon any interaction between school, teacher, student and vendor, the contract would be amongst these entities and that Eduoracle would not be a party to any contract/agreements entered into between these entities. Eduoracle has no control over the conduct of School,teachers,students and vendors and other users of the Site, Application and Services or any Course, and disclaims all liability in this regard to the maximum extent permitted by law.You acknowledge and agree that, by accessing or using the Site, Application or Services or by downloading or posting any content from or on the Site or via the Application, you are indicating that you have read, and that you understand and agree to be bound by these terms and receive our Services, whether or not you have registered with the Site and Application. If you do not agree to these terms, then you have no right to access or use the Site, Application, Services, or Collective Content. If you accept or agree to these Terms on behalf of a company or other legal entity, you represent and warrant that you have the authority to bind that company or other legal entity to these Terms and, in such event, "you" and "your" will refer and apply to that company or other legal entity.</p>
+      	</div>	
+
+      	<div class="col-md-12 colstcustgfth">
+              <h4> Use of Website</h4>
+
+      <p class="PJstufytr">  You represent, warrant and covenant that your use of the site, application or services shall not violate any applicable local, provincial, state, national or international law, statute,              ordinance, rule or regulation; interfere with or disrupt computer networks connected to the Website impersonate any other person or entity, or make any misrepresentation as to your employment by or affiliation with any other person or entities, forge headers or in any manner manipulate identifiers in order to disguise the origin of any user information;host, modify, upload, post, transmit, publish, or distribute any material or information for which you do not have all necessary rights and licenses;host, modify, upload,post, transmit, publish or distribute any material which infringes, violates, breaches or otherwise contravenes the rights of any third party, including any copyright, trademark, patent, rights of privacy or publicity or any other proprietary right; host, modify, upload, post, transmit, publish, or distribute any material or information which contains a computer virus, or other code, files or programs intending in any manner to disrupt or interfere with the functioning of the Website, or that of other computer systems;host, modify, upload,post, transmit, publish, or distribute any material or information that is grossly harmful, harassing, invasive of another's privacy, hateful, disparaging, relating to money laundering or unlawful, or which may potentially be perceived as being harmful, threatening, abusive, harassing, defamatory, libelous/blasphemous, vulgar, obscene, or racially, ethnically, or            otherwise unlawful in any manner whatsoever;host, modify, upload, post, transmit, publish or distribute any material or information which constitutes or encourages conduct that would constitute a criminal offence, give rise to other liability, or otherwise violate applicable law;host, modify, upload, post, transmit, publish or distribute any information that deceives or misleads the addressee about the origin of such messages or communicates any information which is grossly offensive or menacing in nature;host, modify, upload,post, transmit, publish or distribute any material or information that belongs to another person and to which the user does not have any right to;host, modify, upload, post,transmit,  publish or distribute any material or information that harm minors in any way;host, modify, upload, post, transmit, publish or distribute any material or information that threatens the unity, integrity, defence, security or sovereignty of India, friendly relations with foreign states, or public order or causes incitement to the commission of any cognisable offence or prevents investigation of any offence or is insulting any other nation.interfere with or disrupt the use of the Website by any other user, nor "stalk", threaten,or in any manner harass another user;use the Website in such a manner as to gain unauthorized entry or access to the computer systems of others;reproduce, copy, modify, sell,store, distribute or otherwise exploit for any commercial purposes the site, services and applications, or any component thereof (including, but not limited to any materials or information accessible through the Website).</p>
+      	</div>
+
+      	<div class="col-md-12 colstcustgfth">
+          <h4> Modification</h4>
+
+     <p class="PJstufytr"> Eduoracle reserves the right, at its sole discretion, to modify the Site, Application or Services or to modify these Terms at any time and without prior notice. By continuing to access         or use the Site, Application or Services after we have posted a modification on the Site or via the Application or have provided you with notice of a modification, you are indicating that you agree to be bound by the modified Terms. If the modified Terms are not acceptable to you, your only recourse is to cease using the Site, Application and Services.</p>
+
+      	</div>
+      	<div class="col-md-12 colstcustgfth">
+         <h4> Eligibility</h4>
+
+<p class="PJstufytr">Use of the Site, Application and Services is available only to persons who can form legally binding contracts under Indian laws. The Site, Application and Services are intended solely for persons who are 18 years of age or older. The use of the Site, Application and Services is also not available to persons whose membership has been suspended or terminated by Eduoracle for any reason whatsoever. Any access to or use of the Site, Application or Services by anyone under 18 years is expressly prohibited. By accessing or using the Site, Application or Services you represent and warrant that you are 18 years or older.</p>
+      	</div>
+      	<div class="col-md-12 colstcustgfth">
+           <h4> No Endorsement</h4>
+
+<p class="PJstufytr">Eduoracle does not endorse any of the entities, Listing or Courses. You understand that Listings and Eduoracle Contents in relation to information are intended only to indicate a representation of the information at the time the Listing was done. Eduoracle Contents are therefore not an endorsement by Eduoracle of any entity, Listing or Course.Members are required to provide accurate information. Although Eduoracle may, for transparency or fraud prevention or detection purposes, directly or through third parties, ask you to provide a form of government identification, your date of birth, and other information, or undertake additional checks and processes designed to help verify or check the identities or backgrounds of Members and/or screen Member information against third party databases or other sources, we do not make any representations about, confirm, or endorse any Member or the Member's purported identity or background.Any references in the Site, Application or Services to a Member being "verified" or "connected" (or similar language) only indicate that the Member has completed a relevant verification or identification process, and does not represent anything else. Any such description is not an endorsement, certification or guarantee by Eduoracle about any Member, including of the Member's identity and whether the Member is trustworthy, safe or suitable. We are not responsible for any damage or harm resulting from your interactions with other Members.By using the Site, Application or Services, you agree that any legal remedy or liability that you seek to obtain for actions or omissions of other Members or other third parties will be limited to a claim against the particular Members or other third parties who caused you harm. You agree not to attempt to impose liability on or seek any legal remedy from Eduoracle with respect to such actions or omissions. Accordingly, we encourage you to communicate directly with other Members on the Site and Services regarding any enrolment or Listings made by you.</p>
+      	</div>
+      	<div class="col-md-12 colstcustgfth">
+         <h4>Services Request </h4>
+
+<p class="PJstufytr">If you are a school, student, vendor or a teacher and a service is requested for your products and services via the Site, Application or Services, you will be required to either pre-approve, confirm or reject the request within one week, otherwise the request will automatically expire.The School, Teachers, Students and Vendors, not Eduoracle, are solely responsible for honouring any confirmed service request  through the Site, Application and Services. If you, as a Student, choose to enter into a transaction for enrolment of Course for any school or teacher, you agree and understand that you will be required to enter into an agreement with the School or teacher, and you agree to accept any terms, conditions, rules and restrictions associated with such Course imposed by the school or teacher. You acknowledge and agree that you, and not Eduoracle, will be responsible for performing the obligations of any such agreements, that Eduoracle is not a party to such agreements, and that, with the exception of Eduoracle’s obligations pursuant to the Payments Terms, Eduoracle (inclusive of all subsidiaries) disclaims all liability arising from or related to any such agreements.</p>
+      	</div>
+      	
+
+
+      </div>
+	</div>	
+
+ <%=render "layouts/footer"%>
+
+	  
+<%= javascript_include_tag "jquery.min" %>
+<%= javascript_include_tag "bootstrap.min" %>
+<%= javascript_include_tag "jquery.stellar" %>
+<%= javascript_include_tag "jquery.appear" %>
+<%= javascript_include_tag "jquery.nicescroll.min" %>
+<%= javascript_include_tag "script" %>
+   
+
+<script type="text/javascript">
+	$(window).load(function(){        
+	$('#myModal').modal('show');
+	}); 
+</script>
+
+ <script type="text/javascript">
+ 	window.onload = function() {
+  var startPos;
+  var geoSuccess = function(position) {
+    startPos = position;
+    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+  };
+  navigator.geolocation.getCurrentPosition(geoSuccess);
+};
+</script> 

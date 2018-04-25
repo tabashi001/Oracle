@@ -31,8 +31,7 @@
 <%= stylesheet_link_tag  "style" %>
 <%= stylesheet_link_tag  "login" %>
 
-<%= render 'layouts/header'%>
-
+<%= render :partial => "layouts/header", :locals => { :active => 'Login' }%>
 <div class="container-fluid backgrdimg">  
   <div id="login-box">
     <div class="row mainrowcust">
@@ -42,7 +41,7 @@
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="field">
               <%= f.label :email %><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              <%= f.email_field :email, autocomplete: "email" %>
             </div>
             <div class="field">
               <%= f.label :password %><br />
