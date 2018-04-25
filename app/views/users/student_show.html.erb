@@ -5,10 +5,11 @@
 <%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
 <%= stylesheet_link_tag  "student" %>
 <%= stylesheet_link_tag  "style" %>
-
+<%= render :partial => "layouts/header", :locals => { :active => 'Home' }%>
 <div class="container-fluid bg">
     <%= render :partial => "layouts/header", :locals => { :active => 'Home' }%>
 	<div class="stuB">
+
 
 	`		<div class="logo">
 				<% if @user.profile_image.present? %>
@@ -40,19 +41,20 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-sm-6 col-xs-12 col-lg-6 colrd">
-					<div class="colB">
-						<ul class="list-group">
-							<li class="list-group-item custlist"><b>City : </b><%if @user.city_id.present?%><%= @city.name %><%else%>Not Mentioned<%end%></li>
-							<li class="list-group-item custlist"><b>State : </b><% if @user.state_id.present? %><%= @state.name %><%else%>Not Mentioned<%end%></li>
-							<li class="list-group-item custlist"><b>Country : </b><% if @user.country_id.present? %><%= @country.name %><%else%>Not Mentioned<%end%></li>
-							<li class="list-group-item custlist"><b>Address : </b><%= @user.address if @user.address.present? %></li>
-						</ul>
-					</div>
+			
+			<div class="col-sm-6 col-xs-12 col-lg-6 colrd">
+				<div class="colB">
+					<ul class="list-group">
+						<li class="list-group-item custlist"><b>City : </b><%if @user.city_id.present?%><%= @city.name %><%else%>Not Mentioned<%end%></li>
+						<li class="list-group-item custlist"><b>State : </b><% if @user.state_id.present? %><%= @state.name %><%else%>Not Mentioned<%end%></li>
+						<li class="list-group-item custlist"><b>Country : </b><% if @user.country_id.present? %><%= @country.name %><%else%>Not Mentioned<%end%></li>
+						<li class="list-group-item custlist"><b>Address : </b><%= @user.address if @user.address.present? %></li>
+					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 <% if @user.role_name == "2"%>
   <div class="container">
@@ -70,28 +72,25 @@
               <th>Select</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <% if @slots.present? %>
-              <% @slots.each do |slot|%>
-                <td><%=slot.id%></td>
-                <td><%=slot.name%></td>
-                <td><%=slot.date%></td>
-                <td><%=slot.time%></td>
-                <td><%=slot.duration%></td>
-                <td><%=link_to "Express Interest",users_apply_to_post_path(slot),class: "btn btn-primary"%></button></td>
-              <%end%>
-              <%else%>
-               No Slots Available
-              <%end%>
-            </tr>
-          </tbody>
+          <% if @slots.present? %>
+            <% @slots.each do |slot|%>
+              <tbody>
+                <tr>
+                  <td><%=slot.id%></td>
+                  <td><%=slot.name%></td>
+                  <td><%=slot.date%></td>
+                  <td><%=slot.time%></td>
+                  <td><%=slot.duration%></td>
+                  <td><%=link_to "Express Interest",users_apply_to_post_path(slot),class: "btn btn-primary"%></td>
+                </tr>
+              </tbody>
+            <%end%>
+          <%else%>
+              No Slots Available
+          <%end%>
         </table>
       </div> 	
     </div>
-
-
-
     <div class="row RWObtcust">
       <h4>Notes</h4>
       <div class="table-responsive">          
@@ -104,20 +103,20 @@
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <% if @notes.present? %>
-              <% @notes.each do |slot|%>
-                <td><%=slot.id%></td>
-                <td><%=slot.title%></td>
-                <td><%=slot.description.first(100)%></td>
-                <td><%=link_to "Express Interest",users_apply_to_post_path(slot),class: "btn btn-primary"%></button></td>
-              <%end%>
-              <%else%>
-               No Slots Available
-              <%end%>
-            </tr>
-          </tbody>
+          <% if @notes.present? %>
+            <% @notes.each do |slot|%>
+              <tbody>
+                <tr>
+                  <td><%=slot.id%></td>
+                  <td><%=slot.title%></td>
+                  <td><%=slot.description.first(100)%></td>
+                  <td><%=link_to "Express Interest",users_apply_to_post_path(slot),class: "btn btn-primary"%></td>
+                </tr>
+              </tbody>
+            <%end%>
+          <%else%>
+              No Slots Available
+          <%end%>
         </table>
       </div>  
     </div>
@@ -125,19 +124,15 @@
     <div class="row RWObtcust">
     	<h4>Demo Videos</h4>
       <%if @videos.present?%>
-      <% @videos.each do |video|%>
-      	<div class="col-md-4">
-          <h3><%= video.title%></h3>
-          <!-- <iframe width="100%" height="150" src="<%#= video.video%>"></iframe> -->
-          <iframe width="100%" height="150" src="<%= video.video%>?autoplay=1&showinfo=0&controls=0"></iframe>
-  
-        
-          <%#= video_tag video.video, width: "100%",height: "150", autoplay: true,:loop => true%>
-          <p class="taxtjust"><%= video.description%></p>
-        </div>
-      <%end%>	
+        <% @videos.each do |video|%>
+        	<div class="col-md-4">
+            <h3><%= video.title%></h3>
+            <iframe width="100%" height="150" src="<%= video.video%>?autoplay=1&showinfo=0&controls=0"></iframe>
+            <p class="taxtjust"><%= video.description%></p>
+          </div>
+        <%end%>	
       <%else%>
-       No Demo Videos
+          No Demo Videos
       <%end%>		
     </div>
   </div>

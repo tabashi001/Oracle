@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   
   def index
-   city_id = User.pluck(:city_id).uniq
-   city = City.find(city_id)
+   city_id = User.pluck(:city_id).uniq.compact
+   city = City.find(city_id).uniq.compact
    @city = city.reject { |item| item.nil? || item == '' }
    @role = User.pluck(:role_name).uniq
    @roles = Role.find(@role)
-   @course = Course.pluck(:course_name).uniq
+   @course = Course.pluck(:course_name).uniq.compact
    @school 	= User.where(:role_name => "1")
    @student = User.where(:role_name => "3")
    @teacher = User.where(:role_name => "2")
@@ -19,8 +19,8 @@ class UsersController < ApplicationController
 
   def search
   	@course = Course.all
-    city_id = User.pluck(:city_id).uniq
-    city = City.find(city_id)
+    city_id = User.pluck(:city_id).uniq.compact
+    city = City.find(city_id).uniq.compact
     @city = city.reject { |item| item.nil? || item == '' }
     if params[:myparam1].present?
       @school1 = User.where(:id => params[:myparams]).paginate(:per_page => 1, :page => params[:page])
