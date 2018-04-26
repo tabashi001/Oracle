@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       @school1 = User.where(:id => params[:myparams]).paginate(:per_page => 1, :page => params[:page])
       render json: {:event => @school1}
     elsif @@first_value.present?
-      @school = User.where("city_id LIKE ? AND role_name = ?","%#{@@first_value[:city]}%","#{@@first_value[:search_role]}").paginate(:per_page => 4, :page => params[:page])
+      @school = User.where("city_id = ? AND role_name = ?","#{@@first_value[:city]}","#{@@first_value[:search_role]}").paginate(:per_page => 4, :page => params[:page])
     else
     end
   end

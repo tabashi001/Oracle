@@ -177,8 +177,9 @@ margin-top: 0 !important;
 							                    	<div class="col-md-3 col-sm-6 col-xs-6">
 							                    		<i class="fa fa-align-justify"></i>
 							                    		<span>Avg Annual Fees </span>
-							                    		<%if school.courses.first.present?%>
-									        			<h6><%= school.courses.first.course_fee %></h6>
+							                    		<%if school.courses.present?%>
+									        			<h6><% p = school.courses.map { |c| 
+									        				p= c.course_fee.gsub(/[\s,]/ ,"").to_i }.inject(0, :+)/school.courses.size%><%= p%></h6>
 									        			<%else%><h6>Not Mention</h6><%end%>
 									        	 	</div>
 										        	<div class="col-md-3 col-sm-6 col-xs-6">
