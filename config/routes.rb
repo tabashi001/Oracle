@@ -172,4 +172,5 @@ Rails.application.routes.draw do
 	  get 'users/services' 
 	  get 'users/mail'
 	  get 'users/terms_conditions' 
+	  get 'users/fas' 
 end
