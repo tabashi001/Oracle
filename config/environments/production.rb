@@ -11,7 +11,7 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
   # Attempt to read encrypted secrets from `config/secrets.yml.enc`.
@@ -64,14 +64,21 @@ Rails.application.configure do
 
   config.action_mailer.smtp_settings =
   {
-    :address=> "mail.utradefair.com",
-    :port => 25,
-    :domain => "utradefair.com",
-    :user_name => 'sales@utradefair.com',
-    :password=> 'Password@123',
-    :enable_starttls_auto => true,
-    :authentication       => 'login',
-    :openssl_verify_mode  => 'none'
+    # :address=> "mail.utradefair.com",
+    # :port => 25,
+    # :domain => "utradefair.com",
+    # :user_name => 'sales@utradefair.com',
+    # :password=> 'Password@123',
+    # :enable_starttls_auto => true,
+    # :authentication       => 'login',
+    # :openssl_verify_mode  => 'none'
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'gmail.com',
+    user_name:            'n.giri0588@gmail.com',
+    password:             'IrIg681?',
+    authentication:       'plain',
+    enable_starttls_auto: true
   }
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -99,4 +106,5 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.action_mailer.default_url_options = { :host => "18.218.176.41" }
 end

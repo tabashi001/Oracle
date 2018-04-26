@@ -1,20 +1,27 @@
 class UsersController < ApplicationController
   
   def index
-   city_id = User.pluck(:city_id).uniq.compact
-   city = City.find(city_id).uniq.compact
-   @city = city.reject { |item| item.nil? || item == '' }
-   @role = User.pluck(:role_name).uniq
-   @roles = Role.find(@role)
-   @course = Course.pluck(:course_name).uniq.compact
-   @school 	= User.where(:role_name => "1")
-   @student = User.where(:role_name => "3")
-   @teacher = User.where(:role_name => "2")
-   @vendor = User.where(:role_name => "4")
-   if params[:commit]=="Search"
+    city_id = User.pluck(:city_id).uniq.compact
+    city = City.find(city_id).uniq.compact
+    @city = city.reject { |item| item.nil? || item == '' }
+    @role = User.pluck(:role_name).uniq
+    @roles = Role.find(@role)
+    @course = Course.pluck(:course_name).uniq.compact
+    @school 	= User.where(:role_name => "1")
+    @student = User.where(:role_name => "3")
+    @teacher = User.where(:role_name => "2")
+    @vendor = User.where(:role_name => "4")
+    if params[:commit]=="Search"
    		@@first_value = params[:user]
 			redirect_to users_search_path
-		end	 
+		end	
+    if params[:name] && params[:email] && params[:phoneno] && params[:msg].present?
+      fname = params[:name]
+      email=params[:email]
+      phoneno = params[:phoneno]
+      msg = params[:msg]
+      ApplicationMailer.mail_method(fname,email,phoneno,msg).deliver_now
+    end
   end
 
   def search
@@ -26,7 +33,7 @@ class UsersController < ApplicationController
       @school1 = User.where(:id => params[:myparams]).paginate(:per_page => 1, :page => params[:page])
       render json: {:event => @school1}
     elsif @@first_value.present?
-      @school = User.where("city_id LIKE ? AND role_name = ?","%#{@@first_value[:city]}%","#{@@first_value[:search_role]}").paginate(:per_page => 4, :page => params[:page])
+      @school = User.where("city_id = ? AND role_name = ?","#{@@first_value[:city]}","#{@@first_value[:search_role]}").paginate(:per_page => 4, :page => params[:page])
     else
     end
   end

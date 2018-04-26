@@ -170,6 +170,7 @@ Rails.application.routes.draw do
 	  get 'users/current_requirements'
 	  get 'users/apply_to_post'
 	  get 'users/services' 
+	  get 'users/mail'
 	  get 'users/terms_conditions' 
 	  get 'users/fas' 
 end

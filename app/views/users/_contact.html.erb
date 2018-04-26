@@ -6,12 +6,21 @@
 				      <p>Get in Touch with Us</p>
 				    </div>
 					<form class="contact-form" role="form">
-						<input type="text" class="form-control" id="fname" name="fname" placeholder="Your Full Name">
+					<%= form_tag url: users_mail_path do%>
+						<%= text_field_tag 'name', '',class: "form-control", placeholder: "Your Full Name", required: true%>
+						<%= text_field_tag 'email', '',class: "form-control",placeholder: "Your E-mail",required: true%>
+						<%= text_field_tag 'phoneno', '',class: "form-control",placeholder: "Phone Number",required: true%>
+						<%= text_area_tag 'msg', '',class: "form-control",placeholder: "Requirements",required: true%>
+						<%#= hidden_field_tag 'mail','',value: n.giri0588@gmail.com%>
+						<!-- <input type="text" class="form-control" id="fname" name="fname" placeholder="Your Full Name">
 						<input type="email" class="form-control" id="email" name="email" placeholder="Your E-mail">
 						<input type="text" class="form-control" id="subj" name="subj" placeholder="Phone Number">
 						<textarea id="mssg" name="mssg" placeholder="Requirements" class="form-control" rows="5"></textarea>
-						<button class="btn btn-main" type="submit" id="send" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Sending..."><i class="fa fa-paper-plane "></i> Send</button>
+						<button class="btn btn-main" type="submit" id="send" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Sending..."><i class="fa fa-paper-plane "></i> Send</button> -->
+						<%= submit_tag "submit",class: "btn btn-main",:value => "submit"%>
+					<%end%>
 					</form>
+					
 					<div id="result-message" role="alert"></div>
 				</div>
 				<div class="col-md-6">
