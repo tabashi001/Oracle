@@ -171,4 +171,5 @@ Rails.application.routes.draw do
 	  get 'users/apply_to_post'
 	  get 'users/services' 
 	  get 'users/terms_conditions' 
+	  get 'users/fas' 
 end

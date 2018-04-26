@@ -1,0 +1,163 @@
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<%= stylesheet_link_tag  "bootstrap.min" %>
+<%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
+<%= stylesheet_link_tag  "style" %>
+
+<script type="text/javascript">
+$(document).ready(function() {    
+		var id = '#dialog';
+	
+		//Get the screen height and width
+		var maskHeight = $(document).height();
+		var maskWidth = $(window).width();
+	
+		//Set heigth and width to mask to fill up the whole screen
+		$('#mask').css({'width':maskWidth,'height':maskHeight});
+		
+		//transition effect		
+		$('#mask').fadeIn(500);	
+		$('#mask').fadeTo("slow",0.9);	
+	
+		//Get the window height and width
+		var winH = $(window).height();
+		var winW = $(window).width();
+              
+		//Set the popup window to center
+		$(id).css('top',  winH/2-$(id).height()/2);
+		$(id).css('left', winW/2-$(id).width()/2);
+	
+		//transition effect
+		$(id).fadeIn(2000); 	
+	
+	//if close button is clicked
+	$('.window .close').click(function (e) {
+		//Cancel the link behavior
+		e.preventDefault();
+		
+		$('#mask').hide();
+		$('.window').hide();
+	});		
+	
+	//if mask is clicked
+	$('#mask').click(function () {
+		$(this).hide();
+		$('.window').hide();
+	});		
+	
+});
+</script>
+
+<style type="text/css">
+	.img-respomsive.Companylg.stdImG{
+		width: 50px;
+	}
+</style>
+
+<%= render :partial => "layouts/header", :locals => { :active => '' }%>
+
+
+	<section class="homeone" id="home" data-stellar-background-ratio="0.4">
+		
+	</section>
+
+	<div class="container">
+      <div class="row">
+      	<div class="col-md-12">
+      		<h3>Schools/Colleges</h3>
+
+<h5><b>1. Why should I register my institution on Eduoracle website?</b></h5>
+<p>Ans: Eduoracle is the only web platform that provides at zero cost a branding/advertisement/promotional tool to school/college facilitating them to keep authentic and holistic information in public domain.</p>
+<h5><b>2. Can I create a complete profile for my School/College from anywhere at any time?</b></h5>
+<p>Ans : Yes, that's a unique feature of our web application. It ensures a comfortable input process and creates awesome mini website for your school and college.</p>
+<h5><b>3. What other benefits my school/college can get from this platform?</b></h5>
+<p>Ans: Eduoracle provides an opportunity for school/college to put their teacher/vendor requirements without any hassle. School/college can also directly search and contact these teachers and vendors from Eduoracle database.</p>
+<h5><b>4. I need specific guidance from Eduoracle team regarding online marketing of my school/college. How can I get this?</b></h5>
+<p>Ans : It's pretty simple, just shoot an email with your requirements to support@eduoracle.com. We will be more than happy to help you.</p>
+<h5><b>5. I am facing technical difficulties with data input while creating profile for my school/college? What should I do?</b></h5>
+<p>Ans: Same as above</p>
+<h5><b>6. Can I edit profile of my School/College once created?</b></h5>
+<p>Ans: Yes, why not! You can edit profile and update information as many times as you wish.</p>
+<h5><b>7. What type of videos can I upload to enhance my school/college profile?</b></h5>
+<p>Ans: We recommend you to go through some of the profile videos created by school/college on Eduoracle website. We have left it entirely on school/college to decide best feature that they want people to know about their school/college. If it's unique, it catches people's attention fast.
+For uploading videos, you should contact us at support@eduoracle.com.</p>
+<h5><b>6. Is there any obligation of school/college while using this Eduoracle platform?</b></h5>
+<p>Ans: We want you to use this platform to showcase truth and facts about your institution to visitors so that they can get to know your school/college better by experiencing it on our platform. In addition, you can go through detailed terms and conditions mentioned in the Eduoracle website.</p>
+      		
+   </div>
+      <div class="col-md-12">
+      		
+ <h3>Teacher</h3>
+<h5><b>Q1. Why should I register myself on your website?</b></h5>
+<p>Ans : Eduoracle provides a web based application completely free of cost to teachers who are looking for private tuitions, jobs in school/college, and selling their notes.</p>
+ <h5><b>Q2. What are the profile features offered by Eduoracle to teacher?</b></h5>
+<p>Ans: Teachers can create profile with all their information, appointment slots for private tutoring, online classes and also upload demo video lectures on their topic of interest to impress the students.</p>
+<h5><b>Q3. Which categories of teacher can create their profile on Eduoracle website?</b></h5>
+<p>Ans: For Eduoracle, anyone trying to share knowledge and skill with interested people is a teacher. So, We don't categorize teacher into any category. Let's say , if you are teaching quantum physics to someone, you are considered a teacher normally. Also, someone showing how to bake a cake or how to swim or play a guitar is also a teacher for Eduoracle and can utilize Eduoracle website with same authority as a quantum physics teacher.</p>
+<h5><b>Q4. What is the size of demo video that I can upload?</b></h5>
+<p>Ans: At present, we are allowing two videos of 30MB each for every teacher. You can compress your video file size (using any of many online video compressor tool) to technical requirements of our website. Ideally, a 10-15 min video with full explanation of any topic of your interest will grab student's attention fast.</p>
+<h5><b>Q5. Is there any geographical limitation on contacting students?</b></h5>
+<p>And: Absolutely not! Who are we to restrict purposeful interaction between a teacher and a student!!</p>
+<h5><b>Q6. What is expected from me by Eduoracle?</b></h5>
+<p>Ans: We expect you to regularly check your profile on our website, update your appointment slots to avoid
+      		 confusion amongst students</p>
+  </div>	
+   <div class="col-md-12">
+      <h3>Vendor</h3> 
+
+<h4><b>Q1. Why should I register my company on Eduoracle?</b></h4>
+
+<p>Ans: As for all other categories, the registration of vendor on Eduoracle is at zero cost. In addition, with increasing pool of school/college registering themselves on Eduoracle, you can reach out to any school/college beyond geographical limitations for your products/services.
+You can also contact school/college/students/teacher directly if they have any specific requirements.</p>
+
+
+   </div>
+
+   <div class="col-md-12">
+      <h3>Students/Parents</h3>
+
+<h5><b>Q1. Why should I register myself on Eduoracle website?</b></h5>
+<p>Ans: Eduoracle services for students are completely free of cost. You can search a prospective school/college, seek information about them and contact them directly to know more about them.
+You can also search teacher for all your learning needs and evaluate teachers based on their demo videos. The website allows you to book slots of your favorite teacher, and contact a reputed teacher for his expertise and study notes beyond geographical limitations.</p>
+
+<h5><b>Q2. What other benefits can i avail through Eduoracle website?</b></h5>
+
+<p>Ans: You can buy/sell your old books. Soon, we are coming up with a lot of exciting features on our website especially catering to the requirements of student. Career Counseling through experts is coming soon.
+For general queries regarding a career option, don't hesitate to shoot an email to support@eduoracle.com. We will extend best possible support from our side without any charges.</p>
+
+<h5><b>Q3. Is information on Eduoracle website reliable and authentic?</b></h5>
+<p>Ans: Eduoracle is committed to bring transparent and authentic information about all the stakeholders - School/College, Teacher, Student and Vendor. But, we strongly recommend you to verify facts from your side also before getting involved in any financial transaction. Eduoracle will not accept any obligation for any financial transaction or any agreement being entered into amongst stakeholders based on information/listing on Eduoracle website.</p>
+
+   </div>
+      </div>
+	</div>	
+
+ <%=render "layouts/footer"%>
+
+	  
+<%= javascript_include_tag "jquery.min" %>
+<%= javascript_include_tag "bootstrap.min" %>
+<%= javascript_include_tag "jquery.stellar" %>
+<%= javascript_include_tag "jquery.appear" %>
+<%= javascript_include_tag "jquery.nicescroll.min" %>
+<%= javascript_include_tag "script" %>
+   
+
+<script type="text/javascript">
+	$(window).load(function(){        
+	$('#myModal').modal('show');
+	}); 
+</script>
+
+ <script type="text/javascript">
+ 	window.onload = function() {
+  var startPos;
+  var geoSuccess = function(position) {
+    startPos = position;
+    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+  };
+  navigator.geolocation.getCurrentPosition(geoSuccess);
+};
+</script> 
