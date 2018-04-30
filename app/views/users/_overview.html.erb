@@ -148,25 +148,27 @@
 				</div>
 				<%=link_to "CURRENT REQUIREMENTS",users_current_requirements_path(@college), class: "fliptwo blink", target: "_blank"%>
 
-				<div class="Reviewbox PoStn">
-					<a href="#rModal" data-toggle="modal" class="flipone">REVIEWS<!-- <div class="flipone">REVIEWS</div> --></a>
-					<!--<div class="panelone">
-					 	<ul class="list-group">
-							<li class="list-group-item list-group-item-success">First item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-info">Second item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-warning">Third item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-danger">Fourth item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-success">First item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-info">Second item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-warning">Third item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-danger">Fourth item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-success">First item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-info">Second item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-warning">Third item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-danger">Fourth item <span class="badge">12</span></li>
-						</ul> 
-					</div>-->
-				</div>
+					<div class="Reviewbox PoStn">
+						<a href="#" class="flipone"><div class="flipone">REVIEWS</div></a>
+						<div class="panelone">
+						 	<ul class="list-group">
+								<li class="list-group-item list-group-item-success">First item <span class="badge">12</span></li>
+								<li class="list-group-item list-group-item-info">Second item <span class="badge">12</span></li>
+								<li class="list-group-item list-group-item-warning">Third item <span class="badge">12</span></li>
+								<li class="list-group-item list-group-item-danger">Fourth item <span class="badge">12</span></li>
+								<li class="list-group-item list-group-item-success">First item <span class="badge">12</span></li>
+								<li class="list-group-item list-group-item-info">Second item <span class="badge">12</span></li>
+								<li class="list-group-item list-group-item-warning">Third item <span class="badge">12</span></li>
+								<li class="list-group-item list-group-item-danger">Fourth item <span class="badge">12</span></li>
+								<li class="list-group-item list-group-item-success">First item <span class="badge">12</span></li>
+								<li class="list-group-item list-group-item-info">Second item <span class="badge">12</span></li>
+								<li class="list-group-item list-group-item-warning">Third item <span class="badge">12</span></li>
+								<li class="list-group-item list-group-item-danger">Fourth item <span class="badge">12</span></li>
+							</ul> 
+						</div>
+					</div>
+
+					<%= link_to 'Write a Review', new_user_review_path(@college) %>
 				
 			</div>
 		</div>
@@ -248,5 +250,5 @@ var marker = new google.maps.Marker({
 	100% { opacity: 0; }
 }
 /* @end */
--->
+
 </style>
