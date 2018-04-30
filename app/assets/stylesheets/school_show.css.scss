@@ -23,6 +23,14 @@
   -webkit-background-size: 100% 100%;
   -moz-background-size: 100% 100%; 
 }
+.previewcust {
+  font-size: 12px;
+  text-align: justify;
+}
+.hfivecust {
+  color: maroon;
+  margin: 3px auto;
+}
 .img-responsive.IMGdgcust {
   height: 150px;
   width: 100%;
@@ -186,9 +194,11 @@
 	-moz-background-size: 100% 100%;
 	
 }
+
 .panelone {
   background-color: #e5eecc;
   border: 1px solid #c3c3c3;
+  cursor: pointer;
   height: 320px;
   overflow-y: scroll;
 }

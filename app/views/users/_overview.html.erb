@@ -148,63 +148,93 @@
 				</div>
 				<%=link_to "CURRENT REQUIREMENTS",users_current_requirements_path(@college), class: "fliptwo blink", target: "_blank"%>
 
-					<div class="Reviewbox PoStn">
-						<a href="#" class="flipone"><div class="flipone">REVIEWS</div></a>
-						<div class="panelone">
-						 	<ul class="list-group">
-								<li class="list-group-item list-group-item-success">First item <span class="badge">12</span></li>
-								<li class="list-group-item list-group-item-info">Second item <span class="badge">12</span></li>
-								<li class="list-group-item list-group-item-warning">Third item <span class="badge">12</span></li>
-								<li class="list-group-item list-group-item-danger">Fourth item <span class="badge">12</span></li>
-								<li class="list-group-item list-group-item-success">First item <span class="badge">12</span></li>
-								<li class="list-group-item list-group-item-info">Second item <span class="badge">12</span></li>
-								<li class="list-group-item list-group-item-warning">Third item <span class="badge">12</span></li>
-								<li class="list-group-item list-group-item-danger">Fourth item <span class="badge">12</span></li>
-								<li class="list-group-item list-group-item-success">First item <span class="badge">12</span></li>
-								<li class="list-group-item list-group-item-info">Second item <span class="badge">12</span></li>
-								<li class="list-group-item list-group-item-warning">Third item <span class="badge">12</span></li>
-								<li class="list-group-item list-group-item-danger">Fourth item <span class="badge">12</span></li>
-							</ul> 
-						</div>
-					</div>
 
-					<%= link_to 'Write a Review', new_user_review_path(@college) %>
-				
+				<div class="Reviewbox PoStn">
+					<div class="flipone">REVIEWS</div>
+					<div class="panelone">
+						<ul class="list-group">
+							<% @reviews.each do |r| %>
+								<li class="list-group-item list-group-item-success reviewModel" data-toggle="modal" data-target="#reviewmodel_<%= r.id%>" id="<%= r.id%>">
+									<div class='star-rating' data-score=<%= r.rating %>></div>
+									<p class="previewcust"><%= r.comment %></p>
+									<% if r.reviewer_id.present? %>
+										<h5 class="hfivecust"><%= User.find(r.reviewer_id).name %></h5>
+									<% end %>
+								</li>
+							<% end %>
+						</ul>
+					</div>
+				</div>
+
+				<%#= link_to 'Write a Review', new_user_review_path(@college), "data-toggle"=>"modal", "data-target"=>"#reviewmodel" %>
+				<br/>
+				<%= link_to 'Write a Review', "", "data-toggle"=>"modal", "data-target"=>"#reviewmodel", class: "btn btn-primary btn-sm" %>
+
 			</div>
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	// $(".reviewModel").on("click", function(){
+	// 	alert("hi");
+	// 	id = $(this).attr("id");
+
+	// 	$(".modal-body #bookId").val( myBookId );
+ //    $('#addBookDialog').modal('show');
+	// 	alert(id);
+	// });
+</script>
+
+
+<div id="reviewmodel" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Review</h4>
+      </div>
+      <div class="modal-body">
+       <div class="reviewBOx">
+       		<%= render :partial => "reviews/form" ,:locals=>{:review => @review || Review.new } %>				
+       </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <%= javascript_include_tag "jquery.min" %>
+<%= javascript_include_tag "jquery.raty.js" %>
 <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key= AIzaSyDMEnG0GKj_YRFsOSmUBG-1dcMg57N2Qio&callback=myMap'%>
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script> -->
-
-<div id="rModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-body">
-              <p>
-                  Coming Soon........!
-              </p>
-          </div>
-        </div>
-    </div>
-</div>
 
 <script>
 function myMap() {
 	var myLatLng = {lat: <%= @college.latitude%>, lng: <%= @college.longitude%>};
-var mapProp= {
-    center:myLatLng,
-    zoom:12,
-};
-var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-}
-var marker = new google.maps.Marker({
+	var mapProp= {
+	    center:myLatLng,
+	    zoom:12,
+	};
+	var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+	}
+	var marker = new google.maps.Marker({
     position: myLatLng,
     map: map,
   
   });
-
+</script>
+<script type="text/javascript">
+$('.star-rating').raty({
+  path: '/assets/',
+  readOnly: true,
+  score: function() {
+    return $(this).attr('data-score');
+}
+});
 </script>
 
 <style type="text/css">
