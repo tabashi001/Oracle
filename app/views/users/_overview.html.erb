@@ -149,28 +149,58 @@
 				<%=link_to "CURRENT REQUIREMENTS",users_current_requirements_path(@college), class: "fliptwo blink", target: "_blank"%>
 
 				<div class="Reviewbox PoStn">
-					<a href="#rModal" data-toggle="modal" class="flipone">REVIEWS<!-- <div class="flipone">REVIEWS</div> --></a>
-					<!--<div class="panelone">
+					<!--<a href="#rModal" data-toggle="modal" class="flipone">--><div class="flipone">REVIEWS</div>
+					<div class="panelone">
 					 	<ul class="list-group">
-							<li class="list-group-item list-group-item-success">First item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-info">Second item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-warning">Third item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-danger">Fourth item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-success">First item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-info">Second item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-warning">Third item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-danger">Fourth item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-success">First item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-info">Second item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-warning">Third item <span class="badge">12</span></li>
-							<li class="list-group-item list-group-item-danger">Fourth item <span class="badge">12</span></li>
+							<li class="list-group-item list-group-item-success" data-toggle="modal" data-target="#reviewmodel">
+								<h5 class="hfivecust">Rakesh Kumar</h5>
+								<p class="previewcust">Bootstrap is the most popular HTML, CSS, and JavaScript framework for developing responsive, mobile-first websites.</p>
+								</li>
+
+							
 						</ul> 
-					</div>-->
+					</div>
 				</div>
 				
 			</div>
 		</div>
 	</div>
+</div>
+
+
+<div id="reviewmodel" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Review</h4>
+      </div>
+      <div class="modal-body">
+       <div class="reviewBOx">
+               <form>
+				    <div class="form-group">
+				      <label for="usr">Name:</label>
+				      <input type="text" class="form-control" id="usr">
+				    </div>
+				     <div class="form-group">
+					  <label for="comment">Review</label>
+					  <textarea class="form-control" rows="5" id="comment"></textarea>
+					</div> 
+					<div class="text-center">
+					 <button class="btn btn-default">Submit</button>
+					 	 <button class="btn btn-default">Cancel</button>
+					</div>	
+              </form>
+       </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
 </div>
 <%= javascript_include_tag "jquery.min" %>
 <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key= AIzaSyDMEnG0GKj_YRFsOSmUBG-1dcMg57N2Qio&callback=myMap'%>
