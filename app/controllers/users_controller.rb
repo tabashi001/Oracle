@@ -11,10 +11,6 @@ class UsersController < ApplicationController
     @student = User.where(:role_name => "3")
     @teacher = User.where(:role_name => "2")
     @vendor = User.where(:role_name => "4")
-    if params[:commit]=="Search"
-   		@@first_value = params[:user]
-			redirect_to users_search_path
-		end	
     if params[:name] && params[:email] && params[:phoneno] && params[:msg].present?
       fname = params[:name]
       email=params[:email]
@@ -29,12 +25,21 @@ class UsersController < ApplicationController
     city_id = User.pluck(:city_id).uniq.compact
     city = City.find(city_id).uniq.compact
     @city = city.reject { |item| item.nil? || item == '' }
-    if params[:myparam1].present?
-      @school1 = User.where(:id => params[:myparams]).paginate(:per_page => 1, :page => params[:page])
-      render json: {:event => @school1}
-    elsif @@first_value.present?
+    
+    if params[:commit]=="Search"
+      @@first_value = params[:user]
       @school = User.where("city_id = ? AND role_name = ?","#{@@first_value[:city]}","#{@@first_value[:search_role]}").paginate(:per_page => 4, :page => params[:page])
-    else
+      # binding.pry
+      # @courses = @school.map{|s| s.courses}.flatten
+      # @affilations = @courses.pluck(:course_affliation).uniq
+      # @avg = @courses.map{|a| a.course_fee.gsub(/[\s,]/ ,"").to_i }.inject(0, :+)/@courses.size}
+      # @streams = @courses.map{|s| Stream.find(s.stream_id)}.uniq
+      # @degrees = @courses.map{|s| Degree.find(s.degree_id)}.uniq
+      # @courses = @courses.map{|c| c.course_names.uniq}.flatten
+      # @affilations = @courses.pluck(:course_affliation).uniq
+
+
+      # @streams = @school.cour
     end
   end
 

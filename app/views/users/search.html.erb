@@ -54,13 +54,13 @@ margin-top: 0 !important;
 			<div class="row">
 				<div class="col-md-12">
 					<!-- <div class="col-md-2">
-						<h3>Degree</h3>
+						<h3>Stream</h3>
 				    	<div class="smallbox">
 				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
-				    		<%# @course.each do |course|%>
+				    		<%# @streams.each do |stream|%>
 					     		<div class="checkbox">
-					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo degree_id-<%#= course.id %> user_id-<%#= course.user_id %>"><%#= course.degree_name%></label>
-					      			<script type="text/javascript">
+					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo degree_id-<%#= course.id %> user_id-<%#= course.user_id %>"><%#= stream.stream_name%></label>
+					      			<!-- <script type="text/javascript">
 					                    $('.degree_id-<%#= course.id %>').click(function(){
 					                       $.ajax({
 					                          url:'/users/search',
@@ -91,43 +91,55 @@ margin-top: 0 !important;
 					                          }
 					                      });
 					                  });
-					                </script>
-					    		</div>
+					                </script> -->
+					    		<!-- </div> -->
 			        		<%#end%>
-			        	</div>
-						<h3>City</h3>
+			        	<!-- </div> --> 
+						<!-- <h3>Degree</h3>
 				    	<div class="smallbox">
 				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
-				    		<%# @city.each do |city|%>
+				    		<%# @degrees.each do |degree|%>
 					     		<div class="checkbox">
-					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo"><%#= city.name %></label>
+					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo"><%#= degree.degree_name %></label>
 					    		</div>
 			        		<%#end%>
-			        	</div>
-              			<h3>Fee Structure</h3>
+			        	</div> -->
+			        	<!-- <h3>Course</h3>
+				    	<div class="smallbox">
+				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+				    		<%# @courses.each do |course|%>
+					     		<div class="checkbox">
+					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo"><%#= course.course_name %></label>
+					    		</div>
+			        		<%#end%>
+			        	</div> -->
+              			<<!-- h3>Fee Structure</h3>
+              			<%#@avg.each do |avg|%>
 				    	<div class="smallbox">
 				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
 				     		<div class="checkbox">
-				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="1">Less that 50K</label>
+				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="1"><%#=avg%></label>
 				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">50K to 1Lac</label>
 				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">1Lac to 1.5Lac</label>
 				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">More than 1.5Lac</label>
 				    		</div>
-			        	</div>
-			        	<h3>Mode of Eduation</h3>
+			        	</div> -->
+			        	<%#end%>
+			        	<!-- <h3>Type</h3>
 				    	<div class="smallbox">
 				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
 				     		<div class="checkbox">
 				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="1">Regular</label>
 				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">Correspondence</label>
 				    		</div>
-			        	</div>
-			        	<h3>Specialization</h3>
+			        	</div> -->
+			        	<!-- <h3>Affiliation</h3>
 				    	<div class="smallbox">
 				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
-				    		<%# @course.each do |course|%>
+				    		<%#binding.pry%>
+				    		<%# @affilations.each do |aff|%>
 					     		<div class="checkbox">
-					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="1"><%#= course.course_name%></label>
+					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="1"><%#= aff%></label>
 					    		</div>
 				    		<%#end%>
 			        	</div>
