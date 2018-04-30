@@ -60,7 +60,7 @@ class UsersController < ApplicationController
     @gallery = @college.school_pictures
     @videos = @college.school_videos
     @admissions = @college.cutoffs
-
+    @reviews = @college.reviews    
   end
 
   def student_show

@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
-  
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+	
 	resource :showcase do 
 		collection do 
 			get :school_showcase
@@ -133,14 +132,19 @@ Rails.application.routes.draw do
 	end
 
 	root to: "users#index"
-	devise_for :users, controllers: { :omniauth_callbacks => "users/omniauth_callbacks",
-	 sessions: 'users/sessions' ,registrations: 'users/registrations',passwords: 'users/passwords'}
-		devise_scope :user do 
-			get '/users/login' => 'devise/sessions#new'
-		    get '/users/register' => 'devise/registrations#new'
-		    get '/users/sign_out' => 'devise/sessions#destroy'
-		    #get '/users/:id/showcase' => 'users#showcase'
-		end
+	devise_for :users, controllers: { 
+			:omniauth_callbacks => "users/omniauth_callbacks",
+	 		sessions: 'users/sessions' ,
+	 		registrations: 'users/registrations',
+	 		passwords: 'users/passwords'}
+	
+	devise_scope :user do 
+		get '/users/login' => 'devise/sessions#new'
+		get '/users/register' => 'devise/registrations#new'
+		get '/users/sign_out' => 'devise/sessions#destroy'
+		#get '/users/:id/showcase' => 'users#showcase'
+	end
+
 	devise_for :admins, controllers: { sessions: 'admins/sessions'}
 	devise_scope :admin do 
 			get '/admins/login' => 'devise/sessions#new'
@@ -173,4 +177,10 @@ Rails.application.routes.draw do
 	  get 'users/mail'
 	  get 'users/terms_conditions' 
 	  get 'users/fas' 
+
+	  resources :users do
+			resources :reviews
+		end
+
+
 end
