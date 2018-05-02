@@ -61,7 +61,7 @@ margin-top: 0 !important;
 						    		<% @streams.each do |stream|%>
 							     		<div class="checkbox">
 						      			<label class="labelfontsize">
-						      			 	<%= check_box_tag 'stream[]',stream.id, checked = false, class: 'filter-checkbox'%>
+						      			 	<%= check_box_tag 'stream[]',stream.id, checked = false, class: 'filter-checkbox' if stream.present? %>
 						      				<%= stream.stream_name%>
 						      			</label>
 							    		</div>
