@@ -32,12 +32,12 @@ class UsersController < ApplicationController
       school = User.where("city_id = ? AND role_name = ?","#{@@first_value[:city]}","#{@@first_value[:search_role]}")
       if school.first.role_name == "1"
         @all_courses = school.map{|s| s.courses}.flatten
-        @avg =  school.map{|s| s.courses.map{|a| a.course_fee.gsub(/[\s,]/ ,"").to_i }.inject(0, :+)/s.courses.size if s.courses.present?}.compact
+       # @avg =  school.map{|s| s.courses.map{|a| a.course_fee.gsub(/[\s,]/ ,"").to_i }.inject(0, :+)/s.courses.size if s.courses.present?}.compact
         @streams = @all_courses.map{|s| Stream.find(s.stream_id) if s.stream_id.present? }.uniq
-        @degrees = @all_courses.map{|s| Degree.find(s.degree_id) if s.degree_id.present? }.uniq
+        #@degrees = @all_courses.map{|s| Degree.find(s.degree_id) if s.degree_id.present? }.uniq
         @courses = @all_courses.map{|c| c.course_names.uniq}.flatten
-        @affilations = @all_courses.pluck(:course_affliation).uniq
-        @type = @all_courses.pluck(:course_type).uniq.compact
+        @affilations = @all_courses.pluck(:course_affliation).uniq.compact
+        #@type = @all_courses.pluck(:course_type).uniq.compact
       elsif school.first.role_name == "2"
         @subject = school.pluck(:qualification).uniq.compact
       elsif school.first.role_name == "3"
