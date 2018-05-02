@@ -45,253 +45,144 @@ margin-top: 0 !important;
 </style>
 
 <%= render :partial => "layouts/header", :locals => { :active => 'Home' }%>
-
-		
 	<section class="home" id="home" data-stellar-background-ratio="0.4">
 	</section>
+
 	<div class="container-fluid Filtercont">
 		<div class="container-fluid filterschool">
 			<div class="row">
 				<div class="col-md-12">
-					<!-- <div class="col-md-2">
-						<h3>Stream</h3>
-				    	<div class="smallbox">
-				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
-				    		<%# @streams.each do |stream|%>
-					     		<div class="checkbox">
-					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo degree_id-<%#= course.id %> user_id-<%#= course.user_id %>"><%#= stream.stream_name%></label>
-					      			<!-- <script type="text/javascript">
-					                    $('.degree_id-<%#= course.id %>').click(function(){
-					                       $.ajax({
-					                          url:'/users/search',
-					                          type:'POST',
-					                          beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-					                          dataType:'json',
-					                          data:{
-					                              myparam1: <%#= course.id %>,
-					                              myparams: <%#= course.user_id%>,
-					                          },
-					                          success:function(data){
-					                          	var data1 = JSON.stringify(data);
-					                          	var stringify = JSON.parse(data1);
-					                          	var dataArray = stringify["event"];
-					                          	if (dataArray.length > 0) {
-													for (var i = 0; i < dataArray.length; i++) {
-														$("#college_list").hide();
-															$("#search_res").show();
-														}
-
-					                          	} else {}
-					                          		
-					                              debugger;
-					                          },
-					                          error:function(error){
-					                          	// console.log(error.responseText);
-					                              debugger;
-					                          }
-					                      });
-					                  });
-					                </script> -->
-					    		<!-- </div> -->
-			        		<%#end%>
-			        	<!-- </div> --> 
-						<!-- <h3>Degree</h3>
-				    	<div class="smallbox">
-				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
-				    		<%# @degrees.each do |degree|%>
-					     		<div class="checkbox">
-					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo"><%#= degree.degree_name %></label>
-					    		</div>
-			        		<%#end%>
-			        	</div> -->
-			        	<!-- <h3>Course</h3>
-				    	<div class="smallbox">
-				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
-				    		<%# @courses.each do |course|%>
-					     		<div class="checkbox">
-					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo"><%#= course.course_name %></label>
-					    		</div>
-			        		<%#end%>
-			        	</div> -->
-              			<<!-- h3>Fee Structure</h3>
-              			<%#@avg.each do |avg|%>
-				    	<div class="smallbox">
-				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
-				     		<div class="checkbox">
-				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="1"><%#=avg%></label>
-				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">50K to 1Lac</label>
-				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">1Lac to 1.5Lac</label>
-				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">More than 1.5Lac</label>
-				    		</div>
-			        	</div> -->
-			        	<%#end%>
-			        	<!-- <h3>Type</h3>
-				    	<div class="smallbox">
-				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
-				     		<div class="checkbox">
-				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="1">Regular</label>
-				      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">Correspondence</label>
-				    		</div>
-			        	</div> -->
-			        	<!-- <h3>Affiliation</h3>
-				    	<div class="smallbox">
-				    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
-				    		<%#binding.pry%>
-				    		<%# @affilations.each do |aff|%>
-					     		<div class="checkbox">
-					      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="1"><%#= aff%></label>
-					    		</div>
-				    		<%#end%>
-			        	</div>
-			        </div> -->
-
-			        <div id="college_list" class="col-md-12">
-			        	<%if @school.present? %>
-					        <%if @school.first.role_name == "1"%>
-				        		<h3>Schools</h3>
-				        	<%elsif @school.first.role_name == "2"%>
-				        		<h3>Teachers</h3>
-				        	<%elsif @school.first.role_name == "3"%>
-				        		<h3>Students</h3>
-				        	<%else @school.first.role_name == "4"%>
-				        		<h3>Vendors</h3>
-				        	<%end%>
-					        <% @school.each do |school| %>
-					        	<div class="bigbox">
-					        		<div class="row">
-					        			<div class="col-md-12">
-								        	<div class="col-md-2">
-								        		<% if school.profile_image.present?%>
-									                <%= image_tag school.profile_image ,class: "img-thumbnail img-responsive collglogo"%>
-									               	<%else%>
-									               		<%= image_tag("img.jpg",class: "img-thumbnail img-responsive collglogo")%>
-											    <% end %>
-								            </div>
-								            <div class="col-md-10">
-								            <%#debugger%>
-								            	<% if school.role_name == "1"%>
-								            		<a href="/users/show?id=<%= school.id %>">
-								            	<%else%>
-								            		<a href="/users/student_show?id=<%= school.id %>">
-								            	<%end%>
-								        		<h4 id="<%= school.id %>"><%= school.name %> </h4></a>
-								        		<span> <i class="fa fa-address"></i> <%= school.address%>,
-								        		<% if @city = City.find_by_id(school.city_id)%><%= @city.name%> 
-								        		<%end%>,
-								        		<% if @state = Stat.find_by_id(school.state_id)%><%= @state.name%> 
-								        		<%end%>,
-								        		<% if @country = Countr.find_by_id(school.country_id)%>
-								        		 <%= @country.name%> 
-								        		 <%end%></span>
-								            </div>
-								            <%if school.role_name == "1"%>
-							                    <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
-							                    	<div class="col-md-3 col-sm-6 col-xs-6">
-							                    		<i class="fa fa-align-justify"></i>
-							                    		<span>Avg Annual Fees </span>
-							                    		<%if school.courses.present?%>
-									        			<h6><% p = school.courses.map { |c| 
-									        				p= c.course_fee.gsub(/[\s,]/ ,"").to_i }.inject(0, :+)/school.courses.size%><%= p%></h6>
-									        			<%else%><h6>Not Mention</h6><%end%>
-									        	 	</div>
-										        	<div class="col-md-3 col-sm-6 col-xs-6">
-								                    	<i class="fa fa-align-justify"></i> 
-								                    	<span>Affiliation</span>
-										        		<%if school.courses.first.present?%>
-									        			<h6><%= school.courses.first.course_affliation %></h6>
-									        			<%else%><h6>Not Mention</h6><%end%>
-										        	</div>
-										        	<div class="col-md-3 col-sm-6 col-xs-6">
-								                    <i class="fa fa-align-justify"></i> 
-								                    <span>Stream</span>
-										        		<%if school.courses.first.present?%>
-										        		<%@stream = Stream.find(school.courses.first.degree_id) if school.courses.first.degree_id.present? %>
-									        			<h6><%= @stream.stream_name if @stream.present? %></h6>
-									        			<%else%><h6>Not Mention</h6><%end%>
-										        	</div>
-									        	 	<div class="col-md-3 col-sm-6 col-xs-6">
-									        	 		<%= link_to "Contact Now",new_user_registration_path,class: "btn btn-primary TxtceNtr",target: "_blank"%>
-									        	 	</div>
-							                    </div>
-							                <%elsif school.role_name == "2"%>
-							                    <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
-							                    	<div class="col-md-4 col-sm-6 col-xs-6">
-							                    		<i class="fa fa-align-justify"></i>
-							                    		<span>City</span>
-							                    		<%if school.city_id.present?%>
-							                    			<%@city = City.find(school.city_id)%>
-									        			<h6><%= @city.name %></h6>
-									        			<%else%><h6>Not Mention</h6><%end%>
-									        	 	</div>
-										        	<div class="col-md-4 col-sm-6 col-xs-6">
-								                    	<i class="fa fa-align-justify"></i> 
-								                    	<span>Subject</span>
-										        		<%if school.qualification.present?%>
-									        			<h6><%= school.qualification %></h6>
-									        			<%else%><h6>Not Mention</h6><%end%>
-										        	</div>
-									        	 	<div class="col-md-4 col-sm-6 col-xs-6">
-									        	 		<%= link_to "Contact Now",new_user_registration_path,class: "btn btn-primary TxtceNtr",target: "_blank"%>
-									        	 	</div>
-							                    </div>
-							                <%elsif school.role_name == "3"%>
-							                    <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
-							                    	<div class="col-md-4 col-sm-6 col-xs-6">
-							                    		<i class="fa fa-align-justify"></i>
-							                    		<span>City</span>
-							                    		<%if school.city_id.present?%>
-							                    			<%@city = City.find(school.city_id)%>
-									        			<h6><%= @city.name %></h6>
-									        			<%else%><h6>Not Mention</h6><%end%>
-									        	 	</div>
-										        	<div class="col-md-4 col-sm-6 col-xs-6">
-								                    	<i class="fa fa-align-justify"></i> 
-								                    	<span>Qualification</span>
-										        		<%if school.qualification.present?%>
-									        			<h6><%= school.qualification %></h6>
-									        			<%else%><h6>Not Mention</h6><%end%>
-										        	</div>
-									        	 	<div class="col-md-4 col-sm-6 col-xs-6">
-									        	 		<%= link_to "Contact Now",new_user_registration_path,class: "btn btn-primary TxtceNtr",target: "_blank"%>
-									        	 	</div>
-							                    </div>
-							                <%else school.role_name == "4"%>
-							                    <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
-							                    	<div class="col-md-4 col-sm-6 col-xs-6">
-							                    		<i class="fa fa-align-justify"></i>
-							                    		<span>City</span>
-							                    		<%if school.city_id.present?%>
-							                    			<%@city = City.find(school.city_id)%>
-									        			<h6><%= @city.name %></h6>
-									        			<%else%><h6>Not Mention</h6><%end%>
-									        	 	</div>
-										        	<div class="col-md-4 col-sm-6 col-xs-6">
-								                    	<i class="fa fa-align-justify"></i> 
-								                    	<span>Services</span>
-										        		<%if school.qualification.present?%>
-									        			<h6><%= school.qualification %></h6>
-									        			<%else%><h6>Not Mention</h6><%end%>
-										        	</div>
-									        	 	<div class="col-md-4 col-sm-6 col-xs-6">
-									        	 		<%= link_to "Contact Now",new_user_registration_path,class: "btn btn-primary TxtceNtr",target: "_blank"%>
-									        	 	</div>
-							                    </div>
-							                <%end%>
-			                  			</div>
-					        		</div>
+					<% unless @school.blank? %>
+						<%if @school.first.role_name == "1"%>
+							<div class="col-md-2">
+								<h3>Stream</h3>
+						    	<div class="smallbox">
+						    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+						    		<% @streams.each do |stream|%>
+							     		<div class="checkbox">
+						      			<label class="labelfontsize">
+						      			 	<%= check_box_tag 'stream[]',stream.id, checked = false, class: 'filter-checkbox'%>
+						      				<%= stream.stream_name%>
+						      			</label>
+							    		</div>
+					        		<%end%>
 					        	</div>
-					        <%end%>
-					    <%else%>
-			        		<p>No Result Found</p>
-			        	<%end%>
-			        </div>
-
-			        <div id="search_res" class="col-md-10" style="display:none;">
-			        	<%= render "users/search_filter" %>
-			        </div>	
+									<!-- <h3>Degree</h3>
+							    	<div class="smallbox">
+							    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+							    		<% #@degrees.each do |degree|%>
+								     		<div class="checkbox">
+								      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo"><%#= degree.degree_name %></label>
+								    		</div>
+						        		<%#end%>
+						        	</div> -->
+						        	<!-- <h3>Course</h3>
+							    	<div class="smallbox">
+							    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+							    		<%# @courses.each do |course|%>
+								     		<div class="checkbox">
+								      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo"><%#= course.course_name %></label>
+								    		</div>
+						        		<%#end%>
+						        	</div> -->
+	              				<!-- <h3>Fee Structure</h3>
+				              	<%# @avg.each do |avg|%>
+							    	<div class="smallbox">
+							    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+							     		<div class="checkbox">
+							      			<!-- <label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="1"><span style='font-family:Arial;'>&#8377;</span><%#=number_with_delimiter(avg)%></label> -->
+							      			<!-- <label class="labelfontsize">
+							      				<%#= check_box_tag 'avg[]',avg,checked = false, class: 'filter-checkbox'%>
+							      				<span style='font-family:Arial;'>&#8377;</span>
+							      				<%#=number_with_delimiter(avg)%>
+							      			</label> -->
+							      			<!-- <label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">50K to 1Lac</label>
+							      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">1Lac to 1.5Lac</label>
+							      			<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">More than 1.5Lac</label> -->
+							    		<!-- </div>
+						        	</div>
+	        					<%#end%> --> 
+							        <!-- <h3>Type</h3>
+								    	<div class="smallbox">
+								    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+								    		<%# @type.each do |ty|%>
+								     		<div class="checkbox">
+								     			<%#if ty.present? %>
+								      				<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="1">Regular</label>
+								      			<%#else%>
+								      				<label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="2">Correspondence</label>
+								      			<%#end%>
+								    		</div>
+								    		<%#end%>
+							        </div> -->
+				        		<h3>Affiliation</h3>
+						    	<div class="smallbox">
+						    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+						    		<% @affilations.each do |aff|%>
+							     		<div class="checkbox">
+							     			<label class="labelfontsize">
+							      			<!-- <label class="labelfontsize"><input type="checkbox" class="paDtpZeRo" id="1"><%#= aff%></label> -->
+								      			<%= check_box_tag 'aff[]',aff,checked = false, class: 'filter-checkbox'%>
+								      			<%= aff%>
+									      	</label>
+							    		</div>
+						    		<%end%>
+					        	</div>
+						    </div>							      
+					    <%elsif @school.first.role_name == "2"%>
+					    	<div class="col-md-2">
+					        	<h3>Subject</h3>
+						    	<div class="smallbox">
+						    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+						    		<% @subject.each do |subject|%>
+							     		<div class="checkbox">
+							      			<label class="labelfontsize"><%= check_box_tag 'subjects[]',subject,checked = false, class: 'filter-checkbox'%><%= subject%>
+							      			</label>
+							    		</div>
+						    		<%end%>
+					        	</div>
+					        </div>
+					    <%elsif @school.first.role_name == "3"%>
+					    	<div class="col-md-2">
+					        	<h3>Class</h3>
+						    	<div class="smallbox">
+						    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+						    		<% @class.each do |cls|%>
+							     		<div class="checkbox">
+							      			<label class="labelfontsize">
+								      			<%= check_box_tag 'class[]',cls,checked = false, class: 'filter-checkbox'%>
+								      			<%= cls %>
+							      			</label>
+							    		</div>
+						    		<%end%>
+					        	</div>
+					        </div>
+					    <%elsif @school.first.role_name == "4"%>
+					    	<div class="col-md-2">
+					        	<h3>Services</h3>
+						    	<div class="smallbox">
+						    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+						    		<% @services.each do |service|%>
+							     		<div class="checkbox">
+							      			<label class="labelfontsize">
+								      			<%= check_box_tag 'services[]',service,checked = false, class: 'filter-checkbox'%>
+								      			<%= service%>
+							      			</label>
+							    		</div>
+						    		<%end%>
+					        	</div>
+					        </div>
+					    <%end%>
+					<%end%>
+					<div class="search_filter_div">
+			        	<%= render "users/search_filter" %>						
+					</div>
+			        <!-- <div id="search_res" class="col-md-10" style="display:none;">
+			        	<%#= render "users/search_filter" %>
+			        </div> -->	
 			        <div class="text-center">
-			       <p class="text-center"><%= will_paginate @school %></p>
-			   </div>
+			       		<p class="text-center"><%= will_paginate @school %></p>
+			   		</div>
 			    </div>
 			</div><!-- row end -->	
 		</div>
@@ -305,3 +196,68 @@ margin-top: 0 !important;
 <%= javascript_include_tag "jquery.appear" %>
 <%= javascript_include_tag "jquery.nicescroll.min" %>
 <%= javascript_include_tag "script" %>
+
+<script type="text/javascript">
+  $(document).on("change", ".filter-checkbox", function(){
+   	var streams = [];
+	var st =  document.getElementsByName('stream[]');
+	for(var i=0; st[i]; ++i){
+	    if (st[i].checked) {
+      		streams.push(st[i].value);
+      	}
+	}
+	var fees = [];
+	var fe =  document.getElementsByName('avg[]');
+	for(var i=0; fe[i]; ++i){
+	    if (fe[i].checked) {
+      		fees.push(fe[i].value);
+      	}
+	}
+	var affs = [];
+	var af =  document.getElementsByName('aff[]');
+	for(var i=0; af[i]; ++i){
+	    if (af[i].checked) {
+      		affs.push(af[i].value);
+      	}
+	}
+	var subjs = [];
+	var sub =  document.getElementsByName('subjects[]');
+	for(var i=0; sub[i]; ++i){
+	    if (sub[i].checked) {
+      		subjs.push(sub[i].value);
+      	}
+	}
+	var clss = [];
+	var cls =  document.getElementsByName('class[]');
+	for(var i=0; cls[i]; ++i){
+	    if (cls[i].checked) {
+      		clss.push(cls[i].value);
+      	}
+	}
+	var servcs = [];
+	var ser =  document.getElementsByName('services[]');
+	for(var i=0; ser[i]; ++i){
+	    if (ser[i].checked) {
+      		servcs.push(ser[i].value);
+      	}
+	}
+  	// alert("hiii");
+    $.ajax({
+      url: "/users/search",
+      method: "GET",
+      dataType: "JSON",
+      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+      data: {str: streams, fee: fees, affilations: affs, subjects: subjs, classes: clss, services: servcs},
+      error: function (xhr, status, error) {
+      	alert("hii");
+        alert('AJAX Error: ' + status + error);
+      },
+      success: function (response,status) {
+      	alert("hiii");
+        alert(status);
+        console.log(response);
+        // $("#search_filter_div").html("<%#= escape_javascript(render(partial: 'search_filter', locals: { some_variable: @some_variable}))%>")
+      }
+    });
+  });
+</script>

@@ -22,6 +22,7 @@ gem 'mysql2','~> 0.3.18'
 gem "cocoon"
 gem 'simple_form'
 gem 'devise'
+gem 'pry-nav'
 gem 'pry-rails'
 gem 'geocoder'
 gem "nokogiri"

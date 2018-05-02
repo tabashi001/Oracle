@@ -1,50 +1,139 @@
-  	<h3>Colleges</h3>
-			        	<%if @school1.present? %>
-				        	<% @school1.each do |school| %>
-					        	<div class="bigbox">
-					        		<div class="row">
-					        			<div class="col-md-12">
-								        	<div class="col-md-2">
-								        		<% if school.profile_image.present?%>
-									                <%= image_tag school.profile_image ,class: "img-thumbnail img-responsive collglogo"%>
-									               	<%else%>
-									               		<%= image_tag("img.jpg",class: "img-thumbnail img-responsive collglogo")%>
-											    <% end %>
-								            </div>
-								            <div class="col-md-10">
-								            	<a href="/users/show?id=<%= school.id %>">
-
-								            <%#= link_to users_show_path do %>
-								        		<h4 id="<%= school.id %>"><%= school.name %> </h4>
-								        		<%#end%>
-								        		</a>
-								        		<span> <i class="fa fa-map-marker"></i> <%= school.address%>,<%= school.city%>,<%= school.country%> </span>
-								            </div>
-						                    <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
-						                    	<div class="col-md-3 col-sm-6 col-xs-6">
-						                    		<i class="fa fa-map-marker "></i> <span>Avg Annual Fees</span>
-						                    		<%if school.courses.present?%>
-								        			<h6><%= school.courses.first.course_fee %></h6>
-								        			<%else%><h6>Not Mention</h6><%end%>
-								        	 	</div>
-									        	<div class="col-md-3 col-sm-6 col-xs-6">
-							                    	<i class="fa fas fa-trophy"></i> <span>Scholership</span>
-									        		<h6>Available</h6>
-									        	</div>
-									        	<div class="col-md-3 col-sm-6 col-xs-6">
-							                    	<i class="fa fas fa-bed"></i> <span>Hostel</span>
-									        		<h6>Availavle</h6>
-									        	</div>
-								        	 	<div class="col-md-3 col-sm-6 col-xs-6">
-						                    		<button class="btn btn-primary TxtceNtr">Apply Now </button>
-								        	 	</div>
-						                    </div>
-			                  			</div>
-					        		</div>
+<div id="college_list" class="col-md-10">
+	<%if @school.present? %>
+        <%if @school.first.role_name == "1"%>
+    		<h3>Schools</h3>
+    	<%elsif @school.first.role_name == "2"%>
+    		<h3>Teachers</h3>
+    	<%elsif @school.first.role_name == "3"%>
+    		<h3>Students</h3>
+    	<%else @school.first.role_name == "4"%>
+    		<h3>Vendors</h3>
+    	<%end%>
+        <% @school.each do |school| %>
+        	<div class="bigbox">
+        		<div class="row">
+        			<div class="col-md-12">
+			        	<div class="col-md-2">
+			        		<% if school.profile_image.present?%>
+				                <%= image_tag school.profile_image ,class: "img-thumbnail img-responsive collglogo"%>
+				               	<%else%>
+				               		<%= image_tag("img.jpg",class: "img-thumbnail img-responsive collglogo")%>
+						    <% end %>
+			            </div>
+			            <div class="col-md-10">
+			            	<% if school.role_name == "1"%>
+			            		<a href="/users/show?id=<%= school.id %>">
+			            	<%else%>
+			            		<a href="/users/student_show?id=<%= school.id %>">
+			            	<%end%>
+			        		<h4 id="<%= school.id %>"><%= school.name %> </h4></a>
+			        		<span> <i class="fa fa-address"></i> <%= school.address%>,
+			        		<% if @city = City.find_by_id(school.city_id)%><%= @city.name%> 
+			        		<%end%>,
+			        		<% if @state = Stat.find_by_id(school.state_id)%><%= @state.name%> 
+			        		<%end%>,
+			        		<% if @country = Countr.find_by_id(school.country_id)%>
+			        		 <%= @country.name%> 
+			        		 <%end%></span>
+			            </div>
+			            <%if school.role_name == "1"%>
+		                    <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
+		                    	<div class="col-md-3 col-sm-6 col-xs-6">
+		                    		<i class="fa fa-align-justify"></i>
+		                    		<span>Avg Annual Fees </span>
+		                    		<%if school.courses.present?%>
+				        			<h6><% p = school.courses.map { |c| 
+				        				p= c.course_fee.gsub(/[\s,]/ ,"").to_i }.inject(0, :+)/school.courses.size%><span style='font-family:Arial;'>&#8377;</span><%= number_with_delimiter(p)%></h6>
+				        			<%else%><h6>Not Mention</h6><%end%>
+				        	 	</div>
+					        	<div class="col-md-3 col-sm-6 col-xs-6">
+			                    	<i class="fa fa-align-justify"></i> 
+			                    	<span>Affiliation</span>
+					        		<%if school.courses.first.present?%>
+				        			<h6><%= school.courses.first.course_affliation %></h6>
+				        			<%else%><h6>Not Mention</h6><%end%>
 					        	</div>
-					        <%end%>
-					    <%else%>
-			        		<p>No Result Found</p>
-			        	<%end%>
-
+					        	<div class="col-md-3 col-sm-6 col-xs-6">
+			                    <i class="fa fa-align-justify"></i> 
+			                    <span>Stream</span>
+					        		<%if school.courses.first.present?%>
+					        		<%@stream = Stream.find(school.courses.first.degree_id) if school.courses.first.degree_id.present? %>
+				        			<h6><%= @stream.stream_name if @stream.present? %></h6>
+				        			<%else%><h6>Not Mention</h6><%end%>
+					        	</div>
+				        	 	<div class="col-md-3 col-sm-6 col-xs-6">
+				        	 		<%= link_to "Contact Now",new_user_registration_path,class: "btn btn-primary TxtceNtr",target: "_blank"%>
+				        	 	</div>
+		                    </div>
+		                <%elsif school.role_name == "2"%>
+		                    <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
+		                    	<div class="col-md-4 col-sm-6 col-xs-6">
+		                    		<i class="fa fa-align-justify"></i>
+		                    		<span>City</span>
+		                    		<%if school.city_id.present?%>
+		                    			<%@city = City.find(school.city_id)%>
+				        			<h6><%= @city.name %></h6>
+				        			<%else%><h6>Not Mention</h6><%end%>
+				        	 	</div>
+					        	<div class="col-md-4 col-sm-6 col-xs-6">
+			                    	<i class="fa fa-align-justify"></i> 
+			                    	<span>Subject</span>
+					        		<%if school.qualification.present?%>
+				        			<h6><%= school.qualification %></h6>
+				        			<%else%><h6>Not Mention</h6><%end%>
+					        	</div>
+				        	 	<div class="col-md-4 col-sm-6 col-xs-6">
+				        	 		<%= link_to "Contact Now",new_user_registration_path,class: "btn btn-primary TxtceNtr",target: "_blank"%>
+				        	 	</div>
+		                    </div>
+		                <%elsif school.role_name == "3"%>
+		                    <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
+		                    	<div class="col-md-4 col-sm-6 col-xs-6">
+		                    		<i class="fa fa-align-justify"></i>
+		                    		<span>City</span>
+		                    		<%if school.city_id.present?%>
+		                    			<%@city = City.find(school.city_id)%>
+				        			<h6><%= @city.name %></h6>
+				        			<%else%><h6>Not Mention</h6><%end%>
+				        	 	</div>
+					        	<div class="col-md-4 col-sm-6 col-xs-6">
+			                    	<i class="fa fa-align-justify"></i> 
+			                    	<span>Qualification</span>
+					        		<%if school.qualification.present?%>
+				        			<h6><%= school.qualification %></h6>
+				        			<%else%><h6>Not Mention</h6><%end%>
+					        	</div>
+				        	 	<div class="col-md-4 col-sm-6 col-xs-6">
+				        	 		<%= link_to "Contact Now",new_user_registration_path,class: "btn btn-primary TxtceNtr",target: "_blank"%>
+				        	 	</div>
+		                    </div>
+		                <%else school.role_name == "4"%>
+		                    <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
+		                    	<div class="col-md-4 col-sm-6 col-xs-6">
+		                    		<i class="fa fa-align-justify"></i>
+		                    		<span>City</span>
+		                    		<%if school.city_id.present?%>
+		                    			<%@city = City.find(school.city_id)%>
+				        			<h6><%= @city.name %></h6>
+				        			<%else%><h6>Not Mention</h6><%end%>
+				        	 	</div>
+					        	<div class="col-md-4 col-sm-6 col-xs-6">
+			                    	<i class="fa fa-align-justify"></i> 
+			                    	<span>Services</span>
+					        		<%if school.qualification.present?%>
+				        			<h6><%= school.qualification %></h6>
+				        			<%else%><h6>Not Mention</h6><%end%>
+					        	</div>
+				        	 	<div class="col-md-4 col-sm-6 col-xs-6">
+				        	 		<%= link_to "Contact Now",new_user_registration_path,class: "btn btn-primary TxtceNtr",target: "_blank"%>
+				        	 	</div>
+		                    </div>
+		                <%end%>
+          			</div>
+        		</div>
+        	</div>
+        <%end%>
+    <%else%>
+		<p>No Result Found</p>
+	<%end%>
 </div>
