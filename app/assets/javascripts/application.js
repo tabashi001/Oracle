@@ -11,8 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.raty
 //= require rails-ujs
-// require jquery.raty
 // require turbolinks
 //= require gmaps/google
 //= require cocoon
