@@ -36,8 +36,8 @@ class UsersController < ApplicationController
         @streams = @all_courses.map{|s| Stream.find(s.stream_id) if s.stream_id.present? }.uniq
         #@degrees = @all_courses.map{|s| Degree.find(s.degree_id) if s.degree_id.present? }.uniq
         @courses = @all_courses.map{|c| c.course_names.uniq}.flatten
-        @affilations = @all_courses.pluck(:course_affliation).uniq
-        @type = @all_courses.pluck(:course_type).uniq.compact
+        @affilations = @all_courses.pluck(:course_affliation).uniq.compact
+        #@type = @all_courses.pluck(:course_type).uniq.compact
       elsif school.first.role_name == "2"
         @subject = school.pluck(:qualification).uniq.compact
       elsif school.first.role_name == "3"
