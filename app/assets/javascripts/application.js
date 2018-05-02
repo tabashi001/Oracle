@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require rails-ujs
-//= require jquery.raty.js.erb
+//= require jquery.raty
 //= require turbolinks
 //= require gmaps/google
 //= require cocoon

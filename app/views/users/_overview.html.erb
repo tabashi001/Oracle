@@ -211,14 +211,20 @@ function myMap() {
   
   });
 </script>
+
 <script type="text/javascript">
-	$('.star-rating').raty({
-	  path: '/assets/',
-	  readOnly: true,
-	  score: function() {
-	    return $(this).attr('data-score');
-		}
-	});
+	(function() {
+  $(document).on('turbolinks:load', function() {
+    $('.star-rating').raty({
+      path: '/assets',
+      readOnly: true,
+      score: function() {
+        return $(this).attr('data-score');
+      }
+    });
+  });
+
+}).call(this);
 </script>
 
 <style type="text/css">
