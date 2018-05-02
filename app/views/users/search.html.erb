@@ -58,14 +58,18 @@ margin-top: 0 !important;
 								<h3>Stream</h3>
 						    	<div class="smallbox">
 						    		<!-- <input type="search" class="form-control" name="googlesearch" placeholder="search">	 -->
-						    		<% @streams.each do |stream|%>
-							     		<div class="checkbox">
-						      			<label class="labelfontsize">
-						      			 	<%= check_box_tag 'stream[]',stream.id, checked = false, class: 'filter-checkbox' if stream.present? %>
-						      				<%= stream.stream_name%>
-						      			</label>
-							    		</div>
-					        		<%end%>
+						    		<%if @streams.present? %>
+							    		<% @streams.each do |stream|%>
+								     		<div class="checkbox">
+							      			<label class="labelfontsize">
+							      			 	<%= check_box_tag 'stream[]',stream.id, checked = false, class: 'filter-checkbox' if stream.present? %>
+							      				<%= stream.stream_name if stream.present? %>
+							      			</label>
+								    		</div>
+						        		<%end%>
+						        	<%else%>
+						        	   No Streams
+						        	<%end%>
 					        	</div>
 									<!-- <h3>Degree</h3>
 							    	<div class="smallbox">
