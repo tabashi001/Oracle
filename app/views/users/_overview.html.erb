@@ -215,8 +215,7 @@ function myMap() {
 </script>
 
 <script type="text/javascript">
-	(function() {
-  $(document).on('turbolinks:load', function() {
+	
     $('.star-rating').raty({
       path: '/assets/',
       readOnly: true,
@@ -224,9 +223,7 @@ function myMap() {
         return $(this).attr('data-score');
       }
     });
-  });
-
-}).call(this);
+ 
 </script>
 
 <style type="text/css">

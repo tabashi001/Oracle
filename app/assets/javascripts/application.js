@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require rails-ujs
-//= require jquery.raty
-//= require turbolinks
+// require jquery.raty
+// require turbolinks
 //= require gmaps/google
 //= require cocoon
 $(function() {
