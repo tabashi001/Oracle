@@ -196,6 +196,8 @@
 
 <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key= AIzaSyDMEnG0GKj_YRFsOSmUBG-1dcMg57N2Qio&callback=myMap'%>
 
+
+
 <script>
 function myMap() {
 	var myLatLng = {lat: <%= @college.latitude%>, lng: <%= @college.longitude%>};
