@@ -154,7 +154,7 @@
 					<div class="panelone">
 						<ul class="list-group">
 							<% @reviews.each do |r| %>
-								<li class="list-group-item list-group-item-success reviewModel" data-toggle="modal" data-target="#reviewmodel_<%= r.id%>" id="<%= r.id%>">
+								<li class="list-group-item list-group-item-success" data-toggle="modal" data-target="#" id="<%= r.id%>">
 									<div class='star-rating' data-score=<%= r.rating %>></div>
 									<p class="previewcust"><%= r.comment %></p>
 									<% if r.reviewer_id.present? %>
@@ -166,7 +166,6 @@
 					</div>
 				</div>
 
-				<%#= link_to 'Write a Review', new_user_review_path(@college), "data-toggle"=>"modal", "data-target"=>"#reviewmodel" %>
 				<br/>
 				<%= link_to 'Write a Review', "", "data-toggle"=>"modal", "data-target"=>"#reviewmodel", class: "btn btn-primary btn-sm" %>
 
@@ -174,18 +173,6 @@
 		</div>
 	</div>
 </div>
-
-<script type="text/javascript">
-	// $(".reviewModel").on("click", function(){
-	// 	alert("hi");
-	// 	id = $(this).attr("id");
-
-	// 	$(".modal-body #bookId").val( myBookId );
- //    $('#addBookDialog').modal('show');
-	// 	alert(id);
-	// });
-</script>
-
 
 <div id="reviewmodel" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -207,10 +194,7 @@
 </div>
 
 
-<%= javascript_include_tag "jquery.min" %>
-<%= javascript_include_tag "jquery.raty.js" %>
 <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key= AIzaSyDMEnG0GKj_YRFsOSmUBG-1dcMg57N2Qio&callback=myMap'%>
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script> -->
 
 <script>
 function myMap() {
@@ -228,13 +212,13 @@ function myMap() {
   });
 </script>
 <script type="text/javascript">
-$('.star-rating').raty({
-  path: '/assets/',
-  readOnly: true,
-  score: function() {
-    return $(this).attr('data-score');
-}
-});
+	$('.star-rating').raty({
+	  path: '/assets/',
+	  readOnly: true,
+	  score: function() {
+	    return $(this).attr('data-score');
+		}
+	});
 </script>
 
 <style type="text/css">
