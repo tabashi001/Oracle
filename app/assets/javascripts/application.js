@@ -10,11 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
 //= require rails-ujs
+//= require jquery.raty
 //= require turbolinks
 //= require gmaps/google
 //= require cocoon
-
 $(function() {
   $("#products th a, #products .pagination a").live("click", function() {
     $.getScript(this.href);

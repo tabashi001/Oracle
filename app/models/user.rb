@@ -8,7 +8,8 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:facebook,:twitter,:google_oauth2]
 
   validates :role_name, presence: true
-
+  
+  has_many :reviews
 #   PASSWORD_FORMAT = /\A
 #   (?=.{8,})          # Must contain 8 or more characters
 #   (?=.*\d)           # Must contain a digit
