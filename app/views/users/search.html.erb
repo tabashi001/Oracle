@@ -57,7 +57,7 @@ margin-top: 0 !important;
 							<div class="col-md-2">
 								<h3>Stream</h3>
 						    	<div class="smallbox">
-						    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+						    		<!-- <input type="search" class="form-control" name="googlesearch" placeholder="search">	 -->
 						    		<% @streams.each do |stream|%>
 							     		<div class="checkbox">
 						      			<label class="labelfontsize">
@@ -117,7 +117,7 @@ margin-top: 0 !important;
 							        </div> -->
 				        		<h3>Affiliation</h3>
 						    	<div class="smallbox">
-						    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+						    		<!-- <input type="search" class="form-control" name="googlesearch" placeholder="search">	 -->
 						    		<% @affilations.each do |aff|%>
 							     		<div class="checkbox">
 							     			<label class="labelfontsize">
@@ -133,7 +133,7 @@ margin-top: 0 !important;
 					    	<div class="col-md-2">
 					        	<h3>Subject</h3>
 						    	<div class="smallbox">
-						    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+						    		<!-- <input type="search" class="form-control" name="googlesearch" placeholder="search">	 -->
 						    		<% @subject.each do |subject|%>
 							     		<div class="checkbox">
 							      			<label class="labelfontsize"><%= check_box_tag 'subjects[]',subject,checked = false, class: 'filter-checkbox'%><%= subject%>
@@ -146,7 +146,7 @@ margin-top: 0 !important;
 					    	<div class="col-md-2">
 					        	<h3>Class</h3>
 						    	<div class="smallbox">
-						    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+						    		<!-- <input type="search" class="form-control" name="googlesearch" placeholder="search">	 -->
 						    		<% @class.each do |cls|%>
 							     		<div class="checkbox">
 							      			<label class="labelfontsize">
@@ -161,7 +161,7 @@ margin-top: 0 !important;
 					    	<div class="col-md-2">
 					        	<h3>Services</h3>
 						    	<div class="smallbox">
-						    		<input type="search" class="form-control" name="googlesearch" placeholder="search">	
+						    		<!-- <input type="search" class="form-control" name="googlesearch" placeholder="search">	 -->
 						    		<% @services.each do |service|%>
 							     		<div class="checkbox">
 							      			<label class="labelfontsize">
@@ -175,7 +175,7 @@ margin-top: 0 !important;
 					    <%end%>
 					<%end%>
 					<div class="search_filter_div">
-			        	<%= render "users/search_filter" %>						
+			      <%= render "users/search_filter" %>						
 					</div>
 			        <!-- <div id="search_res" class="col-md-10" style="display:none;">
 			        	<%#= render "users/search_filter" %>
@@ -243,21 +243,37 @@ margin-top: 0 !important;
 	}
   	// alert("hiii");
     $.ajax({
-      url: "/users/search",
+      url: "/users/filter",
       method: "GET",
-      dataType: "JSON",
-      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+      // dataType: "JSON",
+      // beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
       data: {str: streams, fee: fees, affilations: affs, subjects: subjs, classes: clss, services: servcs},
+      success: function (response,status) {
+      	// alert("hiii");
+       //  alert(status);
+       //  console.log(response);
+       //  // $("#search_filter_div").html("<%#= escape_javascript(render(partial: 'search_filter', locals: { some_variable: @some_variable}))%>")
+      },
       error: function (xhr, status, error) {
       	alert("hii");
         alert('AJAX Error: ' + status + error);
-      },
-      success: function (response,status) {
-      	alert("hiii");
-        alert(status);
-        console.log(response);
-        // $("#search_filter_div").html("<%#= escape_javascript(render(partial: 'search_filter', locals: { some_variable: @some_variable}))%>")
       }
     });
+
+
+
+    // $.ajax({
+    //   type: 'GET',
+    //   url: $('#user_id').val(),
+    //   data: {
+    //     sort: $('option:selected', this).val()
+    //   }
+    // }).done(function(data) {
+    //   console.log(data);
+    // });
+
+
+
+
   });
 </script>

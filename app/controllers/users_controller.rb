@@ -22,43 +22,45 @@ class UsersController < ApplicationController
 
   def search
     if params[:commit]=="Search"
-      @@first_value = params[:user]
-      session[:users] = params[:user]
+      @@first_value = params[:user]      
       @school = User.where("city_id = ? AND role_name = ?","#{@@first_value[:city]}","#{@@first_value[:search_role]}").paginate(:per_page => 4, :page => params[:page])
-    elsif  params[:str].present? || params[:fee].present? || params[:affilations].present?
-        @search = Course.where("course_affliation IN (?) OR stream_id IN (?)",params[:affilations],params[:str])
-        @school  = User.where(:id => @search.map{ |c|c.user_id}).paginate(:per_page => 4, :page => params[:page])
-    elsif params[:subjects].present?
-      @school = User.where(:role_name => "2",:qualification => params[:subjects]).paginate(:per_page => 4, :page => params[:page])
-    elsif params[:classes].present? && session[:users].present?
-      @school = User.where(:role_name => "3",:qualification => params[:classes],:city_id => session[:users][:city]).paginate(:per_page => 4, :page => params[:page])
-      respond_to do |format| 
-        #format.json { render json: @school } 
-        format.js
-      end
-    elsif params[:services].present?
-      @school = User.where(:role_name => "4",:qualification => params[:services]).paginate(:per_page => 4, :page => params[:page])
-    else session[:users]
-       @school = User.where("city_id = ? AND role_name = ?","#{session[:users][:city]}","#{session[:users][:search_role]}").paginate(:per_page => 4, :page => params[:page])
     end
     
     unless @school.blank?
-      if @school.first.role_name == "1"
-        @all_courses = @school.map{|s| s.courses}.flatten
-        @avg =  @school.map{|s| s.courses.map{|a| a.course_fee.gsub(/[\s,]/ ,"").to_i }.inject(0, :+)/s.courses.size if s.courses.present?}.compact
+      @@first_value = params[:user] 
+       session[:users] = params[:user]     
+      school = User.where("city_id = ? AND role_name = ?","#{@@first_value[:city]}","#{@@first_value[:search_role]}")
+      if school.first.role_name == "1"
+        @all_courses = school.map{|s| s.courses}.flatten
+        @avg =  school.map{|s| s.courses.map{|a| a.course_fee.gsub(/[\s,]/ ,"").to_i }.inject(0, :+)/s.courses.size if s.courses.present?}.compact
         @streams = @all_courses.map{|s| Stream.find(s.stream_id) if s.stream_id.present? }.uniq
         @degrees = @all_courses.map{|s| Degree.find(s.degree_id) if s.degree_id.present? }.uniq
         @courses = @all_courses.map{|c| c.course_names.uniq}.flatten
         @affilations = @all_courses.pluck(:course_affliation).uniq
         @type = @all_courses.pluck(:course_type).uniq.compact
-      elsif @school.first.role_name == "2"
-        @subject = @school.pluck(:qualification).uniq.compact
-      elsif @school.first.role_name == "3"
-        @class = @school.pluck(:qualification).uniq.compact
-      else @school.first.role_name == "4"
-        @services = @school.pluck(:qualification).uniq.compact
+      elsif school.first.role_name == "2"
+        @subject = school.pluck(:qualification).uniq.compact
+      elsif school.first.role_name == "3"
+        @class = school.pluck(:qualification).uniq.compact
+      else school.first.role_name == "4"
+        @services = school.pluck(:qualification).uniq.compact
       end
     end    
+  end
+
+  def filter
+    if  params[:str].present? || params[:fee].present? || params[:affilations].present?
+      @search = Course.where("course_affliation IN (?) OR stream_id IN (?)",params[:affilations],params[:str])
+      @school  = User.where(:id => @search.map{ |c|c.user_id}).paginate(:per_page => 4, :page => params[:page])
+    elsif params[:subjects].present?
+      @school = User.where(:role_name => "2",:qualification => params[:subjects]).paginate(:per_page => 4, :page => params[:page])
+    elsif params[:classes].present? && session[:users].present?
+      @school = User.where(:role_name => "3",:qualification => params[:classes],:city_id => session[:users][:city]).paginate(:per_page => 4, :page => params[:page])      
+    elsif params[:services].present?
+      @school = User.where(:role_name => "4",:qualification => params[:services]).paginate(:per_page => 4, :page => params[:page])
+    else session[:users]
+       @school = User.where("city_id = ? AND role_name = ?","#{session[:users][:city]}","#{session[:users][:search_role]}").paginate(:per_page => 4, :page => params[:page])
+    end
   end
 
   def show

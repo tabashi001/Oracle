@@ -163,7 +163,7 @@ Rails.application.routes.draw do
 		post :video_upload
 	end
 	  get 'users/search' 
-	  post 'users/search'
+	  get 'users/filter'
 	  get 'users/student_show'
 	  get 'users/show'
 	  get 'users/all_school'

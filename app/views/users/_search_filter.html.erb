@@ -57,7 +57,7 @@
 			                    <i class="fa fa-align-justify"></i> 
 			                    <span>Stream</span>
 					        		<%if school.courses.first.present?%>
-					        		<%@stream = Stream.find(school.courses.first.degree_id) if school.courses.first.degree_id.present? %>
+					        		<%@stream = Stream.find(school.courses.first.stream_id) if school.courses.first.stream_id.present? %>
 				        			<h6><%= @stream.stream_name if @stream.present? %></h6>
 				        			<%else%><h6>Not Mention</h6><%end%>
 					        	</div>
