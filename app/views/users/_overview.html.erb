@@ -169,7 +169,7 @@
 				</div>
 
 				<br/>
-				<%= link_to 'Write a Review', "", "data-toggle"=>"modal", "data-target"=>"#reviewmodel", class: "btn btn-primary btn-sm" %>
+				<%= link_to 'Write a Review', "", "data-toggle"=>"modal", "data-target"=>"#reviewmodel", class: "btn btn-primary btn-sm" if current_user.present?%>
 
 			</div>
 		</div>

@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   
   def index
     city_id = User.pluck(:city_id).uniq.compact
-    city = City.find(city_id).uniq.compact
+    # city = City.find(city_id).uniq.compact.order('name ASC')
+    city = City.where("id IN (?)", city_id).uniq.compact
     @city = city.reject { |item| item.nil? || item == '' }
     @role = User.pluck(:role_name).uniq
     @roles = Role.find(@role)
