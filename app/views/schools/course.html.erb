@@ -6,7 +6,7 @@
   <div id="content">
     <div class="outer">
       <div class="inner bg-light lter">
-        <h4>Courses</h4>
+        <h4>Add Courses</h4>
         <hr>
         <%= form_for(@course, url: school_course_path) do |f| %>
           <div class="row vdiocont"> 
@@ -18,31 +18,16 @@
               <label for="sel1">Select Degree :</label>
               <%=f.select :degree_id, options_for_select(@degrees.collect{|p| [p.degree_name, p.id]}),{include_blank: "Select Degree"},{required: 'true',autofocus:'true',class:'form-control'} %>
             </div> 
-            <!-- <div class="form-group margunrve">
-              <%#= label_tag :new_course_name, "Name of Course" %>
-              <%#= text_field_tag :new_course_name,"", class: 'form-control' %><br />
-               <p class="text-center">Or</p>
-              <label for="sel1">Select Course :</label>
-              <%#= f.select( :course_name, Course.all.map {|p| [p.course_name]}.uniq, {},{:prompt => "Select a Courses",:class => "form-control"}) %>
-            </div> -->
             <div class="form-group margunrve">
               <button id="add_course_name">Add Course</button>
               <div id="course_names" class="">
                 <div class="course_name "> 
                   <%=text_field_tag "courses[]"%>
+                  <%=text_field_tag "fees[]"%>
                   <button class="remove">x</button>
                 </div>
               </div>
             </div>
-            <!-- <h3>Tasks</h3>
-            <div id='courses'>
-              <%#= f.fields_for :course_names do |task| %>
-                <%#= render 'course_fields', :f => task %>
-              <% #end %>
-              <div class='links'>
-                <%#= link_to_add_association 'Add Course', f, :course_names %>
-              </div>
-            </div> -->
             <div class="form-group">
               <label for="sel1">Duration</label>
               <%=f.text_field :course_duration, class: "form-control",placeholder: "Duration" %>
@@ -52,10 +37,10 @@
               <%= f.radio_button :course_type, true%>Regular
               <%= f.radio_button :course_type, false%>Correspondence
             </div>
-            <div class="form-group margunrve">
+            <!-- <div class="form-group margunrve">
               <label for="email">Annual Fees</label>
-              <%=f.text_field :course_fee, class: "form-control",placeholder: "Fee" %>
-            </div> 
+              <%#=f.text_field :course_fee, class: "form-control",placeholder: "Fee" %>
+            </div>  -->
             <div class="form-group margunrve">
               <label for="email">Affliation</label>
               <%=f.text_field :course_affliation, class: "form-control",placeholder: "Affliation" %>
@@ -131,7 +116,7 @@
 
 <script type="text/javascript">
   $('#add_course_name').on('click', function() { 
-    $('#course_names').append('<div class="course_name"><%=text_field_tag "courses[]"%><button class="remove">x</button></div>');
+    $('#course_names').append('<div class="course_name"><%=text_field_tag "courses[]"%><%=text_field_tag "fees[]"%><button class="remove">x</button></div>');
     return false; //prevent form submission
   });
   $('#course_names').on('click', '.remove', function() {

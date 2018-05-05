@@ -30,9 +30,52 @@
 								<%if @course_name.present? %>
 									<% @course_name.each do |c_name|%>
 									<div class="col-xs-12 col-sm-3 col-md-3 col-lg3 ort">
-									<div class="eNGlbox" data-toggle="modal" data-target="#myModalpopup">
+									<div class="eNGlbox" data-toggle="modal" data-target=".mModalpopup<%=c_name.id%>">
 										<h1 class="glyphicon glyphicon-credit-card" style="color:#55518a"></h1>
 										<h4 style="margin-top: 0;color:#55518a"><%=c_name.course_name %></h4>
+										</div>
+									</div>
+									<div class="modal fade mModalpopup<%=c_name.id%>" role="dialog">
+										<div class="modal-dialog">
+										  <div class="modal-content">
+											<div class="modal-body">
+												<div class="row popRd">
+													<div class="col-sm-12">
+														<div class="col-sm-6">
+															<h5 class="modal-bod">COURSE</h5>
+															<p><%=c_name.course_name %></p>
+														</div>
+														 <div class="col-sm-6">
+															<h5 class="modal-bod">COURSE FEE</h5>
+															<p> <%=c_name.fee %></p>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="modal-body">
+												<div class="row popRd">
+													<div class="col-sm-12">
+														<div class="col-sm-6">
+															<h5 class="modal-bod">AFFLIATED TO</h5>
+															<% @co = Course.find(c_name.course_id)%>
+															<p><%= @co.course_affliation%></p>
+														</div>
+														 <div class="col-sm-6">
+															<h5 class="modal-bod">COURSE TYPE</h5>
+															<p><% if @co.course_type == true%>
+																<td>Regular</td>
+															<% elsif @co.course_type == false%>
+																<td>Correspondence</td>
+															<%else%>
+															<%end%></p>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<%=link_to "Apply Now",new_user_registration_path,class: "btn btn-danger"%>
+											</div>
+										  </div>
 										</div>
 									</div>
 									<%end%>
@@ -51,11 +94,54 @@
 									<% if @c_names.present? %>
 										<% @c_names.each do |cr|%>
 											<div class="col-xs-12 col-sm-3 col-md-3 col-lg3 ort">
-												<div class="eNGlbox" data-toggle="modal" data-target="#myModalpopup">
+												<div class="eNGlbox" data-toggle="modal" data-target=".yModalpopup<%=cr.id%>">
 													<h1 class="glyphicon glyphicon-credit-card" style="color:#55518a"></h1>
 													<h4 style="margin-top: 0;color:#55518a"><%=cr.course_name%></h4>
 												</div>
 											</div>
+											<div class="modal fade yModalpopup<%=cr.id%>" role="dialog">
+										<div class="modal-dialog">
+										  <div class="modal-content">
+											<div class="modal-body">
+												<div class="row popRd">
+													<div class="col-sm-12">
+														<div class="col-sm-6">
+															<h5 class="modal-bod">COURSE</h5>
+															<p><%=cr.course_name %></p>
+														</div>
+														 <div class="col-sm-6">
+															<h5 class="modal-bod">COURSE FEE</h5>
+															<p> <%=cr.fee %></p>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="modal-body">
+												<div class="row popRd">
+													<div class="col-sm-12">
+														<div class="col-sm-6">
+															<h5 class="modal-bod">AFFLIATED TO</h5>
+															<% @co = Course.find(cr.course_id)%>
+															<p><%= @co.course_affliation%></p>
+														</div>
+														 <div class="col-sm-6">
+															<h5 class="modal-bod">COURSE TYPE</h5>
+															<p><% if @co.course_type == true%>
+																<td>Regular</td>
+															<% elsif @co.course_type == false%>
+																<td>Correspondence</td>
+															<%else%>
+															<%end%></p>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+											 <%=link_to "Apply Now",new_user_registration_path,class: "btn btn-danger"%>
+											</div>
+										  </div>
+										</div>
+									</div>
 										<%end%>
 									<%else%>
 									<%end%>

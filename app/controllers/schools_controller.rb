@@ -75,7 +75,7 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
     else
       @course = @school.courses.new(course_params)
       if @course.save(validate: false)
-        @course.create_course(params[:courses]) if params[:courses]
+        @course.create_course(params[:courses], params[:fees]) if params[:courses]
         redirect_to school_courses_path
       else 
       end

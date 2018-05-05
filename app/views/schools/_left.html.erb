@@ -86,9 +86,9 @@
         <li>
           <% if current_user.active? %>
             <%= link_to  school_cutoffs_path(current_user) do %>
-          <i class="fa fa-angle-right"></i>&nbsp; Admission<%end%>
+          <i class="fa fa-angle-right"></i>&nbsp; Eligibility<%end%>
           <%else%>
-            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Admission</a>
+            <a href="#applyModal" data-toggle="modal" class="fa fa-angle-right">Eligibility</a>
           <%end%>
         </li>
         <li>
