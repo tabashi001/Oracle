@@ -9,36 +9,60 @@ class ApplicationController < ActionController::Base
       admins_path
     else
       if resource.role_name == "3"
-        unless fields_check(current_user)
-         flash[:notice] = "Please complete your profile to proceed futher"
-         edit_user_registration_path
+        if resource.active == false
+          sign_out resource
+          flash[:notice] = "This account has been Deactivated"
+          new_user_session_path
         else
-         students_path
+          unless fields_check(current_user)
+           flash[:notice] = "Please complete your profile to proceed futher"
+           edit_user_registration_path
+          else
+           students_path
+          end
         end
       elsif resource.role_name == "1"
-        unless fields_check(current_user)
-         flash[:notice] = "Please complete your profile to proceed futher"
-         edit_user_registration_path
+        if resource.active == false
+          sign_out resource
+          flash[:notice] = "This account has been Deactivated"
+          new_user_session_path
         else
-         schools_path
+          unless fields_check(current_user)
+           flash[:notice] = "Please complete your profile to proceed futher"
+           edit_user_registration_path
+          else
+           schools_path
+          end
         end
       elsif resource.role_name == "2"
-        unless fields_check(current_user)
-         flash[:notice] = "Please complete your profile to proceed futher"
-         edit_user_registration_path
+        if resource.active == false
+          sign_out resource
+          flash[:notice] = "This account has been Deactivated"
+          new_user_session_path
         else
-         teachers_path
+          unless fields_check(current_user)
+           flash[:notice] = "Please complete your profile to proceed futher"
+           edit_user_registration_path
+          else
+           teachers_path
+          end
         end
       elsif resource.role_name == "4"
-        unless fields_check(current_user)
-         flash[:notice] = "Please complete your profile to proceed futher"
-         edit_user_registration_path
+        if resource.active == false
+          sign_out resource
+          flash[:notice] = "This account has been Deactivated"
+          new_user_session_path
         else
-         vendors_path
+          unless fields_check(current_user)
+           flash[:notice] = "Please complete your profile to proceed futher"
+           edit_user_registration_path
+          else
+           vendors_path
+          end
         end
-      else resource.role_name == " "
-        students_path
-      end
+        else resource.role_name == " "
+          students_path
+        end
     end
   end
 

@@ -42,13 +42,13 @@ before_action :find_admin, only: [:schools,:teachers,:students,:vensors,:school_
 		else
 			@user =  User.find(params[:admin_id])
 			if @user.update(user_params)
-      			if @user.role == "school"
+      			if @user.role_name == "1"
 			       	redirect_to admin_schools_path
-			       elsif @user.role == "teacher"
+			       elsif @user.role_name == "2"
 			       	redirect_to admin_teachers_path
-			       elsif @user.role == "student"
+			       elsif @user.role_name == "3"
 			       	redirect_to admin_students_path
-			    else @user.role == "vendor"
+			    else @user.role_name == "4"
 			       	redirect_to admin_vendors_path
 			    end
 		    else
@@ -61,24 +61,24 @@ before_action :find_admin, only: [:schools,:teachers,:students,:vensors,:school_
 	    @user = User.find(params[:admin_id])
 	    if @user.active == false
 	       @user.update(active: true)
-	       if @user.role == "school"
+	       if @user.role_name == "1"
 	       	redirect_to admin_schools_path
-	       elsif @user.role == "teacher"
+	       elsif @user.role_name == "2"
 	       	redirect_to admin_teachers_path
-	       elsif @user.role == "student"
+	       elsif @user.role_name == "3"
 	       	redirect_to admin_students_path
-	       else @user.role == "vendor"
+	       else @user.role_name == "4"
 	       	redirect_to admin_vendors_path
 	       end
 	    else @user.active == true
 	       @user.update(active: false)
-	       if @user.role == "school"
+	       if @user.role_name == "1"
 	       	redirect_to admin_schools_path
-	       elsif @user.role == "teacher"
+	       elsif @user.role_name == "2"
 	       	redirect_to admin_teachers_path
-	       elsif @user.role == "student"
+	       elsif @user.role_name == "3"
 	       	redirect_to admin_students_path
-	       else @user.role == "vendor"
+	       else @user.role_name == "4"
 	       	redirect_to admin_vendors_path
 	       end
 	    end
