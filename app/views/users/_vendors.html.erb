@@ -3,6 +3,7 @@
 	<%if @vendor.present?%>
 		<div class="row RowMarginzero">
 			<% @vendor.last(4).each do |vendor|%>
+				<%if vendor.active? %>
 				<div class="col-sm-6 col-md-3">
 					<div id="wrapper">
 						<div class="cards">
@@ -52,6 +53,7 @@
 						</div>
 					</div>
 				</div>
+				<%end%>
 			<%end%>
 		</div>
 	<%else%>

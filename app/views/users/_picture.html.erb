@@ -46,8 +46,8 @@
 						                  <% youtube_id = $5%>
 						                <%end%>
 						                <%@yutube = "http://www.youtube.com/embed/#{ youtube_id }?rel=0&autoplay=0"%>
+						                <iframe width="100%" height="200" src="<%=@yutube%>&showinfo=0&controls=0&rel=0&amp"></iframe>
 						            <%end%>
-									<iframe width="100%" height="200" src="<%=@yutube%>&showinfo=0&controls=0&rel=0&amp"></iframe>
 									<p class="desc"><%= video.description%></p>
 								</div>
 							</div>

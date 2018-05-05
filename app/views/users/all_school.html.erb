@@ -1,22 +1,17 @@
-
-
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>School</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schools</title>
 	
 <%= stylesheet_link_tag  "bootstrap.min" %>
 <%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
 <%= stylesheet_link_tag  "student" %>
 <%= stylesheet_link_tag  "style" %>
-
-
-	
-		
-	<%= render :partial => "layouts/header", :locals => { :active => 'Home' }%>
+<%= render :partial => "layouts/header", :locals => { :active => 'Home' }%>
 
  <section class="homeone" id="home" data-stellar-background-ratio="0.4"> </section>
 	<div class="container-fluid contboderthree">
 	  <h3 style="text-align:center;">REGISTERED SCHOOL</h3>
-	  <% @school.each do |school|%>
+	    <% @school.each do |school|%>
+	    	<%if school.active? %>
 			<div class="col-sm-6 col-md-3">
 				<div id="wrapper">
 					<div class="cards">
@@ -67,10 +62,11 @@
 					</div>
 				</div>
 			</div>
+			<%end%>
 	  <%end%>
 	</div>
 
-	<%=render "layouts/footer"%>
+<%=render "layouts/footer"%>
 
 <%= javascript_include_tag "jquery.min" %>
 <%= javascript_include_tag "bootstrap.min" %>

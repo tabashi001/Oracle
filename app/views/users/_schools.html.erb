@@ -3,6 +3,7 @@
 	<%if @school.present?%>
 		<div class="row RowMarginzero">
 			<% @school.last(4).each do |school|%>
+				<%if school.active? %>
 				<div class="col-sm-6 col-md-3">
 					<div id="wrapper">
 						<div class="cards">
@@ -53,6 +54,7 @@
 						</div>
 					</div>
 				</div>
+				<%end%>
 			<%end%>
 		</div>
 	<%else%>

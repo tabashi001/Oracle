@@ -45,6 +45,7 @@
           <h3>Schools</h3>
           <% if @search.present?%>
             <% @search.each do |search|%>
+              <% if search.active? %>
               <div class="bigbox">
                 <div class="row">
                   <div class="col-md-12">
@@ -69,10 +70,12 @@
                   </div>
                 </div>
               </div>
+              <%end%>
             <%end%>
           <%else%>
             <% if @schools.present? %>
               <% @schools.each do |school|%>
+                <% if school.active? %>
                 <div class="bigbox">
                   <div class="row">
                     <div class="col-md-12">
@@ -97,38 +100,10 @@
                     </div>
                   </div>
                 </div>
+                <%end%>
               <%end%>
             <%else%>
-              <div class="bigbox">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="col-md-2">
-                      <%= image_tag("img.jpg", class: "img-thumbnail img-responsive collglogo")%>
-                    </div>
-                    <div class="col-md-10">
-                      <h4>Indian Institute of Technology (IITB), Mumbai </h4>
-                      <span> <i class="fa fa-map-marker"></i> Mumbai,Maharshtra</span>
-                    </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 Anxtysf">
-                      <div class="col-md-3 col-sm-6 col-xs-6">
-                        <i class="fa fa-map-marker "></i> <span>Avg Annual Fees</span>
-                        <h6>1 lakh</h6>
-                      </div>
-                      <div class="col-md-3 col-sm-6 col-xs-6">
-                        <i class="fa fa-map-marker"></i> <span>Avg Annual Fees</span>
-                        <h6>1 lakh</h6>
-                      </div>
-                      <div class="col-md-3 col-sm-6 col-xs-6">
-                        <i class="fa fa-map-marker"></i> <span>Avg Annual Fees</span>
-                        <h6>1 lakh</h6>
-                      </div>
-                      <div class="col-md-3 col-sm-6 col-xs-6">
-                        <button class="btn btn-primary TxtceNtr">Current Openings </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              No Schools Available
             <%end%>
           <%end%>
         </div>

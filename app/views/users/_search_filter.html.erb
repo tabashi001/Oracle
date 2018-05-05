@@ -10,6 +10,7 @@
     		<h3>Vendors</h3>
     	<%end%>
         <% @school.each do |school| %>
+        	<%if school.active? %>
         	<div class="bigbox">
         		<div class="row">
         			<div class="col-md-12">
@@ -42,8 +43,8 @@
 		                    		<i class="fa fa-align-justify"></i>
 		                    		<span>Avg Annual Fees </span>
 		                    		<%if school.courses.present?%>
-				        			<h6><% p = school.courses.map { |c| 
-				        				p= c.course_fee.gsub(/[\s,]/ ,"").to_i }.inject(0, :+)/school.courses.size%><span style='font-family:Arial;'>&#8377;</span><%= number_with_delimiter(p)%></h6>
+				        			<h6><%# p = school.courses.map { |c| 
+				        				p= c.course_fee.gsub(/[\s,]/ ,"").to_i }.inject(0, :+)/school.courses.size%><span style='font-family:Arial;'>&#8377;</span><%#= number_with_delimiter(p)%></h6>
 				        			<%else%><h6>Not Mention</h6><%end%>
 				        	 	</div>
 					        	<div class="col-md-3 col-sm-6 col-xs-6">
@@ -132,6 +133,7 @@
           			</div>
         		</div>
         	</div>
+        	<%end%>
         <%end%>
     <%else%>
 		<p>No Result Found</p>
