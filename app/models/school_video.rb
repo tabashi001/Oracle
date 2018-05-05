@@ -1,6 +1,6 @@
 class SchoolVideo < ApplicationRecord
 	belongs_to :user
-	validates_presence_of :title, :description
+	validates_presence_of :title, :description,:youtube_url
 	has_attached_file :video
 	validates_attachment :video, content_type: { content_type: ["video/mp4"] }
 	validate :videos_count, :on => :create

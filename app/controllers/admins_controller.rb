@@ -113,6 +113,6 @@ before_action :find_admin, only: [:schools,:teachers,:students,:vensors,:school_
   	end
 
   	def video_params
-    	params.require(:school_video).permit(:title, :description, :video, :user_id)
+    	params.require(:school_video).permit(:title, :description, :video,:youtube_url, :user_id)
   	end
 end

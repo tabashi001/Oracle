@@ -95,11 +95,12 @@
                                     <td><%=school.phone_no%></td>
                                     <td>
                                         <%=link_to "Edit",admin_school_update_path(school.id),class: "btn btn-primary btn-xs"%>
-                                        <% if school.active? %> <%=link_to "Deactivate",admin_activate_path(school.id), method: :post, data: { confirm: "Do you to want Deactivate School Profile?" }, class: "btn btn-danger btn-xs"%>
+                                         <%=link_to "Upload Video",admin_video_upload_path(school.id),class: "btn btn-primary btn-xs"%>
+                                        <% if school.active? %> <%=link_to "Delete",admin_activate_path(school.id), method: :post, data: { confirm: "Do you to want Deactivate School Profile?" }, class: "btn btn-danger btn-xs"%>
                                         <%else%>
-                                            <%=link_to "Activate",admin_activate_path(school.id), method: :post, data: { confirm: "Do you to want Activate School Profile?" }, class: "btn btn-success btn-xs"%>
+                                            <%=link_to "Active",admin_activate_path(school.id), method: :post, data: { confirm: "Do you to want Activate School Profile?" }, class: "btn btn-success btn-xs"%>
                                         <% end %>
-                                        <%=link_to "Upload Video",admin_video_upload_path(school.id),class: "btn btn-primary btn-xs"%>
+                                       
                                     </td>
                                   </tr>
                                 </tbody>

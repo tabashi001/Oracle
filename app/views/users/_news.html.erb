@@ -58,7 +58,7 @@
 			<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
 				<div class="vidBox">
 					<% if @first_video.present? %>
-						<iframe width="100%" height="200" src="<%=@first_video.video%>rel=0&amp&showinfo=0&autoplay=1&controls=0"></iframe>
+						<iframe width="100%" height="200" src="<%=@utube%>&showinfo=0&autoplay=0&controls=0&rel=0&amp"></iframe>
 						<%#= video_tag @first_video.video, width: "100%",height: "200", autoplay: true,:loop => true,muted: true%>
 					<%else%>
 						<iframe width="100%" height="200" src="https://www.youtube.com/embed/0cEKR4X1kVs?rel=0&amp;showinfo=0&autoplay=1&controls=0"></iframe>

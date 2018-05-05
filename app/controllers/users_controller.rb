@@ -81,9 +81,28 @@ class UsersController < ApplicationController
     @gallery = @college.school_pictures
     @videos = @college.school_videos
     @first_video = @college.school_videos.first
+    if @first_video.youtube_url.present?
+      if @first_video.youtube_url[/youtu\.be\/([^\?]*)/]
+        youtube_id = $1
+      else
+        @first_video.youtube_url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
+        youtube_id = $5
+      end
+      @utube = "http://www.youtube.com/embed/#{ youtube_id }?rel=0"
+    end
     @r_videos = @videos.where.not(:id => @first_video)
     @admissions = @college.cutoffs
     @reviews = @college.reviews    
+  end
+
+   def youtube_embed(utube_url)
+      if utube_url[/youtu\.be\/([^\?]*)/]
+        youtube_id = $1
+      else
+      utube_url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
+      youtube_id = $5
+    end
+    return "http://www.youtube.com/embed/#{ youtube_id }?rel=0&autoplay=1"
   end
 
   def student_show

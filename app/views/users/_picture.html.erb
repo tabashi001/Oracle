@@ -38,8 +38,17 @@
 						<% @videos.each do |video| %>
 							<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 ">
 								<div class="vidBox">
-									<iframe width="100%" height="200" src="<%= video.video%>rel=0&amp&showinfo=0&autoplay=0&controls=0"></iframe>
-									<%#= video_tag video.video, width: "100%",height: "200", autoplay: true,:loop => true,muted: true%>
+									<p class="desc"><%= video.title%></p>
+									<%if video.youtube_url.present?%>
+						                <%if video.youtube_url[/youtu\.be\/([^\?]*)/].present?%>
+						                  <% youtube_id = $1 %>
+						                <%else  video.youtube_url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/].present?%>
+						                  <% youtube_id = $5%>
+						                <%end%>
+						                <%@yutube = "http://www.youtube.com/embed/#{ youtube_id }?rel=0&autoplay=0"%>
+						            <%end%>
+									<iframe width="100%" height="200" src="<%=@yutube%>&showinfo=0&controls=0&rel=0&amp"></iframe>
+									<p class="desc"><%= video.description%></p>
 								</div>
 							</div>
 						<%end%>
