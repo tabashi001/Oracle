@@ -92,9 +92,9 @@ before_action :find_admin, only: [:schools,:teachers,:students,:vensors,:school_
   			@user = User.find(params[:admin_id])
   			@video = @user.school_videos.create(video_params)
   			if @video.save
-  				if @user.role == "school"
+  				if @user.role_name == "1"
 	       			redirect_to admin_schools_path
-	       		else @user.role == "teacher"
+	       		else @user.role_name == "2"
 	       			redirect_to admin_teachers_path
 	       		end
 	       end

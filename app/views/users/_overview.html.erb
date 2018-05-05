@@ -24,10 +24,11 @@
 					<hr>
 					<div class="row">
 						<div class="col-sm-12">
-							<% if @videos.present? %>
-								<% @videos.each do |video| %>
+							<% if @r_videos.present? %>
+								<% @r_videos.each do |video| %>
 									<div class="col-sm-4 col-xs-12 col-md-4 ">
 										<div class="img-thumbnail">
+											<p class="desc"><%= video.title%></p>
 											<%= video_tag video.video, width: "100%",height: "200", autoplay: true,:loop => true%>
 											<p class="desc"><%= video.description%></p>	
 										</div>
@@ -142,8 +143,8 @@
 			</div>
 			<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
 				<div class="vidBox">
-					<% if @videos.present? %>
-						<%= video_tag @videos.first.video, width: "100%",height: "200", autoplay: true,:loop => true%>
+					<% if @first_video.present? %>
+						<%= video_tag @first_video.video, width: "100%",height: "200", autoplay: true,:loop => true%>
 					<%else%>
 						<iframe width="100%" height="200" src="https://www.youtube.com/embed/0cEKR4X1kVs?rel=0&amp;showinfo=0&autoplay=1&controls=0"></iframe>
 					<%end%>

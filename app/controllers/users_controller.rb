@@ -80,6 +80,8 @@ class UsersController < ApplicationController
     @news = @college.school_informations
     @gallery = @college.school_pictures
     @videos = @college.school_videos
+    @first_video = @college.school_videos.first
+    @r_videos = @videos.where.not(:id => @first_video)
     @admissions = @college.cutoffs
     @reviews = @college.reviews    
   end
