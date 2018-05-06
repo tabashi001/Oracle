@@ -20,11 +20,15 @@
             </div> 
             <div class="form-group margunrve">
               <button id="add_course_name">Add Course</button>
-              <div id="course_names" class="">
-                <div class="course_name "> 
-                  <%=text_field_tag "courses[]"%>
-                  <%=text_field_tag "fees[]"%>
-                  <button class="remove">x</button>
+              <div id="course_names" class="row">
+                <div class="col-sm-12">
+                  <div class="col-sm-6"><label>Course Name</label></div>
+                  <div class="col-sm-6"><label>Course Fee</label></div>
+                </div>
+                <div class="course_name col-sm-12"> 
+                  <%=text_field_tag "courses[]","", :class=>"col-sm-5"%>
+                  <%=text_field_tag "fees[]", "", :class=>"col-sm-5"%>
+                  <button class="remove col-sm-2" >x</button>
                 </div>
               </div>
             </div>
@@ -116,7 +120,7 @@
 
 <script type="text/javascript">
   $('#add_course_name').on('click', function() { 
-    $('#course_names').append('<div class="course_name"><%=text_field_tag "courses[]"%><%=text_field_tag "fees[]"%><button class="remove">x</button></div>');
+    $('#course_names').append('<div class="course_name col-sm-12"><%=text_field_tag "courses[]", "", :class=>"col-sm-5" %><%=text_field_tag "fees[]", "", :class=>"col-sm-5" %><button class="remove col-sm-2">x</button></div>');
     return false; //prevent form submission
   });
   $('#course_names').on('click', '.remove', function() {

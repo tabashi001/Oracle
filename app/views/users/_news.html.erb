@@ -57,7 +57,7 @@
 			</div>
 			<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
 				<div class="vidBox">
-					<% if @first_video.youtube_url.present? %>
+					<% if @first_video.present? && @first_video.youtube_url.present? %>
 						<iframe width="100%" height="200" src="<%=@utube%>&showinfo=0&autoplay=0&controls=0&rel=0&amp"></iframe>
 						<%#= video_tag @first_video.video, width: "100%",height: "200", autoplay: true,:loop => true,muted: true%>
 					<%else%>

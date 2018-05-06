@@ -57,6 +57,7 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
   def courses
     @courses = @school.courses
   end
+  
   def course
     if request.get?
       @course = Course.new
