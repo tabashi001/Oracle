@@ -104,8 +104,9 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
       end
     else
       @course = Course.find(params[:school_id])
+        @course.create_course(params[:courses], params[:fees]) if params[:courses]
+      
       if @course.update(course_params)
-        @course.create_course(params[:courses]) if params[:courses]
         redirect_to school_courses_path
       else
       end

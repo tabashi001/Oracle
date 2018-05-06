@@ -23,20 +23,21 @@
                   <%=f.select :degree_id, options_for_select(@degrees.collect{|p| [p.degree_name, p.id]},:selected => f.object.degree_id),{include_blank: "Select Degree"},{required: 'true',autofocus:'true',class:'form-control'} %>
                 <% end %>
             </div> 
-            <!-- <div class="form-group margunrve">
-              <%#= label_tag :new_course_name, "Name of Course" %>
-              <%#= text_field_tag :new_course_name,"", class: 'form-control' %><br />
-               <p class="text-center">Or</p>
-              <label for="sel1">Select Course :</label>
-              <%#= f.select( :course_name, Course.all.map {|p| [p.course_name]}.uniq, {},{:prompt => "Select a Courses",:class => "form-control"}) %>
-            </div> -->
             <div class="form-group margunrve">
               <button id="add_course_name">Add Course</button>
-              <div id="course_names" class="">
-                <div class="course_name "> 
-                  <%=text_field_tag "courses[]"%>
-                  <button class="remove">x</button>
+              <div id="course_names" class="row">
+                <div class="col-sm-12">
+                  <div class="col-sm-6"><label>Course Name</label></div>
+                  <div class="col-sm-6"><label>Course Fee</label></div>
                 </div>
+                <%  @co = @course.course_names %>
+                <% @co.each do |c|%>
+                <div class="course_name col-sm-12"> 
+                  <%=text_field_tag "courses[]","",value: c.course_name, :class=>"col-sm-5"%>
+                  <%=text_field_tag "fees[]", "",value: c.fee, :class=>"col-sm-5"%>
+                  <button class="remove col-sm-2" >x</button>
+                </div>
+                <%end%>
               </div>
             </div>
              <div class="form-group">
@@ -48,10 +49,10 @@
               <%= f.radio_button :course_type, true%>Regular
               <%= f.radio_button :course_type, false%>Correspondence
             </div>
-            <div class="form-group margunrve">
+            <!-- <div class="form-group margunrve">
               <label for="email">Annual Fees</label>
-              <%=f.text_field :course_fee, class: "form-control",placeholder: "Fee" %>
-            </div> 
+              <%#=f.text_field :course_fee, class: "form-control",placeholder: "Fee" %>
+            </div> --> 
             <div class="form-group margunrve">
               <label for="email">Affliation</label>
               <%=f.text_field :course_affliation, class: "form-control",placeholder: "Affliation" %>
@@ -127,7 +128,7 @@
 
 <script type="text/javascript">
   $('#add_course_name').on('click', function() { 
-    $('#course_names').append('<div class="course_name"><%=text_field_tag "courses[]"%><button class="remove">x</button></div>');
+    $('#course_names').append('<div class="course_name col-sm-12"><%=text_field_tag "courses[]", "", :class=>"col-sm-5" %><%=text_field_tag "fees[]", "", :class=>"col-sm-5" %><button class="remove col-sm-2">x</button></div>');
     return false; //prevent form submission
   });
   $('#course_names').on('click', '.remove', function() {

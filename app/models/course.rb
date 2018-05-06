@@ -10,7 +10,7 @@ class Course < ApplicationRecord
   # end
   def create_course(courses,fees)
     courses.each_with_index do |course, i|
-      self.course_names.create(course_name: course, fee: fees[i])
+      self.course_names.first_or_create(course_name: course, fee: fees[i])
     end
   end
 end
