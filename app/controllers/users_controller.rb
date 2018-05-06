@@ -81,7 +81,7 @@ class UsersController < ApplicationController
     @gallery = @college.school_pictures
     @videos = @college.school_videos
     @first_video = @college.school_videos.first
-    if @first_video.youtube_url.present?
+    if @first_video.present? && @first_video.youtube_url.present?
       if @first_video.youtube_url[/youtu\.be\/([^\?]*)/]
         youtube_id = $1
       else

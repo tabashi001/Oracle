@@ -13,11 +13,15 @@
           <div class="row vdiocont"> 
             <div class="form-group margunrve">
               <label for="sel1">Select Stream :</label>
-              <%=f.select :stream_id, options_for_select(@streams.collect{|p| [p.stream_name, p.id]},:selected => f.object.stream_id),{include_blank: "Select Stream"},{required: 'true',autofocus:'true',class:'form-control'}%>
-            </div>   
+              <% if @streams.present? %>
+                <%=f.select :stream_id, options_for_select(@streams.collect{|p| [p.stream_name, p.id]},:selected => f.object.stream_id),{include_blank: "Select Stream"},{required: 'true',autofocus:'true',class:'form-control'}%>
+              <% end %>
+            </div>
             <div class="form-group margunrve">
               <label for="sel1">Select Degree :</label>
-              <%=f.select :degree_id, options_for_select(@degrees.collect{|p| [p.degree_name, p.id]},:selected => f.object.degree_id),{include_blank: "Select Degree"},{required: 'true',autofocus:'true',class:'form-control'} %>
+                <% if @degrees.present? %>  
+                  <%=f.select :degree_id, options_for_select(@degrees.collect{|p| [p.degree_name, p.id]},:selected => f.object.degree_id),{include_blank: "Select Degree"},{required: 'true',autofocus:'true',class:'form-control'} %>
+                <% end %>
             </div> 
             <!-- <div class="form-group margunrve">
               <%#= label_tag :new_course_name, "Name of Course" %>
@@ -58,7 +62,8 @@
             </div>
             <div class="form-group margunrve text-center">
               <%=f.submit "Submit", class: "btn btn-default"%>
-              <button type="submit" class="btn btn-default">cancel</button>
+              <%= link_to "Back", :back , :class=>"btn btn-default" %>
+              <!-- <button class="btn btn-default">cancel</button> -->
             </div>
           </div>    
         <%end%>
