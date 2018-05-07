@@ -33,8 +33,8 @@
                 <%  @co = @course.course_names %>
                 <% @co.each do |c|%>
                 <div class="course_name col-sm-12"> 
-                  <%=text_field_tag "courses[]","",value: c.course_name, :class=>"col-sm-5"%>
-                  <%=text_field_tag "fees[]", "",value: c.fee, :class=>"col-sm-5"%>
+                  <%=text_field_tag "courses[]","",value: c.course_name, :class=>"col-sm-5" if c.course_name.present? %>
+                  <%=text_field_tag "fees[]", "",value: c.fee, :class=>"col-sm-5" if c.fee.present? %>
                   <button class="remove col-sm-2" >x</button>
                 </div>
                 <%end%>
