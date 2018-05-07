@@ -61,6 +61,11 @@ $(document).ready(function() {
 			<div class="row">
 				<div class="col-md-12">
 					<div class="st-home-unit">
+						<% if flash.present? %>
+							<div class="alert alert-warning">
+								<%= flash[:notice] %>							
+							</div>
+						<% end %>
 						<h1 class="edutetitle">Discover The Best</h1>
 						<!-- <form class="form-wrapper cf"> -->
 							<%#= form_tag users_search_path(:controller => 'users', :action => 'search',:search => params[:search]), method: :get do %>

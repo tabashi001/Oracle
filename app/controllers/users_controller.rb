@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @role = User.pluck(:role_name).uniq
     @roles = Role.find(@role)
     @course = Course.pluck(:course_name).uniq.compact
-    @school 	= User.where(:role_name => "1")
+    @school 	= User.where("role_name = ? AND active = ?","1", true)
     @student = User.where(:role_name => "3")
     @teacher = User.where(:role_name => "2")
     @vendor = User.where(:role_name => "4")
@@ -67,33 +67,38 @@ class UsersController < ApplicationController
 
   def show
     @college 	= User.find(id = params[:id])
-    @colleges = User.where.not(:id => @college)
-    @all_college = @colleges.where("city_id = ? AND role_name = ?",@college.city_id,@college.role_name).first(4)
-    @first_colleges = User.where.not(:id => @all_college)
-    @r_college = @first_colleges.where("city_id = ? AND role_name = ?",@college.city_id,@college.role_name)
-    @facilities =  @college.campus.first
-    @course_detail = @college.courses if @college.courses.present?
-    @first = @college.courses.first if @college.courses.present?
-    @course_name = @first.course_names if @first.present?
-    @courses = @college.courses.where.not("id=?",@first.id) if @first.present?
-    @scholership = @college.scholarships
-    @placement = @college.placements
-    @news = @college.school_informations
-    @gallery = @college.school_pictures
-    @videos = @college.school_videos
-    @first_video = @college.school_videos.first
-    if @first_video.present? && @first_video.youtube_url.present?
-      if @first_video.youtube_url[/youtu\.be\/([^\?]*)/]
-        youtube_id = $1
-      else
-        @first_video.youtube_url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
-        youtube_id = $5
+    if @college.active != false
+      @colleges = User.where.not(:id => @college)
+      @all_college = @colleges.where("city_id = ? AND role_name = ?",@college.city_id,@college.role_name).first(4)
+      @first_colleges = User.where.not(:id => @all_college)
+      @r_college = @first_colleges.where("city_id = ? AND role_name = ?",@college.city_id,@college.role_name)
+      @facilities =  @college.campus.first
+      @course_detail = @college.courses if @college.courses.present?
+      @first = @college.courses.first if @college.courses.present?
+      @course_name = @first.course_names if @first.present?
+      @courses = @college.courses.where.not("id=?",@first.id) if @first.present?
+      @scholership = @college.scholarships
+      @placement = @college.placements
+      @news = @college.school_informations
+      @gallery = @college.school_pictures
+      @videos = @college.school_videos
+      @first_video = @college.school_videos.first
+      if @first_video.present? && @first_video.youtube_url.present?
+        if @first_video.youtube_url[/youtu\.be\/([^\?]*)/]
+          youtube_id = $1
+        else
+          @first_video.youtube_url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
+          youtube_id = $5
+        end
+        @utube = "http://www.youtube.com/embed/#{ youtube_id }?rel=0"
       end
-      @utube = "http://www.youtube.com/embed/#{ youtube_id }?rel=0"
-    end
-    @r_videos = @videos.where.not(:id => @first_video)
-    @admissions = @college.cutoffs
-    @reviews = @college.reviews    
+      @r_videos = @videos.where.not(:id => @first_video)
+      @admissions = @college.cutoffs
+      @reviews = @college.reviews
+    else
+      flash[:notice] ="This Account has been deactivated, Please contact Admin."
+      redirect_to root_path
+    end    
   end
 
    def youtube_embed(utube_url)
@@ -130,8 +135,8 @@ class UsersController < ApplicationController
      end
   end
 
-  def all_school
-   @school   = User.where(:role_name => "1")
+  def all_school    
+    @school = User.where("role_name = ? AND active = ?","1", true)
   end
   def all_student
     @student = User.where(:role_name => "3")
