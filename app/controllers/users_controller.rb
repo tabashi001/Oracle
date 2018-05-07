@@ -19,6 +19,7 @@ class UsersController < ApplicationController
       msg = params[:msg]
       ApplicationMailer.mail_method(fname,email,phoneno,msg).deliver_now
     end
+    @announcement = Announcement.last
   end
 
   def search

@@ -80,7 +80,11 @@ $(document).ready(function() {
 	<div class="container-fluid scrolltext">
 		<div class="row scrollcontent">
 			<marquee  direction="left" behavior="scroll">
-			<p class="marquetxt">Powered By Tabashi Technology Pvt Ltd. All right Reserved 2018......</p> 
+        <% if @announcement.present? %>
+			    <p class="marquetxt"><%= @announcement.description  %></p>
+        <% else %>
+          <p class="marquetxt">Waitnig for further announcement!</p>
+        <% end %>
 			</marquee>
 		</div>
 	</div>
