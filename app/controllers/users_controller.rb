@@ -112,7 +112,6 @@ class UsersController < ApplicationController
   end
 
   def student_show
-    binding.pry
     @user = User.find params[:id]
     @city = City.find(@user.city_id) if @user.city_id.present?
     @state = Stat.find(@user.state_id) if @user.state_id.present?
