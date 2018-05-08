@@ -53,6 +53,7 @@
 <%#= stylesheet_link_tag  "studentProfile" %>
 
 
+<div class="container-fluid studentconter">
 <%if resource.role_name == "2" %>
   <%= render "users/registrations/teacher_profile" %>
 <%elsif resource.role_name == "1" %>
