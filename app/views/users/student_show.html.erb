@@ -11,7 +11,7 @@
 	<div class="stuB">
 
 
-	`		<div class="logo">
+			<div class="logo">
 				<% if @user.profile_image.present? %>
 				<%= image_tag @user.profile_image,class: "img-circle stygfh", width: "110", height: "110", border: "0", alt: "profile image" %>
 				<%else%>
@@ -29,29 +29,39 @@
 					<div class="colB">
 						<ul class="list-group">
 							<li class="list-group-item custlist"><b>Email : </b> <%= @user.email %></li>
-							<li class="list-group-item custlist"><b>Phone : </b><%if @user.role_name == "3" && @user.gender == false %>xxxxxx<%=@user.phone_no.last(4)%><%else%><%= @user.phone_no %><%end%></li>
-							<li class="list-group-item custlist"><b>Class : </b><%= @user.qualification if present? %></li>
-							<% if @user.gender == true%>
-							<li class="list-group-item custlist"><b>Gender : </b>Male</li>
-							<% elsif @user.gender == false%>
-							<li class="list-group-item custlist"><b>Gender : </b>Female</li>
-							<%else%>
-							<li class="list-group-item custlist"><b>Gender : </b>Not Mentioned</li>
-							<%end%>
+							<li class="list-group-item custlist">
+                <b>Phone : </b>
+                <%if @user.role_name == "3" %>
+                  <% if current_admin %>
+                    <%= @user.phone_no %>
+                  <% else %>
+                    xxxxxx<%=@user.phone_no.last(4)%>
+                  <% end %>                  
+                <%else%>
+                  <%= @user.phone_no %>
+                <%end%>
+              </li>
+              <li class="list-group-item custlist"><b>Class : </b><%= @user.qualification if present? %></li>
 						</ul>
 					</div>
 				</div>
 			
-			<div class="col-sm-6 col-xs-12 col-lg-6 colrd">
-				<div class="colB">
-					<ul class="list-group">
-						<li class="list-group-item custlist"><b>City : </b><%if @user.city_id.present?%><%= @city.name if @city.present? %><%else%>Not Mentioned<%end%></li>
-						<li class="list-group-item custlist"><b>State : </b><% if @user.state_id.present? %><%= @state.name %><%else%>Not Mentioned<%end%></li>
-						<li class="list-group-item custlist"><b>Country : </b><% if @user.country_id.present? %><%= @country.name %><%else%>Not Mentioned<%end%></li>
-						<li class="list-group-item custlist"><b>Address : </b><%= @user.address if @user.address.present? %></li>
-					</ul>
-				</div>
-			</div>
+  			<div class="col-sm-6 col-xs-12 col-lg-6 colrd">
+  				<div class="colB">
+  					<ul class="list-group">
+  						<li class="list-group-item custlist"><b>City : </b><%if @user.city_id.present?%><%= @city.name if @city.present? %><%else%>Not Mentioned<%end%></li>
+  						<li class="list-group-item custlist"><b>State : </b><% if @user.state_id.present? %><%= @state.name %><%else%>Not Mentioned<%end%></li>
+  						<li class="list-group-item custlist"><b>Country : </b><% if @user.country_id.present? %><%= @country.name %><%else%>Not Mentioned<%end%></li>  						
+  					</ul>
+  				</div>
+  			</div>
+
+        <div class="col-sm-12 col-xs-12 col-lg-12 colrd">
+          <ul class="list-group">
+            <li class="list-group-item custlist"><b>Address : </b><%= @user.address if @user.address.present? %></li>
+          </ul>
+        </div>
+
 		</div>
 	</div>
 </div>

@@ -10,7 +10,7 @@
 <div class="container-fluid backgrdimg">  
   <div id="login-box">
     <div class="row mainrowcust">
-      <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 padzerosty">
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 padzerosty col-sm-offset-3">
         <div class ="leftone">
           <h1>Login</h1>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -33,21 +33,23 @@
           <%end%>
         </div>
       </div>
-      <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 padzerosty">
-        <div class="right">
-          <div class="scoilbtnctr">
-            <%= link_to user_facebook_omniauth_authorize_path do %>
-              <button class="social-signin facebook">Sign Up with facebook</button>
-            <% end %>
-            <%= link_to user_twitter_omniauth_authorize_path do %>
-              <button class="social-signin twitter">Sign Up with Twitter</button>
-            <% end %>
-            <%= link_to user_google_oauth2_omniauth_authorize_path do %>
-              <button class="social-signin google">Sign Up with Google+</button>
-            <% end %>
+      <% if false %>
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 padzerosty">
+          <div class="right">
+            <div class="scoilbtnctr">
+              <%= link_to user_facebook_omniauth_authorize_path do %>
+                <button class="social-signin facebook">Sign Up with facebook</button>
+              <% end %>
+              <%= link_to user_twitter_omniauth_authorize_path do %>
+                <button class="social-signin twitter">Sign Up with Twitter</button>
+              <% end %>
+              <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+                <button class="social-signin google">Sign Up with Google+</button>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
       
     </div>
   </div>
