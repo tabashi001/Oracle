@@ -113,7 +113,9 @@ class UsersController < ApplicationController
 
   def student_show
     @user = User.find(id = params[:id])
-    @city = City.find(@user.city_id) if @user.city_id.present?
+    if @user.city_id != 0
+      @city = City.find(@user.city_id) if @user.city_id.present?
+    end
     @state = Stat.find(@user.state_id) if @user.state_id.present?
     @country = Countr.find(@user.country_id) if @user.country_id.present?
     @slots = @user.slots if @user.slots.present?
