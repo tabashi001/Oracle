@@ -16,9 +16,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/edit
   def edit
     @countries = Countr.all
-    if current_user.state_id && current_user.country_id.present?
-      state = Stat.find(current_user.state_id) if current_user.state_id.present?
-      city = City.find(current_user.city_id) if current_user.city_id.present?
+    if current_user.state_id && current_user.country_id.present? && current_user.city_id.present? && current_user.city_id != 0
+      state = Stat.find(current_user.state_id) if current_user.state_id.present? && current_user.state_id != 0
+      city = City.find(current_user.city_id) if current_user.city_id.present? && current_user.city_id != 0
       @states = [state] 
       @cities = [city] 
     else
@@ -88,18 +88,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    if resource.role_name == "3"
-      students_path
-    elsif resource.role_name == "1"
-      schools_path
-    elsif resource.role_name == "2"
-      teachers_path
-    elsif resource.role_name == "4"
-      vendors_path
-    elsif resource.role_name == "admin"
-      admin_index_path
-    else resource.role == " "
-      students_path
+    if resource.name.present? && resource.address.present? && resource.qualification.present? && resource.country_id.present? && resource.state_id.present? && resource.city_id !=0
+      if resource.role_name == "3"
+        students_path        
+      elsif resource.role_name == "1"
+        schools_path
+      elsif resource.role_name == "2"
+        teachers_path
+      elsif resource.role_name == "4"
+        vendors_path
+      elsif resource.role_name == "admin"
+        admin_index_path
+      else resource.role == " "
+        students_path
+      end
+    else
+      flash[:notice] = "Please complete your profile to proceed futher"
+      edit_user_registration_path
     end
   end
 
@@ -110,5 +115,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
         resource.validate # Look for any other validation errors besides Recaptcha
         respond_with_navigational(resource) { render :new }
       end 
+    end
+
+    def fields_check(resource)
+      resource.name.present? && resource.address.present? && resource.qualification.present? && resource.country_id.present? && resource.state_id.present? && resource.city_id.present? && resource.city_id !=0
     end
 end
