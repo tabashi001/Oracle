@@ -35,7 +35,7 @@
 										<h4 style="margin-top: 0;color:#55518a"><%=c_name.course_name %></h4>
 										</div>
 									</div>
-									<div class="modal fade mModalpopup<%=c_name.id%>" role="dialog">
+									<div class="modal mModalpopup<%=c_name.id%>" role="dialog">
 										<div class="modal-dialog">
 										  <div class="modal-content">
 											<div class="modal-body">
@@ -51,8 +51,7 @@
 														</div>
 													</div>
 												</div>
-											</div>
-											<div class="modal-body">
+											
 												<div class="row popRd">
 													<div class="col-sm-12">
 														<div class="col-sm-6">
@@ -71,6 +70,16 @@
 														</div>
 													</div>
 												</div>
+
+												<div class="row popRd">
+													<div class="col-sm-12">
+														<div class="col-sm-6">
+															<h5 class="modal-bod">Duration</h5>
+															<p><%= @co.course_duration%></p>
+														</div>														 
+													</div>
+												</div>
+
 											</div>
 											<div class="modal-footer">
 												<%=link_to "Apply Now",new_user_registration_path,class: "btn btn-danger"%>
@@ -100,49 +109,57 @@
 													<h4 style="margin-top: 0;color:#55518a"><%=cr.course_name%></h4>
 												</div>
 											</div>
-											<div class="modal fade yModalpopup<%=cr.id%>" role="dialog">
-										<div class="modal-dialog">
-										  <div class="modal-content">
-											<div class="modal-body">
-												<div class="row popRd">
-													<div class="col-sm-12">
-														<div class="col-sm-6">
-															<h5 class="modal-bod">COURSE</h5>
-															<p><%=cr.course_name %></p>
+											<div class="modal yModalpopup<%=cr.id%>" role="dialog">
+												<div class="modal-dialog">
+												  <div class="modal-content">
+														<div class="modal-body">
+															<div class="row popRd">
+																<div class="col-sm-12">
+																	<div class="col-sm-6">
+																		<h5 class="modal-bod">COURSE</h5>
+																		<p><%=cr.course_name %></p>
+																	</div>
+																	 <div class="col-sm-6">
+																		<h5 class="modal-bod">COURSE FEE</h5>
+																		<p> <%=cr.fee %></p>
+																	</div>
+																</div>
+															</div>
+														
+															<div class="row popRd">
+																<div class="col-sm-12">
+																	<div class="col-sm-6">
+																		<h5 class="modal-bod">AFFLIATED TO</h5>
+																		<% @co = Course.find(cr.course_id)%>
+																		<p><%= @co.course_affliation%></p>
+																	</div>
+																	 <div class="col-sm-6">
+																		<h5 class="modal-bod">COURSE TYPE</h5>
+																		<p><% if @co.course_type == true%>
+																			<td>Regular</td>
+																		<% elsif @co.course_type == false%>
+																			<td>Correspondence</td>
+																		<%else%>
+																		<%end%></p>
+																	</div>
+																</div>
+															</div>
+
+															<div class="row popRd">
+																<div class="col-sm-12">
+																	<div class="col-sm-6">
+																		<h5 class="modal-bod">Duration</h5>
+																		<p><%= @co.course_duration%></p>
+																	</div>														 
+																</div>
+															</div>
 														</div>
-														 <div class="col-sm-6">
-															<h5 class="modal-bod">COURSE FEE</h5>
-															<p> <%=cr.fee %></p>
+														<div class="modal-footer">
+														 <%=link_to "Apply Now",new_user_registration_path,class: "btn btn-danger"%>
 														</div>
-													</div>
+												  </div>
 												</div>
 											</div>
-											<div class="modal-body">
-												<div class="row popRd">
-													<div class="col-sm-12">
-														<div class="col-sm-6">
-															<h5 class="modal-bod">AFFLIATED TO</h5>
-															<% @co = Course.find(cr.course_id)%>
-															<p><%= @co.course_affliation%></p>
-														</div>
-														 <div class="col-sm-6">
-															<h5 class="modal-bod">COURSE TYPE</h5>
-															<p><% if @co.course_type == true%>
-																<td>Regular</td>
-															<% elsif @co.course_type == false%>
-																<td>Correspondence</td>
-															<%else%>
-															<%end%></p>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="modal-footer">
-											 <%=link_to "Apply Now",new_user_registration_path,class: "btn btn-danger"%>
-											</div>
-										  </div>
-										</div>
-									</div>
 										<%end%>
 									<%else%>
 									<%end%>
@@ -170,4 +187,9 @@
         $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
     });
 });
+
+	$('#modal-from-dom').modal({
+        backdrop: 'static',
+        keyboard: true
+    });
 </script>

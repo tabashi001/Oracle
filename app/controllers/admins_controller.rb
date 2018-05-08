@@ -104,7 +104,11 @@ before_action :find_admin, only: [:schools,:teachers,:students,:vensors,:school_
 	private
 
 	def find_admin
-		@admin = Admin.find(current_admin.id)
+		if current_admin.blank?
+			redirect_to admins_login_path
+		else
+			@admin = Admin.find(current_admin.id)
+		end
 	end
 
 	def user_params

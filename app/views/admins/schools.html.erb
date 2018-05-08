@@ -54,6 +54,12 @@
                 <%end%>
             </li>
             <li>
+              <%= link_to announcements_path do %>
+                <i class="fa fa-table"></i>
+                <span class="link-title">Announcement</span>
+              <% end %>
+            </li>
+            <li>
                 <%= link_to admin_vendors_path(current_admin) do%>
                   <i class="fa fa-table"></i>
                   <span class="link-title">Vendors</span>
@@ -96,7 +102,7 @@
                                     <td>
                                         <%=link_to "Edit",admin_school_update_path(school.id),class: "btn btn-primary btn-xs"%>
                                          <%=link_to "Upload Video",admin_video_upload_path(school.id),class: "btn btn-primary btn-xs"%>
-                                        <% if school.active? %> <%=link_to "Delete",admin_activate_path(school.id), method: :post, data: { confirm: "Do you to want Deactivate School Profile?" }, class: "btn btn-danger btn-xs"%>
+                                        <% if school.active? %> <%=link_to "Deactivate",admin_activate_path(school.id), method: :post, data: { confirm: "Do you to want Deactivate School Profile?" }, class: "btn btn-danger btn-xs"%>
                                         <%else%>
                                             <%=link_to "Active",admin_activate_path(school.id), method: :post, data: { confirm: "Do you to want Activate School Profile?" }, class: "btn btn-success btn-xs"%>
                                         <% end %>

@@ -5,7 +5,9 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
   :update_schoolinformation,:schoolpictures,:schoolpicture,:update_schoolpicture,:schoolvideos,
   :schoolvideo,:update_schoolvideo,:teachers,:vendors,:students,:requirements,:teacher_requirement,:vendor_requirement]
 
- before_action :check_user_signed_in
+  before_action :check_user_signed_in
+  before_action :check_activation_for_users, except: [:update_course, :destroy_course, :update_scholarship, :destroy_scholarship, :update_placement, :destroy_placement, :update_cutoff, :destroy_cutoff,  :update_campu, :destroy_campu, :update_schoolinformation, :destroy_schoolinformation, :update_schoolpicture, :destroy_schoolpicture, :update_schoolvideo, :destroy_schoolvideo, :update_teacher_requirement, :destroy_teacher_requirement, :update_vendor_requirement, :destroy_vendor_requirement]
+
   def index
     @course_count = Course.where("user_id = ?",set_school).count
     @scholar_count = Scholarship.where("user_id = ?",set_school).count
@@ -83,6 +85,7 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
     end 
   end
   def update_course
+    binding.pry
     if request.get?
       @course = Course.find(params[:school_id])
       @streams = Stream.all
@@ -471,6 +474,20 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
 
   def vendor_require_params
     params.require(:vendor_require).permit(:name,:location,:article,:vendor_value,:supplier,:user_id)
+  end
+
+  def check_activation_for_users
+    if params[:school_id].present?# && current_user.blank?
+      school = User.find params[:school_id]
+      if school.active == false
+        flash[:notice] ="This Account has been deactivated, Please contact Admin."
+        redirect_to root_path 
+      end
+    elsif current_user.present?
+      schools_path
+    else
+      redirect_to root_path
+    end
   end
 
 end
