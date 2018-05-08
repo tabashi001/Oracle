@@ -28,12 +28,18 @@
 				<div class="col-sm-6 col-xs-12 col-lg-6 colrd">
 					<div class="colB">
 						<ul class="list-group">
-							<li class="list-group-item custlist"><b>Email : </b> <%= @user.email %></li>
+							<li class="list-group-item custlist"><b>Email: </b> <%= @user.email %></li>
 							<li class="list-group-item custlist">
-                <b>Phone : </b>
+                <b>Phone: </b>
                 <%if @user.role_name == "3" %>
                   <% if current_admin %>
                     <%= @user.phone_no %>
+                  <% elsif current_user.present? %>
+                    <% if current_user.id == @user.id %>
+                      <%= @user.phone_no %>                    
+                    <% else %>
+                      xxxxxx<%=@user.phone_no.last(4)%>
+                    <% end %>
                   <% else %>
                     xxxxxx<%=@user.phone_no.last(4)%>
                   <% end %>                  
@@ -41,7 +47,7 @@
                   <%= @user.phone_no %>
                 <%end%>
               </li>
-              <li class="list-group-item custlist"><b>Class : </b><%= @user.qualification if present? %></li>
+              <li class="list-group-item custlist"><b>Class: </b><%= @user.qualification if present? %></li>
 						</ul>
 					</div>
 				</div>
@@ -49,16 +55,16 @@
   			<div class="col-sm-6 col-xs-12 col-lg-6 colrd">
   				<div class="colB">
   					<ul class="list-group">
-  						<li class="list-group-item custlist"><b>City : </b><%if @user.city_id.present?%><%= @city.name if @city.present? %><%else%>Not Mentioned<%end%></li>
-  						<li class="list-group-item custlist"><b>State : </b><% if @user.state_id.present? %><%= @state.name %><%else%>Not Mentioned<%end%></li>
-  						<li class="list-group-item custlist"><b>Country : </b><% if @user.country_id.present? %><%= @country.name %><%else%>Not Mentioned<%end%></li>  						
+  						<li class="list-group-item custlist"><b>City: </b><%if @user.city_id.present?%><%= @city.name if @city.present? %><%else%>Not Mentioned<%end%></li>
+  						<li class="list-group-item custlist"><b>State: </b><% if @user.state_id.present? %><%= @state.name %><%else%>Not Mentioned<%end%></li>
+  						<li class="list-group-item custlist"><b>Country: </b><% if @user.country_id.present? %><%= @country.name %><%else%>Not Mentioned<%end%></li>  						
   					</ul>
   				</div>
   			</div>
 
         <div class="col-sm-12 col-xs-12 col-lg-12 colrd">
           <ul class="list-group">
-            <li class="list-group-item custlist"><b>Address : </b><%= @user.address if @user.address.present? %></li>
+            <li class="list-group-item custlist"><b>Address: </b><%= @user.address if @user.address.present? %></li>
           </ul>
         </div>
 
@@ -160,15 +166,15 @@
       <div class="modal-body">
         <form class="log">
             <div class="form-group">
-              <label for="text">Name :</label>
+              <label for="text">Name:</label>
               <input type="text" class="form-control"  name="name" placeholder="Name">
             </div>
             <div class="form-group">
-              <label for="email">Email :</label>
+              <label for="email">Email:</label>
               <input type="email" class="form-control" name="email" placeholder="email">
             </div>
             <div class="form-group">
-              <label for="text">Phone Number :</label>
+              <label for="text">Phone Number:</label>
               <input type="text" class="form-control" id="eamil" name="emi" placeholder="text">
             </div>
            

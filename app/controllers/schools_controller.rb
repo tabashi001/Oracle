@@ -85,7 +85,6 @@ before_action :set_school, only:[:overview,:update_overview,:courses,:update_cou
     end 
   end
   def update_course
-    binding.pry
     if request.get?
       @course = Course.find(params[:school_id])
       @streams = Stream.all
