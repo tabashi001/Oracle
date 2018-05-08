@@ -45,7 +45,7 @@
 			<div class="col-sm-6 col-xs-12 col-lg-6 colrd">
 				<div class="colB">
 					<ul class="list-group">
-						<li class="list-group-item custlist"><b>City : </b><%if @user.city_id.present?%><%= @city.name if @city.present%><%else%>Not Mentioned<%end%></li>
+						<li class="list-group-item custlist"><b>City : </b><%if @user.city_id.present?%><%= @city.name if @city.present? %><%else%>Not Mentioned<%end%></li>
 						<li class="list-group-item custlist"><b>State : </b><% if @user.state_id.present? %><%= @state.name %><%else%>Not Mentioned<%end%></li>
 						<li class="list-group-item custlist"><b>Country : </b><% if @user.country_id.present? %><%= @country.name %><%else%>Not Mentioned<%end%></li>
 						<li class="list-group-item custlist"><b>Address : </b><%= @user.address if @user.address.present? %></li>
