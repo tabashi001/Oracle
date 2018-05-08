@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180430134046) do
+ActiveRecord::Schema.define(version: 20180505162757) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(version: 20180430134046) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "fee"
   end
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -306,6 +307,7 @@ ActiveRecord::Schema.define(version: 20180430134046) do
     t.string "video_content_type"
     t.integer "video_file_size"
     t.datetime "video_updated_at"
+    t.string "youtube_url"
   end
 
   create_table "sell_books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

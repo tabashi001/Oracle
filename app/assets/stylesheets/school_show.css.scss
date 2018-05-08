@@ -526,6 +526,11 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 	.bannerText.text-center {
     padding: 30px 0;
 }
+div.bhoechie-tab-menu div.list-group {
+  height: auto;
+  margin-bottom: 0;
+  overflow-y: scroll;
+}
 .col-sm-12.consw{
 	padding-left:0px;
 	padding-right:0px;
