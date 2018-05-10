@@ -1,0 +1,83 @@
+<title>Pay School Fees</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">      
+
+<%= render 'layouts/stylesheets'%>
+
+<div class="bg-dark dk" id="wrap">
+  <%= render 'students/top'%>
+  <%= render :partial => "students/left", :locals => { :active => 'Attend Exam' }%>
+  <div id="content">
+    <div class="outer">
+      <div class="inner bg-light lter">
+        <h4>List of Exams</h4>
+        <hr>
+         
+         
+         <div class="table-responsive">          
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+       
+        <th>Class</th>
+        <th>Subject</th>
+        <th>Unit</th>
+        <th>Affliation</th>
+        <th>Duration(min)</th>
+        <th>Cost</th>
+         <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>12</td>
+        <td>Math</td>
+        <td>4</td>
+        <td>cbse</td>
+        <td>60</td>
+        <td>100</td>
+        <td><%=link_to "Start Exam",student_start_exam_path,class: "btn btn-primary btn-xs"%></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+          
+       
+        <hr>
+      </div>
+    <!-- /.inner -->
+    </div>
+    <!-- /.outer -->
+  </div>
+  <!-- /#content -->
+</div>
+<!-- /#wrap -->
+<footer class="Footer bg-dark dker">
+    <p> © 2018.Eduoracle Educational Services Pvt. Ltd. All rights reserved. </p>
+</footer>
+<!-- /#footer -->
+<!-- #helpModal -->
+<div id="helpModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<%= render 'layouts/javascripts'%>

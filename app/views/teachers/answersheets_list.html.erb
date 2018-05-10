@@ -1,0 +1,115 @@
+<title>Teachers</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%= render "layouts/stylesheets"%>
+
+
+<div class="bg-dark dk" id="wrap">
+  <%= render "teachers/top"%>
+  <%= render :partial => "teachers/left", :locals => { :active => 'evaluate_answer' }%>
+  <div id="content">
+    <div class="outer">
+      <div class="inner bg-light lter">
+        <h4>Answersheet list</h4> 
+        <hr>
+        <div class="row">
+         <div class="col-md-12">
+    <div class="col-md-2">
+         <div class="anslist">
+         <img src="/assets/about1.jpg" class="img-responsive asmingl">
+         <div class="checkbox">
+              <label><input type="checkbox" value="">Answersheet 1</label>
+          </div>
+         </div>
+    </div>
+     <div class="col-md-2">
+         <div class="anslist">
+         <img src="/assets/about1.jpg" class="img-responsive asmingl">
+         <div class="checkbox">
+              <label><input type="checkbox" value="">Answersheet 2</label>
+          </div>
+         </div>
+    </div>
+ <div class="col-md-2">
+         <div class="anslist">
+         <img src="/assets/about1.jpg" class="img-responsive asmingl">
+         <div class="checkbox">
+              <label><input type="checkbox" value="">Answersheet 3</label>
+          </div>
+         </div>
+    </div>
+ <div class="col-md-2">
+         <div class="anslist">
+         <img src="/assets/about1.jpg" class="img-responsive asmingl">
+         <div class="checkbox">
+              <label><input type="checkbox" value="">Answersheet 4</label>
+          </div>
+         </div>
+    </div>
+     <div class="col-md-2">
+         <div class="anslist">
+         <img src="/assets/about1.jpg" class="img-responsive asmingl">
+         <div class="checkbox">
+              <label><input type="checkbox" value="">Answersheet 5</label>
+          </div>
+         </div>
+    </div>
+ <div class="col-md-2">
+         <div class="anslist">
+         <img src="/assets/about1.jpg" class="img-responsive asmingl">
+         <div class="checkbox">
+              <label><input type="checkbox" value="">Answersheet 6</label>
+          </div>
+         </div>
+    </div>
+
+
+
+         </div>
+        </div>  
+       <div class="form-group margunrve text-center">
+               <%=link_to "Submit",teacher_start_evaluate_path,class: "btn btn-default"%> 
+            
+              
+              <button type="submit" class="btn btn-default">cancel</button>
+            </div>
+       
+      </div>
+      <!-- /.inner -->
+    </div>
+    <!-- /.outer -->
+  </div>
+  <!-- /#content -->
+</div>
+<!-- /#wrap -->
+
+<footer class="Footer bg-dark dker">
+      <p> © 2018.Eduoracle Educational Services Pvt. Ltd. All rights reserved. </p>
+</footer>
+<!-- /#footer -->
+<!-- #helpModal -->
+<div id="helpModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+          <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+              et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+              culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<%= render "layouts/javascripts"%>

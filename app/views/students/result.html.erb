@@ -1,0 +1,227 @@
+<title>Result</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">      
+
+<%= render 'layouts/stylesheets'%>
+
+<div class="bg-dark dk" id="wrap">
+  <%= render 'students/top'%>
+  <%= render :partial => "students/left", :locals => { :active => 'result' }%>
+  <div id="content">
+    <div class="outer">
+      <div class="inner bg-light lter">
+        <h4>Result</h4>
+        <hr>
+         
+         
+         <div class="table-responsive">          
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+       
+        <th>Exam Date</th>
+        <th>Subject</th>
+        <th>Unit</th>
+        <th>Marks Obtained</th>
+        <th>Total Marks</th>
+        <th>See Details</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>12/3/18</td>
+        <td>Math</td>
+        <td>4</td>
+        <td>70</td>
+        <td>100</td>
+        <td><button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalcertificate">See</button></td>
+       
+      </tr>
+    </tbody>
+  </table>
+  </div>
+          
+       
+        <hr>
+      </div>
+    <!-- /.inner -->
+    </div>
+    <!-- /.outer -->
+  </div>
+  <!-- /#content -->
+</div>
+<!-- /#wrap -->
+<footer class="Footer bg-dark dker">
+    <p> © 2018.Eduoracle Educational Services Pvt. Ltd. All rights reserved. </p>
+</footer>
+<!-- /#footer -->
+<!-- #helpModal -->
+<div id="helpModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="myModalcertificate" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Certificate</h4>
+        </div>
+        <div class="modal-body">
+         <div class="stcertificate">
+          <img src="/assets/about1.jpg" class="img-responsive ccustom">
+         </div>
+         <div class="vbtncenter">
+          <button class="btn btn-default" data-toggle="modal" data-target="#myModalcertificateview">View</button>
+          <button class="btn btn-default">Download</button>
+          <button class="btn btn-default" data-toggle="modal" data-target="#myModalfeedback">See Feedback</button>
+         </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="myModalcertificateview" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">View Certificate</h4>
+        </div>
+        <div class="modal-body">
+         <div class="stcertificateview">
+          <img src="/assets/about1.jpg" class="img-responsive imgview">
+         </div>
+         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+
+   <div class="modal fade" id="myModalfeedback" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">View Feedback</h4>
+        </div>
+        <div class="modal-body">
+          <div class="feedbackmodel">
+         <div class="vfeedback">
+          <p>Q : what is your name ?</p>
+         <span> Ans : </span>
+         <img src="/assets/about1.jpg" class="img-responsive ansimg" data-toggle="modal" data-target="#myModalansview">
+          <p class="gfidback"><span>FEEDBACK :</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
+
+         </div>
+         <div class="vfeedback">
+          <p>Q : what is your name ?</p>
+         <span> Ans : </span><img src="/assets/about1.jpg" class="img-responsive ansimg">
+          <p class="gfidback"><span>FEEDBACK :</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
+
+         </div>
+         <div class="vfeedback">
+          <p>Q : what is your name ?</p>
+         <span> Ans : </span><img src="/assets/about1.jpg" class="img-responsive ansimg">
+          <p class="gfidback"><span>FEEDBACK :</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
+
+         </div>
+         </div>
+         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+   <div class="modal fade" id="myModalansview" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">View Answer</h4>
+        </div>
+        <div class="modal-body">
+         <div class="stcertificateview">
+          <img src="/assets/about1.jpg" class="img-responsive imgview">
+         </div>
+         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+<%= render 'layouts/javascripts'%>
+
+<style type="text/css">
+  .img-responsive.ccustom {
+  height: 200px;
+  width: 100%;
+}
+.vbtncenter {
+  padding: 10px;
+  text-align: center;
+}
+.stcertificateview {
+  height: 300px;
+  overflow: scroll;
+}
+.img-responsive.imgview {
+  width: 100%;
+}
+.img-responsive.ansimg {
+  cursor: pointer;
+  float: right;
+  width: 50px;
+}
+.feedbackmodel {
+  height: 300px;
+  overflow: scroll;
+}
+</style>
