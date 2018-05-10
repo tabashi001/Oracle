@@ -1,7 +1,7 @@
 class TeachersController < ApplicationController
  before_action :set_teacher, only:[:index,:schools,:apply_school,:find_student,:sale_notes,:create_sale_notes,
  :update_sale_notes,:students,:slots,:create_slots,:update_slots,:demo_videos,:create_demo_videos,:update_demo_videos,
- :teacher_openings]
+ :teacher_openings,:evaluate_answer,:answersheets_list,:start_evaluate]
 	
  before_action :check_user_signed_in
 
@@ -156,6 +156,14 @@ class TeachersController < ApplicationController
   	def students
   		@slots = @teacher.slots
   	end
+
+  	def evaluate_answer
+  	end
+  	def answersheets_list
+  	end
+  	def start_evaluate
+  	end
+
 
 	private
 

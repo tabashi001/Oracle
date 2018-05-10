@@ -27,6 +27,10 @@ Rails.application.routes.draw do
 		get :books
 		get :buy_book
 		post :buy_book
+		get :attend_exam
+		get :exams_list
+		get :start_exam
+		get :result
 	end
 
 	resources :teachers do
@@ -55,6 +59,10 @@ Rails.application.routes.draw do
 		patch :update_demo_videos
 		get :destroy_demo_video
 		get :teacher_openings
+		get :evaluate_answer
+		get :answersheets_list
+		get :start_evaluate
+
 	end
 
 	resources :schools do

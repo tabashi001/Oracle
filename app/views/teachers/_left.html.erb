@@ -97,6 +97,17 @@
           <a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Demo Videos</a>
       <%end%>
     </li>
+     <li <%if active == 'evaluate_answer'%> class="active" <%end%> >
+      <% if current_user.active? %>
+        <%=link_to teacher_evaluate_answer_path(@teacher) do%>
+          <i class="fa fa-table"></i>
+          <span class="link-title">Evaluate Ansersheet</span>
+        <%end%>
+      <%else%>
+          <a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Demo Videos</a>
+      <%end%>
+    </li>
+
     <li>
       <% if current_user.active? %>
         <a href="#appModal" data-toggle="modal">

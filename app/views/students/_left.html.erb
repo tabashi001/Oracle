@@ -96,6 +96,26 @@
 				<a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Apply To Teacher</a>
 			<%end%>
 		</li>
+		<li <%if active == 'Attend Exam'%> class="active" <%end%>>
+			<% if current_user.active? %>
+				<%= link_to student_attend_exam_path(@current_user) do%>
+					<i class="fa fa-tasks"></i>
+					<span class="link-title">Attend Exam</span>
+				<%end%>
+			<%else%>
+				<a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Buy Notes/Books</a>
+			<%end%>
+		</li>
+		<li <%if active == 'result'%> class="active" <%end%>>
+			<% if current_user.active? %>
+				<%= link_to student_result_path(@current_user) do%>
+					<i class="fa fa-tasks"></i>
+					<span class="link-title">Result</span>
+				<%end%>
+			<%else%>
+				<a href="#applyModal" data-toggle="modal" class="fa fa-tasks" class="link-title">Buy Notes/Books</a>
+			<%end%>
+		</li>
 		<li <%if active == 'Books'%> class="active" <%end%>>
 			<% if current_user.active? %>
 				<%= link_to student_books_path(@current_user) do%>
