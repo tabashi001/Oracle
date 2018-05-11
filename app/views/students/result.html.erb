@@ -1,6 +1,7 @@
 <title>Result</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">      
 
+<%= stylesheet_link_tag 'cert' %>
 <%= render 'layouts/stylesheets'%>
 
 <div class="bg-dark dk" id="wrap">
@@ -120,7 +121,8 @@
         </div>
         <div class="modal-body">
          <div class="stcertificateview">
-          <img src="/assets/about1.jpg" class="img-responsive imgview">
+          <!-- <img src="/assets/about1.jpg" class="img-responsive imgview"> -->
+          <%= render :partial => "certificate" %>
          </div>
          
         </div>

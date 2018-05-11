@@ -59,3 +59,4 @@ Rails.application.config.assets.precompile += %w( jquery.backstretch.min.js )
 Rails.application.config.assets.precompile += %w( retina-1.1.0.min.js )
 Rails.application.config.assets.precompile += %w( threestep.js )
 
+Rails.application.config.assets.precompile += %w( cert.css )

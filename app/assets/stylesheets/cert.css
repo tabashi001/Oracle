@@ -1,0 +1,105 @@
+@font-face {
+    font-family: rotunda;
+    src: url(../fonts/Rotunda_Pommerania.ttf);
+}
+.certf{
+	border: 40px solid transparent;
+    border-image: url('/assets/border3.png') 25 round;
+	background: #fbf6f4;
+	margin: 30px auto;
+	width:65%;
+}
+.logo {
+    width: 13%;
+    margin: 20px auto;
+}
+.img-responsive.cust{
+	width:100%;
+}
+.text{
+	text-align:center;
+}
+.head {
+    color: #2E3440;
+    text-transform: uppercase;
+	font-weight: 600;
+}
+.excel {
+    color: #E09614;
+    font-weight: 600;
+    padding: 25px 0px 20px;
+	font-family:Rotunda;
+	font-size: 50px;
+	font-stretch: expanded;
+}
+.name {
+    color: #CE2027;
+    font-weight: 600;
+    font-size: 48px;
+	text-transform:uppercase;
+	font-family: "Times New Roman", Times, serif;
+}
+.mini{
+	color:#2E3440;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 600;
+	line-height:1.6;
+}
+.authority{
+	color:#2E3440;
+	text-align:center;
+	padding-top:40px;
+	text-transform:uppercase;
+	font-weight: 600;
+}
+.mini1{
+	color:#2E3440;
+	text-align:center;
+	padding-bottom:25px;
+}
+@media screen and (max-width: 768px) {
+	.certf{
+	border: 20px solid transparent;
+    border-image: url('../images/border3.png') 22 round;
+	
+	margin: 30px auto;
+	width:100%;
+}
+.logo {
+    width: 25%;
+    margin: 10px auto;
+}
+.excel {
+    
+    padding: 10px 0px 10px;
+	font-family:Rotunda;
+	font-size: 35px;
+	font-stretch: expanded;
+}
+.name {
+   
+    font-size: 30px;
+	text-transform:uppercase;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.authority{
+	color:#2E3440;
+	text-align:center;
+	padding-top:0px;
+	text-transform:uppercase;
+	font-weight: 600;
+	font-size:18px;
+}
+.mini{
+	font-size:10px;
+}
+.mini1{
+	color:#2E3440;
+	text-align:center;
+	padding-bottom:10px;
+}
+.head{
+	font-size:18px;
+	}
+}
