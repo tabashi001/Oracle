@@ -33,6 +33,8 @@ Rails.application.config.assets.precompile += %w( school_show.css )
 Rails.application.config.assets.precompile += %w( searchbar.css )
 Rails.application.config.assets.precompile += %w( student.css )
 Rails.application.config.assets.precompile += %w( postjob.css )
+Rails.application.config.assets.precompile += %w( threestepone.css )
+Rails.application.config.assets.precompile += %w( threesteptwo.css )
 
 #JS Precompile
 Rails.application.config.assets.precompile += %w( jquery.min.js )
@@ -53,3 +55,7 @@ Rails.application.config.assets.precompile += %w( counter.js )
 Rails.application.config.assets.precompile += %w( script.js )
 Rails.application.config.assets.precompile += %w( school_show.js )
 Rails.application.config.assets.precompile += %w( jquery.raty.js )
+Rails.application.config.assets.precompile += %w( jquery.backstretch.min.js )
+Rails.application.config.assets.precompile += %w( retina-1.1.0.min.js )
+Rails.application.config.assets.precompile += %w( threestep.js )
+

@@ -170,6 +170,8 @@ Rails.application.routes.draw do
 		post :activate
 		get :video_upload
 		post :video_upload
+		get :compose_test
+		get :select_question
 	end
 	  get 'users/search' 
 	  get 'users/filter'

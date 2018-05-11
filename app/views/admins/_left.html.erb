@@ -1,10 +1,4 @@
-<title>Admin Dashboard</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<%= render "layouts/stylesheets"%>
-
-<div class="bg-dark dk" id="wrap">
-  <%= render "admins/top"%>
- <div id="left">
+<div id="left">
         <div class="media user-media bg-dark dker">
           <div class="user-media-toggleHover">
             <span class="fa fa-user"></span>
@@ -29,44 +23,44 @@
 <!-- #menu -->
 <ul id="menu" class="bg-blue dker">
     <li class="nav-divider"></li>  
-    <li>
+    <li <%if active == 'Dashboard'%> class="active" <%end%>>
        <%= link_to admins_path do%>
        <i class="fa fa-dashboard"></i>
        <span class="link-title">&nbsp;Dashboard</span>
        <%end%>
    </li>
-   <li>
+   <li <%if active == 'Schools'%> class="active" <%end%>>
     <%= link_to admin_schools_path(current_admin) do%>
     <i class="fa fa-tasks"></i>
     <span class="link-title">Schools</span>
     <%end%>
 </li>
-<li>
+<li <%if active == 'Teachers'%> class="active" <%end%>>
     <%= link_to admin_teachers_path(current_admin) do%>
     <i class="fa fa-tasks"></i>
     <span class="link-title">Teachers</span>
     <%end%>
 </li>
-<li>
+<li <%if active == 'Students'%> class="active" <%end%>>
     <%= link_to admin_students_path(current_admin) do%>
     <i class="fa fa-pencil"></i>
     <span class="link-title">Students</span>
     <%end%>
 </li>
-<li>
+<li <%if active == 'Vendors'%> class="active" <%end%>>
     <%= link_to admin_vendors_path(current_admin) do%>
     <i class="fa fa-table"></i>
     <span class="link-title">Vendors</span>
     <%end%>
 </li>
-  <li >
+  <li <%if active == 'Announcement'%> class="active" <%end%> >
     <%= link_to announcements_path do %>
       <i class="fa fa-table"></i>
       <span class="link-title">Announcement</span>
     <% end %>
   </li>
 <li>
-  <li >
+  <li <%if active == 'compose_test'%> class="active" <%end%> >
     <%= link_to admin_compose_test_path(current_admin) do %>
       <i class="fa fa-table"></i>
       <span class="link-title">Compose Test</span>
@@ -84,47 +78,3 @@
 <!-- /#menu -->
 </div>
 <!-- /#left -->
-  <div id="content">
-    <div class="outer">
-      <div class="inner bg-light lter">
-        <div>
-          <h3>Announcement <%= link_to 'New Announcement', new_announcement_path, class: "btn btn-primary pull-right" %></h3>
-
-          <div class="table-responsive">
-            <table class="table table-bordered">
-              <thead>
-              <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th colspan="3"></th>
-              </tr>
-              </thead>
-              <% @announcements.each do |announcement|%>
-                <tbody>
-                <tr>
-                  <td><%= announcement.title %></td>
-                  <td><%= announcement.description %></td>
-                  <td><%= link_to 'Show', announcement %></td>
-                  <td><%= link_to 'Edit', edit_announcement_path(announcement) %></td>
-                  <td><%= link_to 'Destroy', announcement, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-                </tr>
-                </tbody>
-              <%end%>
-            </table>
-          </div>
-        </div>
-        <hr>
-      </div>
-      <!-- /.inner -->
-    </div>
-    <!-- /.outer -->
-  </div>
-  <!-- /#content -->
-</div>
-<!-- /#wrap -->
-<footer class="Footer bg-dark dker">
-  <p>© 2018.Eduoracle Educational Services Pvt. Ltd. All rights reserved.</p>
-</footer>
-<!-- /#footer -->
-
-<%= render "layouts/javascripts"%>

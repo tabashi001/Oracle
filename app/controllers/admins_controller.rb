@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
-before_action :find_admin, only: [:schools,:teachers,:students,:vensors,:school_update,:activate]
+before_action :find_admin, only: [:schools,:teachers,:students,:vensors,:school_update,:activate,:compose_test,:select_question]
 
 	def index
 		@schools_count = User.where(:role_name => "1").count
@@ -101,6 +101,11 @@ before_action :find_admin, only: [:schools,:teachers,:students,:vensors,:school_
 	   end
 	end
 
+	def compose_test
+	end
+
+    def select_question
+	end
 	private
 
 	def find_admin
